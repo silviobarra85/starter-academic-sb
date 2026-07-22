@@ -19,11 +19,11 @@ let signInWithPopup = null;
 let signInWithEmailAndPassword = null;
 let signOut = null;
 let onAuthStateChanged = null;
-let firebaseRuntimePromiseV759 = null;
+let firebaseRuntimePromiseV760 = null;
 
-async function ensureFirebaseRuntimeV759() {
-  if (firebaseRuntimePromiseV759) return firebaseRuntimePromiseV759;
-  firebaseRuntimePromiseV759 = import("./firebase.js")
+async function ensureFirebaseRuntimeV760() {
+  if (firebaseRuntimePromiseV760) return firebaseRuntimePromiseV760;
+  firebaseRuntimePromiseV760 = import("./firebase.js")
     .then((api) => {
       db = api.db;
       auth = api.auth;
@@ -46,8 +46,8 @@ async function ensureFirebaseRuntimeV759() {
       signInWithEmailAndPassword = api.signInWithEmailAndPassword;
       signOut = api.signOut;
       onAuthStateChanged = api.onAuthStateChanged;
-      window.ZonaOrientaleFirebaseRuntimeV759 = Object.freeze({
-        version: "V759",
+      window.ZonaOrientaleFirebaseRuntimeV760 = Object.freeze({
+        version: "V760",
         status: "ready",
         loadedAt: new Date().toISOString(),
         projectId: api.firebaseRuntimeInfoV499?.projectId || ""
@@ -55,20 +55,20 @@ async function ensureFirebaseRuntimeV759() {
       return api;
     })
     .catch((error) => {
-      firebaseRuntimePromiseV759 = null;
-      window.ZonaOrientaleFirebaseRuntimeV759 = Object.freeze({
-        version: "V759",
+      firebaseRuntimePromiseV760 = null;
+      window.ZonaOrientaleFirebaseRuntimeV760 = Object.freeze({
+        version: "V760",
         status: "unavailable",
         failedAt: new Date().toISOString(),
         message: error?.message || String(error)
       });
       throw error;
     });
-  return firebaseRuntimePromiseV759;
+  return firebaseRuntimePromiseV760;
 }
 
 async function loadCollection(name) {
-  const api = await ensureFirebaseRuntimeV759();
+  const api = await ensureFirebaseRuntimeV760();
   try {
     const snapshot = await api.getDocs(api.collection(api.db, name));
     return snapshot.docs.map((documentSnapshot) => ({
@@ -83,7 +83,112 @@ async function loadCollection(name) {
 }
 
 
-import { createStaticFirstBootstrapV759 } from "../../fanta-engine/js/core/static-first-bootstrap-v759.js?v=759";
+// V760 - Il bootstrap pubblico non ha piu dipendenze statiche da file cross-root.
+// FantaEngine resta il contratto condiviso, ma un deploy parziale del motore non puo
+// impedire alla lega di leggere i propri snapshot locali.
+function deferRemoteStartV760(callback) {
+  const enqueue = typeof globalThis.queueMicrotask === "function"
+    ? globalThis.queueMicrotask.bind(globalThis)
+    : (task) => Promise.resolve().then(task);
+  if (typeof globalThis.requestAnimationFrame === "function") {
+    globalThis.requestAnimationFrame(() => enqueue(callback));
+    return;
+  }
+  enqueue(callback);
+}
+
+function createStaticFirstBootstrapV760(options = {}) {
+  if (typeof options.loadPublicData !== "function") {
+    throw new TypeError("Bootstrap V760 richiede loadPublicData().");
+  }
+  const logger = options.logger || console;
+  const diagnostics = {
+    version: "V760",
+    phase: "created",
+    createdAt: new Date().toISOString(),
+    publicStartedAt: "",
+    publicReadyAt: "",
+    authStartedAt: "",
+    authReadyAt: "",
+    publicError: "",
+    authError: "",
+    staticAssetsPhase: "pending"
+  };
+  let publicPromise = null;
+  let authPromise = null;
+
+  const publish = () => {
+    const snapshot = Object.freeze({ ...diagnostics });
+    try { options.onDiagnostic?.(snapshot); } catch (error) { logger.warn?.("[Bootstrap V760] diagnostica non pubblicata", error); }
+    return snapshot;
+  };
+
+  const startAuth = () => {
+    if (authPromise) return authPromise;
+    if (typeof options.startAuth !== "function") return Promise.resolve(null);
+    diagnostics.authStartedAt = new Date().toISOString();
+    publish();
+    authPromise = Promise.resolve()
+      .then(() => options.startAuth())
+      .then((result) => {
+        diagnostics.authReadyAt = new Date().toISOString();
+        diagnostics.authError = "";
+        if (diagnostics.phase === "public-ready") diagnostics.phase = "ready";
+        publish();
+        return result;
+      })
+      .catch((error) => {
+        diagnostics.authError = error?.message || String(error);
+        publish();
+        logger.warn?.("[Bootstrap V760] Firebase/Auth non disponibile; il sito pubblico resta operativo.", error);
+        return null;
+      });
+    return authPromise;
+  };
+
+  const startPublic = () => {
+    if (publicPromise) return publicPromise;
+    diagnostics.phase = "public-loading";
+    diagnostics.publicStartedAt = new Date().toISOString();
+    publish();
+    publicPromise = Promise.resolve()
+      .then(() => options.loadPublicData())
+      .then((result) => {
+        if (typeof options.hasUsableData === "function" && !options.hasUsableData()) {
+          throw new Error("Il caricamento statico non ha prodotto dati utilizzabili.");
+        }
+        diagnostics.phase = "public-ready";
+        diagnostics.publicReadyAt = new Date().toISOString();
+        diagnostics.publicError = "";
+        diagnostics.staticAssetsPhase = result?.staticAssetsPending ? "background" : "ready";
+        publish();
+        options.onPublicReady?.(result);
+        return result;
+      })
+      .catch((error) => {
+        diagnostics.phase = "public-error";
+        diagnostics.publicError = error?.message || String(error);
+        publish();
+        options.onPublicError?.(error);
+        throw error;
+      });
+    return publicPromise;
+  };
+
+  return Object.freeze({
+    version: "V760",
+    async start() {
+      let result;
+      try { result = await startPublic(); }
+      finally { deferRemoteStartV760(startAuth); }
+      return result;
+    },
+    startPublic,
+    startAuth,
+    diagnostics: () => Object.freeze({ ...diagnostics })
+  });
+}
+
 import { installFeatureCardRegistryV497 } from "../../fanta-engine/js/core/feature-card-registry-v497.js?v=497";
 import { installDashboardCardsEngineV504 } from "../../fanta-engine/js/ui/dashboard-cards-engine-v504.js?v=504";
 import { installDashboardRendererHelpersV505, renderCollapsiblePanelV505 } from "../../fanta-engine/js/ui/dashboard-renderer-helpers-v505.js?v=505";
@@ -169,7 +274,7 @@ import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "../../fanta-engine/js/shared/v491/assets/js/mobile/mobile-tables.js?v=491";
 import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=485";
 import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=485";
-import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=759";
+import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=760";
 import { createMobileRosterHelpersV169 } from "../../fanta-engine/js/shared/v491/assets/js/mobile/mobile-rosters.js?v=491";
 
 const ZonaOrientaleSharedHelperBridgeV341 = createSharedHelperBridgeV341({
@@ -4850,7 +4955,7 @@ function makeEmptyRawDataV32() {
 
 async function getDocumentIfExistsV32(collectionName, documentId) {
   try {
-    await ensureFirebaseRuntimeV759();
+    await ensureFirebaseRuntimeV760();
     const snapshot = await getDoc(doc(db, collectionName, documentId));
     if (!snapshot.exists()) return null;
     return { id: snapshot.id, ...snapshot.data() };
@@ -8772,8 +8877,8 @@ async function loadPublicDataForSelectedSeasonV100(requestId, options = {}) {
 
   const seasonId = selectedSeasonBefore || getDefaultSeasonIdFromRawV100(rawBase);
   const [seasonSnapshot, honorSnapshot] = await Promise.all([
-    loadPublicSeasonSnapshotV32(seasonId),
-    loadPublicHonorSnapshotV32()
+    loadStaticPublicSeasonSnapshotV172(seasonId),
+    loadStaticHonorSnapshotV173()
   ]);
 
   await zonaDataRepositoryV222.loadStaticAssets();
@@ -8836,9 +8941,9 @@ setupSeasonSelectorEvents = function setupSeasonSelectorEventsV100() {
   });
 };
 
-setupAuth = function setupAuthV759() {
+setupAuth = function setupAuthV760() {
   ensureV34Dom();
-  if (state.authRuntimePromiseV759) return state.authRuntimePromiseV759;
+  if (state.authRuntimePromiseV760) return state.authRuntimePromiseV760;
 
   const openLoginBtn = document.getElementById("openLoginBtn");
   const logoutBtn = document.getElementById("logoutBtn");
@@ -8847,19 +8952,19 @@ setupAuth = function setupAuthV759() {
   const closeLoginBtn = document.getElementById("closeLoginBtn");
   const refreshBtn = document.getElementById("refreshBtn");
 
-  if (!state.authUiBoundV759) {
-    state.authUiBoundV759 = true;
+  if (!state.authUiBoundV760) {
+    state.authUiBoundV760 = true;
     openLoginBtn?.addEventListener("click", () => {
       if (loginDialog?.showModal) loginDialog.showModal();
     });
     closeLoginBtn?.addEventListener("click", () => loginDialog?.close());
     logoutBtn?.addEventListener("click", async () => {
-      await ensureFirebaseRuntimeV759();
+      await ensureFirebaseRuntimeV760();
       await signOut(auth);
     });
     refreshBtn?.addEventListener("click", async () => {
       try {
-        await loadDataForCurrentAuthV100({ render: true, reason: "manual-refresh-v759" });
+        await loadDataForCurrentAuthV100({ render: true, reason: "manual-refresh-v760" });
       } catch (error) {
         console.error(error);
         setError(`Aggiornamento dati non riuscito. ${error?.message || error}`);
@@ -8872,7 +8977,7 @@ setupAuth = function setupAuthV759() {
       const password = document.getElementById("loginPassword")?.value;
       showMessage("loginStatus", "Accesso in corso...");
       try {
-        await ensureFirebaseRuntimeV759();
+        await ensureFirebaseRuntimeV760();
         await signInWithEmailAndPassword(auth, email, password);
         loginDialog?.close();
       } catch (error) {
@@ -8891,7 +8996,7 @@ setupAuth = function setupAuthV759() {
       }
       try {
         showMessage("loginStatus", "Registrazione in corso...");
-        await ensureFirebaseRuntimeV759();
+        await ensureFirebaseRuntimeV760();
         const credential = await createUserWithEmailAndPassword(auth, email, password);
         if (displayName) await updateProfile(credential.user, { displayName });
         await sendEmailVerification(credential.user);
@@ -8905,7 +9010,7 @@ setupAuth = function setupAuthV759() {
 
     document.getElementById("sendVerificationAgainBtn")?.addEventListener("click", async () => {
       try {
-        await ensureFirebaseRuntimeV759();
+        await ensureFirebaseRuntimeV760();
         if (!auth.currentUser) {
           showMessage("loginStatus", "Accedi prima di richiedere una nuova verifica.", true);
           return;
@@ -8921,7 +9026,7 @@ setupAuth = function setupAuthV759() {
     document.getElementById("loginGoogleBtn")?.addEventListener("click", async () => {
       try {
         showMessage("loginStatus", "Accesso Google in corso...");
-        await ensureFirebaseRuntimeV759();
+        await ensureFirebaseRuntimeV760();
         const provider = new GoogleAuthProvider();
         const result = await signInWithPopup(auth, provider);
         await upsertPendingUserV34(result.user, "PENDING");
@@ -8933,7 +9038,7 @@ setupAuth = function setupAuthV759() {
     });
   }
 
-  state.authRuntimePromiseV759 = ensureFirebaseRuntimeV759().then(() => {
+  state.authRuntimePromiseV760 = ensureFirebaseRuntimeV760().then(() => {
     if (unsubscribeAuthV100) unsubscribeAuthV100();
     unsubscribeAuthV100 = onAuthStateChanged(auth, async (user) => {
       state.user = user;
@@ -8983,7 +9088,7 @@ setupAuth = function setupAuthV759() {
           renderAll();
           setError("");
         } else {
-          await loadDataForCurrentAuthV100({ render: true, reason: "auth-state-v759" });
+          await loadDataForCurrentAuthV100({ render: true, reason: "auth-state-v760" });
         }
       } catch (error) {
         console.error(error);
@@ -8993,28 +9098,28 @@ setupAuth = function setupAuthV759() {
       updateAdminVisibility();
       updateUserVisibilityV34();
       renderUserAreaV34();
-      window.dispatchEvent(new CustomEvent("fanta:auth-state-v759", { detail: { user } }));
+      window.dispatchEvent(new CustomEvent("fanta:auth-state-v760", { detail: { user } }));
       try {
-        scheduleBootPreloaderReadyV560("auth-state-ready-v759");
+        scheduleBootPreloaderReadyV560("auth-state-ready-v760");
       } catch (preloaderError) {
         console.warn("Boot preloader V560: segnale render non inviato", preloaderError);
       }
     });
     return true;
   }).catch((error) => {
-    state.authRuntimePromiseV759 = null;
-    state.firebaseUnavailableV759 = {
+    state.authRuntimePromiseV760 = null;
+    state.firebaseUnavailableV760 = {
       at: new Date().toISOString(),
       message: error?.message || String(error)
     };
     throw error;
   });
 
-  return state.authRuntimePromiseV759;
+  return state.authRuntimePromiseV760;
 };
 
-const zonaStaticFirstBootstrapV759 = createStaticFirstBootstrapV759({
-  loadPublicData: () => loadDataForCurrentAuthV100({ render: true, reason: "startup-static-v759" }),
+const zonaStaticFirstBootstrapV760 = createStaticFirstBootstrapV760({
+  loadPublicData: () => loadDataForCurrentAuthV100({ render: true, reason: "startup-static-v760" }),
   startAuth: () => setupAuth(),
   hasUsableData: () => Boolean(
     state.usedPublicSnapshots &&
@@ -9022,12 +9127,12 @@ const zonaStaticFirstBootstrapV759 = createStaticFirstBootstrapV759({
     (state.raw?.seasonTeams?.length || state.raw?.competitions?.length || state.raw?.rosterEntries?.length)
   ),
   onDiagnostic: (diagnostic) => {
-    state.bootstrapV759 = diagnostic;
-    window.ZonaOrientaleBootstrapV759 = diagnostic;
+    state.bootstrapV760 = diagnostic;
+    window.ZonaOrientaleBootstrapV760 = diagnostic;
   },
   onPublicReady: () => {
     setError("");
-    try { scheduleBootPreloaderReadyV560("public-static-ready-v759"); } catch (_) {}
+    try { scheduleBootPreloaderReadyV560("public-static-ready-v760"); } catch (_) {}
   },
   onPublicError: (error) => {
     setError(`Dati pubblici non disponibili. ${error?.message || error}`);
@@ -9035,7 +9140,7 @@ const zonaStaticFirstBootstrapV759 = createStaticFirstBootstrapV759({
   logger: console
 });
 
-initializeAppUi = async function initializeAppUiV759() {
+initializeAppUi = async function initializeAppUiV760() {
   setupNavigation();
   setupMobileNavigation();
   setupSeasonSelectorEvents();
@@ -9046,14 +9151,14 @@ initializeAppUi = async function initializeAppUiV759() {
   const loginHelpText = document.querySelector("#loginDialog .muted");
   if (loginHelpText) loginHelpText.textContent = "Accedi con l'utente creato in Firebase Authentication.";
 
-  return zonaStaticFirstBootstrapV759.start();
+  return zonaStaticFirstBootstrapV760.start();
 };
 
 async function startZonaOrientaleAppV173() {
   try {
     await initializeAppUi();
   } catch (error) {
-    console.error("Bootstrap pubblico V759 non completato", error);
+    console.error("Bootstrap pubblico V760 non completato", error);
   } finally {
     setupThemeToggleV89();
     injectDisplayModeToggle();
@@ -14741,30 +14846,34 @@ async function loadStaticPublicConfigV171() {
 }
 
 async function loadPublicConfigV171() {
-  const publicConfig = await zonaDataRepositoryV222.loadPublicConfig(
-    loadStaticPublicConfigV171,
-    getDefaultSeasonIdFromRawV100
-  );
-  state.publicConfigSourceV171 = publicConfig?.source === "static" ? "static" : "firebase";
-  return publicConfig;
+  // V760: il bootstrap pubblico accetta esclusivamente la configurazione statica.
+  // Firebase viene avviato solo dopo il primo render e non e un fallback di avvio.
+  const publicConfig = await loadStaticPublicConfigV171();
+  if (!publicConfig) {
+    throw new Error("Manca assets/public/config.json oppure il file non e JSON valido.");
+  }
+  state.publicConfigSourceV171 = "static";
+  return { ...publicConfig, source: "static" };
 }
 
-loadPublicDataForSelectedSeasonV100 = async function loadPublicDataForSelectedSeasonV171(requestId, options = {}) {
+loadPublicDataForSelectedSeasonV100 = async function loadPublicDataForSelectedSeasonV760(requestId, options = {}) {
   const { render = true } = options;
   const selectedSeasonBefore = state.selectedSeasonId;
   const rawBase = makeEmptyRawDataV34();
-  const publicConfig = await loadPublicConfigV171();
 
+  // Config, snapshot stagione e albo sono il nucleo minimo necessario al primo render.
+  // Nessun caricamento Firebase e nessun asset pesante devono precederli.
+  const publicConfig = await loadPublicConfigV171();
   rawBase.leagueSettings = Array.isArray(publicConfig?.leagueSettings) ? publicConfig.leagueSettings : [];
   rawBase.seasons = Array.isArray(publicConfig?.seasons) ? publicConfig.seasons : [];
 
   const seasonId = selectedSeasonBefore || publicConfig?.currentSeasonId || getDefaultSeasonIdFromRawV100(rawBase);
-  const [seasonSnapshot, honorSnapshot] = await Promise.all([
-    loadPublicSeasonSnapshotV32(seasonId),
-    loadPublicHonorSnapshotV32()
-  ]);
+  if (!seasonId) throw new Error("La configurazione pubblica non indica alcuna stagione utilizzabile.");
 
-  await zonaDataRepositoryV222.loadStaticAssets();
+  const [seasonSnapshot, honorSnapshot] = await Promise.all([
+    loadStaticPublicSeasonSnapshotV172(seasonId),
+    loadStaticHonorSnapshotV173()
+  ]);
   if (!isLatestDataLoadV100(requestId)) return false;
 
   state.raw = rawBase;
@@ -14774,24 +14883,67 @@ loadPublicDataForSelectedSeasonV100 = async function loadPublicDataForSelectedSe
   if (!seasonSnapshot || !honorSnapshot) {
     state.usedPublicSnapshots = false;
     state.publicHonorSnapshot = honorSnapshot || null;
-    mergeStaticCompetitionCalendarsForSeasonV101(seasonId);
     sortData();
     if (render) renderAll();
-    setError(`Snapshot pubblico mancante per ${seasonId}. Accedi come admin e aggiorna gli snapshot pubblici.`);
-    return false;
+    const missing = [!seasonSnapshot ? `snapshot stagione ${seasonId}` : "", !honorSnapshot ? "snapshot albo d'oro" : ""].filter(Boolean).join(" e ");
+    throw new Error(`Manca ${missing}. Verifica che i JSON statici siano presenti nel deploy.`);
   }
 
   applyPublicSeasonSnapshotV32(seasonSnapshot);
   state.raw.news = Array.isArray(seasonSnapshot.news) ? seasonSnapshot.news : [];
-  mergeStaticCompetitionCalendarsForSeasonV101(seasonId);
   state.publicHonorSnapshot = honorSnapshot;
   state.hasFullData = false;
   sortData();
+
+  // Primo render immediato: dashboard, rose, competizioni e news arrivano dallo snapshot.
   if (render) renderAll();
   setError("");
-  return true;
-};
+  window.dispatchEvent(new CustomEvent("fanta:public-core-ready-v760", {
+    detail: { seasonId, source: state.publicConfigSourceV171 || "static", generatedAt: seasonSnapshot.generatedAt || "" }
+  }));
 
+  // Listoni, rose archiviate e calendari statici sono complementari e vengono caricati
+  // in background. Non possono piu bloccare la visualizzazione iniziale.
+  const assetsLoad = Promise.resolve()
+    .then(() => zonaDataRepositoryV222.loadStaticAssets())
+    .then(() => {
+      if (!isLatestDataLoadV100(requestId) || state.selectedSeasonId !== seasonId) return false;
+      mergeStaticCompetitionCalendarsForSeasonV101(seasonId);
+      sortData();
+      if (render) renderAll();
+      state.staticAssetsStatusV760 = {
+        version: "V760",
+        status: "ready",
+        seasonId,
+        loadedAt: new Date().toISOString(),
+        listoni: state.listoni?.length || 0,
+        rosters: state.rosters?.length || 0,
+        competitionCalendars: state.competitionCalendars?.length || 0
+      };
+      window.dispatchEvent(new CustomEvent("fanta:static-assets-ready-v760", { detail: state.staticAssetsStatusV760 }));
+      return true;
+    })
+    .catch((error) => {
+      state.staticAssetsStatusV760 = {
+        version: "V760",
+        status: "degraded",
+        seasonId,
+        failedAt: new Date().toISOString(),
+        message: error?.message || String(error)
+      };
+      console.warn("Asset statici complementari non disponibili; il nucleo pubblico resta operativo.", error);
+      return false;
+    });
+
+  state.staticAssetsPromiseV760 = assetsLoad;
+  state.staticAssetsStatusV760 = {
+    version: "V760",
+    status: "loading",
+    seasonId,
+    startedAt: new Date().toISOString()
+  };
+  return { ok: true, seasonId, staticAssetsPending: true, staticAssetsPromise: assetsLoad };
+};
 function buildPublicConfigPayloadV171() {
   const currentSeasonId = getCurrentSeasonId() || getDefaultSeasonId();
   const seasons = (state.raw.seasons || []).map((season) => ({
@@ -16259,7 +16411,7 @@ window.ZonaOrientaleAdminMobileButtonTopV430 = Object.freeze({
   ]
 });
 
-const DEPLOY_EXPECTED_VERSION_V181 = "759";
+const DEPLOY_EXPECTED_VERSION_V181 = "760";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -16567,7 +16719,7 @@ document.addEventListener("click", (event) => {
   }
 }, true);
 
-window.addEventListener("fanta:auth-state-v759", (event) => {
+window.addEventListener("fanta:auth-state-v760", (event) => {
   const user = event?.detail?.user || null;
   const uid = user?.uid || "";
   const changed = lastAuthUidV182 !== undefined && lastAuthUidV182 !== uid;
@@ -21756,7 +21908,7 @@ window.ZonaOrientaleMantraRoleFiltersV441 = Object.freeze({
 
 
 
-/* V759 - Static-first startup is now structural.
+/* V760 - Static-first startup is now structural.
  * The public UI loads from local config/snapshots before Firebase is imported.
  * Firebase/Auth starts lazily after the first usable render; V758 watchdog overrides removed.
  */
@@ -40816,7 +40968,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
 /* V691 - Profili squadra mobile: responsive finale e footer version guard robusto. */
 (function fantaSiteProfileResponsiveFooterV691() {
   const VERSION = 'V694';
-  const VERSION_LABEL = 'Fantacalcio - V759 - Aggiornato al 21/07/2026';
+  const VERSION_LABEL = 'Fantacalcio - V760 - Aggiornato al 22/07/2026';
 
   function safeHtmlV691(value) {
     return typeof escapeHtml === 'function' ? escapeHtml(value) : String(value ?? '');
@@ -40932,7 +41084,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
 /* V692 - Rose mobile: movimenti TUTTE LE ROSE fuori dalla table + profilo scuro. */
 (function fantaSiteMobileRostersAndProfileV692() {
   const VERSION = 'V694';
-  const VERSION_LABEL = 'Fantacalcio - V759 - Aggiornato al 21/07/2026';
+  const VERSION_LABEL = 'Fantacalcio - V760 - Aggiornato al 22/07/2026';
 
   function isMobileV692() {
     return Boolean(window.matchMedia && window.matchMedia('(max-width: 900px)').matches);
@@ -41099,7 +41251,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
 /* V694 - Profilo squadra: movimenti con stesso stile delle card TUTTE LE ROSE + footer definitivo. */
 (function fantaSiteProfileMovementsV694(){
   const VERSION = 'V694';
-  const VERSION_LABEL = 'Fantacalcio - V759 - Aggiornato al 21/07/2026';
+  const VERSION_LABEL = 'Fantacalcio - V760 - Aggiornato al 22/07/2026';
   function isMobile(){ return window.matchMedia && window.matchMedia('(max-width: 900px)').matches; }
   function safe(value){ return typeof escapeHtml === 'function' ? escapeHtml(value) : String(value ?? '').replace(/[&<>"']/g, function(ch){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]); }); }
   function fm(value){ return typeof formatFm === 'function' ? formatFm(value || 0) : safe(value || 0); }
@@ -41169,7 +41321,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
 /* V698 - Profilo squadra: movimenti con note visibili e footer 16/07/2026. */
 (function fantaSiteProfileMovementsV698(){
   const VERSION = 'V698';
-  const VERSION_LABEL = 'Fantacalcio - V759 - Aggiornato al 21/07/2026';
+  const VERSION_LABEL = 'Fantacalcio - V760 - Aggiornato al 22/07/2026';
   function isMobile(){ return window.matchMedia && window.matchMedia('(max-width: 900px)').matches; }
   function safe(value){ return typeof escapeHtml === 'function' ? escapeHtml(value) : String(value ?? '').replace(/[&<>"']/g, function(ch){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]); }); }
   function fm(value){ return typeof formatFm === 'function' ? formatFm(value || 0) : safe(value || 0); }
@@ -41234,7 +41386,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
 /* V751 - Static svincoli canonical repair + robust Tutte le Rose navigation/toggle. */
 (function fantaSiteRosterSvincoliAndNavigationV751(){
   const VERSION = 'V751';
-  const VERSION_LABEL = 'Fantacalcio - V759 - Aggiornato al 21/07/2026';
+  const VERSION_LABEL = 'Fantacalcio - V760 - Aggiornato al 22/07/2026';
   const CANONICAL_SVINCOLI = Object.freeze({
     '2026_2027_team_001': { amount: 47, date: '2026-07-05', description: 'SVINCOLI LUGLIO 2026: Malinovskyi (5); Coulibaly L. (13); Fadera (8); Vandeputte (11);' },
     '2026_2027_ft1tqdqi18iuh3l1lakq': { amount: 87, date: '2026-07-05', description: 'SVINCOLI LUGLIO 2026: Hermoso (13); Tsimikas (3); Terracciano F. (7); Cabal (6); Canestrelli (5); Mandragora (17); Bresciani (10); Helgason (2); Berisha M. (7); Tourè I. (5); Sanabria (4); Spulci (8)' },
@@ -41430,7 +41582,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
 /* V755 - Team profile movement descriptions + singleton Tutte le Rose mobile focus. */
 (function fantaSiteRosterNavigationAndMovementDescriptionsV755(){
   const VERSION = 'V755';
-  const VERSION_LABEL = 'Fantacalcio - V759 - Aggiornato al 21/07/2026';
+  const VERSION_LABEL = 'Fantacalcio - V760 - Aggiornato al 22/07/2026';
 
   function isMobileLikeV755(){
     try {
@@ -41599,15 +41751,15 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
 })();
 
 
-/* V759 - Footer coerente con il bootstrap strutturale.
+/* V760 - Footer coerente con il bootstrap strutturale.
    Nessun watchdog: l'HTML contiene gia' la versione corretta. */
-(function zonaOrientaleFooterV759(){
-  const VERSION_LABEL = 'Fantacalcio - V759 - Aggiornato al 21/07/2026';
+(function zonaOrientaleFooterV760(){
+  const VERSION_LABEL = 'Fantacalcio - V760 - Aggiornato al 22/07/2026';
   function apply(){
     document.querySelectorAll('[data-league-footer-v445], .app-footer p, footer p').forEach((node) => {
       if (!node) return;
       node.textContent = VERSION_LABEL;
-      node.dataset.footerVersionV759 = 'V759';
+      node.dataset.footerVersionV760 = 'V760';
     });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', apply, { once: true });

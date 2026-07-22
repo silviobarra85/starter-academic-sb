@@ -1,0 +1,13 @@
+{
+  "version": "760",
+  "releasedAt": "2026-07-22T01:30:00+02:00",
+  "entrypoint": "assets/app.js?v=760",
+  "essential": [
+    "assets/app.js",
+    "assets/league-config.json",
+    "assets/public/config.json",
+    "assets/snapshots/seasons/manifest.json",
+    "assets/snapshots/honor.json",
+    "../fanta-engine/js/core/static-first-bootstrap-v760.js"
+  ]
+}

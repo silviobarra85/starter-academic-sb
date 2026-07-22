@@ -1,0 +1,16 @@
+TEST REPORT V760 - 22/07/2026
+
+PASS - node --check static/zonaorientale/assets/app.js
+PASS - node --check static/fanta-engine/js/core/static-first-bootstrap-v760.js
+PASS - node --check static/zonaorientale/tools/check-live-v760.mjs
+PASS - audit static-first V760 sui sorgenti: 41/41
+PASS - audit static-first V760 sulla simulazione della cartella pubblicata: 41/41
+PASS - check live V760 contro server HTTP locale: home, config, manifest, honor, stagione, FantaEngine e tutti gli import statici diretti HTTP 200
+PASS - JSON di configurazione, manifest e snapshot corrente letti e coerenti
+PASS - bootstrap pubblico privo di fallback Firebase
+PASS - primo render ordinato prima del caricamento degli asset complementari
+PASS - shell syntax di netlify/build-hugo-0.80.sh
+
+LIMITAZIONE - il test Chromium completo nel container e stato impedito dalle policy URLBlocklist/isolamento del browser di sistema. Non viene dichiarato un E2E browser certificato. Il gate deterministico e il check HTTP live sono inclusi; resta raccomandato Playwright nel CI Netlify.
+
+NOTA - il sito pubblico reale non era raggiungibile direttamente dall'ambiente di esecuzione; il comando check-live-v760.mjs deve essere eseguito dopo il deploy e rende esplicito l'eventuale URL mancante.

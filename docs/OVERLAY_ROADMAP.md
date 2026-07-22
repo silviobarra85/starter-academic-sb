@@ -1,5 +1,13 @@
 # Overlay Roadmap
 
+## V760 - 22/07/2026 - Bootstrap statico verificabile e deploy coerente
+- Primo render basato esclusivamente su config e snapshot statici, senza fallback Firebase.
+- Asset complementari caricati in background dopo il render.
+- Errori del grafo moduli mostrati nella pagina.
+- Audit eseguito prima e dopo la build Netlify.
+- Check live post-deploy su tutti gli entrypoint e import diretti.
+- Cache entrypoint riallineata a V760.
+
 ## V759 - 21/07/2026 - Bootstrap static-first duraturo
 - Dati pubblici caricati e renderizzati prima di Firebase/Auth.
 - Firebase e Firestore spostati fuori dal grafo iniziale tramite import dinamico.
