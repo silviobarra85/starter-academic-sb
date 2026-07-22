@@ -30,3 +30,80 @@
   from = "/fantapetillomantramanager/share/news/:id"
   to = "/.netlify/functions/news-share?id=:id&league=fantapetillomantramanager"
   status = 200
+
+# V760 - Mutable public datasets must be revalidated on every navigation.
+[[headers]]
+  for = "/zonaorientale/assets/public/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/zonaorientale/assets/snapshots/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/fanta-engine/data/sudatori/current/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/fanta-engine/data/shared-assets/current/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# V760 - Entrypoint e config devono essere riallineati a ogni deploy.
+[[headers]]
+  for = "/zonaorientale/assets/app.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/zonaorientale/assets/league-config.json"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/fanta-engine/js/core/static-first-bootstrap-v760.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# V761 - Shell e manifest di release sempre rivalidati.
+[[headers]]
+  for = "/zonaorientale/"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    X-Fanta-Release = "V761"
+
+[[headers]]
+  for = "/zonaorientale/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    X-Fanta-Release = "V761"
+
+[[headers]]
+  for = "/zonaorientale/release.json"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    X-Fanta-Release = "V761"
+
+# V761 - Il correttivo runtime condiviso deve essere riallineato subito.
+[[headers]]
+  for = "/fanta-engine/js/shared/v489/assets/js/core/admin-card-visibility-v456.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/fanta-engine/css/shared/v487/assets/css/refactor/admin-card-visibility-v456.css"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/zonaorientale/assets/js/core/admin-card-visibility-v456.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/zonaorientale/assets/css/refactor/admin-card-visibility-v456.css"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

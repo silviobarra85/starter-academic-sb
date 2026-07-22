@@ -114,3 +114,24 @@
   }
   .admin-card-selector-v456__grid { grid-template-columns: 1fr; }
 }
+
+/* V761 - Checkbox selector click reliability, applicata via classe idempotente. */
+.admin-card-selector-v456.admin-card-checkbox-hardfix-v761,
+.admin-card-selector-v456.admin-card-checkbox-hardfix-v761 * {
+  pointer-events: auto !important;
+}
+.admin-card-selector-v456.admin-card-checkbox-hardfix-v761 label.admin-card-selector-v456__option,
+.admin-card-selector-v456.admin-card-checkbox-hardfix-v761 label.admin-card-selector-v456__qa {
+  position: relative !important;
+  z-index: 15 !important;
+  cursor: pointer !important;
+  user-select: none;
+}
+.admin-card-selector-v456.admin-card-checkbox-hardfix-v761 input[type="checkbox"] {
+  pointer-events: auto !important;
+  position: relative !important;
+  z-index: 20 !important;
+  cursor: pointer !important;
+  min-width: 18px;
+  min-height: 18px;
+}

@@ -11,8 +11,8 @@
   <link rel="icon" type="image/png" sizes="16x16" href="./assets/icons/favicon-16x16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/apple-touch-icon.png" />
   <link rel="manifest" href="./site.webmanifest" />
-  <link rel="modulepreload" href="./assets/js/core/league-config-v443.js?v=760" />
-  <link rel="modulepreload" href="./assets/app.js?v=760" />
+  <link rel="modulepreload" href="./assets/js/core/league-config-v443.js?v=761" />
+  <link rel="modulepreload" href="./assets/app.js?v=761" />
   <meta name="theme-color" content="#8b0029" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="ZonaOrientale Salerno" />
@@ -50,7 +50,7 @@
   <link rel="stylesheet" href="../fanta-engine/css/shared/v487/assets/css/refactor/admin-fm-movement-edit-v436.css?v=562" data-engine-css-v487="true" data-local-fallback="./assets/css/refactor/admin-fm-movement-edit-v436.css?v=562" onerror="this.onerror=null;this.href=this.dataset.localFallback" />
   <link rel="stylesheet" href="../fanta-engine/css/shared/v487/assets/css/refactor/mantra-role-filters-v441.css?v=562" data-engine-css-v487="true" data-local-fallback="./assets/css/refactor/mantra-role-filters-v441.css?v=562" onerror="this.onerror=null;this.href=this.dataset.localFallback" />
   <link rel="stylesheet" href="../fanta-engine/css/shared/v487/assets/css/refactor/panel-title-stack-v442.css?v=562" data-engine-css-v487="true" data-local-fallback="./assets/css/refactor/panel-title-stack-v442.css?v=562" onerror="this.onerror=null;this.href=this.dataset.localFallback" />
-  <link rel="stylesheet" href="../fanta-engine/css/shared/v487/assets/css/refactor/admin-card-visibility-v456.css?v=754" data-engine-css-v487="true" data-local-fallback="./assets/css/refactor/admin-card-visibility-v456.css?v=754" onerror="this.onerror=null;this.href=this.dataset.localFallback" />
+  <link rel="stylesheet" href="../fanta-engine/css/shared/v487/assets/css/refactor/admin-card-visibility-v456.css?v=761" data-engine-css-v487="true" data-local-fallback="./assets/css/refactor/admin-card-visibility-v456.css?v=761" onerror="this.onerror=null;this.href=this.dataset.localFallback" />
   <link rel="stylesheet" href="../fanta-engine/css/shared/v487/assets/device-badge-v434.css?v=562" data-engine-css-v487="true" data-local-fallback="./assets/device-badge-v434.css?v=562" onerror="this.onerror=null;this.href=this.dataset.localFallback" />
   <link rel="stylesheet" href="../fanta-engine/css/shared/v487/assets/css/matchday-draw-tool-v473.css?v=562" data-engine-css-v487="true" data-local-fallback="./assets/css/matchday-draw-tool-v473.css?v=562" onerror="this.onerror=null;this.href=this.dataset.localFallback" />
   <link rel="stylesheet" href="../fanta-engine/css/roster-listone-table-unification-v551.css?v=562" data-roster-listone-table-unification-v551="true" />  <link rel="stylesheet" href="../fanta-engine/css/rules-table-isolation-v540.css?v=562" data-rules-table-isolation-v540="true" />
@@ -1372,9 +1372,9 @@
   </nav>
 
   <footer class="container app-footer">
-    <p data-league-footer-v445>Fantacalcio - V760 - Aggiornato al 22/07/2026</p>
+    <p data-league-footer-v445>Fantacalcio - V761 - Aggiornato al 22/07/2026</p>
   </footer>
-  <script type="module" src="./assets/js/core/league-config-v443.js?v=760"></script>
+  <script type="module" src="./assets/js/core/league-config-v443.js?v=761"></script>
   <script type="module" src="./assets/js/core/section-registry-v405.js?v=562"></script>
   <script type="module" src="./assets/js/sections/regolamento-section-v402.js?v=562"></script>
   <script type="module" src="./assets/js/sections/compare-section-v403.js?v=562"></script>
@@ -1382,25 +1382,25 @@
   <script type="module" src="./assets/js/sections/archive-section-v405.js?v=562"></script>
   <script type="module" src="./assets/js/sections/bilanci-snapshot-section-v435.js?v=562"></script>
   <script type="module">
-    const entryUrlV760 = new URL('./assets/app.js?v=760', document.baseURI).href;
+    const entryUrlV760 = new URL('./assets/app.js?v=761', document.baseURI).href;
     window.ZonaOrientaleModuleEntryV760 = Object.freeze({
-      version: 'V760',
+      version: 'V761',
       status: 'loading',
       url: entryUrlV760,
       startedAt: new Date().toISOString()
     });
     import(entryUrlV760).then(() => {
       window.ZonaOrientaleModuleEntryV760 = Object.freeze({
-        version: 'V760',
+        version: 'V761',
         status: 'loaded',
         url: entryUrlV760,
         loadedAt: new Date().toISOString()
       });
     }).catch((error) => {
-      console.error('[ZonaOrientale V760] Modulo applicazione non caricato', error);
+      console.error('[ZonaOrientale V761] Modulo applicazione non caricato', error);
       const message = error?.message || String(error);
       window.ZonaOrientaleModuleEntryV760 = Object.freeze({
-        version: 'V760',
+        version: 'V761',
         status: 'failed',
         url: entryUrlV760,
         failedAt: new Date().toISOString(),
@@ -1409,7 +1409,7 @@
       const errorBox = document.getElementById('errorBox');
       if (errorBox) {
         errorBox.classList.remove('hidden');
-        errorBox.textContent = `Avvio applicazione non riuscito. Il deploy non contiene tutti i file V760: ${message}`;
+        errorBox.textContent = `Avvio applicazione non riuscito. Il deploy non contiene tutti i file V761: ${message}`;
       }
       document.documentElement.classList.remove('fanta-boot-preloader-active');
       const overlay = document.getElementById('fantaBootPreloader');
@@ -1424,7 +1424,7 @@
   <script src="../fanta-engine/js/ui/president-teamarea-mobile-v585.js?v=585" defer data-president-teamarea-mobile-v585="true"></script>
   <script src="../fanta-engine/js/ui/static-roster-editor-v588.js?v=588" defer data-static-roster-editor-v588="true"></script>
   <script type="module" src="./assets/js/sections/matchday-draw-tool-v473.js?v=562"></script>
-  <script src="../fanta-engine/js/shared/v489/assets/js/core/admin-card-visibility-v456.js?v=754" defer data-engine-js-v489="true" data-data-path-adapter-v490="true" data-shared-js-modules-v491="true" data-local-fallback="./assets/js/core/admin-card-visibility-v456.js?v=754" onerror="this.onerror=null;this.src=this.dataset.localFallback"></script>
+  <script src="../fanta-engine/js/shared/v489/assets/js/core/admin-card-visibility-v456.js?v=761" defer data-engine-js-v489="true" data-data-path-adapter-v490="true" data-shared-js-modules-v491="true" data-local-fallback="./assets/js/core/admin-card-visibility-v456.js?v=761" onerror="this.onerror=null;this.src=this.dataset.localFallback"></script>
   <script src="./assets/device-badge-v434.js?v=562" defer></script>
 </body>
 </html>

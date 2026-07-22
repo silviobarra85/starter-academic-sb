@@ -1,0 +1,25 @@
+TEST REPORT V761
+================
+
+Causa verificata
+- Il vecchio hardfix V755 osservava document.documentElement con childList/subtree.
+- decorate() modificava eyebrow.textContent ad ogni callback.
+- La modifica produceva una nuova mutazione childList e un loop infinito di microtask.
+
+Controlli eseguiti
+- node --check app.js: OK
+- node --check admin-card-visibility-v456.js: OK
+- node --check league-config-v443.js: OK
+- audit bootstrap V760 sulla release V761: 42/42 OK
+- audit event-loop V761: 53/53 OK
+- copie JS FantaEngine/ZonaOrientale/FantaPetillo identiche: OK
+- copie CSS FantaEngine/ZonaOrientale/FantaPetillo identiche: OK
+- pattern MutationObserver ricorsivo assente: OK
+- timer decorazione ripetuti assenti: OK
+- doppio listener pointerup/click assente: OK
+- cache-buster JS/CSS V761 su entrambe le leghe: OK
+- release manifest e footer V761: OK
+
+Limiti
+- Il sandbox non certifica un test E2E Chrome completo sul deploy pubblico.
+- Il controllo live V761 deve essere eseguito dopo il push e la build Netlify.

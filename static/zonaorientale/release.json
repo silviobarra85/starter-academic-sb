@@ -1,13 +1,18 @@
 {
-  "version": "760",
-  "releasedAt": "2026-07-22T01:30:00+02:00",
-  "entrypoint": "assets/app.js?v=760",
+  "version": "761",
+  "releasedAt": "2026-07-22T08:11:40+02:00",
+  "entrypoint": "assets/app.js?v=761",
+  "bootstrapContract": "../fanta-engine/js/core/static-first-bootstrap-v760.js",
+  "runtimeFixes": [
+    "../fanta-engine/js/shared/v489/assets/js/core/admin-card-visibility-v456.js?v=761"
+  ],
   "essential": [
     "assets/app.js",
     "assets/league-config.json",
     "assets/public/config.json",
     "assets/snapshots/seasons/manifest.json",
     "assets/snapshots/honor.json",
-    "../fanta-engine/js/core/static-first-bootstrap-v760.js"
+    "../fanta-engine/js/core/static-first-bootstrap-v760.js",
+    "../fanta-engine/js/shared/v489/assets/js/core/admin-card-visibility-v456.js"
   ]
 }

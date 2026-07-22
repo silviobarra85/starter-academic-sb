@@ -1,5 +1,5 @@
 import { escapeHtml } from "./utils.js";
-import { getLeagueLogoPathV446 } from "./league-config-v443.js?v=760";
+import { getLeagueLogoPathV446 } from "./league-config-v443.js?v=761";
 
 export function renderBoldMarkdown(value) {
   const escaped = escapeHtml(value || "");

@@ -1,5 +1,13 @@
 # Overlay Roadmap
 
+## V761 - 22/07/2026 - Eliminazione loop MutationObserver
+- Rimossa la ricorsione infinita del correttivo admin V755.
+- Decorazione idempotente tramite classe CSS.
+- Observer limitato agli addedNodes del selettore admin.
+- Rimosso il doppio toggle pointerup/click.
+- Copie FantaEngine e fallback locali riallineate.
+- Audit pre/post build e check live V761.
+
 ## V760 - 22/07/2026 - Bootstrap statico verificabile e deploy coerente
 - Primo render basato esclusivamente su config e snapshot statici, senza fallback Firebase.
 - Asset complementari caricati in background dopo il render.

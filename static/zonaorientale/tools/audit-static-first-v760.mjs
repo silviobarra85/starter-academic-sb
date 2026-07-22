@@ -24,11 +24,11 @@ const leagueConfig = json('zonaorientale', 'assets', 'league-config.json');
 const release = json('zonaorientale', 'release.json');
 
 check(index.includes("import(entryUrlV760)"), 'entrypoint intercetta gli errori del grafo moduli');
-check(index.includes("./assets/app.js?v=760"), 'index richiede app.js V760');
-check(release.version === '760', 'release manifest allineato a V760');
-check(release.entrypoint === 'assets/app.js?v=760', 'release manifest punta all entrypoint V760');
-check(index.includes('Fantacalcio - V760 - Aggiornato al 22/07/2026'), 'footer home allineato a V760');
-check(!/<script[^>]+src="\.\/assets\/app\.js\?v=760"/i.test(index), 'app non e caricata con uno script modulo non osservabile');
+check(index.includes("./assets/app.js?v=761"), 'index richiede app.js con cache-bust release V761');
+check(release.version === '761', 'release manifest allineato a V761');
+check(release.entrypoint === 'assets/app.js?v=761', 'release manifest punta all entrypoint V761');
+check(index.includes('Fantacalcio - V761 - Aggiornato al 22/07/2026'), 'footer home allineato a V761');
+check(!/<script[^>]+src="\.\/assets\/app\.js\?v=761"/i.test(index), 'app non e caricata con uno script modulo non osservabile');
 check(!app.includes('from "../../fanta-engine/js/core/static-first-bootstrap-v760.js'), 'bootstrap pubblico senza dipendenza statica cross-root');
 check(app.includes('function createStaticFirstBootstrapV760'), 'facade bootstrap locale V760 presente');
 check(app.includes('loadPublicDataForSelectedSeasonV760'), 'loader pubblico V760 presente');
@@ -37,11 +37,11 @@ check(app.includes('loadStaticPublicSeasonSnapshotV172(seasonId)') && app.includ
 check(app.includes('fanta:public-core-ready-v760'), 'evento primo render pubblico presente');
 check(app.includes('fanta:static-assets-ready-v760'), 'evento asset complementari presente');
 check(app.indexOf('if (render) renderAll();') < app.indexOf('zonaDataRepositoryV222.loadStaticAssets()', app.indexOf('loadPublicDataForSelectedSeasonV760')), 'primo render precede gli asset complementari');
-check(app.includes('DEPLOY_EXPECTED_VERSION_V181 = "760"'), 'diagnostica deploy attende V760');
-check(leagueConfig.currentVersion === '760', 'league-config JSON allineato a V760');
-check(leagueConfig.lastOverlay === 'V760', 'league-config registra overlay V760');
-check(leagueConfigJs.includes("currentVersion: '760'"), 'fallback league-config allineato a V760');
-check(leagueConfigJs.includes('league-config.json?v=760'), 'config JSON usa cache-buster V760');
+check(app.includes('DEPLOY_EXPECTED_VERSION_V181 = "761"'), 'diagnostica deploy attende V761');
+check(leagueConfig.currentVersion === '761', 'league-config JSON allineato a V761');
+check(String(leagueConfig.lastOverlay || '').startsWith('V761'), 'league-config registra overlay V761');
+check(leagueConfigJs.includes("currentVersion: '761'"), 'fallback league-config allineato a V761');
+check(leagueConfigJs.includes('league-config.json?v=761'), 'config JSON usa cache-buster V761');
 check(exists('fanta-engine', 'js', 'core', 'static-first-bootstrap-v760.js'), 'contratto canonico FantaEngine V760 pubblicato');
 
 const essentialFiles = [
