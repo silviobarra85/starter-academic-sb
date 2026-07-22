@@ -1,5 +1,13 @@
 # Overlay Roadmap
 
+## V763 - 22/07/2026 - Controller unico Visibilità Admin
+- Rimossi runtime V456 e hardfix V761 concorrenti.
+- Corretto il click diretto sulle checkbox senza inversione manuale dello stato.
+- Stato sempre operativo in memoria, con persistenza degradabile localStorage/sessionStorage.
+- Listener limitati al selettore e observer limitato al pannello Admin.
+- Render idempotente e self-test interattivo integrato.
+- Audit V763 71/71 e test Chromium con e senza storage.
+
 ## V762 - 22/07/2026 - ioSudo V752 da Excel v135
 - Riconciliati 1054 giocatori e fuse otto identità duplicate certe.
 - Aggiunti Matteo Zamarian e Luka Tomic; Ndicka/N'Dicka fuso in Evan Ndicka.

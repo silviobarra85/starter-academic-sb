@@ -1,10 +1,13 @@
-(function adminCardVisibilityV456() {
+(function adminCardVisibilityRuntimeV763() {
   "use strict";
 
-  const VERSION = "456";
+  const RELEASE = "V763";
+  const CONTROL_VERSION = "456";
   const CONTROL_ID = "adminCardSelectorV456";
   const CONTROL_MOUNT_ID = "adminTopControlsMountV313";
   const CHECKLIST_ID = "manualQaPanelV358";
+  const ROOT_API_NAME = "LeagueAdminCardVisibilityV456";
+  const RUNTIME_GUARD = "__leagueAdminCardVisibilityV763";
   const LEGACY_CONTROL_IDS = ["adminCardSelectorV454", "adminCardSelectorV455"];
   const LEGACY_CLASSES = [
     "admin-card-hidden-v454",
@@ -15,10 +18,27 @@
     "admin-publication-dashboard-empty-v455",
     "admin-qa-hidden-v455"
   ];
+
+  if (window[RUNTIME_GUARD]) {
+    window[ROOT_API_NAME] = window[RUNTIME_GUARD];
+    window.ZonaOrientaleAdminCardVisibilityV456 = window[RUNTIME_GUARD];
+    window.FantaPetilloAdminCardVisibilityV456 = window[RUNTIME_GUARD];
+    return;
+  }
+
   const SLUG = (window.location.pathname.split("/").filter(Boolean)[0] || "fantalega").toLowerCase();
   const STORAGE_SELECTED = `${SLUG}.adminCardVisibility.v456.selectedCards`;
   const STORAGE_QA = `${SLUG}.adminCardVisibility.v456.showQaChecklist`;
-  let refreshScheduled = false;
+
+  let selectedState = [];
+  let qaState = false;
+  let storageMode = "memory";
+  let observer = null;
+  let observerRoot = null;
+  let refreshFrame = 0;
+  let controlSignature = "";
+  let initialized = false;
+  let lastError = "";
 
   function safeText(value) {
     return String(value == null ? "" : value)
@@ -39,36 +59,74 @@
     return normalized || fallback;
   }
 
-  function readJson(key, fallback) {
-    try {
-      const raw = window.localStorage.getItem(key);
-      if (!raw) return fallback;
-      const parsed = JSON.parse(raw);
-      return parsed == null ? fallback : parsed;
-    } catch (_) {
-      return fallback;
-    }
+  function normalizeSelected(values) {
+    return Array.from(new Set((Array.isArray(values) ? values : []).map(String).filter(Boolean)));
   }
 
-  function writeJson(key, value) {
-    try { window.localStorage.setItem(key, JSON.stringify(value)); } catch (_) {}
+  function storageCandidates() {
+    const candidates = [];
+    try {
+      const probe = `__admin_card_probe_${Date.now()}`;
+      window.localStorage.setItem(probe, "1");
+      window.localStorage.removeItem(probe);
+      candidates.push({ name: "localStorage", storage: window.localStorage });
+    } catch (_) {}
+    try {
+      const probe = `__admin_card_probe_${Date.now()}`;
+      window.sessionStorage.setItem(probe, "1");
+      window.sessionStorage.removeItem(probe);
+      candidates.push({ name: "sessionStorage", storage: window.sessionStorage });
+    } catch (_) {}
+    return candidates;
+  }
+
+  function readPersistedState() {
+    for (const candidate of storageCandidates()) {
+      try {
+        const rawSelected = candidate.storage.getItem(STORAGE_SELECTED);
+        const rawQa = candidate.storage.getItem(STORAGE_QA);
+        selectedState = rawSelected ? normalizeSelected(JSON.parse(rawSelected)) : [];
+        qaState = rawQa === "true";
+        storageMode = candidate.name;
+        return;
+      } catch (_) {}
+    }
+    selectedState = [];
+    qaState = false;
+    storageMode = "memory";
+  }
+
+  function persistValue(key, value) {
+    const serialized = typeof value === "string" ? value : JSON.stringify(value);
+    for (const candidate of storageCandidates()) {
+      try {
+        candidate.storage.setItem(key, serialized);
+        storageMode = candidate.name;
+        return true;
+      } catch (_) {}
+    }
+    storageMode = "memory";
+    return false;
   }
 
   function getSelectedCards() {
-    const value = readJson(STORAGE_SELECTED, []);
-    return Array.isArray(value) ? value.map(String) : [];
+    return selectedState.slice();
   }
 
-  function setSelectedCards(ids) {
-    writeJson(STORAGE_SELECTED, Array.from(new Set((ids || []).map(String).filter(Boolean))));
+  function setSelectedCards(ids, options = {}) {
+    selectedState = normalizeSelected(ids);
+    if (options.persist !== false) persistValue(STORAGE_SELECTED, selectedState);
+    return getSelectedCards();
   }
 
   function isQaChecklistEnabled() {
-    try { return window.localStorage.getItem(STORAGE_QA) === "true"; } catch (_) { return false; }
+    return Boolean(qaState);
   }
 
-  function setQaChecklistEnabled(enabled) {
-    try { window.localStorage.setItem(STORAGE_QA, enabled ? "true" : "false"); } catch (_) {}
+  function setQaChecklistEnabled(enabled, options = {}) {
+    qaState = Boolean(enabled);
+    if (options.persist !== false) persistValue(STORAGE_QA, qaState ? "true" : "false");
+    return qaState;
   }
 
   function getAdminPanel() {
@@ -77,7 +135,9 @@
 
   function cleanupLegacySelectors() {
     LEGACY_CONTROL_IDS.forEach((id) => document.getElementById(id)?.remove());
-    document.querySelectorAll(LEGACY_CLASSES.map((className) => `.${className}`).join(", ")).forEach((node) => {
+    const selector = LEGACY_CLASSES.map((className) => `.${className}`).join(", ");
+    if (!selector) return;
+    document.querySelectorAll(selector).forEach((node) => {
       LEGACY_CLASSES.forEach((className) => node.classList.remove(className));
       if (!node.classList.contains("admin-card-hidden-v456") && !node.classList.contains("admin-category-empty-v456")) {
         node.hidden = false;
@@ -127,15 +187,14 @@
   }
 
   function isInsideSelector(node) {
-    return Boolean(node.closest(`#${CONTROL_ID}, #adminCardSelectorV454, #adminCardSelectorV455`));
+    return Boolean(node.closest?.(`#${CONTROL_ID}, #adminCardSelectorV454, #adminCardSelectorV455`));
   }
 
   function addCandidate(list, seenNodes, node) {
-    if (!node || seenNodes.has(node)) return;
-    if (isInsideSelector(node)) return;
-    if (node.matches(".admin-card-selector-v456, .admin-card-selector-v455, .admin-card-selector-v454")) return;
-    if (node.closest(".admin-card-selector-v456, .admin-card-selector-v455, .admin-card-selector-v454")) return;
-    if (node.closest("#manualQaPanelV358")) return;
+    if (!node || seenNodes.has(node) || isInsideSelector(node)) return;
+    if (node.matches?.(".admin-card-selector-v456, .admin-card-selector-v455, .admin-card-selector-v454")) return;
+    if (node.closest?.(".admin-card-selector-v456, .admin-card-selector-v455, .admin-card-selector-v454")) return;
+    if (node.closest?.(`#${CHECKLIST_ID}`)) return;
     list.push(node);
     seenNodes.add(node);
   }
@@ -145,7 +204,6 @@
     cleanupLegacySelectors();
     const candidates = [];
     const seenNodes = new Set();
-
     adminPanel.querySelectorAll([
       "#adminPublicationDashboardMountV368 .admin-publication-dashboard-card-v368",
       "#adminPublicationReminderMountV189 > .panel",
@@ -202,27 +260,15 @@
     return mount;
   }
 
-  function renderControls(adminPanel, cards) {
-    if (!adminPanel || !cards.length) return null;
-    const mount = ensureControlMount(adminPanel);
-    if (!mount) return null;
+  function cardsSignature(cards) {
+    return cards.map((card, index) => `${ensureCardKey(card, index)}\u0001${getCategoryTitle(card)}\u0001${getTitleFromNode(card)}`).join("\u0002");
+  }
 
-    let control = document.getElementById(CONTROL_ID);
-    if (!control) {
-      control = document.createElement("section");
-      control.id = CONTROL_ID;
-      control.className = "admin-card-selector-v456";
-      mount.insertAdjacentElement("afterbegin", control);
-    } else if (control.parentElement !== mount) {
-      mount.insertAdjacentElement("afterbegin", control);
-    }
-    control.hidden = false;
-    control.removeAttribute("aria-hidden");
-
+  function buildControlHtml(cards) {
     const selected = new Set(getSelectedCards());
     const groups = groupCards(cards);
     const total = cards.length;
-    const visible = cards.filter((card) => selected.has(ensureCardKey(card, 0))).length;
+    const visible = cards.filter((card, index) => selected.has(ensureCardKey(card, index))).length;
     const groupsHtml = Array.from(groups.entries()).map(([category, groupCardsList]) => {
       const checkboxes = groupCardsList.map((card, index) => {
         const key = ensureCardKey(card, index);
@@ -240,10 +286,10 @@
         </div>`;
     }).join("");
 
-    control.innerHTML = `
+    return `
       <div class="admin-card-selector-v456__header">
         <div>
-          <p class="eyebrow">Visibilità Admin · V${VERSION}</p>
+          <p class="eyebrow">Visibilità Admin · V${CONTROL_VERSION}</p>
           <h3>Seleziona le card da mostrare</h3>
           <p>Di default le card sono nascoste: spunta solo quelle che ti servono.</p>
         </div>
@@ -258,6 +304,69 @@
         <input type="checkbox" data-admin-qa-toggle-v456 ${isQaChecklistEnabled() ? "checked" : ""} />
         <span>Mostra Checklist QA Admin in basso</span>
       </label>`;
+  }
+
+  function bindControl(control) {
+    if (!control || control.dataset.adminCardControllerV763 === "true") return;
+    control.dataset.adminCardControllerV763 = "true";
+
+    control.addEventListener("click", (event) => {
+      const button = event.target.closest?.("[data-admin-card-action-v456]");
+      if (!button || !control.contains(button)) return;
+      const action = button.dataset.adminCardActionV456;
+      const cards = getAdminCards();
+      if (action === "all") setSelectedCards(cards.map((card, index) => ensureCardKey(card, index)));
+      else if (action === "none") setSelectedCards([]);
+      else return;
+      event.preventDefault();
+      event.stopPropagation();
+      applyCardVisibility();
+    }, true);
+
+    control.addEventListener("change", (event) => {
+      const cardToggle = event.target.closest?.("[data-admin-card-toggle-v456]");
+      if (cardToggle && control.contains(cardToggle)) {
+        const selected = new Set(getSelectedCards());
+        if (cardToggle.checked) selected.add(String(cardToggle.value || ""));
+        else selected.delete(String(cardToggle.value || ""));
+        setSelectedCards(Array.from(selected));
+        event.stopPropagation();
+        applyCardVisibility();
+        return;
+      }
+      const qaToggle = event.target.closest?.("[data-admin-qa-toggle-v456]");
+      if (qaToggle && control.contains(qaToggle)) {
+        setQaChecklistEnabled(Boolean(qaToggle.checked));
+        event.stopPropagation();
+        applyQaChecklistVisibility();
+      }
+    }, true);
+  }
+
+  function renderControls(adminPanel, cards) {
+    if (!adminPanel || !cards.length) return null;
+    const mount = ensureControlMount(adminPanel);
+    if (!mount) return null;
+    let control = document.getElementById(CONTROL_ID);
+    if (!control) {
+      control = document.createElement("section");
+      control.id = CONTROL_ID;
+      control.className = "admin-card-selector-v456";
+      mount.insertAdjacentElement("afterbegin", control);
+    } else if (control.parentElement !== mount) {
+      mount.insertAdjacentElement("afterbegin", control);
+    }
+    control.hidden = false;
+    control.removeAttribute("aria-hidden");
+    control.classList.remove("admin-card-checkbox-hardfix-v761");
+    control.dataset.adminCardRuntime = RELEASE;
+    bindControl(control);
+
+    const nextSignature = cardsSignature(cards);
+    if (controlSignature !== nextSignature || !control.querySelector("[data-admin-card-summary-v456]")) {
+      controlSignature = nextSignature;
+      control.innerHTML = buildControlHtml(cards);
+    }
     return control;
   }
 
@@ -270,7 +379,7 @@
       panel.setAttribute("aria-hidden", enabled ? "false" : "true");
     }
     const toggle = document.querySelector("[data-admin-qa-toggle-v456]");
-    if (toggle) toggle.checked = enabled;
+    if (toggle && toggle.checked !== enabled) toggle.checked = enabled;
   }
 
   function applyContainersVisibility(adminPanel) {
@@ -288,285 +397,179 @@
     const dashboard = adminPanel.querySelector("#adminPublicationDashboardMountV368 .admin-publication-dashboard-v368");
     if (dashboard) {
       const cards = Array.from(dashboard.querySelectorAll(".admin-publication-dashboard-card-v368[data-admin-card-visibility-key-v456]"));
-      if (!cards.length) return;
-      const anyVisible = cards.some((card) => !card.classList.contains("admin-card-hidden-v456"));
-      dashboard.classList.toggle("admin-publication-dashboard-empty-v456", !anyVisible);
-      dashboard.hidden = !anyVisible;
-      dashboard.setAttribute("aria-hidden", anyVisible ? "false" : "true");
+      if (cards.length) {
+        const anyVisible = cards.some((card) => !card.classList.contains("admin-card-hidden-v456"));
+        dashboard.classList.toggle("admin-publication-dashboard-empty-v456", !anyVisible);
+        dashboard.hidden = !anyVisible;
+        dashboard.setAttribute("aria-hidden", anyVisible ? "false" : "true");
+      }
+    }
+  }
+
+  function syncControlState(control, cards) {
+    const selected = new Set(getSelectedCards());
+    control?.querySelectorAll("[data-admin-card-toggle-v456]").forEach((input) => {
+      const checked = selected.has(String(input.value || ""));
+      if (input.checked !== checked) input.checked = checked;
+    });
+    const summary = control?.querySelector("[data-admin-card-summary-v456]");
+    if (summary) {
+      const visible = cards.filter((card, index) => selected.has(ensureCardKey(card, index))).length;
+      summary.textContent = `${visible}/${cards.length} visibili`;
     }
   }
 
   function applyCardVisibility() {
-    const adminPanel = getAdminPanel();
-    if (!adminPanel) { applyQaChecklistVisibility(); return; }
-    cleanupLegacySelectors();
-    const cards = getAdminCards(adminPanel);
-    if (!cards.length) { applyQaChecklistVisibility(); return; }
-    renderControls(adminPanel, cards);
-    const selected = new Set(getSelectedCards());
-    cards.forEach((card, index) => {
-      const key = ensureCardKey(card, index);
-      const visible = selected.has(key);
-      card.classList.toggle("admin-card-hidden-v456", !visible);
-      card.hidden = !visible;
-      card.setAttribute("aria-hidden", visible ? "false" : "true");
-    });
-    applyContainersVisibility(adminPanel);
-    const summary = document.querySelector("[data-admin-card-summary-v456]");
-    if (summary) summary.textContent = `${cards.filter((card) => selected.has(ensureCardKey(card, 0))).length}/${cards.length} visibili`;
-    applyQaChecklistVisibility();
+    try {
+      const adminPanel = getAdminPanel();
+      if (!adminPanel) {
+        applyQaChecklistVisibility();
+        return { cards: 0, visible: 0 };
+      }
+      cleanupLegacySelectors();
+      const cards = getAdminCards(adminPanel);
+      if (!cards.length) {
+        applyQaChecklistVisibility();
+        return { cards: 0, visible: 0 };
+      }
+      const control = renderControls(adminPanel, cards);
+      const selected = new Set(getSelectedCards());
+      let visibleCount = 0;
+      cards.forEach((card, index) => {
+        const key = ensureCardKey(card, index);
+        const visible = selected.has(key);
+        if (visible) visibleCount += 1;
+        card.classList.toggle("admin-card-hidden-v456", !visible);
+        card.hidden = !visible;
+        card.setAttribute("aria-hidden", visible ? "false" : "true");
+      });
+      applyContainersVisibility(adminPanel);
+      syncControlState(control, cards);
+      applyQaChecklistVisibility();
+      lastError = "";
+      return { cards: cards.length, visible: visibleCount };
+    } catch (error) {
+      lastError = error?.message || String(error);
+      console.error(`[${RELEASE}] Admin card visibility apply failed`, error);
+      return { cards: 0, visible: 0, error: lastError };
+    }
   }
 
   function scheduleApply() {
-    if (refreshScheduled) return;
-    refreshScheduled = true;
-    window.requestAnimationFrame(() => {
-      refreshScheduled = false;
+    if (refreshFrame) return;
+    refreshFrame = window.requestAnimationFrame(() => {
+      refreshFrame = 0;
       applyCardVisibility();
     });
   }
 
-  document.addEventListener("click", (event) => {
-    const button = event.target.closest?.("[data-admin-card-action-v456]");
-    if (!button) return;
-    event.preventDefault();
-    event.stopPropagation();
-    if (typeof event.stopImmediatePropagation === "function") event.stopImmediatePropagation();
-    const cards = getAdminCards();
-    const action = button.dataset.adminCardActionV456;
-    if (action === "all") setSelectedCards(cards.map((card, index) => ensureCardKey(card, index)));
-    if (action === "none") setSelectedCards([]);
-    applyCardVisibility();
-  }, true);
-
-  document.addEventListener("change", (event) => {
-    const cardToggle = event.target.closest?.("[data-admin-card-toggle-v456]");
-    if (cardToggle) {
-      event.stopPropagation();
-      const selected = new Set(getSelectedCards());
-      if (cardToggle.checked) selected.add(cardToggle.value);
-      else selected.delete(cardToggle.value);
-      setSelectedCards(Array.from(selected));
-      applyCardVisibility();
-      return;
+  function mutationNeedsRefresh(mutation) {
+    if (mutation.type !== "childList") return false;
+    if (mutation.target?.closest?.(`#${CONTROL_ID}`)) return false;
+    for (const node of mutation.addedNodes) {
+      if (!(node instanceof Element)) continue;
+      if (node.id === CONTROL_ID || node.closest?.(`#${CONTROL_ID}`)) continue;
+      return true;
     }
-    const qaToggle = event.target.closest?.("[data-admin-qa-toggle-v456]");
-    if (qaToggle) {
-      event.stopPropagation();
-      setQaChecklistEnabled(Boolean(qaToggle.checked));
-      applyQaChecklistVisibility();
+    for (const node of mutation.removedNodes) {
+      if (!(node instanceof Element)) continue;
+      if (node.id === CONTROL_ID || node.closest?.(`#${CONTROL_ID}`)) continue;
+      return true;
     }
-  }, true);
-
-  const observer = new MutationObserver((mutations) => {
-    if (mutations.some((mutation) => mutation.target?.id === CONTROL_ID || mutation.target?.closest?.(`#${CONTROL_ID}`))) return;
-    scheduleApply();
-  });
-
-  function init() {
-    if (document.body) observer.observe(document.body, { childList: true, subtree: true });
-    applyCardVisibility();
+    return false;
   }
 
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
-  else init();
-
-  window.LeagueAdminCardVisibilityV456 = Object.freeze({
-    version: `V${VERSION}`,
-    storageSelected: STORAGE_SELECTED,
-    storageQa: STORAGE_QA,
-    apply: applyCardVisibility,
-    getSelectedCards,
-    setSelectedCards,
-    isQaChecklistEnabled,
-    setQaChecklistEnabled,
-    getAdminCards
-  });
-  window.ZonaOrientaleAdminCardVisibilityV456 = window.LeagueAdminCardVisibilityV456;
-  window.FantaPetilloAdminCardVisibilityV456 = window.LeagueAdminCardVisibilityV456;
-})();
-
-/* V761 - Hardfix selettore Visibilita Admin senza loop MutationObserver.
- * La decorazione e idempotente e usa una classe CSS sul contenitore.
- * L'observer reagisce solo quando il selettore viene aggiunto o ricreato.
- */
-(function adminCardSelectorDesktopHardfixV761(){
-  'use strict';
-  const VERSION = 'V761';
-  if (window.LeagueAdminCardCheckboxHardfixV761) return;
-
-  const CONTROL_ID = 'adminCardSelectorV456';
-  const HARDENED_CLASS = 'admin-card-checkbox-hardfix-v761';
-  const SLUG = (window.location.pathname.split('/').filter(Boolean)[0] || 'fantalega').toLowerCase();
-  const STORAGE_SELECTED = `${SLUG}.adminCardVisibility.v456.selectedCards`;
-  const STORAGE_QA = `${SLUG}.adminCardVisibility.v456.showQaChecklist`;
-  let decorateFrame = 0;
-  let observer = null;
-
-  function readSelected(){
-    try {
-      const parsed = JSON.parse(window.localStorage.getItem(STORAGE_SELECTED) || '[]');
-      return Array.isArray(parsed) ? parsed.map(String) : [];
-    } catch (_) { return []; }
-  }
-
-  function writeSelected(values){
-    try {
-      window.localStorage.setItem(
-        STORAGE_SELECTED,
-        JSON.stringify(Array.from(new Set((values || []).map(String).filter(Boolean))))
-      );
-    } catch (_) {}
-  }
-
-  function writeQa(enabled){
-    try { window.localStorage.setItem(STORAGE_QA, enabled ? 'true' : 'false'); } catch (_) {}
-  }
-
-  function api(){
-    return window.LeagueAdminCardVisibilityV456 ||
-      window.ZonaOrientaleAdminCardVisibilityV456 ||
-      window.FantaPetilloAdminCardVisibilityV456 ||
-      null;
-  }
-
-  function decorate(){
-    const control = document.getElementById(CONTROL_ID);
-    if (!control) return false;
-    if (!control.classList.contains(HARDENED_CLASS)) control.classList.add(HARDENED_CLASS);
-    if (control.dataset.adminCheckboxHardfixV761 !== 'true') {
-      control.dataset.adminCheckboxHardfixV761 = 'true';
-    }
-    return true;
-  }
-
-  function scheduleDecorate(){
-    if (decorateFrame) return;
-    decorateFrame = window.requestAnimationFrame(() => {
-      decorateFrame = 0;
-      try { decorate(); } catch (_) {}
-    });
-  }
-
-  function applySoon(){
-    window.requestAnimationFrame(() => {
-      try { api()?.apply?.(); } catch (_) {}
-      scheduleDecorate();
-    });
-  }
-
-  function syncCardInput(input, nextChecked){
-    if (!input || input.disabled) return;
-    input.checked = Boolean(nextChecked);
-    const selected = new Set(readSelected());
-    const value = String(input.value || '');
-    if (input.checked) selected.add(value);
-    else selected.delete(value);
-    writeSelected(Array.from(selected));
-    applySoon();
-  }
-
-  function syncQaInput(input, nextChecked){
-    if (!input || input.disabled) return;
-    input.checked = Boolean(nextChecked);
-    writeQa(input.checked);
-    applySoon();
-  }
-
-  function setAll(action){
-    const runtime = api();
-    if (!runtime || typeof runtime.getAdminCards !== 'function') return false;
-    const cards = runtime.getAdminCards() || [];
-    if (action === 'all') {
-      const values = cards
-        .map((card) => String(card?.dataset?.adminCardVisibilityKeyV456 || ''))
-        .filter(Boolean);
-      writeSelected(values);
-    } else if (action === 'none') {
-      writeSelected([]);
-    } else {
-      return false;
-    }
-    applySoon();
-    return true;
-  }
-
-  function intercept(event){
-    const target = event.target;
-    if (!target || !target.closest) return;
-    const control = target.closest(`#${CONTROL_ID}`);
-    if (!control) return;
-
-    const actionButton = target.closest('[data-admin-card-action-v456]');
-    if (actionButton && control.contains(actionButton)) {
-      const action = actionButton.getAttribute('data-admin-card-action-v456');
-      if (setAll(action)) {
-        event.preventDefault();
-        event.stopPropagation();
-        if (typeof event.stopImmediatePropagation === 'function') event.stopImmediatePropagation();
-      }
-      return;
-    }
-
-    const label = target.closest('label.admin-card-selector-v456__option, label.admin-card-selector-v456__qa');
-    if (!label || !control.contains(label)) return;
-    const input = label.querySelector('input[type="checkbox"]');
-    if (!input || input.disabled) return;
-
-    event.preventDefault();
-    event.stopPropagation();
-    if (typeof event.stopImmediatePropagation === 'function') event.stopImmediatePropagation();
-
-    const nextChecked = !input.checked;
-    if (input.matches('[data-admin-card-toggle-v456]')) syncCardInput(input, nextChecked);
-    else if (input.matches('[data-admin-qa-toggle-v456]')) syncQaInput(input, nextChecked);
-  }
-
-  function nodeContainsControl(node){
-    if (!(node instanceof Element)) return false;
-    return node.id === CONTROL_ID || Boolean(node.querySelector?.(`#${CONTROL_ID}`));
-  }
-
-  function startObserver(){
-    if (observer) return;
-    const root = document.body || document.documentElement;
-    if (!root) return;
+  function connectObserver() {
+    const root = getAdminPanel();
+    if (!root || observerRoot === root) return;
+    observer?.disconnect();
+    observerRoot = root;
     observer = new MutationObserver((mutations) => {
-      for (const mutation of mutations) {
-        for (const node of mutation.addedNodes) {
-          if (nodeContainsControl(node)) {
-            scheduleDecorate();
-            return;
-          }
-        }
-      }
+      if (mutations.some(mutationNeedsRefresh)) scheduleApply();
     });
     observer.observe(root, { childList: true, subtree: true });
   }
 
-  function boot(){
-    decorate();
-    startObserver();
+  function diagnostics() {
+    const cards = getAdminCards();
+    const selected = new Set(getSelectedCards());
+    return {
+      release: RELEASE,
+      controlVersion: `V${CONTROL_VERSION}`,
+      initialized,
+      storageMode,
+      storageSelected: STORAGE_SELECTED,
+      storageQa: STORAGE_QA,
+      cards: cards.length,
+      selected: selected.size,
+      visible: cards.filter((card, index) => selected.has(ensureCardKey(card, index))).length,
+      observerConnected: Boolean(observer && observerRoot),
+      controlBound: document.getElementById(CONTROL_ID)?.dataset?.adminCardControllerV763 === "true",
+      lastError
+    };
   }
 
-  document.addEventListener('click', intercept, true);
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot, { once: true });
-  } else {
-    boot();
+  async function runInteractionSelfTest() {
+    const cards = getAdminCards();
+    const control = document.getElementById(CONTROL_ID);
+    if (!cards.length || !control) return { ok: false, reason: "Selector or cards unavailable", diagnostics: diagnostics() };
+    const originalSelected = getSelectedCards();
+    const originalQa = isQaChecklistEnabled();
+    const results = [];
+    try {
+      control.querySelector('[data-admin-card-action-v456="all"]')?.click();
+      await new Promise((resolve) => requestAnimationFrame(resolve));
+      results.push({ step: "show-all", pass: getSelectedCards().length === cards.length && cards.every((card) => !card.hidden) });
+
+      const firstInput = document.querySelector("[data-admin-card-toggle-v456]");
+      const firstValue = String(firstInput?.value || "");
+      firstInput?.click();
+      await new Promise((resolve) => requestAnimationFrame(resolve));
+      results.push({ step: "checkbox", pass: firstValue ? !getSelectedCards().includes(firstValue) : false });
+
+      control.querySelector('[data-admin-card-action-v456="none"]')?.click();
+      await new Promise((resolve) => requestAnimationFrame(resolve));
+      results.push({ step: "hide-all", pass: getSelectedCards().length === 0 && cards.every((card) => card.hidden) });
+    } finally {
+      setSelectedCards(originalSelected);
+      setQaChecklistEnabled(originalQa);
+      applyCardVisibility();
+    }
+    return { ok: results.every((item) => item.pass), results, diagnostics: diagnostics() };
+  }
+
+  function init() {
+    if (initialized) return;
+    initialized = true;
+    readPersistedState();
+    applyCardVisibility();
+    connectObserver();
   }
 
   const publicApi = Object.freeze({
-    version: VERSION,
+    version: RELEASE,
+    controlVersion: `V${CONTROL_VERSION}`,
     storageSelected: STORAGE_SELECTED,
     storageQa: STORAGE_QA,
-    observerMode: 'targeted-added-nodes',
-    decorate,
-    scheduleDecorate,
-    setAll
+    apply: applyCardVisibility,
+    scheduleApply,
+    getSelectedCards,
+    setSelectedCards(ids) { const value = setSelectedCards(ids); applyCardVisibility(); return value; },
+    isQaChecklistEnabled,
+    setQaChecklistEnabled(enabled) { const value = setQaChecklistEnabled(enabled); applyQaChecklistVisibility(); return value; },
+    getAdminCards,
+    diagnostics,
+    runInteractionSelfTest
   });
 
-  window.LeagueAdminCardCheckboxHardfixV761 = publicApi;
-  window.ZonaOrientaleAdminCardCheckboxHardfixV761 = publicApi;
-  window.FantaPetilloAdminCardCheckboxHardfixV761 = publicApi;
+  window[RUNTIME_GUARD] = publicApi;
+  window[ROOT_API_NAME] = publicApi;
+  window.ZonaOrientaleAdminCardVisibilityV456 = publicApi;
+  window.FantaPetilloAdminCardVisibilityV456 = publicApi;
+  window.LeagueAdminCardCheckboxHardfixV761 = undefined;
+  window.ZonaOrientaleAdminCardCheckboxHardfixV761 = undefined;
+  window.FantaPetilloAdminCardCheckboxHardfixV761 = undefined;
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init, { once: true });
+  else init();
 })();

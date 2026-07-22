@@ -1,0 +1,42 @@
+V763 TEST REPORT
+================
+
+Syntax
+- node --check shared Admin controller: PASS
+- node --check ZonaOrientale fallback: PASS
+- node --check FantaPetillo fallback: PASS
+- node --check check-live-v763.mjs: PASS
+
+Static audits
+- audit-admin-card-visibility-v763.mjs: 71/71 PASS
+- audit-static-first-v760.mjs: 42/42 PASS
+
+Browser interaction fixture - Chromium
+Storage writable:
+- initial 0/2 hidden: PASS
+- label click -> 1/2 visible: PASS
+- direct checkbox click -> 2/2 visible: PASS
+- Mostra tutte -> 2/2 visible: PASS
+- Nascondi tutte -> 0/2 visible: PASS
+- runInteractionSelfTest(): ok=true PASS
+
+Storage unavailable / memory fallback:
+- label click: PASS
+- direct checkbox click: PASS
+- Mostra tutte: PASS
+- Nascondi tutte: PASS
+
+Structural guarantees
+- no document/window click listener for selector
+- no pointerup duplicate path
+- no manual checked inversion
+- no V761 hardfix
+- no document-wide MutationObserver
+- shared and local fallback JS identical
+- shared and local fallback CSS identical
+
+Extended browser regression
+- duplicate script load leaves one controller/control: PASS
+- dynamic third card detected by scoped observer: PASS
+- self-test after dynamic DOM update: PASS
+- page errors: 0

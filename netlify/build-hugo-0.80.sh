@@ -30,8 +30,8 @@ fi
 echo "Running V760 source contract audit..."
 node static/zonaorientale/tools/audit-static-first-v760.mjs .
 
-echo "Running V761 event-loop safety audit..."
-node static/zonaorientale/tools/audit-admin-card-loop-v761.mjs .
+echo "Running V763 Admin card controller audit..."
+node static/zonaorientale/tools/audit-admin-card-visibility-v763.mjs .
 
 echo "Building site with base URL: $base_url"
 "$HUGO_BIN" --gc --minify -b "$base_url"
@@ -39,5 +39,5 @@ echo "Building site with base URL: $base_url"
 echo "Running V760 published artifact audit..."
 node static/zonaorientale/tools/audit-static-first-v760.mjs public
 
-echo "Running V761 published event-loop safety audit..."
-node static/zonaorientale/tools/audit-admin-card-loop-v761.mjs public
+echo "Running V763 published Admin card controller audit..."
+node static/zonaorientale/tools/audit-admin-card-visibility-v763.mjs public
