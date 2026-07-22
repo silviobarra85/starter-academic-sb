@@ -3,28 +3,29 @@
 ## Corrente
 
 - Sito/FantaEngine: V763.
-- ioSudo: V755.
-- Overlay: V766.
+- ioSudo: V756.
+- Overlay: V767.
 - Documentazione canonica per categoria.
 
-## Completato fino a V766
+## Completato fino a V767
 
-- Ruolo autorevole dal listone 2026-07-04.
-- Audit completo di tutti i giocatori del payload.
-- 30 ruoli corretti.
-- 18 duplicati certi `EXTRA_LISTONE` assorbiti.
-- Badge ruolo a sinistra del nome.
-- Badge sorgente del nome.
-- Nomi giocatore in maiuscolo in rose, dettaglio, mercato, SOS, formazione e tabellini.
-- Rimossa la scritta `Listone recente` dal dettaglio.
-- Eliminati calcoli di sorgente non più utilizzati nel rendering.
-- 108 nomi abbreviati ampliati con fonte univoca.
-- Identità e ruolo sincronizzati tra rosa e righe mercato.
-- Rumor contestuali senza ripetizione del nome nella scheda personale.
-- Duplicato certo Seydou Fini `EXTRA_LISTONE` assorbito.
+- Catalogo unico di rose, listone e fonti informative.
+- 1.182 giocatori distinti nella vista globale.
+- Tutte le 663 righe del listone presenti.
+- Giocatori presenti soltanto in trattative, ufficialità, SOS, formazioni o amichevoli inclusi.
+- Deduplica delle identità lungo i trasferimenti.
+- Omonimie reali disambiguate con nome completo.
+- Massolin corretto in Yanis Massolin; Rabby Nzingoula mantenuto distinto.
+- Ruolo autorevole dal listone.
+- Indice per ID e indice sorgenti costruiti una sola volta.
+- Apertura dettaglio senza scansioni globali.
+- History API al posto della doppia renderizzazione via hash.
+- Error boundary e protezione dal rientro nel rendering del dettaglio.
+- Payload runtime compatto: le identità di rosa sono referenziate per ID nel catalogo.
 
 ## Prossimi controlli
 
-1. Ricevere conferma sui due casi duplicati non univoci documentati nell'handoff ioSudo.
-2. Automatizzare la riconciliazione listone/Excel in un comando di build ripetibile.
-3. Mantenere il test browser visuale per badge ruolo, badge sorgente, maiuscolo e rumor contestuali.
+1. Verificare su Android reale memoria e tempo di apertura dopo il deploy V756.
+2. Integrare la costruzione di `playerDirectory` nel generatore ordinario dei dati Excel.
+3. Aggiungere un test browser mobile automatizzato nell'ambiente CI del repository.
+4. Continuare ad ampliare i nomi abbreviati solo tramite fonti univoche documentate.
