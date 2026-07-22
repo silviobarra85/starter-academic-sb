@@ -1,5 +1,14 @@
 # Overlay Roadmap
 
+## V762 - 22/07/2026 - ioSudo V752 da Excel v135
+- Riconciliati 1054 giocatori e fuse otto identità duplicate certe.
+- Aggiunti Matteo Zamarian e Luka Tomic; Ndicka/N'Dicka fuso in Evan Ndicka.
+- Ufficialità attive 402, trattative 444, rumor TM 15, SOS 27.
+- Rumor attivi su ufficialità pari a zero.
+- Amichevoli ripulite e tabellini 17/17 collegati.
+- Aggiornati app V752, CSS, manifest, payload runtime e service worker.
+- Aggiunto audit V752 ed Excel finale con fogli di controllo/merge.
+
 ## V761 - 22/07/2026 - Eliminazione loop MutationObserver
 - Rimossa la ricorsione infinita del correttivo admin V755.
 - Decorazione idempotente tramite classe CSS.

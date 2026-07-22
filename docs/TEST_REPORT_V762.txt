@@ -1,0 +1,41 @@
+TEST REPORT V762 / IOSUDO V752
+Data: 22/07/2026
+Sorgente: Excel v135 cutoff 07:45 CEST
+
+CONTROLLI SINTATTICI
+- node --check iosudo-app-v752.js: OK
+- node --check sw.js: OK
+- node --check audit-iosudo-v752.mjs: OK
+
+AUDIT DATI
+- giocatori: 1054
+- ID duplicati: 0
+- duplicati esatti squadra+nome+ruolo: 0
+- ufficialità attive: 402
+- trattative attive: 444
+- rumor Transfermarkt attivi: 15
+- rumor attivi su ufficialità: 0
+- SOS attivi: 27
+- amichevoli: 98
+- tabellini: 17
+- righe giocatore tabellini: 336
+- matchKey orfani: 0
+- aggregato amichevoli errato: 0
+- refuso Aralanta: 0
+- duplicato Atalanta-Atalanta U23: 0
+
+DEDUPLICHE
+- fusioni Rose: 8
+- duplicati Ufficialita rimossi: 2
+- duplicati esatti Trattative rimossi: 3
+- candidati ambigui irrisolti: 0
+
+PAYLOAD
+- runtime: 3.642.378 byte
+- archivio completo compattato: 13.344.961 byte
+- manifest coerente con le dimensioni reali: OK
+
+EXCEL FINALE
+- fogli aggiunti: Duplicati_Confermati_V752, Disambiguazioni_V752,
+  Duplicati_Potenziali_V752, Controlli_V752, Merge_Info_V752
+- scansione errori formula: nessun #REF!, #DIV/0!, #VALUE!, #NAME?, #N/A
