@@ -1,22 +1,19 @@
 # Overlay roadmap
 
 ## Corrente
-
 - Sito/FantaEngine: V763.
-- ioSudo: V754.
-- Overlay dati: V765.
-- Excel riconciliato: V142.
+- ioSudo: V755.
+- Overlay dati: V766.
+- Excel di consegna: V144.
 
-## Completato in V765
+## V766
+- Accorpati 20 duplicati Rose e 21 gruppi ID/alias.
+- Corretto Gabriele Calvani P → D.
+- Aggiornate 20 probabili XI, 220 slot.
+- Bologna-Heidenheim 1-1 con 22 prestazioni.
+- Frosinone A-B 1-0; Napoli-Arezzo mantenuta live.
 
-- Integrazione Excel V141, cutoff 16:38.
-- Uscita ufficiale di Antonin Barak.
-- Aggiornamento rumor Lucumi, Kolo Muani, Pinamonti, Ratkov e Gimenez.
-- Stato live Bologna-Heidenheim senza inventare un tabellino finale.
-- Deduplica della doppia riga Alessio Zerbin.
-
-## Prossimi interventi
-
-1. Finalizzare Bologna-Heidenheim solo dopo una fonte con risultato conclusivo.
-2. Automatizzare la pipeline Excel -> payload -> audit.
-3. Aggiungere test browser automatici per la PWA.
+## Prossimi passi
+1. Automatizzare la generazione dei payload dall’Excel.
+2. Estrarre il registro alias in un file dati canonico.
+3. Aggiungere test browser per ruoli multipli e tabellini.

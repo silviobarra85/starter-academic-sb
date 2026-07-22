@@ -1,38 +1,27 @@
 # Handoff ioSudo e dati
 
 ## Versione corrente
+- ioSudo: V755.
+- Overlay: V766.
+- Sorgente: Excel V143, cutoff 22/07/2026 18:37 CEST.
+- Prossimo Excel: V144.
 
-- ioSudo: V754.
-- Overlay complessivo: V765.
-- Sorgente: Excel V141, cutoff 22/07/2026 16:38 CEST.
-- Prossimo Excel consegnato: V142.
+## Conteggi
+- 1.032 giocatori; 398 ufficialità; 27 rinnovi; 234 trattative; 15 rumor TM.
+- 25 SOS; 99 amichevoli; 19 tabellini; 381 prestazioni.
+- 220 slot nelle probabili XI, 11 per squadra.
 
-## Conteggi V754
+## Deduplica V755
+- Accorpate 20 identità duplicate nelle Rose.
+- Consolidati 21 gruppi ID/alias, includendo Orsolini/Riccardo Orsolini.
+- Gabriele Calvani è un difensore: eliminata la riga errata da portiere.
+- I ruoli multipli restano A/C, D/C o C/A e usano un solo ID.
 
-- 1052 giocatori.
-- 398 operazioni ufficiali deduplicate.
-- 27 rinnovi ufficiali reali.
-- 230 rumor/trattative attivi.
-- 15 rumor Transfermarkt attivi.
-- 25 SOS/infortuni attivi.
-- 99 amichevoli.
-- 18 tabellini.
-- 359 prestazioni individuali.
-
-## Aggiornamento V754
-
-- Antonin Barak ceduto all APOEL e rimosso dalla rosa Fiorentina.
-- Aggiornate le piste Lucumi, Kolo Muani, Pinamonti, Petar Ratkov e Santiago Gimenez.
-- Bologna-Heidenheim mantenuta come gara in corso 1-1 al 29 minuto, senza tabellino parziale.
-- Doppia riga Alessio Zerbin deduplicata nel payload e nell Excel V142.
-- Nessuna fusione ambigua di identita.
-
-## Regole permanenti
-
+## Regole
 1. Non fondere omonimi senza conferma.
-2. Rumor precedente o contemporaneo a una ufficialita: chiuso.
-3. Rumor successivo a una ufficialita: puo restare attivo.
-4. Finestra attiva dei rumor: sette giorni.
-5. Primo contratto professionistico non equivale a rinnovo.
+2. Stessa identità nella stessa squadra con ruoli listone differenti: un solo record con ruolo multiplo.
+3. Rumor precedente o contemporaneo a un’ufficialità: chiuso; successivo: può restare.
+4. Finestra rumor: sette giorni.
+5. Primo contratto professionistico non è un rinnovo.
 6. Rose ordinate P-D-C-A.
-7. Ogni nuova consegna Excel incrementa il numero progressivo.
+7. Ogni Excel consegnato incrementa la versione.
