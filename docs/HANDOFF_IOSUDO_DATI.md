@@ -2,8 +2,8 @@
 
 ## Versione corrente
 
-- ioSudo: V757.
-- Overlay complessivo: V768.
+- ioSudo: V758.
+- Overlay complessivo: V769.
 - Sorgente dati: Excel V146, cutoff 22/07/2026 21:51 CEST.
 - Sorgente ruoli: ultimo listone disponibile, `2026-07-04.json`.
 - Payload runtime: `static/fanta-engine/data/sudatori/current/sudatori-runtime.json`.
@@ -96,5 +96,5 @@ L'apertura del dettaglio è una lettura per ID e non esegue scansioni globali `n
 
 - Il badge P/D/C/A è a sinistra del nome.
 - I nomi sono visualizzati in maiuscolo.
-- Il badge `SORGENTE` indica ROSA, LISTONE, TRATTATIVA, UFFICIALITÀ, SOS, FORMAZIONE, AMICHEVOLE o ANAGRAFICA.
+- Il badge `SORGENTE` indica la provenienza con cui il giocatore entra nel catalogo. LISTONE ha priorità per ogni giocatore presente nell’ultimo listone. ANAGRAFICA/alias è solo un metadato interno per ricostruire il nome completo e non deve comparire nell’interfaccia.
 - Nel dettaglio personale le righe rumor non ripetono il nome del giocatore.

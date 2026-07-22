@@ -1,6 +1,6 @@
 {
-  "id": "sudatori-iosudo-v757",
-  "version": "V757",
+  "id": "sudatori-iosudo-v758",
+  "version": "V758",
   "seasonId": "2026-27",
   "updatedAt": "2026-07-22",
   "updatedAtTime": "21:51 CEST",
@@ -10,6 +10,7 @@
   "sourceFile": "v146_2026-07-22_fantacalcio_serie_a_2026_27_fuso_aggiornato_2151_finale.xlsx",
   "dedupVersion": "V757",
   "notes": [
+    "V758: badge sorgente corretto; i giocatori presenti nel listone mostrano sempre SORGENTE: LISTONE, mentre ANAGRAFICA resta solo un metadato tecnico.",
     "V757: integrato Excel v146 con catalogo unificato da rose, listone e flussi informativi.",
     "Ogni riga operativa è collegata a uno o più ID canonici; apertura dettaglio tramite indice O(1).",
     "Akor Adams del Venezia e Che Adams del Torino sono identità distinte e protette.",
@@ -29,7 +30,7 @@
   "duplicatesExact": 0,
   "duplicateIds": 0,
   "activeOfficialRumors": 0,
-  "buildTag": "iosudo-v757",
+  "buildTag": "iosudo-v758",
   "dataFile": "sudatori-runtime.json",
   "counts": {
     "players": 1198,
@@ -51,10 +52,10 @@
     "playerDirectoryPlayers": 1198
   },
   "sourceWorkbook": "v146_2026-07-22_fantacalcio_serie_a_2026_27_fuso_aggiornato_2151_finale.xlsx",
-  "appVersion": "V757",
+  "appVersion": "V758",
   "displayPlayers": 1198,
   "playersSourceRows": 1031,
-  "runtimePayloadVersion": "V757",
+  "runtimePayloadVersion": "V758",
   "runtimeDataBytes": 5117958,
   "archiveDataFile": "sudatori-data.json",
   "archiveDataBytes": 17223645,

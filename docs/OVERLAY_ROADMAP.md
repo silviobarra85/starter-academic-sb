@@ -3,7 +3,7 @@
 ## Corrente
 
 - Sito/FantaEngine: V763.
-- ioSudo: V757.
+- ioSudo: V758.
 - Overlay: V768.
 - Sorgente dati: Excel V146, cutoff 22/07/2026 21:51 CEST.
 - Documentazione canonica per categoria.
@@ -31,3 +31,5 @@
 2. Integrare stabilmente il registro delle disambiguazioni nel generatore ordinario Excel → payload.
 3. Aggiungere un test automatico che vieti fusioni basate sul solo cognome.
 4. Continuare ad ampliare i nomi abbreviati soltanto tramite ID o fonti univoche documentate.
+
+- V769/V758: corretta la semantica del badge sorgente; tutti i 663 giocatori del listone mostrano LISTONE e ANAGRAFICA resta interna.
