@@ -1,27 +1,48 @@
 # Handoff ioSudo e dati
 
 ## Versione corrente
-- ioSudo: V755.
-- Overlay: V766.
-- Sorgente: Excel V143, cutoff 22/07/2026 18:37 CEST.
-- Prossimo Excel: V144.
 
-## Conteggi
-- 1.032 giocatori; 398 ufficialità; 27 rinnovi; 234 trattative; 15 rumor TM.
-- 25 SOS; 99 amichevoli; 19 tabellini; 381 prestazioni.
-- 220 slot nelle probabili XI, 11 per squadra.
+- ioSudo: V754.
+- Overlay complessivo: V765.
+- Sorgente dati mercato: Excel V140, cutoff 22/07/2026 14:30 CEST.
+- Sorgente ruoli: ultimo listone disponibile, `2026-07-04.json`.
+- Payload runtime: `static/fanta-engine/data/sudatori/current/sudatori-runtime.json`.
+- Archivio tecnico: `static/fanta-engine/data/sudatori/current/sudatori-data.json`.
 
-## Deduplica V755
-- Accorpate 20 identità duplicate nelle Rose.
-- Consolidati 21 gruppi ID/alias, includendo Orsolini/Riccardo Orsolini.
-- Gabriele Calvani è un difensore: eliminata la riga errata da portiere.
-- I ruoli multipli restano A/C, D/C o C/A e usano un solo ID.
+## Regola ruoli
 
-## Regole
-1. Non fondere omonimi senza conferma.
-2. Stessa identità nella stessa squadra con ruoli listone differenti: un solo record con ruolo multiplo.
-3. Rumor precedente o contemporaneo a un’ufficialità: chiuso; successivo: può restare.
-4. Finestra rumor: sette giorni.
-5. Primo contratto professionistico non è un rinnovo.
-6. Rose ordinate P-D-C-A.
-7. Ogni Excel consegnato incrementa la versione.
+1. Se il giocatore è associato con certezza al listone più recente, `classicRole` del listone è autorevole.
+2. Il ruolo Excel/Rose è usato solo quando il giocatore non è presente o non è associabile con certezza al listone.
+3. Il match listone non deve dipendere dal ruolo precedente, perché proprio il ruolo può essere errato.
+4. Si usano ID Fantacalcio, nome/alias, squadra corrente e squadre collegate da ufficialità.
+5. Omonimie protette e associazioni non univoche non devono essere fuse automaticamente.
+
+## V754
+
+- 1.035 giocatori finali.
+- 612 giocatori collegati al listone con ruolo e sorgente `LISTONE`.
+- 30 ruoli corretti rispetto alla V753.
+- 18 righe `EXTRA_LISTONE` duplicate assorbite nella scheda principale.
+- Zero associazioni ruolo ambigue applicate.
+- Esempio verificato: Rowe, Bologna, ruolo `C`.
+
+## Sorgente del nome
+
+Ogni identità mostrata dall'app espone un badge:
+
+- `SORGENTE: LISTONE`
+- `SORGENTE: ROSA`
+- `SORGENTE: TRATTATIVA`
+- `SORGENTE: UFFICIALITÀ`
+- `SORGENTE: SOS`
+- `SORGENTE: FORMAZIONE`
+- `SORGENTE: AMICHEVOLE`
+
+Il badge ruolo P/D/C/A è sempre a sinistra del nome. Tutti i nomi dei giocatori sono renderizzati in maiuscolo. La dicitura `Listone recente` è stata rimossa dal dettaglio.
+
+## Duplicati non risolti automaticamente
+
+Restano distinti, in attesa di conferma utente:
+
+- Gabriele Calvani, Genoa: una riga P e una riga D.
+- Francesco Dell'Aquila, Torino: una riga C attiva e una riga A storica/cessione.

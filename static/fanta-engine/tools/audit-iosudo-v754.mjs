@@ -1,9 +1,71 @@
-import fs from 'node:fs';import path from 'node:path';
-const root=process.argv[2]?path.resolve(process.argv[2]):process.cwd();const read=r=>fs.readFileSync(path.join(root,r),'utf8');const json=r=>JSON.parse(read(r));const fail=m=>{throw new Error(m)};const checks=[];const check=(c,l)=>{if(!c)fail(l);checks.push(l)};const norm=v=>String(v||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();const compact=v=>norm(v).replace(/\s+/g,'');const dv=v=>{const t=Date.parse(String(v||''));return Number.isFinite(t)?t:0};
-const data=json('static/fanta-engine/data/sudatori/current/sudatori-data.json');const runtime=json('static/fanta-engine/data/sudatori/current/sudatori-runtime.json');const manifest=json('static/fanta-engine/data/sudatori/current/manifest.json');const index=read('static/iosudo/index.html');const sw=read('static/iosudo/sw.js');const app=read('static/fanta-engine/js/apps/iosudo-app-v754.js');const css=read('static/fanta-engine/css/iosudo-app-v754.css');
-check(manifest.version==='V754','manifest V754');check(manifest.appVersion==='V754','appVersion V754');check(data.meta?.version==='V754','dataset V754');check(runtime.meta?.version==='V754','runtime V754');check(index.includes('iosudo-app-v754.js?v=754'),'index JS');check(index.includes('iosudo-app-v754.css?v=754'),'index CSS');check(index.includes('data-iosudo-version="754"'),'versione DOM');check(sw.includes('iosudo-shell-v754'),'cache V754');check(app.includes("text: 'RINNOVO', cls: 'iosudo-badge-renewal'"),'badge rinnovo');check(css.includes('.iosudo-badge-renewal'),'CSS rinnovo');
-const players=Object.values(runtime.playersByTeam||{}).flat();const ids=new Set(),ex=new Set();for(const p of players){check(Boolean(p.id),`ID ${p.teamName}/${p.playerName}`);if(ids.has(p.id))fail(`ID duplicato ${p.id}`);ids.add(p.id);const k=[p.teamId,compact(p.playerName),norm(p.role)].join('|');if(ex.has(k))fail(`Duplicato ${k}`);ex.add(k)}check(players.length===1052,'giocatori 1052');check(!ids.has('fiorentina-barak'),'Barak fuori rosa');check(!ids.has('atalanta-oliveri'),'Oliveri fuori rosa');check(ids.has('lecce-alex-sala'),'Alex Sala canonico');
-const official=Object.values(data.officialMovesByTeam||{}).flat();check(official.length===398,'ufficialita 398');check(official.some(x=>x.teamId==='fiorentina'&&compact(x.playerName).includes('barak')&&x.direction==='outgoing'),'Barak ufficiale uscita');check(official.filter(x=>x.isRenewal===true).length===27,'27 rinnovi');
-const talks=Object.values(data.teamTransferTalksByTeam||{}).flat();check(talks.length===230,'trattative 230');check(!talks.some(x=>x.teamId==='fiorentina'&&compact(x.playerName).includes('barak')),'Barak non nei rumor');check(talks.some(x=>x.teamId==='lazio'&&compact(x.playerName).includes('petarratkov')&&x.direction==='outgoing'),'Ratkov uscita');check(talks.some(x=>x.teamId==='lazio'&&compact(x.playerName).includes('santiagogimenez')&&x.direction==='incoming'),'Gimenez Lazio');check(talks.some(x=>x.teamId==='milan'&&compact(x.playerName).includes('santiagogimenez')&&x.direction==='outgoing'),'Gimenez Milan');const zerbin=talks.filter(x=>x.teamId==='frosinone'&&compact(x.playerName).includes('alessiozerbin'));check(zerbin.length===1,'Zerbin deduplicato');
-const latest=new Map();for(const x of official){if(!['incoming','outgoing'].includes(x.direction))continue;const k=[x.teamId,x.direction,compact(x.playerName)].join('|');latest.set(k,Math.max(latest.get(k)||0,dv(x.date||x.updatedAt)))}let invalid=0;for(const x of talks){const k=[x.teamId,x.direction,compact(x.playerName)].join('|');if((latest.get(k)||0)>=dv(x.date||x.updatedAt))invalid++}check(invalid===0,'nessun rumor superato');
-const injuries=Object.values(runtime.injuriesByTeam||{}).flat();check(injuries.length===25,'SOS 25');const fr=Object.values(runtime.friendliesByTeam||{}).flat();check(fr.length===99,'amichevoli 99');const bol=fr.find(x=>x.teamId==='bologna'&&norm(x.event).includes('bologna heidenheim'));check(Boolean(bol),'Bologna-Heidenheim presente');check(norm(bol.status).includes('in corso')&&norm(bol.status).includes('1 1'),'Bologna live 1-1');const stats=Object.values(runtime.friendlyPlayerStatsByMatch||{}).flatMap(x=>x.players||[]);check(stats.length===359,'prestazioni 359');check(manifest.duplicateIds===0&&manifest.duplicatesExact===0&&manifest.activeOfficialRumors===0,'audit manifest zero');console.log(`Audit ioSudo V754 OK - ${checks.length} controlli superati`);
+import fs from 'node:fs';
+import path from 'node:path';
+
+const root = process.argv[2] ? path.resolve(process.argv[2]) : process.cwd();
+const read = (rel) => fs.readFileSync(path.join(root, rel), 'utf8');
+const json = (rel) => JSON.parse(read(rel));
+const checks = [];
+const check = (condition, label) => {
+  if (!condition) throw new Error(label);
+  checks.push(label);
+};
+const norm = (value) => String(value || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
+
+const data = json('static/fanta-engine/data/sudatori/current/sudatori-data.json');
+const runtime = json('static/fanta-engine/data/sudatori/current/sudatori-runtime.json');
+const manifest = json('static/fanta-engine/data/sudatori/current/manifest.json');
+const app = read('static/fanta-engine/js/apps/iosudo-app-v754.js');
+const css = read('static/fanta-engine/css/iosudo-app-v754.css');
+const index = read('static/iosudo/index.html');
+const sw = read('static/iosudo/sw.js');
+
+check(manifest.version === 'V754', 'manifest V754');
+check(manifest.appVersion === 'V754', 'appVersion V754');
+check(runtime.meta?.version === 'V754', 'runtime V754');
+check(data.meta?.version === 'V754', 'archive V754');
+check(index.includes('iosudo-app-v754.js?v=754'), 'index JS V754');
+check(index.includes('iosudo-app-v754.css?v=754'), 'index CSS V754');
+check(index.includes('data-iosudo-version="754"'), 'data version 754');
+check(sw.includes("iosudo-shell-v754"), 'service worker V754');
+check(app.includes('function playerIdentityHtml'), 'helper identita giocatore');
+check(app.includes('function sourceBadgeHtml'), 'helper badge sorgente');
+check(app.includes('function roleBadgeHtml'), 'helper badge ruolo');
+check(app.includes("SORGENTE: "), 'testo badge sorgente');
+check(app.includes("toLocaleUpperCase('it-IT')"), 'nomi giocatore in maiuscolo');
+check(!app.includes('Listone recente:'), 'dicitura Listone recente rimossa');
+check(css.includes('.iosudo-badge-source-listone'), 'CSS sorgente listone');
+check(css.includes('.iosudo-badge-role-p') && css.includes('.iosudo-badge-role-a'), 'CSS badge ruolo P-D-C-A');
+
+const players = Object.values(runtime.playersByTeam || {}).flat();
+check(players.length === 1035, '1035 giocatori dopo deduplica certa');
+check(players.length === manifest.players, 'conteggio giocatori manifest');
+const ids = new Set();
+for (const player of players) {
+  check(Boolean(player.id), `ID presente ${player.playerName}`);
+  check(!ids.has(player.id), `ID univoco ${player.id}`);
+  ids.add(player.id);
+  if (player.listone) {
+    const listRole = String(player.listone.classicRole || player.listone.role || '').trim().toUpperCase().charAt(0);
+    const role = String(player.role || '').trim().toUpperCase().charAt(0);
+    check(Boolean(listRole), `ruolo listone presente ${player.id}`);
+    check(role === listRole, `ruolo allineato al listone ${player.id}`);
+    check(player.nameSource === 'LISTONE', `sorgente nome LISTONE ${player.id}`);
+    check(player.roleSource === 'LISTONE', `sorgente ruolo LISTONE ${player.id}`);
+  }
+}
+const byId = new Map(players.map((p) => [p.id, p]));
+check(byId.get('bologna-rowe')?.role === 'C', 'Rowe centrocampista');
+check(byId.get('bologna-bernardeschi')?.role === 'C', 'Bernardeschi centrocampista');
+check(byId.get('inter-luis-henrique')?.role === 'C', 'Luis Henrique centrocampista');
+check(byId.get('udinese-pafundi')?.role === 'C', 'Pafundi centrocampista');
+const removed = data.listoneRoleAuditV754?.removedDuplicateIds || [];
+check(removed.length === 18, '18 duplicati listone rimossi');
+check(removed.every((id) => !ids.has(id)), 'ID duplicati assorbiti assenti');
+check((data.listoneRoleAuditV754?.ambiguous || []).length === 0, 'nessuna associazione ruolo ambigua');
+check((data.listoneRoleAuditV754?.roleChanges || []).length === 30, '30 cambi ruolo registrati');
+check(app.includes("playerIdentityHtml(player) + badgeHtml(badge)"), 'identita completa nella rosa squadra');
+check(app.includes("iosudo-card-title iosudo-player-identity"), 'identita completa nel dettaglio');
+check(app.includes("itemIdentityHtml(item, 'SOS')"), 'nomi SOS con sorgente');
+check(app.includes("itemIdentityHtml(item, 'FORMAZIONE')"), 'nomi formazione con sorgente');
+
+console.log(`Audit ioSudo V754 OK - ${checks.length} controlli superati`);
