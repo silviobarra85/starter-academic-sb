@@ -2,8 +2,8 @@
 
 ## Versione corrente
 
-- ioSudo: V754.
-- Overlay complessivo: V765.
+- ioSudo: V755.
+- Overlay complessivo: V766.
 - Sorgente dati mercato: Excel V140, cutoff 22/07/2026 14:30 CEST.
 - Sorgente ruoli: ultimo listone disponibile, `2026-07-04.json`.
 - Payload runtime: `static/fanta-engine/data/sudatori/current/sudatori-runtime.json`.
@@ -26,6 +26,16 @@
 - Zero associazioni ruolo ambigue applicate.
 - Esempio verificato: Rowe, Bologna, ruolo `C`.
 
+
+## V755
+
+- 1.034 giocatori finali dopo l'assorbimento della riga `genoa-seydou-fini-2` nella scheda `genoa-seydou-fini`.
+- 108 abbreviazioni ampliate in nome e cognome tramite fonti univoche.
+- 970 righe operative del payload collegate direttamente a un ID giocatore canonico; ulteriori copie tecniche sono sincronizzate nell'archivio.
+- Jonathan Rowe è un'unica identità: `JONATHAN ROWE`, ruolo `C`, sorgente nome `TRATTATIVA` e sorgente ruolo `LISTONE`.
+- I rumor nel dettaglio personale non ripetono l'identità del giocatore.
+- `Massolin` non è stato ampliato né fuso perché restano due candidati discordanti.
+
 ## Sorgente del nome
 
 Ogni identità mostrata dall'app espone un badge:
@@ -37,6 +47,7 @@ Ogni identità mostrata dall'app espone un badge:
 - `SORGENTE: SOS`
 - `SORGENTE: FORMAZIONE`
 - `SORGENTE: AMICHEVOLE`
+- `SORGENTE: ANAGRAFICA`
 
 Il badge ruolo P/D/C/A è sempre a sinistra del nome. Tutti i nomi dei giocatori sono renderizzati in maiuscolo. La dicitura `Listone recente` è stata rimossa dal dettaglio.
 
@@ -46,3 +57,12 @@ Restano distinti, in attesa di conferma utente:
 
 - Gabriele Calvani, Genoa: una riga P e una riga D.
 - Francesco Dell'Aquila, Torino: una riga C attiva e una riga A storica/cessione.
+
+## Identità canoniche V755
+
+- Il nome visualizzato è unico tra rosa, listone, rumor, ufficialità, SOS, formazione e amichevoli.
+- Il ruolo del listone resta prioritario; un ruolo obsoleto contenuto in una notizia non crea un secondo giocatore virtuale.
+- 108 abbreviazioni sono state ampliate con nome e cognome solo tramite associazioni univoche documentate.
+- Jonathan Rowe è canonicalizzato come `JONATHAN ROWE`, ruolo `C`; tutte le righe mercato collegate usano la stessa identità.
+- Nella scheda personale le righe rumor non ripetono nome, ruolo o sorgente: mostrano stato, nota e fonti.
+- `Massolin` resta invariato: i dati propongono sia Rabby Nzingoula Massolin sia Yanis Massolin e serve conferma prima di fondere.
