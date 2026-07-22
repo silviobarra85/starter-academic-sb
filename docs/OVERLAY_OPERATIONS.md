@@ -1,43 +1,28 @@
 # Operazioni overlay
 
-## Applicazione standard
-
-Dalla radice del repository:
+## Applicazione V765
 
 ```bash
-rm -rf ~/Downloads/NOME_OVERLAY
-unzip -q ~/Downloads/NOME_OVERLAY.zip -d ~/Downloads/
-
-# Solo quando l'overlay contiene la lista di pulizia documentale:
-while IFS= read -r file; do
-  [ -n "$file" ] && rm -f "$file"
-done < ~/Downloads/NOME_OVERLAY/REMOVE_LEGACY_DOCS.txt
-
-cp -R ~/Downloads/NOME_OVERLAY/static/* static/
-cp -R ~/Downloads/NOME_OVERLAY/docs/* docs/
+rm -rf ~/Downloads/overlay_v765_iosudo_v754_v141
+unzip -q ~/Downloads/overlay_v765_iosudo_v754_v141.zip -d ~/Downloads/
+cp -R ~/Downloads/overlay_v765_iosudo_v754_v141/static/* static/
+cp -R ~/Downloads/overlay_v765_iosudo_v754_v141/docs/* docs/
 ```
 
-## Audit ioSudo
+## Audit
 
 ```bash
-node --check static/fanta-engine/js/apps/iosudo-app-v753.js
+node --check static/fanta-engine/js/apps/iosudo-app-v754.js
 node --check static/iosudo/sw.js
-node --check static/fanta-engine/tools/audit-iosudo-v753.mjs
-node static/fanta-engine/tools/audit-iosudo-v753.mjs .
+node --check static/fanta-engine/tools/audit-iosudo-v754.mjs
+node static/fanta-engine/tools/audit-iosudo-v754.mjs .
 ```
 
 ## Git
 
 ```bash
 git status
-git add -A static docs
-git commit -m "Aggiorna ioSudo V753 con dati Excel V140"
+git add static docs
+git commit -m "Aggiorna ioSudo V754 con dati Excel V141"
 git push origin master
 ```
-
-## Dopo il deploy
-
-- Aprire `https://silviobarra.com/iosudo/`.
-- Eseguire un hard refresh.
-- Chiudere e riaprire la PWA installata per attivare il nuovo service worker.
-- Verificare versione, data overlay, conteggi, badge e ordinamento della rosa.

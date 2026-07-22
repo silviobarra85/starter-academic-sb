@@ -3,25 +3,20 @@
 ## Corrente
 
 - Sito/FantaEngine: V763.
-- ioSudo: V753.
-- Overlay dati/UI: V764.
-- Documentazione consolidata per categoria.
+- ioSudo: V754.
+- Overlay dati: V765.
+- Excel riconciliato: V142.
 
-## Completato in V764
+## Completato in V765
 
-- Integrazione Excel V140.
-- Badge `RINNOVO`.
-- Ordinamento rose P-D-C-A.
-- Pulizia rumor a sette giorni e regola post-ufficialità.
-- Nuove ufficialità V140.
-- Robinio Vaz e Billy Gilmour nei SOS.
-- SV Aasen-Inter 0-16 e tabellino completo.
-- Riduzione dei documenti Markdown versionati.
+- Integrazione Excel V141, cutoff 16:38.
+- Uscita ufficiale di Antonin Barak.
+- Aggiornamento rumor Lucumi, Kolo Muani, Pinamonti, Ratkov e Gimenez.
+- Stato live Bologna-Heidenheim senza inventare un tabellino finale.
+- Deduplica della doppia riga Alessio Zerbin.
 
 ## Prossimi interventi
 
-1. Separare progressivamente il bundle ioSudo in moduli caricati per vista.
-2. Aggiungere test browser automatici per badge, ordinamento e apertura schede.
-3. Centralizzare ulteriormente alias e disambiguazioni in un registro dati versionato.
-4. Verificare se le tre chiavi squadra aggiuntive nei payload debbano diventare card visibili o restare archivio giocatori.
-5. Automatizzare la generazione dei payload dall’Excel con un comando ripetibile.
+1. Finalizzare Bologna-Heidenheim solo dopo una fonte con risultato conclusivo.
+2. Automatizzare la pipeline Excel -> payload -> audit.
+3. Aggiungere test browser automatici per la PWA.
