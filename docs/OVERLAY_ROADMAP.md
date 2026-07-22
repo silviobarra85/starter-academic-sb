@@ -1,82 +1,27 @@
-# Overlay Roadmap
+# Overlay roadmap
 
-## V763 - 22/07/2026 - Controller unico Visibilità Admin
-- Rimossi runtime V456 e hardfix V761 concorrenti.
-- Corretto il click diretto sulle checkbox senza inversione manuale dello stato.
-- Stato sempre operativo in memoria, con persistenza degradabile localStorage/sessionStorage.
-- Listener limitati al selettore e observer limitato al pannello Admin.
-- Render idempotente e self-test interattivo integrato.
-- Audit V763 71/71 e test Chromium con e senza storage.
+## Corrente
 
-## V762 - 22/07/2026 - ioSudo V752 da Excel v135
-- Riconciliati 1054 giocatori e fuse otto identità duplicate certe.
-- Aggiunti Matteo Zamarian e Luka Tomic; Ndicka/N'Dicka fuso in Evan Ndicka.
-- Ufficialità attive 402, trattative 444, rumor TM 15, SOS 27.
-- Rumor attivi su ufficialità pari a zero.
-- Amichevoli ripulite e tabellini 17/17 collegati.
-- Aggiornati app V752, CSS, manifest, payload runtime e service worker.
-- Aggiunto audit V752 ed Excel finale con fogli di controllo/merge.
+- Sito/FantaEngine: V763.
+- ioSudo: V753.
+- Overlay dati/UI: V764.
+- Documentazione consolidata per categoria.
 
-## V761 - 22/07/2026 - Eliminazione loop MutationObserver
-- Rimossa la ricorsione infinita del correttivo admin V755.
-- Decorazione idempotente tramite classe CSS.
-- Observer limitato agli addedNodes del selettore admin.
-- Rimosso il doppio toggle pointerup/click.
-- Copie FantaEngine e fallback locali riallineate.
-- Audit pre/post build e check live V761.
+## Completato in V764
 
-## V760 - 22/07/2026 - Bootstrap statico verificabile e deploy coerente
-- Primo render basato esclusivamente su config e snapshot statici, senza fallback Firebase.
-- Asset complementari caricati in background dopo il render.
-- Errori del grafo moduli mostrati nella pagina.
-- Audit eseguito prima e dopo la build Netlify.
-- Check live post-deploy su tutti gli entrypoint e import diretti.
-- Cache entrypoint riallineata a V760.
+- Integrazione Excel V140.
+- Badge `RINNOVO`.
+- Ordinamento rose P-D-C-A.
+- Pulizia rumor a sette giorni e regola post-ufficialità.
+- Nuove ufficialità V140.
+- Robinio Vaz e Billy Gilmour nei SOS.
+- SV Aasen-Inter 0-16 e tabellino completo.
+- Riduzione dei documenti Markdown versionati.
 
-## V759 - 21/07/2026 - Bootstrap static-first duraturo
-- Dati pubblici caricati e renderizzati prima di Firebase/Auth.
-- Firebase e Firestore spostati fuori dal grafo iniziale tramite import dinamico.
-- Rimossi watchdog/override emergenziali V756-V758 del boot.
-- URL del modulo league-config unificata a V759.
-- Cache policy esplicita per JSON mutabili.
-- ioSudo usa payload runtime compatto: -70,4% rispetto al dataset archivio.
-- Aggiunti audit, handoff e report tecnico V759.
+## Prossimi interventi
 
-- V746: aggiornamento V124, fix PWA install button, rimozione amichevole aggregata errata, Lazio-Lazio U20 tabellino.
-# Overlay Roadmap
-
-- V742: Excel V113, consolidamento Buta, disambiguazioni utente, header timestamp da manifest.
-
-
-## V742 - Excel V115
-- Aggiornato ioSudo da Excel V115.
-- Integrati handoff, deduplica/disambiguazioni e header 20/07/2026 14:15 CEST.
-
-
-## V743 - 20/07/2026 16:11 CEST
-- Integrato Excel V118 fuso come base corrente.
-- Nessuna nuova fonte rispetto a V742; aggiornati metadata, handoff e candidati duplicati.
-
-
-## V744 - 20/07/2026 17:05 CEST
-- Excel V120 integrato; dedupliche e disambiguazioni utente; handoff AI aggiornato.
-
-
-## V745 - 20/07/2026 18:11 CEST
-- Integrato Excel V122.
-- Aggiornate trattative non ufficiali Kean/Adams.
-- Disambiguazioni protette Terracciano/Liberali/Paz/Berardi/Vaz.
-- Handoff AI aggiornato.
-
-
-## V747 - 21/07/2026 08:06 CEST
-- Integrato Excel V126.
-- Dedupe Atalanta-Atalanta U23 e protezione Andrej Kostić/Filip Kostic.
-
-
-## V748
-- Integrato Excel V128.
-- Aggiornati SOS Napoli e trattative non ufficiali V128.
-- Confermati controlli duplicati/amichevoli.
-
-- V749: aggiornamento ioSudo da Excel V130 + hardfix checkbox admin desktop V753.
+1. Separare progressivamente il bundle ioSudo in moduli caricati per vista.
+2. Aggiungere test browser automatici per badge, ordinamento e apertura schede.
+3. Centralizzare ulteriormente alias e disambiguazioni in un registro dati versionato.
+4. Verificare se le tre chiavi squadra aggiuntive nei payload debbano diventare card visibili o restare archivio giocatori.
+5. Automatizzare la generazione dei payload dall’Excel con un comando ripetibile.
