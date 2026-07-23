@@ -1,6 +1,6 @@
 {
-  "id": "sudatori-iosudo-v758",
-  "version": "V758",
+  "id": "sudatori-iosudo-v759",
+  "version": "V759",
   "seasonId": "2026-27",
   "updatedAt": "2026-07-22",
   "updatedAtTime": "21:51 CEST",
@@ -8,9 +8,11 @@
   "overlayGeneratedAt": "2026-07-22T21:51:00+02:00",
   "overlayGeneratedAtLabel": "22/07/2026 21:51 CEST",
   "sourceFile": "v146_2026-07-22_fantacalcio_serie_a_2026_27_fuso_aggiornato_2151_finale.xlsx",
-  "dedupVersion": "V757",
+  "dedupVersion": "V759",
   "notes": [
-    "V758: badge sorgente corretto; i giocatori presenti nel listone mostrano sempre SORGENTE: LISTONE, mentre ANAGRAFICA resta solo un metadato tecnico.",
+    "V759: Yunus Musah confermato nel Milan; ruolo C dal listone, squadra corrente dall’ufficialità successiva.",
+    "V759: Giovane disambiguato definitivamente in Samuel Giovane (Atalanta, C) e Giovane Santana do Nascimento (Napoli, A), senza etichette tra parentesi.",
+    "Gli alias Giovane sono contestuali a squadra e ID; nessun alias globale può collegare le due identità.",
     "V757: integrato Excel v146 con catalogo unificato da rose, listone e flussi informativi.",
     "Ogni riga operativa è collegata a uno o più ID canonici; apertura dettaglio tramite indice O(1).",
     "Akor Adams del Venezia e Che Adams del Torino sono identità distinte e protette.",
@@ -30,7 +32,7 @@
   "duplicatesExact": 0,
   "duplicateIds": 0,
   "activeOfficialRumors": 0,
-  "buildTag": "iosudo-v758",
+  "buildTag": "iosudo-v759",
   "dataFile": "sudatori-runtime.json",
   "counts": {
     "players": 1198,
@@ -52,20 +54,20 @@
     "playerDirectoryPlayers": 1198
   },
   "sourceWorkbook": "v146_2026-07-22_fantacalcio_serie_a_2026_27_fuso_aggiornato_2151_finale.xlsx",
-  "appVersion": "V758",
+  "appVersion": "V759",
   "displayPlayers": 1198,
   "playersSourceRows": 1031,
-  "runtimePayloadVersion": "V758",
-  "runtimeDataBytes": 5117958,
+  "runtimePayloadVersion": "V759",
+  "runtimeDataBytes": 5121555,
   "archiveDataFile": "sudatori-data.json",
-  "archiveDataBytes": 17223645,
+  "archiveDataBytes": 17229470,
   "canonicalNameChanges": 108,
   "canonicalNameAmbiguities": 0,
   "confirmedDuplicateMergesV755": 1,
   "rosterPlayers": 1018,
   "playerDirectoryPlayers": 1198,
   "playerCatalogAuditV757": {
-    "version": "V757",
+    "version": "V759",
     "rosterPlayers": 1018,
     "catalogPlayers": 1198,
     "listoneRows": 663,
@@ -115,8 +117,40 @@
       "monza-pessina-mas": "Matteo Pessina",
       "genoa-venturino": "Lorenzo Venturino",
       "bologna-orsolini": "Riccardo Orsolini",
-      "torino-francesco-dell-aquila": "Francesco Dell’Aquila"
+      "torino-francesco-dell-aquila": "Francesco Dell’Aquila",
+      "atalanta-giovane-atalanta": "Samuel Giovane",
+      "napoli-giovane-napoli": "Giovane Santana do Nascimento"
     },
-    "verifiedRegistryNames": 535
-  }
+    "verifiedRegistryNames": 535,
+    "yunusMusahId": "milan-yunus-musah",
+    "yunusMusahCurrentTeam": "Milan",
+    "giovaneAtalantaId": "atalanta-giovane-atalanta",
+    "giovaneNapoliId": "napoli-giovane-napoli",
+    "protectedSurnameAliases": [
+      "Adams",
+      "Giovane"
+    ]
+  },
+  "musahCurrentTeamV759": {
+    "id": "milan-yunus-musah",
+    "team": "Milan",
+    "role": "C",
+    "roleSource": "LISTONE",
+    "teamSource": "UFFICIALITÀ 2026-07-11",
+    "listoneTeamAtLoad": "Atalanta"
+  },
+  "protectedGiovaneIdentitiesV759": [
+    {
+      "id": "atalanta-giovane-atalanta",
+      "name": "Samuel Giovane",
+      "team": "Atalanta",
+      "role": "C"
+    },
+    {
+      "id": "napoli-giovane-napoli",
+      "name": "Giovane Santana do Nascimento",
+      "team": "Napoli",
+      "role": "A"
+    }
+  ]
 }

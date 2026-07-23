@@ -1,4 +1,4 @@
-const IOSUDO_CACHE = 'iosudo-shell-v758';
+const IOSUDO_CACHE = 'iosudo-shell-v759';
 const IOSUDO_SHELL = [
   './',
   './index.html',
@@ -6,8 +6,8 @@ const IOSUDO_SHELL = [
   './assets/icon.svg',
   './assets/icon-192.png',
   './assets/icon-512.png',
-  '../fanta-engine/css/iosudo-app-v758.css?v=758',
-  '../fanta-engine/js/apps/iosudo-app-v758.js?v=758'
+  '../fanta-engine/css/iosudo-app-v759.css?v=759',
+  '../fanta-engine/js/apps/iosudo-app-v759.js?v=759'
 ];
 
 async function safePrecache() {
@@ -17,7 +17,7 @@ async function safePrecache() {
       const response = await fetch(url, { cache: 'reload' });
       if (response && response.ok) await cache.put(url, response.clone());
     } catch (error) {
-      // V758: non blocca l'installazione se un asset opzionale non risponde su mobile.
+      // V759: non blocca l'installazione se un asset opzionale non risponde su mobile.
     }
   }));
 }

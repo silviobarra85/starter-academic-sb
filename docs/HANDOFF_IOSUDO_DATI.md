@@ -2,8 +2,8 @@
 
 ## Versione corrente
 
-- ioSudo: V758.
-- Overlay complessivo: V769.
+- ioSudo: V759.
+- Overlay complessivo: V770.
 - Sorgente dati: Excel V146, cutoff 22/07/2026 21:51 CEST.
 - Sorgente ruoli: ultimo listone disponibile, `2026-07-04.json`.
 - Payload runtime: `static/fanta-engine/data/sudatori/current/sudatori-runtime.json`.
@@ -98,3 +98,12 @@ L'apertura del dettaglio è una lettura per ID e non esegue scansioni globali `n
 - I nomi sono visualizzati in maiuscolo.
 - Il badge `SORGENTE` indica la provenienza con cui il giocatore entra nel catalogo. LISTONE ha priorità per ogni giocatore presente nell’ultimo listone. ANAGRAFICA/alias è solo un metadato interno per ricostruire il nome completo e non deve comparire nell’interfaccia.
 - Nel dettaglio personale le righe rumor non ripetono il nome del giocatore.
+
+## Correzioni identità V759
+
+- Yunus Musah è una sola identità: `milan-yunus-musah`, ruolo C dal listone e squadra corrente Milan dall’ufficialità dell’11/07/2026. Il valore Atalanta nel listone del 04/07 resta soltanto storico.
+- `Samuel Giovane`, ID `atalanta-giovane-atalanta`, è il centrocampista dell’Atalanta.
+- `Giovane Santana do Nascimento`, ID `napoli-giovane-napoli`, è l’attaccante del Napoli.
+- Non mostrare più `Giovane (Atalanta)` o `Giovane (Napoli)`.
+- L’alias semplice `Giovane` è consentito solo con contesto squadra/ID e non può essere globale.
+- Le due identità non devono condividere alias, ID, ruolo o righe operative.

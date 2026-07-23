@@ -15,17 +15,17 @@ cp -R ~/Downloads/overlay_v768_iosudo_v757_dati_v146/docs/* docs/
 ## Audit
 
 ```bash
-node --check static/fanta-engine/js/apps/iosudo-app-v758.js
+node --check static/fanta-engine/js/apps/iosudo-app-v759.js
 node --check static/iosudo/sw.js
-node --check static/fanta-engine/tools/audit-iosudo-v758.mjs
-node static/fanta-engine/tools/audit-iosudo-v758.mjs .
+node --check static/fanta-engine/tools/audit-iosudo-v759.mjs
+node static/fanta-engine/tools/audit-iosudo-v759.mjs .
 node static/zonaorientale/tools/audit-static-first-v760.mjs .
 ```
 
 Risultato principale atteso:
 
 ```text
-Audit ioSudo V758 OK - 4796 controlli superati
+Audit ioSudo V759 OK - 4796 controlli superati
 ```
 
 Il tempo del benchmark dei lookup varia in base al computer e viene riportato alla fine della riga.
@@ -35,7 +35,7 @@ Il tempo del benchmark dei lookup varia in base al computer e viene riportato al
 ```bash
 git status
 git add static docs
-git commit -m "Aggiorna ioSudo V758 con dati Excel V146 e separa gli Adams"
+git commit -m "Aggiorna ioSudo V759 con dati Excel V146 e separa gli Adams"
 git push origin master
 ```
 
