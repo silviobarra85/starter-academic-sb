@@ -53,3 +53,10 @@
 - Corretto il ruolo visualizzato di Matteo Pessina: C del Monza.
 - Impedito il collegamento debole con `Pessina Mas.`, record del listone relativo a Massimo Pessina, P del Bologna.
 - Sincronizzato l'header visibile e tutti gli asset a ioSudo V766.
+
+
+## Completato in V778
+- Integrato Excel V151 fino alle 18:25 CEST.
+- Consolidata la riga storica duplicata di Alessio Romagnoli senza creare una seconda scheda.
+- Deduplicata l’identità Christian Comotto e aggiunto un audit permanente dei duplicati.
+- Aggiornato l’header visibile a ioSudo V767.

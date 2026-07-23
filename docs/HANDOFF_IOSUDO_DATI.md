@@ -34,3 +34,10 @@
 - Matteo Pessina: Monza, ruolo C; non è presente nel listone del 4 luglio e non deve ereditare il record `Pessina Mas.` del Bologna.
 - Massimo Pessina: Bologna, ruolo P, ID Fantacalcio 7172.
 - Il matching debole del listone ora rispetta gli alias limitati alla squadra e rifiuta candidati in conflitto sia per squadra sia per ruolo.
+
+
+## Stato V767
+- Sorgente: V151, cutoff 23/07/2026 18:25 CEST.
+- Alessio Romagnoli ha una sola identità `lazio-alessio-romagnoli`; la seconda riga Mercato_Giocatori è storica e non viene pubblicata.
+- `official-christian-comotto` è assorbito definitivamente in `milan-comotto` (Christian Comotto).
+- Il controllo duplicati copre ID, nomi visualizzati, ID Fantacalcio, alias contestuali e righe operative.
