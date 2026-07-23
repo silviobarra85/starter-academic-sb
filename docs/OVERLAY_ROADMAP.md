@@ -3,9 +3,9 @@
 ## Corrente
 
 - Sito/FantaEngine: V763.
-- ioSudo: V760.
-- Overlay: V768.
-- Sorgente dati: Excel V146, cutoff 22/07/2026 21:51 CEST.
+- ioSudo: V766.
+- Overlay: V777.
+- Sorgente dati: Excel V150, cutoff 23/07/2026 14:00 CEST.
 - Documentazione canonica per categoria.
 
 ## Completato fino a V768
@@ -47,3 +47,9 @@
 - Integrato il workbook V150 con rinnovi ufficiali, trattative del 23 luglio e Roma-Trastevere.
 - Sincronizzata la versione visibile dell'header a V765.
 - Overlay autosufficiente e compatibile con l'applicatore GitHub Actions senza modificare `.github/workflows`.
+
+
+## Completato in V777
+- Corretto il ruolo visualizzato di Matteo Pessina: C del Monza.
+- Impedito il collegamento debole con `Pessina Mas.`, record del listone relativo a Massimo Pessina, P del Bologna.
+- Sincronizzato l'header visibile e tutti gli asset a ioSudo V766.

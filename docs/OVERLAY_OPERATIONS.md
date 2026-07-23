@@ -46,3 +46,9 @@ Dopo il deploy eseguire un hard refresh e, per la PWA installata, chiudere e ria
 - L'overlay contiene payload completi già migrati: GitHub Actions può copiare i file e lanciare subito l'audit.
 - Aggiornare sempre insieme header visibile, HTML, JavaScript, CSS, manifest e cache service worker.
 - Audit: `node static/fanta-engine/tools/audit-iosudo-v765.mjs .`.
+
+
+## V777 / ioSudo V766
+- Overlay autosufficiente per Mac e GitHub Actions.
+- Audit: `node static/fanta-engine/tools/audit-iosudo-v766.mjs .`.
+- Header, HTML, JavaScript, CSS, manifest e cache PWA devono riportare V766.

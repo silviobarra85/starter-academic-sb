@@ -2,10 +2,10 @@
 
 ## Versione corrente
 
-- ioSudo: V760.
-- Overlay complessivo: V771.
-- Sorgente: Excel V147, cutoff 22/07/2026 23:14 CEST.
-- Catalogo: 1198 persone; rose tecniche: 1019.
+- ioSudo: V766.
+- Overlay complessivo: V777.
+- Sorgente: Excel V150, cutoff 23/07/2026 14:00 CEST.
+- Catalogo: 1215 persone; rose tecniche: 1018.
 
 ## Regole identità permanenti
 
@@ -28,3 +28,9 @@
 - Ufficialità: 447; trattative attive incluse TM: 206; SOS attivi: 27.
 - Amichevoli: 107; tabellini: 27; prestazioni: 550.
 - Identità protette: Massimo/Matteo Pessina, Akor/Che Adams, i due Giovane, Yunus Musah, Yanis Massolin, Kostic e Stankovic.
+
+
+## Stato V766
+- Matteo Pessina: Monza, ruolo C; non è presente nel listone del 4 luglio e non deve ereditare il record `Pessina Mas.` del Bologna.
+- Massimo Pessina: Bologna, ruolo P, ID Fantacalcio 7172.
+- Il matching debole del listone ora rispetta gli alias limitati alla squadra e rifiuta candidati in conflitto sia per squadra sia per ruolo.
