@@ -1,78 +1,75 @@
 {
-  "id": "sudatori-iosudo-v759",
-  "version": "V759",
+  "id": "sudatori-iosudo-v763",
+  "version": "V763",
   "seasonId": "2026-27",
-  "updatedAt": "2026-07-22",
-  "updatedAtTime": "21:51 CEST",
-  "generatedAt": "2026-07-22T21:51:00+02:00",
-  "overlayGeneratedAt": "2026-07-22T21:51:00+02:00",
-  "overlayGeneratedAtLabel": "22/07/2026 21:51 CEST",
-  "sourceFile": "v146_2026-07-22_fantacalcio_serie_a_2026_27_fuso_aggiornato_2151_finale.xlsx",
-  "dedupVersion": "V759",
+  "updatedAt": "2026-07-23",
+  "updatedAtTime": "07:00 CEST",
+  "generatedAt": "2026-07-23T07:00:00+02:00",
+  "overlayGeneratedAt": "2026-07-23T07:00:00+02:00",
+  "overlayGeneratedAtLabel": "23/07/2026 07:00 CEST",
+  "sourceFile": "v149_2026-07-23_fantacalcio_serie_a_2026_27_iosudo_v762_aggiornato_0700.xlsx",
+  "dedupVersion": "V763",
   "notes": [
-    "V759: Yunus Musah confermato nel Milan; ruolo C dal listone, squadra corrente dall’ufficialità successiva.",
-    "V759: Giovane disambiguato definitivamente in Samuel Giovane (Atalanta, C) e Giovane Santana do Nascimento (Napoli, A), senza etichette tra parentesi.",
-    "Gli alias Giovane sono contestuali a squadra e ID; nessun alias globale può collegare le due identità.",
-    "V757: integrato Excel v146 con catalogo unificato da rose, listone e flussi informativi.",
-    "Ogni riga operativa è collegata a uno o più ID canonici; apertura dettaglio tramite indice O(1).",
-    "Akor Adams del Venezia e Che Adams del Torino sono identità distinte e protette.",
-    "Massolin resta canonicalizzato come Yanis Massolin dell Inter.",
-    "Il ruolo del listone resta autorevole per tutte le identità rappresentate nel listone."
+    "V763: integrato Excel V149 con cutoff 23/07/2026 07:00 CEST.",
+    "Disambiguazione definitiva: Massimo Pessina portiere del Bologna e Matteo Pessina centrocampista del Monza.",
+    "Aggiornati rumor mattutini, gerarchie Inter/Atalanta/Lecce, infortunio di Lorenzo Lucca e tabellino completo Napoli-Arezzo.",
+    "Aggiunti Carlos Espí e Mario Mitaj al catalogo dei giocatori provenienti dalle trattative.",
+    "Confermate le protezioni Adams, Giovane, Musah, Massolin, Kostic/Kostić e Stankovic."
   ],
   "teams": 20,
-  "players": 1198,
+  "players": 1199,
   "officialMoves": 422,
-  "teamTransferTalks": 225,
+  "teamTransferTalks": 229,
   "transfermarktRumors": 14,
   "injuries": 26,
   "friendlies": 106,
   "friendlyMatchDetails": 27,
-  "friendlyPlayerStats": 541,
-  "sources": 807,
+  "friendlyPlayerStats": 551,
+  "sources": 828,
   "duplicatesExact": 0,
   "duplicateIds": 0,
   "activeOfficialRumors": 0,
-  "buildTag": "iosudo-v759",
+  "buildTag": "iosudo-v763",
   "dataFile": "sudatori-runtime.json",
   "counts": {
-    "players": 1198,
+    "players": 1199,
     "officialMoves": 422,
-    "talks": 225,
-    "teamTransferTalks": 225,
+    "talks": 229,
+    "teamTransferTalks": 229,
     "transfermarktRumors": 14,
     "injuries": 26,
     "friendlies": 106,
     "friendlyMatchDetails": 27,
-    "friendlyPlayerStats": 541,
-    "sources": 807,
+    "friendlyPlayerStats": 551,
+    "sources": 828,
     "activeOfficialRumors": 0,
     "duplicateIds": 0,
     "duplicatesExact": 0,
-    "displayPlayers": 1198,
-    "playersSourceRows": 1031,
-    "rosterPlayers": 1018,
-    "playerDirectoryPlayers": 1198
+    "displayPlayers": 1199,
+    "playersSourceRows": 1032,
+    "rosterPlayers": 1019,
+    "playerDirectoryPlayers": 1199
   },
-  "sourceWorkbook": "v146_2026-07-22_fantacalcio_serie_a_2026_27_fuso_aggiornato_2151_finale.xlsx",
-  "appVersion": "V759",
-  "displayPlayers": 1198,
-  "playersSourceRows": 1031,
-  "runtimePayloadVersion": "V759",
-  "runtimeDataBytes": 5121555,
+  "sourceWorkbook": "v149_2026-07-23_fantacalcio_serie_a_2026_27_iosudo_v762_aggiornato_0700.xlsx",
+  "appVersion": "V763",
+  "displayPlayers": 1199,
+  "playersSourceRows": 1032,
+  "runtimePayloadVersion": "V763",
+  "runtimeDataBytes": 7681387,
   "archiveDataFile": "sudatori-data.json",
-  "archiveDataBytes": 17229470,
+  "archiveDataBytes": 17339215,
   "canonicalNameChanges": 108,
   "canonicalNameAmbiguities": 0,
   "confirmedDuplicateMergesV755": 1,
-  "rosterPlayers": 1018,
-  "playerDirectoryPlayers": 1198,
+  "rosterPlayers": 1019,
+  "playerDirectoryPlayers": 1199,
   "playerCatalogAuditV757": {
-    "version": "V759",
-    "rosterPlayers": 1018,
+    "version": "V760",
+    "rosterPlayers": 1019,
     "catalogPlayers": 1198,
     "listoneRows": 663,
     "listoneRepresented": 663,
-    "listoneCatalogOnly": 26,
+    "listoneCatalogOnly": 25,
     "sourceCatalogOnly": 154,
     "operationalRows": 1433,
     "operationalRowsLinked": 1433,
@@ -104,7 +101,8 @@
       "milan-mattia-liberali": "como-mattia-liberali",
       "bologna-riccardo-orsolini": "bologna-orsolini",
       "roma-venturino": "genoa-venturino",
-      "cagliari-s-esposito": "cagliari-esposito-se"
+      "cagliari-s-esposito": "cagliari-esposito-se",
+      "torino-che-adams": "listone-6646"
     },
     "duplicateDisplayNames": {},
     "identityOverrides": {
@@ -129,7 +127,13 @@
     "protectedSurnameAliases": [
       "Adams",
       "Giovane"
-    ]
+    ],
+    "cheAdamsName": "Che Adams",
+    "mergeV147V760": {
+      "source": "v147_2026-07-22_fantacalcio_serie_a_2026_27_aggiornato_2314.xlsx",
+      "cutoff": "22/07/2026 23:14 CEST",
+      "newSources": 9
+    }
   },
   "musahCurrentTeamV759": {
     "id": "milan-yunus-musah",
@@ -152,5 +156,41 @@
       "team": "Napoli",
       "role": "A"
     }
-  ]
+  ],
+  "runtimePayloadKeys": [
+    "meta",
+    "teams",
+    "playersByTeam",
+    "formationsByTeam",
+    "marketSummaryByTeam",
+    "injuriesByTeam",
+    "friendliesByTeam",
+    "friendlyPlayerStatsByMatch"
+  ],
+  "playerCatalogAuditV763": {
+    "version": "V763",
+    "rosterPlayers": 1019,
+    "catalogPlayers": 1199,
+    "operationalRows": 1228,
+    "pessinaIds": [
+      "bologna-pessina-mas",
+      "monza-pessina-mas"
+    ],
+    "newMarketOnlyPlayers": [
+      "market-carlos-espi",
+      "market-mario-mitaj"
+    ],
+    "confirmedDuplicateMerges": [
+      "official-aleksandar-stankovic -> inter-a-stankovic"
+    ]
+  },
+  "playersDuplicateAuditV763": {
+    "duplicateDirectoryIds": 0,
+    "duplicateRosterExact": 0,
+    "duplicateFantacalcioIds": 0,
+    "pessinaProtected": true,
+    "newAmbiguousCases": 0,
+    "duplicateDirectoryDisplayNames": 0,
+    "stankovicMerged": true
+  }
 }

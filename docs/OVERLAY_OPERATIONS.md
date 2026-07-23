@@ -1,42 +1,41 @@
 # Operazioni overlay
 
-## Applicazione V768
+## Applicazione V772
 
 Dalla radice del repository:
 
 ```bash
-rm -rf ~/Downloads/overlay_v768_iosudo_v757_dati_v146
-unzip -q ~/Downloads/overlay_v768_iosudo_v757_dati_v146.zip -d ~/Downloads/
+rm -rf ~/Downloads/overlay_v772_iosudo_v763_dati_v149_pessina
+unzip -q ~/Downloads/overlay_v772_iosudo_v763_dati_v149_pessina.zip -d ~/Downloads/
 
-cp -R ~/Downloads/overlay_v768_iosudo_v757_dati_v146/static/* static/
-cp -R ~/Downloads/overlay_v768_iosudo_v757_dati_v146/docs/* docs/
+cp -R ~/Downloads/overlay_v772_iosudo_v763_dati_v149_pessina/static/* static/
+cp -R ~/Downloads/overlay_v772_iosudo_v763_dati_v149_pessina/docs/* docs/
 ```
 
 ## Audit
 
 ```bash
-node --check static/fanta-engine/js/apps/iosudo-app-v759.js
+node --check static/fanta-engine/js/apps/iosudo-app-v763.js
 node --check static/iosudo/sw.js
-node --check static/fanta-engine/tools/audit-iosudo-v759.mjs
-node static/fanta-engine/tools/audit-iosudo-v759.mjs .
-node static/zonaorientale/tools/audit-static-first-v760.mjs .
+node --check static/fanta-engine/tools/audit-iosudo-v763.mjs
+node static/fanta-engine/tools/audit-iosudo-v763.mjs .
+node static/zonaorientale/tools/audit-static-first-v760.mjs static
 ```
 
-Risultato principale atteso:
+Risultati principali attesi:
 
 ```text
-Audit ioSudo V759 OK - 4796 controlli superati
+Audit ioSudo V763 OK - 1266 controlli superati
+[audit-static-first-v760] OK - 42 controlli superati su static.
 ```
-
-Il tempo del benchmark dei lookup varia in base al computer e viene riportato alla fine della riga.
 
 ## Git
 
 ```bash
 git status
 git add static docs
-git commit -m "Aggiorna ioSudo V759 con dati Excel V146 e separa gli Adams"
+git commit -m "Aggiorna ioSudo V763 con Excel V149 e disambigua Pessina"
 git push origin master
 ```
 
-Dopo il deploy eseguire un hard refresh e, per la PWA installata, chiudere e riaprire l'app per attivare `iosudo-shell-v757`.
+Dopo il deploy eseguire un hard refresh. Per la PWA installata, chiuderla completamente e riaprirla per attivare `iosudo-shell-v763`.
