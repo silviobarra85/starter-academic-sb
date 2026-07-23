@@ -31,3 +31,8 @@
 3. Deduplicare a monte anche le ripetizioni storiche della stessa ufficialità presenti nel workbook, mantenendo tutte le fonti.
 4. Continuare ad ampliare i nomi abbreviati soltanto tramite ID o fonti univoche documentate.
 5. Mantenere un test Android reale per apertura schede, memoria e aggiornamento della PWA.
+
+## V764 - Protezione identita Pessina
+
+- Protezione strutturale per i due Pessina.
+- Versione applicativa visibile nell header e aggiornata a ogni release.

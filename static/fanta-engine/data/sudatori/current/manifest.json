@@ -1,6 +1,6 @@
 {
-  "id": "sudatori-iosudo-v763",
-  "version": "V763",
+  "id": "sudatori-iosudo-v764",
+  "version": "V764",
   "seasonId": "2026-27",
   "updatedAt": "2026-07-23",
   "updatedAtTime": "07:00 CEST",
@@ -8,8 +8,9 @@
   "overlayGeneratedAt": "2026-07-23T07:00:00+02:00",
   "overlayGeneratedAtLabel": "23/07/2026 07:00 CEST",
   "sourceFile": "v149_2026-07-23_fantacalcio_serie_a_2026_27_iosudo_v762_aggiornato_0700.xlsx",
-  "dedupVersion": "V763",
+  "dedupVersion": "V764",
   "notes": [
+    "V764: Matteo Pessina protetto come centrocampista del Monza; Massimo Pessina resta portiere del Bologna; header applicazione aggiornato.",
     "V763: integrato Excel V149 con cutoff 23/07/2026 07:00 CEST.",
     "Disambiguazione definitiva: Massimo Pessina portiere del Bologna e Matteo Pessina centrocampista del Monza.",
     "Aggiornati rumor mattutini, gerarchie Inter/Atalanta/Lecce, infortunio di Lorenzo Lucca e tabellino completo Napoli-Arezzo.",
@@ -29,7 +30,7 @@
   "duplicatesExact": 0,
   "duplicateIds": 0,
   "activeOfficialRumors": 0,
-  "buildTag": "iosudo-v763",
+  "buildTag": "iosudo-v764",
   "dataFile": "sudatori-runtime.json",
   "counts": {
     "players": 1199,
@@ -51,10 +52,10 @@
     "playerDirectoryPlayers": 1199
   },
   "sourceWorkbook": "v149_2026-07-23_fantacalcio_serie_a_2026_27_iosudo_v762_aggiornato_0700.xlsx",
-  "appVersion": "V763",
+  "appVersion": "V764",
   "displayPlayers": 1199,
   "playersSourceRows": 1032,
-  "runtimePayloadVersion": "V763",
+  "runtimePayloadVersion": "V764",
   "runtimeDataBytes": 7681387,
   "archiveDataFile": "sudatori-data.json",
   "archiveDataBytes": 17339215,
@@ -64,7 +65,7 @@
   "rosterPlayers": 1019,
   "playerDirectoryPlayers": 1199,
   "playerCatalogAuditV757": {
-    "version": "V760",
+    "version": "V764",
     "rosterPlayers": 1019,
     "catalogPlayers": 1198,
     "listoneRows": 663,
@@ -126,13 +127,28 @@
     "giovaneNapoliId": "napoli-giovane-napoli",
     "protectedSurnameAliases": [
       "Adams",
-      "Giovane"
+      "Giovane",
+      "Pessina"
     ],
     "cheAdamsName": "Che Adams",
     "mergeV147V760": {
       "source": "v147_2026-07-22_fantacalcio_serie_a_2026_27_aggiornato_2314.xlsx",
       "cutoff": "22/07/2026 23:14 CEST",
       "newSources": 9
+    },
+    "pessinaDisambiguationV764": {
+      "bologna": {
+        "id": "bologna-pessina-mas",
+        "name": "Massimo Pessina",
+        "role": "P",
+        "identityOverrideV764": "Bologna: identita protetta per nome completo, squadra e ruolo"
+      },
+      "monza": {
+        "id": "monza-pessina-mas",
+        "name": "Matteo Pessina",
+        "role": "C",
+        "identityOverrideV764": "Monza: identita protetta per nome completo, squadra e ruolo"
+      }
     }
   },
   "musahCurrentTeamV759": {
@@ -192,5 +208,18 @@
     "newAmbiguousCases": 0,
     "duplicateDirectoryDisplayNames": 0,
     "stankovicMerged": true
+  },
+  "pessinaIdentityPolicyV764": {
+    "globalSurnameAliasAllowed": false,
+    "bologna": {
+      "id": "bologna-pessina-mas",
+      "name": "Massimo Pessina",
+      "role": "P"
+    },
+    "monza": {
+      "id": "monza-pessina-mas",
+      "name": "Matteo Pessina",
+      "role": "C"
+    }
   }
 }

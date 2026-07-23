@@ -39,3 +39,7 @@ git push origin master
 ```
 
 Dopo il deploy eseguire un hard refresh. Per la PWA installata, chiuderla completamente e riaprirla per attivare `iosudo-shell-v763`.
+
+## Regola operativa V764
+
+Ogni overlay ioSudo deve aggiornare insieme: header visibile, file JS/CSS versionati, service worker, manifest e documentazione canonica pertinente.

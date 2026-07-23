@@ -42,3 +42,10 @@
 - Aggiornato l’infortunio di Lorenzo Lucca.
 - Completato Napoli-Arezzo con 24 prestazioni individuali.
 - Nessun nuovo caso ambiguo richiede conferma.
+
+## V764 - Pessina e header applicazione
+
+- Massimo Pessina: Bologna, ruolo P, ID `bologna-pessina-mas`.
+- Matteo Pessina: Monza, ruolo C, ID `monza-pessina-mas`.
+- Il cognome `Pessina` non e un alias globale.
+- L header visibile deve riportare la versione applicativa corrente.
