@@ -3,67 +3,25 @@
 ## Corrente
 
 - Sito/FantaEngine: V763.
-- ioSudo: V766.
-- Overlay: V777.
-- Sorgente dati: Excel V150, cutoff 23/07/2026 14:00 CEST.
-- Documentazione canonica per categoria.
+- ioSudo: V769.
+- Overlay: V780.
+- Sorgente dati: Excel V154, cutoff 24/07/2026 09:30 CEST.
+- Header, HTML, JavaScript, CSS, manifest e cache PWA sincronizzati a V769.
 
-## Completato fino a V768
+## Completato
 
 - Catalogo unico di rose, listone e fonti informative.
-- 1.198 persone distinte nella vista globale.
-- 1.018 righe di rosa tecnica dopo la deduplica.
-- Tutte le 663 righe del listone rappresentate una volta.
-- 1.433 righe operative collegate a identità canoniche.
-- Protezione strutturale `Akor Adams ≠ Che Adams`.
-- ID storico `torino-akor-adams` reindirizzato a `venezia-akor-adams` senza coinvolgere Che Adams.
-- Daniel Maldini e Riccardo Sottil deduplicati tramite ID Fantacalcio e righe EXTRA_LISTONE.
-- Mergim Vojvoda, Alieu Fadera e Seydou Fini riconfermati come singole identità lungo il trasferimento.
-- Zero ID Fantacalcio duplicati e zero nomi visualizzati duplicati.
-- Ruolo autorevole dal listone.
-- Indice per ID e indice sorgenti costruiti una sola volta.
-- Apertura dettaglio senza scansioni globali e senza doppio rendering.
-- Dati V146 integrati: 422 ufficialità, 225 trattative attive, 26 SOS, 106 amichevoli e 541 prestazioni.
+- Apertura dettaglio tramite indici per ID canonico.
+- Ruoli del listone con protezioni permanenti delle omonimie.
+- Controllo completo dei duplicati su ID, nome, ID Fantacalcio e alias.
+- Matteo Pessina fissato come C del Monza; Massimo Pessina come P del Bologna.
+- Correzione V769 del badge SOS: rimosso l'uso del semplice testo di stato come flag globale.
+- I 34 badge SOS corrispondono alle 34 righe attive indicizzate.
+- Audit bloccante per falsi positivi e falsi negativi SOS.
 
 ## Prossimi controlli
 
-1. Verificare su Android reale memoria e tempo di apertura dopo il deploy V757.
-2. Integrare stabilmente il registro delle disambiguazioni nel generatore ordinario Excel → payload.
-3. Aggiungere un test automatico che vieti fusioni basate sul solo cognome.
-4. Continuare ad ampliare i nomi abbreviati soltanto tramite ID o fonti univoche documentate.
-
-- V769/V758: corretta la semantica del badge sorgente; tutti i 663 giocatori del listone mostrano LISTONE e ANAGRAFICA resta interna.
-
-- V770: Musah confermato Milan; Giovane disambiguato con i nomi completi Samuel Giovane e Giovane Santana do Nascimento.
-
-## Completato in V771
-
-- Fusione Excel V147 con le correzioni ioSudo V759.
-- Che Adams inserito nella rosa Torino mantenendo l’ID listone.
-- Yanis Massolin canonicalizzato anche nel workbook.
-- Aggiornamento serale Kessié/Romagnoli.
-
-## Completato in V776
-- Integrato il workbook V150 con rinnovi ufficiali, trattative del 23 luglio e Roma-Trastevere.
-- Sincronizzata la versione visibile dell'header a V765.
-- Overlay autosufficiente e compatibile con l'applicatore GitHub Actions senza modificare `.github/workflows`.
-
-
-## Completato in V777
-- Corretto il ruolo visualizzato di Matteo Pessina: C del Monza.
-- Impedito il collegamento debole con `Pessina Mas.`, record del listone relativo a Massimo Pessina, P del Bologna.
-- Sincronizzato l'header visibile e tutti gli asset a ioSudo V766.
-
-
-## Completato in V778
-- Integrato Excel V151 fino alle 18:25 CEST.
-- Consolidata la riga storica duplicata di Alessio Romagnoli senza creare una seconda scheda.
-- Deduplicata l’identità Christian Comotto e aggiunto un audit permanente dei duplicati.
-- Aggiornato l’header visibile a ioSudo V767.
-
-
-## Completato in V779
-- Integrato Excel V154 fino alle 09:30 CEST del 24/07/2026.
-- Aggiornati mercato, SOS, amichevoli future, formazioni e fonti.
-- Rieseguita deduplica completa del catalogo e delle righe operative.
-- Aggiornato l’header visibile a ioSudo V768.
+1. Integrare la costruzione del flag SOS nel generatore ordinario Excel → payload, usando esclusivamente le righe attive.
+2. Continuare a controllare i duplicati a ogni nuova importazione.
+3. Verificare su Android il refresh della PWA dopo ogni cambio di service worker.
+4. Mantenere sincronizzato l'header visibile con la versione applicativa.

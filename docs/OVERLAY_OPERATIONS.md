@@ -1,66 +1,43 @@
 # Operazioni overlay
 
-## Applicazione V768
+## Applicazione V780 / ioSudo V769
 
 Dalla radice del repository:
 
 ```bash
-rm -rf ~/Downloads/overlay_v768_iosudo_v757_dati_v146
-unzip -q ~/Downloads/overlay_v768_iosudo_v757_dati_v146.zip -d ~/Downloads/
+rm -rf ~/Downloads/overlay_v780_iosudo_v769_fix_badge_sos
+unzip -q ~/Downloads/overlay_v780_iosudo_v769_fix_badge_sos.zip -d ~/Downloads/
 
-cp -R ~/Downloads/overlay_v768_iosudo_v757_dati_v146/static/* static/
-cp -R ~/Downloads/overlay_v768_iosudo_v757_dati_v146/docs/* docs/
+cp -R ~/Downloads/overlay_v780_iosudo_v769_fix_badge_sos/static/* static/
+cp -R ~/Downloads/overlay_v780_iosudo_v769_fix_badge_sos/docs/* docs/
 ```
 
 ## Audit
 
 ```bash
-node --check static/fanta-engine/js/apps/iosudo-app-v760.js
+node --check static/fanta-engine/js/apps/iosudo-app-v769.js
 node --check static/iosudo/sw.js
-node --check static/fanta-engine/tools/audit-iosudo-v760.mjs
-node static/fanta-engine/tools/audit-iosudo-v760.mjs .
-node static/zonaorientale/tools/audit-static-first-v760.mjs .
+node --check static/fanta-engine/tools/audit-iosudo-v769.mjs
+
+node static/fanta-engine/tools/audit-iosudo-v769.mjs .
+node static/zonaorientale/tools/audit-static-first-v760.mjs static
 ```
 
 Risultato principale atteso:
 
 ```text
-Audit ioSudo V760 OK - 4796 controlli superati
+Audit ioSudo V769 OK - 34 badge SOS attivi su 1018 giocatori, falsi positivi 0, catalogo 1230.
 ```
-
-Il tempo del benchmark dei lookup varia in base al computer e viene riportato alla fine della riga.
 
 ## Git
 
 ```bash
 git status
-git add static docs
-git commit -m "Aggiorna ioSudo V760 con dati Excel V146 e separa gli Adams"
+git add -A static docs
+git commit -m "Corregge i badge SOS ioSudo V769"
 git push origin master
 ```
 
-Dopo il deploy eseguire un hard refresh e, per la PWA installata, chiudere e riaprire l'app per attivare `iosudo-shell-v757`.
+L'overlay è autosufficiente, non modifica `.github/workflows` e può essere caricato direttamente in `incoming/overlays/`.
 
-## V776 / ioSudo V765
-- Sorgente: `v150_2026-07-23_fantacalcio_serie_a_2026_27_iosudo_v763_aggiornato_1400.xlsx`; cutoff 23/07/2026 14:00 CEST.
-- L'overlay contiene payload completi già migrati: GitHub Actions può copiare i file e lanciare subito l'audit.
-- Aggiornare sempre insieme header visibile, HTML, JavaScript, CSS, manifest e cache service worker.
-- Audit: `node static/fanta-engine/tools/audit-iosudo-v765.mjs .`.
-
-
-## V777 / ioSudo V766
-- Overlay autosufficiente per Mac e GitHub Actions.
-- Audit: `node static/fanta-engine/tools/audit-iosudo-v766.mjs .`.
-- Header, HTML, JavaScript, CSS, manifest e cache PWA devono riportare V766.
-
-
-## V778 / ioSudo V767
-- Overlay autosufficiente per Mac e GitHub Actions; non modifica `.github/workflows`.
-- Header, title, manifest, asset e cache PWA devono riportare V767.
-- Audit: `node static/fanta-engine/tools/audit-iosudo-v767.mjs .`.
-
-
-## V779 / ioSudo V768
-- Overlay autosufficiente per Mac e GitHub Actions; non modifica `.github/workflows`.
-- Header, title, manifest, JavaScript, CSS e cache PWA riportano V768.
-- Audit: `node static/fanta-engine/tools/audit-iosudo-v768.mjs .`.
+Dopo il deploy chiudere completamente la PWA e riaprirla per attivare `iosudo-shell-v769`.

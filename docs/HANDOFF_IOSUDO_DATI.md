@@ -2,50 +2,41 @@
 
 ## Versione corrente
 
-- ioSudo: V766.
-- Overlay complessivo: V777.
-- Sorgente: Excel V150, cutoff 23/07/2026 14:00 CEST.
-- Catalogo: 1215 persone; rose tecniche: 1018.
+- ioSudo: V769.
+- Overlay complessivo: V780.
+- Sorgente dati: `v154_2026-07-24_fantacalcio_serie_a_2026_27_iosudo_v767_aggiornato_0930(1).xlsx`.
+- Cutoff delle notizie: 24/07/2026 09:30 CEST.
+- Catalogo: 1230 persone; rose tecniche: 1018.
+- SOS attivi: 34.
+
+## Correzione V769: badge SOS
+
+Nel payload V768 il campo `sosFantaFlag` era stato valorizzato a `true` per 981 giocatori su 1018. Il generatore aveva interpretato come segnalazione attiva la semplice presenza del testo di stato fisico, compresi valori neutrali come `Disponibile / nessuna segnalazione SOS recente`.
+
+La release V769 applica queste regole:
+
+- il badge SOS pubblico deriva dall'indice delle righe SOS/infortuni attive;
+- `sosFlagActiveV769` e `sosFantaFlag` devono coincidere con l'appartenenza a quell'indice;
+- gli stati `nessuna segnalazione`, `nessun infortunio`, `nessuna indisponibilità` e `monitoraggio chiuso` non sono segnali SOS;
+- l'apertura del dettaglio usa le righe SOS già indicizzate per ID canonico;
+- l'audit blocca la release se esistono falsi positivi o falsi negativi.
+
+Risultato V769:
+
+- 34 giocatori con badge SOS;
+- 984 giocatori senza badge SOS;
+- 947 falsi positivi rimossi;
+- 0 falsi positivi residui;
+- 0 falsi negativi.
 
 ## Regole identità permanenti
 
-- Akor Adams (Venezia) è distinto da Che Adams (Torino).
-- Samuel Giovane (Atalanta, C) è distinto da Giovane Santana do Nascimento (Napoli, A).
-- Yunus Musah resta associato al Milan; il ruolo C proviene dal listone.
-- Massolin indica Yanis Massolin dell’Inter; Rabby Nzingoula è un altro giocatore.
-- Il ruolo del listone prevale quando l’identità è rappresentata nel listone.
-
-## Aggiornamento V760
-
-- Fuso il workbook V147 con le correzioni ioSudo V759.
-- Che Adams aggiunto alla rosa Torino senza creare una seconda identità.
-- Aggiornati i rumor serali di Franck Kessié e Alessio Romagnoli.
-- Aggiunte 9 nuove fonti non ancora presenti nell’archivio ioSudo.
-
-## Stato V765
-- Workbook: `v150_2026-07-23_fantacalcio_serie_a_2026_27_iosudo_v763_aggiornato_1400.xlsx`.
-- Catalogo: 1215 persone; roster tecnico deduplicato: 1018.
-- Ufficialità: 447; trattative attive incluse TM: 206; SOS attivi: 27.
-- Amichevoli: 107; tabellini: 27; prestazioni: 550.
-- Identità protette: Massimo/Matteo Pessina, Akor/Che Adams, i due Giovane, Yunus Musah, Yanis Massolin, Kostic e Stankovic.
-
-
-## Stato V766
-- Matteo Pessina: Monza, ruolo C; non è presente nel listone del 4 luglio e non deve ereditare il record `Pessina Mas.` del Bologna.
-- Massimo Pessina: Bologna, ruolo P, ID Fantacalcio 7172.
-- Il matching debole del listone ora rispetta gli alias limitati alla squadra e rifiuta candidati in conflitto sia per squadra sia per ruolo.
-
-
-## Stato V767
-- Sorgente: V151, cutoff 23/07/2026 18:25 CEST.
-- Alessio Romagnoli ha una sola identità `lazio-alessio-romagnoli`; la seconda riga Mercato_Giocatori è storica e non viene pubblicata.
-- `official-christian-comotto` è assorbito definitivamente in `milan-comotto` (Christian Comotto).
-- Il controllo duplicati copre ID, nomi visualizzati, ID Fantacalcio, alias contestuali e righe operative.
-
-
-## Stato V768
-- Sorgente: `v154_2026-07-24_fantacalcio_serie_a_2026_27_iosudo_v767_aggiornato_0930(1).xlsx`, cutoff 24/07/2026 09:30 CEST.
-- Catalogo: 1230 persone; roster tecnico: 1018.
-- Ufficialità: 449; trattative attive incluse TM: 178; SOS attivi: 34.
-- Amichevoli: 105; tabellini: 29; prestazioni: 595.
-- Controllo duplicati obbligatorio su ogni release; identità Pessina, Adams, Giovane, Musah, Massolin e Romagnoli protette.
+- Massimo Pessina: Bologna, ruolo P.
+- Matteo Pessina: Monza, ruolo C.
+- Akor Adams, Venezia, è distinto da Che Adams, Torino.
+- Samuel Giovane, Atalanta, è distinto da Giovane Santana do Nascimento, Napoli.
+- Yunus Musah resta associato al Milan.
+- Yanis Massolin è distinto da Rabby Nzingoula.
+- Filip Kostic è distinto da Andrej Kostić.
+- Alessio Romagnoli ha una sola identità canonica.
+- Ogni release deve rieseguire il controllo completo dei duplicati.
