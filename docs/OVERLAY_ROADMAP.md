@@ -60,3 +60,10 @@
 - Consolidata la riga storica duplicata di Alessio Romagnoli senza creare una seconda scheda.
 - Deduplicata l’identità Christian Comotto e aggiunto un audit permanente dei duplicati.
 - Aggiornato l’header visibile a ioSudo V767.
+
+
+## Completato in V779
+- Integrato Excel V154 fino alle 09:30 CEST del 24/07/2026.
+- Aggiornati mercato, SOS, amichevoli future, formazioni e fonti.
+- Rieseguita deduplica completa del catalogo e delle righe operative.
+- Aggiornato l’header visibile a ioSudo V768.

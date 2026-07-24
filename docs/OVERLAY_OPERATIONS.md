@@ -58,3 +58,9 @@ Dopo il deploy eseguire un hard refresh e, per la PWA installata, chiudere e ria
 - Overlay autosufficiente per Mac e GitHub Actions; non modifica `.github/workflows`.
 - Header, title, manifest, asset e cache PWA devono riportare V767.
 - Audit: `node static/fanta-engine/tools/audit-iosudo-v767.mjs .`.
+
+
+## V779 / ioSudo V768
+- Overlay autosufficiente per Mac e GitHub Actions; non modifica `.github/workflows`.
+- Header, title, manifest, JavaScript, CSS e cache PWA riportano V768.
+- Audit: `node static/fanta-engine/tools/audit-iosudo-v768.mjs .`.

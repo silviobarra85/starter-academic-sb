@@ -41,3 +41,11 @@
 - Alessio Romagnoli ha una sola identità `lazio-alessio-romagnoli`; la seconda riga Mercato_Giocatori è storica e non viene pubblicata.
 - `official-christian-comotto` è assorbito definitivamente in `milan-comotto` (Christian Comotto).
 - Il controllo duplicati copre ID, nomi visualizzati, ID Fantacalcio, alias contestuali e righe operative.
+
+
+## Stato V768
+- Sorgente: `v154_2026-07-24_fantacalcio_serie_a_2026_27_iosudo_v767_aggiornato_0930(1).xlsx`, cutoff 24/07/2026 09:30 CEST.
+- Catalogo: 1230 persone; roster tecnico: 1018.
+- Ufficialità: 449; trattative attive incluse TM: 178; SOS attivi: 34.
+- Amichevoli: 105; tabellini: 29; prestazioni: 595.
+- Controllo duplicati obbligatorio su ogni release; identità Pessina, Adams, Giovane, Musah, Massolin e Romagnoli protette.
