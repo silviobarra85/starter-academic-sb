@@ -1,12 +1,14 @@
 # Handoff ioSudo dati
 
-Versione corrente: **V773**.
+Release corrente: **V774**.
 
-Sorgente: `v159_2026-07-24_fantacalcio_serie_a_2026_27_iosudo_v772_aggiornato_1635.xlsx`; cutoff **24/07/2026 16:35 CEST**.
+- Sorgente: `v161_2026-07-24_fantacalcio_serie_a_2026_27_iosudo_v774_aggiornato_2030(1).xlsx`
+- Cutoff: 24/07/2026 20:30 CEST
+- Catalogo: 1104 giocatori; rose: 742.
+- Ufficialità: 277; trattative attive: 174; SOS: 53.
+- Zerbin e Luis Hasa sono al Frosinone mantenendo gli ID storici Napoli.
+- Nosa Obaretin e Christian Garofalo sono collegati ai rumor Genoa senza duplicati.
+- Il badge SOS deriva esclusivamente dall’indice degli infortuni attivi.
+- Il nuovo listone non è ancora incluso; al suo arrivo ricostruire gli ID e attivare `FUORI LISTONE`.
 
-- probabili XI completi per le 20 squadre: 220 slot, 11 per squadra;
-- Goal 22/07 fonte principale, Transfermarkt 09/07 per ballottaggi e gerarchie;
-- ogni titolare è collegato a un ID canonico, senza duplicati;
-- Gabriele Bracaglia corretto definitivamente come difensore;
-- Pessina, Bordon, Adams, Giovane, Kostic/Kostić, Stankovic e Massolin restano protetti;
-- prossimo listone: rifare il matching degli ID e attivare il badge `FUORI LISTONE`.
+- Deduplica confermata: Paolo Vismara, Kingstone Mutandwa e Gabriele Artistico unificati tra rosa e amichevoli.
