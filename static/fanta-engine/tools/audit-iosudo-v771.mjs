@@ -1,0 +1,28 @@
+import fs from 'node:fs';
+import path from 'node:path';
+const root=path.resolve(process.argv[2]||'.');
+const j=(p)=>JSON.parse(fs.readFileSync(path.join(root,p),'utf8'));
+const t=(p)=>fs.readFileSync(path.join(root,p),'utf8');
+const ok=(c,m)=>{if(!c) throw new Error(m);};
+const manifest=j('static/fanta-engine/data/sudatori/current/manifest.json');
+const runtime=j('static/fanta-engine/data/sudatori/current/sudatori-runtime.json');
+const archive=j('static/fanta-engine/data/sudatori/current/sudatori-data.json');
+const html=t('static/iosudo/index.html'); const sw=t('static/iosudo/sw.js'); const app=t('static/fanta-engine/js/apps/iosudo-app-v771.js');
+ok(manifest.version==='V771','manifest '+manifest.version); ok(runtime.meta?.version==='V771','runtime '+runtime.meta?.version);
+ok(html.includes('ioSudo V771')&&html.includes('data-iosudo-version="771"'),'header V771');
+ok(html.includes('iosudo-app-v771.js?v=771')&&html.includes('iosudo-app-v771.css?v=771'),'asset V771'); ok(sw.includes('iosudo-shell-v771'),'cache V771');
+const roster=Object.values(runtime.playersByTeam||{}).flat(); const byId=new Map(roster.map(p=>[p.id,p]));
+const directory=(runtime.playerDirectory||[]).map(x=>Object.keys(x).length===1&&byId.has(x.id)?byId.get(x.id):x);
+const ids=directory.map(p=>p.id); ok(new Set(ids).size===ids.length,'ID duplicati');
+const names=directory.map(p=>String(p.playerName||'').trim().toLocaleLowerCase('it-IT')); ok(new Set(names).size===names.length,'nomi duplicati');
+const fids=directory.map(p=>String(p.fantacalcioId||'')).filter(Boolean); ok(new Set(fids).size===fids.length,'ID Fantacalcio duplicati');
+const mass=directory.find(p=>p.id==='bologna-pessina-mas'),matt=byId.get('monza-pessina-mas'); ok(mass?.role==='P'&&matt?.role==='C','Pessina regressione');
+const filipe=byId.get('lazio-filipe-bordon'); const ricardo=directory.find(p=>p.id==='lazio-ricardo-bordon'); ok(filipe?.playerName==='Filipe Bordon'&&ricardo?.playerName==='Ricardo Bordon'&&filipe.id!==ricardo.id,'Bordon fusi');
+const injuries=Object.values(runtime.injuriesByTeam||{}).flat(); const activeIds=new Set(injuries.map(x=>x.canonicalPlayerId)); const activeRosterIds=new Set([...activeIds].filter(id=>byId.has(id)));
+let flagged=0,fp=0,fn=0; for(const p of roster){const exp=activeRosterIds.has(p.id);const got=p.sosFantaFlag===true&&p.sosFlagActiveV771===true;if(got)flagged++;if(got&&!exp)fp++;if(!got&&exp)fn++;}
+ok(fp===0&&fn===0,`badge SOS ${flagged}, FP ${fp}, FN ${fn}`);
+ok(archive.officialMoves.length===290,'ufficialita '+archive.officialMoves.length); ok(archive.teamTransferTalks.length===174,'trattative '+archive.teamTransferTalks.length);
+for(const collection of [archive.officialMoves||[],archive.teamTransferTalks||[],archive.transfermarktRumors||[],archive.injuries||[]]) for(const row of collection) ok(row.canonicalPlayerId&&ids.includes(row.canonicalPlayerId),`riga senza identita ${row.playerName||''}`);
+ok(directory.filter(p=>p.playerName==='Alessio Romagnoli').length===1,'Romagnoli duplicato');
+for (const [id,name] of [['como-van-der-brempt','Ignace Van der Brempt'],['parma-suzuki','Zion Suzuki'],['udinese-solet','Oumar Solet'],['lazio-artistico','Gabriele Artistico'],['cagliari-mutandwa','Kingstone Mutandwa'],['atalanta-vismara','Paolo Vismara']]) ok(directory.filter(p=>p.id===id&&p.playerName===name).length===1,`identita non consolidata ${name}`);
+console.log(`Audit ioSudo V771 OK - catalogo ${directory.length}, roster ${roster.length}, ufficialita ${archive.officialMoves.length}, trattative ${archive.teamTransferTalks.length}, SOS ${injuries.length}, duplicati 0.`);

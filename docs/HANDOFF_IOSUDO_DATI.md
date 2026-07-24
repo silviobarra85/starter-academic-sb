@@ -1,11 +1,13 @@
 # Handoff ioSudo dati
 
-Release corrente: **V770**, overlay **V781**.
+Release corrente: **V771**, overlay **V782**.
 
-- Sorgente: `v155_2026-07-24_fantacalcio_serie_a_2026_27_iosudo_v768_aggiornato_1130(1).xlsx`.
-- Cutoff: 24/07/2026 ore 11:30 CEST.
-- Catalogo: 1.230 persone; rosa tecnica: 1.018.
-- SOS attivi/monitoraggi: 37, con badge derivato esclusivamente dall'indice attivo.
-- Filipe Bordon (`lazio-filipe-bordon`) e Ricardo Bordon (`lazio-ricardo-bordon`) sono identità distinte.
-- Il cognome `Bordon` non deve essere usato come alias globale.
-- Ogni aggiornamento deve eseguire audit di ID, nomi completi, ID Fantacalcio, alias e righe operative.
+- Sorgente: `v157_2026-07-24_fantacalcio_serie_a_2026_27_iosudo_v770_aggiornato_1430(1).xlsx`.
+- Cutoff: 24/07/2026 ore 14:30 CEST.
+- Catalogo: 1096 persone; rosa tecnica: 743.
+- Ufficialità: 290; trattative attive: 174; rumor Transfermarkt: 15.
+- SOS attivi/monitoraggi: 52, con badge derivato esclusivamente dall'indice attivo.
+- Duplicati ID, nomi completi e ID Fantacalcio: 0.
+- Filipe Bordon e Ricardo Bordon restano identità distinte; Massimo Pessina P e Matteo Pessina C.
+- Header, asset, manifest e service worker sono sincronizzati a V771.
+- Il nuovo listone non è ancora presente: la procedura FUORI LISTONE verrà attivata al primo overlay che conterrà il nuovo file in assets/listoni.
