@@ -1,1 +1,132 @@
-{"id":"sudatori-iosudo-v771","version":"V771","seasonId":"2026-27","updatedAt":"2026-07-24","updatedAtTime":"14:30 CEST","generatedAt":"2026-07-24T14:30:00+02:00","overlayGeneratedAt":"2026-07-24T13:04:19+00:00","overlayGeneratedAtLabel":"24/07/2026 13:04 UTC","sourceFile":"v157_2026-07-24_fantacalcio_serie_a_2026_27_iosudo_v770_aggiornato_1430(1).xlsx","dedupVersion":"V771","notes":["Dati Excel V154 integrati fino alle 09:30 CEST del 24/07/2026.","Catalogo unico deduplicato di rose, listone e flussi informativi.","Ruoli del listone preservati; Matteo Pessina resta C del Monza e Massimo Pessina P del Bologna.","Controllo duplicati su ID, nomi completi, ID Fantacalcio e righe operative.","Header, manifest, asset e cache sincronizzati a V768.","V769 corregge i falsi badge SOS: il flag pubblico è collegato alle sole segnalazioni attive indicizzate.","V770: dati Excel V155 alle 11:30; fratelli Filipe e Ricardo Bordon disambiguati; aggiunti Furlanetto e Cataldi al registro SOS; controllo duplicati completo preservato.","V771: integrazione workbook V157; header V771; catalogo e duplicati ricontrollati."],"teams":20,"players":1096,"officialMoves":290,"teamTransferTalks":174,"transfermarktRumors":15,"injuries":52,"friendlies":105,"friendlyMatchDetails":29,"friendlyPlayerStats":595,"sources":854,"duplicatesExact":0,"duplicateIds":0,"activeOfficialRumors":0,"buildTag":"iosudo-v771-v157","dataFile":"sudatori-runtime.json","counts":{"teams":20,"players":1096,"rosterPlayers":743,"officialMoves":290,"teamTransferTalks":174,"transfermarktRumors":15,"injuries":52,"friendlies":105,"friendlyMatchDetails":29,"friendlyPlayerStats":595,"sources":854,"duplicatesExact":0,"duplicateIds":0,"activeOfficialRumors":0,"sosFlags":48,"catalogPlayers":1096,"rosterPlayersSource":839},"sourceWorkbook":"v157_2026-07-24_fantacalcio_serie_a_2026_27_iosudo_v770_aggiornato_1430(1).xlsx","appVersion":"V771","displayPlayers":1096,"playersSourceRows":1032,"runtimePayloadVersion":"V770","runtimeDataBytes":5999199,"archiveDataFile":"sudatori-data.json","archiveDataBytes":18425653,"canonicalNameChanges":108,"canonicalNameAmbiguities":0,"confirmedDuplicateMergesV755":1,"rosterPlayers":1018,"playerDirectoryPlayers":1230,"playerCatalogAuditV757":{"version":"V770","rosterPlayers":1018,"catalogPlayers":1215,"listoneRows":663,"listoneRepresented":663,"listoneCatalogOnly":25,"sourceCatalogOnly":172,"operationalRows":1450,"operationalRowsLinked":1450,"compositeOperationalRows":9,"missingListoneIds":[],"duplicateFantacalcioIds":[],"massolinId":"inter-massolin","massolinName":"Yanis Massolin","akorAdamsId":"venezia-akor-adams","akorAdamsName":"Akor Adams","cheAdamsId":"listone-6646","listoneMatches":637,"listoneCreated":26,"sourcePlayersCreated":154,"catalogIdRedirects":{"torino-akor-adams":"venezia-akor-adams","lazio-daniel-maldini":"atalanta-daniel-maldini","lecce-riccardo-sottil":"fiorentina-riccardo-sottil","sassuolo-fadera":"como-fadera","como-mergim-vojvoda":"udinese-mergim-vojvoda","genoa-seydou-fini":"frosinone-seydou-fini","napoli-alisson-santos-2":"napoli-alisson-santos","torino-francesco-dell-aquila-2":"torino-francesco-dell-aquila","genoa-gabriele-calvani":"frosinone-gabriele-calvani","genoa-gabriele-calvani-2":"frosinone-gabriele-calvani","parma-gaetano-oristanio":"torino-gaetano-oristanio","lazio-giacomone":"bologna-giacomo-giacomone","atalanta-giorgio-cittadini":"frosinone-giorgio-cittadini","milan-mattia-liberali":"como-mattia-liberali","bologna-riccardo-orsolini":"bologna-orsolini","roma-venturino":"genoa-venturino","cagliari-s-esposito":"cagliari-esposito-se","torino-che-adams":"listone-6646","official-aleksandar-stankovic":"inter-a-stankovic","inter-aleksandar-stankovic":"inter-a-stankovic","atalanta-samuel-giovane":"atalanta-giovane-atalanta","napoli-giovane-santana-do-nascimento":"napoli-giovane-napoli","genoa-seydou-fini-2":"frosinone-seydou-fini","market-vicario":"market-guglielmo-vicario","market-spence":"market-djed-spence","source-genoa-frederico-stradiotto-de-moraes-fred":"genoa-frederico-stradiotto-de-moraes","roma-ndicka":"roma-evan-ndicka","torino-francesco-dell-aquila":"torino-francesco-dellaquila","parma-roberto-d-intino":"parma-roberto-dintino","bologna-antoine-n-diaye":"bologna-antoine-ndiaye","como-nico-paz-2":"como-nico-paz","como-baturina-2":"como-baturina","juventus-francisco-conceicao-2":"juventus-francisco-conceicao","bologna-rowe-2":"bologna-rowe","lazio-gustav-isaksen-2":"lazio-gustav-isaksen","bologna-bernardeschi-2":"bologna-bernardeschi","sassuolo-volpato-2":"sassuolo-volpato","bologna-odgaard-2":"bologna-odgaard","lecce-pierotti-2":"lecce-pierotti","inter-luis-henrique-2":"inter-luis-henrique","genoa-messias-2":"genoa-messias","milan-samuel-chukwueze-2":"milan-samuel-chukwueze","parma-ondrejka-2":"parma-ondrejka","sassuolo-bakola-2":"sassuolo-bakola","lazio-przyborek-2":"lazio-przyborek","udinese-pafundi-2":"udinese-pafundi","official-christian-comotto":"milan-comotto","lazio-bordon":"lazio-filipe-bordon","amichevole-ricardo-bordon":"lazio-ricardo-bordon"},"duplicateDisplayNames":{},"identityOverrides":{"bologna-pessina-mas":"Massimo Pessina","monza-pessina-mas":"Matteo Pessina","venezia-akor-adams":"Akor Adams","listone-6646":"Che Adams","atalanta-giovane-atalanta":"Samuel Giovane","napoli-giovane-napoli":"Giovane Santana do Nascimento","milan-yunus-musah":"Yunus Musah","inter-massolin":"Yanis Massolin","juventus-kostic":"Filip Kostic","milan-kostic":"Andrej Kostić","inter-a-stankovic":"Aleksandar Stankovic","venezia-filip-stankovic":"Filip Stankovic","market-chalobah":"Trevoh Chalobah","market-davinson-sanchez":"Davinson Sanchez","fiorentina-valentini":"Nicolas Valentini","fiorentina-matias-moreno":"Matias Moreno","market-franck-kessie":"Franck Kessié","market-emiliano-martinez":"Emiliano Martinez","market-guglielmo-vicario":"Guglielmo Vicario","market-randal-kolo-muani":"Randal Kolo Muani","bologna-castro":"Santiago Castro","market-djed-spence":"Djed Spence","market-curtis-jones":"Curtis Jones","udinese-solet":"Oumar Solet","milan-filippo-terracciano":"Filippo Terracciano","market-gonzalo-tapia":"Gonzalo Tapia","genoa-norton-cuffy":"Brooke Norton-Cuffy","roma-dovbyk":"Artem Dovbyk","market-antonio-nusa":"Antonio Nusa","market-diego-moreira":"Diego Moreira","market-guela-doue":"Guela Doué","market-molina":"Nahuel Molina","source-carlos-espi":"Carlos Espí","genoa-frederico-stradiotto-de-moraes":"Frederico Stradiotto de Moraes","milan-comotto":"Christian Comotto"},"verifiedRegistryNames":535,"yunusMusahId":"milan-yunus-musah","yunusMusahCurrentTeam":"Milan","giovaneAtalantaId":"atalanta-giovane-atalanta","giovaneNapoliId":"napoli-giovane-napoli","protectedSurnameAliases":["Adams","Bordon","Coulibaly","Giovane","Kostic","Pessina","Stankovic"],"cheAdamsName":"Che Adams","mergeV147V760":{"source":"v147_2026-07-22_fantacalcio_serie_a_2026_27_aggiornato_2314.xlsx","cutoff":"22/07/2026 23:14 CEST","newSources":9},"sourceWorkbookV765":"v150_2026-07-23_fantacalcio_serie_a_2026_27_iosudo_v763_aggiornato_1400.xlsx","cutoffV765":"23/07/2026 14:00 CEST","sourceWorkbookV767":"v151_2026-07-23_fantacalcio_serie_a_2026_27_iosudo_v764_aggiornato_1825_finale(1).xlsx","cutoffV767":"23/07/2026 18:25 CEST","protectedBordonIdentitiesV770":[{"id":"lazio-filipe-bordon","name":"Filipe Bordon","team":"Lazio","role":"D","aliases":["Filipe Bordon","F. Bordon","Bordon"]},{"id":"lazio-ricardo-bordon","name":"Ricardo Bordon","team":"Lazio U20","role":"D","aliases":["Ricardo Bordon","R. Bordon"]}]},"musahCurrentTeamV759":{"id":"milan-yunus-musah","team":"Milan","role":"C","roleSource":"LISTONE","teamSource":"UFFICIALITÀ","listoneTeamAtLoad":"Atalanta"},"protectedGiovaneIdentitiesV759":[{"id":"atalanta-giovane-atalanta","name":"Samuel Giovane","team":"Atalanta","role":"C"},{"id":"napoli-giovane-napoli","name":"Giovane Santana do Nascimento","team":"Napoli","role":"A"}],"protectedPessinaIdentitiesV765":[{"id":"bologna-pessina-mas","name":"Massimo Pessina","team":"Bologna","role":"P"},{"id":"monza-pessina-mas","name":"Matteo Pessina","team":"Monza","role":"C"}],"protectedPessinaIdentitiesV766":[{"id":"bologna-pessina-mas","name":"Massimo Pessina","team":"Bologna","role":"P","listoneId":"7172"},{"id":"monza-pessina-mas","name":"Matteo Pessina","team":"Monza","role":"C","listoneId":null}],"duplicateAuditV767":{"catalogPlayers":1216,"rosterPlayers":1018,"duplicateIds":0,"duplicateDisplayNames":0,"romagnoliPlayers":["lazio-alessio-romagnoli"],"romagnoliActiveTalks":1,"confirmedMerge":{"official-christian-comotto":"milan-comotto"},"newSourcePlayers":["market-fedde-leysen","market-lorenzo-pirola"],"protectedSurnameAliases":["Adams","Giovane","Pessina","Kostic","Stankovic","Coulibaly","Romagnoli"]},"duplicateAuditV768":{"catalogPlayers":1230,"rosterPlayers":1018,"duplicateIds":0,"duplicateDisplayNames":0,"duplicateFantacalcioIds":0,"romagnoliPlayers":1,"protectedPessinaIdentities":[{"id":"bologna-pessina-mas","name":"Massimo Pessina","role":"P"},{"id":"monza-pessina-mas","name":"Matteo Pessina","role":"C"}]},"sosFlagAuditV769":{"rosterPlayers":1018,"activeCanonicalIds":34,"flaggedRosterPlayers":34,"falsePositiveFlagsRemoved":947,"mode":"active-injury-index-only"},"sosFlagAuditV770":{"activeInjuryRows":37,"activeCanonicalIds":37,"rosterPlayers":1018,"flaggedRosterPlayers":37,"mode":"active-injury-index-only"},"protectedBordonIdentitiesV770":[{"id":"lazio-filipe-bordon","name":"Filipe Bordon","team":"Lazio","role":"D","aliases":["Filipe Bordon","F. Bordon","Bordon"]},{"id":"lazio-ricardo-bordon","name":"Ricardo Bordon","team":"Lazio U20","role":"D","aliases":["Ricardo Bordon","R. Bordon"]}],"duplicateAuditV771":{"catalogPlayers":1096,"rosterPlayers":743,"duplicateIds":0,"duplicateDisplayNames":0,"duplicateFantacalcioIds":0,"semanticDuplicateCandidates":0,"ambiguousMatchesReviewed":0,"protectedBordonIdentities":2},"sosFlagAuditV771":{"activeInjuryRows":52,"activeCanonicalIds":52,"rosterPlayers":743,"flaggedRosterPlayers":48,"mode":"active-injury-index-only"},"protectedBordonIdentitiesV771":[{"id":"lazio-filipe-bordon","name":"Filipe Bordon","team":"Lazio","role":"D"},{"id":"lazio-ricardo-bordon","name":"Ricardo Bordon","team":"Lazio U20","role":"D"}]}
+{
+  "id": "sudatori-iosudo-v773",
+  "version": "V773",
+  "seasonId": "2026-27",
+  "updatedAt": "2026-07-24",
+  "updatedAtTime": "16:35 CEST",
+  "generatedAt": "2026-07-24T16:35:00+02:00",
+  "overlayGeneratedAt": "2026-07-24T15:01:56Z",
+  "overlayGeneratedAtLabel": "24/07/2026 15:01 UTC",
+  "sourceFile": "v159_2026-07-24_fantacalcio_serie_a_2026_27_iosudo_v772_aggiornato_1635.xlsx",
+  "sourceWorkbook": "v159_2026-07-24_fantacalcio_serie_a_2026_27_iosudo_v772_aggiornato_1635.xlsx",
+  "dedupVersion": "V773",
+  "appVersion": "V773",
+  "buildTag": "iosudo-v773-v159",
+  "runtimePayloadVersion": "V773",
+  "teams": 20,
+  "players": 1107,
+  "displayPlayers": 1107,
+  "rosterPlayers": 742,
+  "playerDirectoryPlayers": 1107,
+  "playersSourceRows": 828,
+  "officialMoves": 273,
+  "teamTransferTalks": 170,
+  "transfermarktRumors": 14,
+  "injuries": 52,
+  "friendlies": 105,
+  "friendlyMatchDetails": 27,
+  "friendlyPlayerStats": 550,
+  "sources": 860,
+  "duplicatesExact": 0,
+  "duplicateIds": 0,
+  "activeOfficialRumors": 0,
+  "dataFile": "sudatori-runtime.json",
+  "archiveDataFile": "sudatori-data.json",
+  "notes": [
+    "Dati V159 al 24/07/2026 16:35 CEST.",
+    "Probabili XI completi: 20 squadre, 11 giocatori per squadra, 220 identità canoniche.",
+    "Goal 22/07 usato come fonte principale; Transfermarkt 09/07 per ballottaggi e gerarchie.",
+    "Header applicazione sincronizzato a V773.",
+    "Controllo duplicati eseguito; nessun ID duplicato nei probabili XI.",
+    "Il nuovo listone non è ancora incluso; il badge FUORI LISTONE resta previsto per il prossimo listone."
+  ],
+  "counts": {
+    "teams": 20,
+    "players": 1107,
+    "rosterPlayers": 742,
+    "officialMoves": 273,
+    "teamTransferTalks": 170,
+    "transfermarktRumors": 14,
+    "injuries": 52,
+    "friendlies": 105,
+    "friendlyMatchDetails": 27,
+    "friendlyPlayerStats": 550,
+    "sources": 860,
+    "duplicatesExact": 0,
+    "duplicateIds": 0,
+    "activeOfficialRumors": 0,
+    "formationPlayers": 220,
+    "formationTeams": 20
+  },
+  "runtimeDataBytes": 8124499,
+  "archiveDataBytes": 23243550,
+  "formationPlayers": 220,
+  "formationTeams": 20,
+  "duplicateAuditV773": {
+    "catalogPlayers": 1107,
+    "rosterPlayers": 742,
+    "duplicateIds": 0,
+    "duplicateDisplayNames": 0,
+    "duplicateOfficialRows": 0,
+    "duplicateTalkRows": 0,
+    "duplicateFormationPlayers": 0,
+    "protectedPessina": [
+      "bologna-pessina-mas",
+      "monza-pessina-mas"
+    ],
+    "protectedBordon": [
+      "lazio-filipe-bordon",
+      "lazio-ricardo-bordon"
+    ]
+  },
+  "sosFlagAuditV773": {
+    "activeInjuryRows": 52,
+    "activeCanonicalIds": 52,
+    "rosterPlayers": 742,
+    "flaggedRosterPlayers": 48,
+    "mode": "active-injury-index-only"
+  },
+  "protectedPessinaIdentitiesV773": [
+    {
+      "id": "bologna-pessina-mas",
+      "name": "Massimo Pessina",
+      "team": "Bologna",
+      "role": "P"
+    },
+    {
+      "id": "monza-pessina-mas",
+      "name": "Matteo Pessina",
+      "team": "Monza",
+      "role": "C"
+    }
+  ],
+  "protectedBordonIdentitiesV773": [
+    {
+      "id": "lazio-filipe-bordon",
+      "name": "Filipe Bordon",
+      "team": "Lazio",
+      "role": "D"
+    },
+    {
+      "id": "lazio-ricardo-bordon",
+      "name": "Ricardo Bordon",
+      "team": "Lazio U20",
+      "role": "D"
+    }
+  ],
+  "formationAuditV773": {
+    "teams": 20,
+    "slots": 220,
+    "slotsPerTeam": 11,
+    "resolvedCanonicalIds": 220,
+    "duplicateCanonicalIds": 0,
+    "unresolvedPlayers": 0,
+    "sourcePrimary": "Goal 22/07/2026",
+    "sourceSecondary": "Transfermarkt 09/07/2026",
+    "roleCorrection": {
+      "id": "frosinone-bracaglia",
+      "name": "Gabriele Bracaglia",
+      "role": "D"
+    }
+  }
+}

@@ -1,13 +1,10 @@
 # Roadmap overlay
 
-## Stato corrente
+## Prossimo listone
 
-- ioSudo V770 / overlay V781.
-- Header, manifest, asset e cache sincronizzati.
-- Catalogo indicizzato e deduplicato.
-- Badge SOS collegati soltanto alle 37 segnalazioni attive o in monitoraggio.
-- Protezioni permanenti: Pessina, Adams, Giovane, Kostic/Kostić, Stankovic, Massolin/Nzingoula e fratelli Bordon.
-
-
-- V782 completato: dati V157, pulizia catalogo, controllo duplicati e header V771.
-- Prossimo listone: import in assets/listoni, remapping completo ID e badge FUORI LISTONE per i giocatori ancora nelle rose fantasy ma assenti dal listone corrente.
+- inserire il file in `assets/listoni`;
+- considerarlo listone corrente;
+- rifare il matching di tutti gli ID, senza riutilizzare automaticamente quelli precedenti;
+- controllare duplicati e omonimie;
+- aggiungere il badge `FUORI LISTONE` ai giocatori presenti nelle rose ma assenti dal nuovo listone;
+- aggiornare sempre l’header visibile dell’app.

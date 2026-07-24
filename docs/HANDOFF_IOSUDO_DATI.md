@@ -1,13 +1,12 @@
 # Handoff ioSudo dati
 
-Release corrente: **V771**, overlay **V782**.
+Versione corrente: **V773**.
 
-- Sorgente: `v157_2026-07-24_fantacalcio_serie_a_2026_27_iosudo_v770_aggiornato_1430(1).xlsx`.
-- Cutoff: 24/07/2026 ore 14:30 CEST.
-- Catalogo: 1096 persone; rosa tecnica: 743.
-- Ufficialità: 290; trattative attive: 174; rumor Transfermarkt: 15.
-- SOS attivi/monitoraggi: 52, con badge derivato esclusivamente dall'indice attivo.
-- Duplicati ID, nomi completi e ID Fantacalcio: 0.
-- Filipe Bordon e Ricardo Bordon restano identità distinte; Massimo Pessina P e Matteo Pessina C.
-- Header, asset, manifest e service worker sono sincronizzati a V771.
-- Il nuovo listone non è ancora presente: la procedura FUORI LISTONE verrà attivata al primo overlay che conterrà il nuovo file in assets/listoni.
+Sorgente: `v159_2026-07-24_fantacalcio_serie_a_2026_27_iosudo_v772_aggiornato_1635.xlsx`; cutoff **24/07/2026 16:35 CEST**.
+
+- probabili XI completi per le 20 squadre: 220 slot, 11 per squadra;
+- Goal 22/07 fonte principale, Transfermarkt 09/07 per ballottaggi e gerarchie;
+- ogni titolare è collegato a un ID canonico, senza duplicati;
+- Gabriele Bracaglia corretto definitivamente come difensore;
+- Pessina, Bordon, Adams, Giovane, Kostic/Kostić, Stankovic e Massolin restano protetti;
+- prossimo listone: rifare il matching degli ID e attivare il badge `FUORI LISTONE`.
