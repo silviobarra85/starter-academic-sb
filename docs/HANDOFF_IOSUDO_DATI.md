@@ -1,10 +1,8 @@
 # Handoff ioSudo dati
 
-## Release corrente
-- ioSudo V777 / overlay V787.
-- Sorgente: Excel V164 del 25/07/2026 ore 09:30 CEST.
-- Rumor: 175 righe runtime visibili (107 entrata, 64 uscita, 4 permanenza/rinnovo).
-- Tabellini: tutte le 664 righe di `Amichevoli_Giocatori` pubblicate in 32 dettagli squadra-partita.
-- Nuovi tabellini: Como-Paris FC, Udinese-Swansea, Galatasaray-Monza; recuperati anche Cagliari-Sampdoria e Roma-Trastevere.
-- Duplicati ID e nomi visualizzati: 0.
-- Header, manifest, script e cache sincronizzati a V777.
+Release corrente: **V778**. Sorgente: `v165_2026-07-25_fantacalcio_serie_a_2026_27_iosudo_v778_aggiornato_1250.xlsx`, cutoff 25/07/2026 12:50 CEST.
+
+- 175 trattative visibili nei bucket runtime.
+- 32 tabellini e 664 prestazioni preservati.
+- Cagliari-Sampdoria usa la fonte ufficiale del club.
+- Controllo duplicati obbligatorio a ogni release.
