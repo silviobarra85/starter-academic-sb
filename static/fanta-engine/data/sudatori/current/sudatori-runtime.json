@@ -1,19 +1,19 @@
 {
   "meta": {
-    "id": "sudatori-iosudo-v779",
-    "version": "V779",
+    "id": "sudatori-iosudo-v780",
+    "version": "V780",
     "seasonId": "2026-27",
     "updatedAt": "2026-07-25",
-    "updatedAtTime": "15:20 CEST",
-    "generatedAt": "2026-07-25T15:20:00+02:00",
+    "updatedAtTime": "18:05 CEST",
+    "generatedAt": "2026-07-25T18:05:00+02:00",
     "overlayGeneratedAt": "2026-07-25T13:46:26Z",
     "overlayGeneratedAtLabel": "25/07/2026 13:46 UTC",
-    "sourceFile": "v166_2026-07-25_fantacalcio_serie_a_2026_27_iosudo_v779_aggiornato_1520.xlsx",
-    "sourceWorkbook": "v166_2026-07-25_fantacalcio_serie_a_2026_27_iosudo_v779_aggiornato_1520.xlsx",
-    "dedupVersion": "V779",
-    "appVersion": "V779",
-    "buildTag": "iosudo-v779-v166",
-    "runtimePayloadVersion": "V779",
+    "sourceFile": "v167_2026-07-25_fantacalcio_serie_a_2026_27_iosudo_v780_aggiornato_1805.xlsx",
+    "sourceWorkbook": "v167_2026-07-25_fantacalcio_serie_a_2026_27_iosudo_v780_aggiornato_1805.xlsx",
+    "dedupVersion": "V780",
+    "appVersion": "V780",
+    "buildTag": "iosudo-v780-v167",
+    "runtimePayloadVersion": "V780",
     "teams": 20,
     "players": 1122,
     "displayPlayers": 1122,
@@ -46050,10 +46050,10 @@
         "rosterSource": "https://www.transfermarkt.it/juventus-turin/startseite/verein/506/saison_id/2026",
         "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
         "updatedAt": "2026-07-25",
-        "flag": "AGG V779",
-        "marketStatus": "In uscita / Fiorentina in forte avanzamento",
-        "marketDetail": "Fiorentina in pressing; formula definitiva ancora da concordare. Resta nella Juventus fino all’ufficialità.",
-        "marketSource": "https://www.sosfanta.com/news/fiorentina-spinge-joao-mario-formula-echeverri/",
+        "flag": "AGG V780",
+        "marketStatus": "Trattativa avanzata / offerta ufficiale",
+        "marketDetail": "Fiorentina: offerta alla Juventus per prestito con diritto di riscatto tra 8 e 9 milioni di euro; chiusura possibile nei prossimi giorni.",
+        "marketSource": "https://sport.sky.it/calciomercato/2026/07/25/fiorentina-joao-mario-calciomercato-news",
         "marketNote": "Aggiornamento V778; rosa invariata fino a ufficialità.",
         "probableXi": false,
         "formationPosition": "",
@@ -46239,7 +46239,9 @@
           "ROSA",
           "TRATTATIVA",
           "UFFICIALITÀ"
-        ]
+        ],
+        "identityStatusV780": "CANONICO V780",
+        "identityNotesV780": "Aggiornato da Excel V167; identità stabile e controllo duplicati completo."
       },
       {
         "id": "juventus-jonas-rouhi",
@@ -50675,11 +50677,11 @@
         "module": "3-4-2-1 / 4-3-3",
         "rosterSource": "https://www.transfermarkt.it/juventus-turin/startseite/verein/506/saison_id/2026",
         "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.; Alias normalizzato V728",
-        "updatedAt": "2026-07-23",
-        "flag": "NUOVO ACQUISTO",
-        "marketStatus": "Rumor uscita molto avanzato",
-        "marketDetail": "Lione vicino: prestito con diritto di riscatto riportato; nessuna ufficialità.",
-        "marketSource": "https://www.sportmediaset.mediaset.it/mercato/juventus-si-sblocca-il-mercato-in-uscita-openda-e-a-un-passo-dal-lione_114747269-202602k.shtml",
+        "updatedAt": "2026-07-25",
+        "flag": "AGG V780",
+        "marketStatus": "Uscita definita / comunicato atteso",
+        "marketDetail": "Accordo per il Lione: prestito oneroso con diritto di riscatto. Resta formalmente nella Juventus fino al comunicato ufficiale.",
+        "marketSource": "https://sport.sky.it/calciomercato/2026/07/25/openda-juventus-lione-calciomercato-news",
         "marketNote": "",
         "probableXi": false,
         "formationPosition": "",
@@ -50862,7 +50864,9 @@
           "UFFICIALITÀ"
         ],
         "publicSourceV776": "LISTONE",
-        "sosFlagActiveV776": false
+        "sosFlagActiveV776": false,
+        "identityStatusV780": "CANONICO V780",
+        "identityNotesV780": "Aggiornato da Excel V167; identità stabile e controllo duplicati completo."
       },
       {
         "id": "juventus-n-gonzalez",
@@ -61632,7 +61636,16 @@
           "ROSA"
         ],
         "publicSourceV776": "LISTONE",
-        "sosFlagActiveV776": false
+        "sosFlagActiveV776": false,
+        "sourceKindsV780": [
+          "AMICHEVOLE",
+          "LISTONE",
+          "ROSA"
+        ],
+        "catalogSourcesCountV780": 3,
+        "publicSourceV780": "LISTONE",
+        "identityStatusV780": "CANONICO V780",
+        "sosFlagActiveV780": false
       },
       {
         "id": "milan-athekame",
@@ -61805,7 +61818,16 @@
           "ROSA"
         ],
         "publicSourceV776": "LISTONE",
-        "sosFlagActiveV776": false
+        "sosFlagActiveV776": false,
+        "sourceKindsV780": [
+          "AMICHEVOLE",
+          "LISTONE",
+          "ROSA"
+        ],
+        "catalogSourcesCountV780": 3,
+        "publicSourceV780": "LISTONE",
+        "identityStatusV780": "CANONICO V780",
+        "sosFlagActiveV780": false
       },
       {
         "id": "milan-bartesaghi",
@@ -61987,7 +62009,17 @@
           "ROSA"
         ],
         "publicSourceV776": "LISTONE",
-        "sosFlagActiveV776": false
+        "sosFlagActiveV776": false,
+        "sourceKindsV780": [
+          "AMICHEVOLE",
+          "FORMAZIONE",
+          "LISTONE",
+          "ROSA"
+        ],
+        "catalogSourcesCountV780": 4,
+        "publicSourceV780": "LISTONE",
+        "identityStatusV780": "CANONICO V780",
+        "sosFlagActiveV780": false
       },
       {
         "id": "milan-berkay-karaca",
@@ -62623,7 +62655,16 @@
           "ROSA"
         ],
         "publicSourceV776": "LISTONE",
-        "sosFlagActiveV776": false
+        "sosFlagActiveV776": false,
+        "sourceKindsV780": [
+          "AMICHEVOLE",
+          "LISTONE",
+          "ROSA"
+        ],
+        "catalogSourcesCountV780": 3,
+        "publicSourceV780": "LISTONE",
+        "identityStatusV780": "CANONICO V780",
+        "sosFlagActiveV780": false
       },
       {
         "id": "milan-gabbia",
@@ -62799,7 +62840,17 @@
           "ROSA"
         ],
         "publicSourceV776": "LISTONE",
-        "sosFlagActiveV776": false
+        "sosFlagActiveV776": false,
+        "sourceKindsV780": [
+          "AMICHEVOLE",
+          "FORMAZIONE",
+          "LISTONE",
+          "ROSA"
+        ],
+        "catalogSourcesCountV780": 4,
+        "publicSourceV780": "LISTONE",
+        "identityStatusV780": "CANONICO V780",
+        "sosFlagActiveV780": false
       },
       {
         "id": "milan-gila",
@@ -62822,15 +62873,15 @@
         "formationPosition": "DCD",
         "formationSourcePosition": "DCD",
         "formationLine": "DCD",
-        "physicalStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "formationPhysicalStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryDetail": "Nessuna segnalazione specifica nelle fonti SOS consultate.",
-        "injuryReturn": "",
-        "injurySource": "",
-        "injuryUpdatedAt": "2026-07-10",
-        "injuryNote": "",
-        "injuryImpact": "",
+        "physicalStatus": "Da valutare / monitoraggio",
+        "injuryStatus": "Da valutare / monitoraggio",
+        "formationPhysicalStatus": "Da valutare / monitoraggio",
+        "injuryDetail": "Problema muscolare durante Celtic-Milan; entrato al 46’ e sostituito al 68’. Entità non comunicata dal club.",
+        "injuryReturn": "Da valutare prima della prossima amichevole",
+        "injurySource": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+        "injuryUpdatedAt": "2026-07-25",
+        "injuryNote": "Monitorare gli aggiornamenti del club; possibile gestione precauzionale.",
+        "injuryImpact": "Medio",
         "formationCheck": "OK",
         "formationRoleOk": "OK",
         "formationModuleUsed": "3-4-2-1",
@@ -62839,7 +62890,7 @@
         "disambiguatedName": "Gila",
         "newAcquisition": true,
         "qualityControl": "OK - spostato Lazio -> Milan",
-        "sosFantaFlag": false,
+        "sosFantaFlag": true,
         "hasRenewal": false,
         "rolePreviousV754": "D",
         "roleSource": "LISTONE",
@@ -62920,7 +62971,7 @@
           "UFFICIALITÀ"
         ],
         "catalogSourcesCountV765": 5,
-        "injurySeverity": "",
+        "injurySeverity": "Entità non comunicata ufficialmente.",
         "identityStatusV768": "CANONICO V768",
         "identityNotesV768": "Aggiornato da Excel V154; roster attivo ereditato dalla deduplica V767.",
         "sourceKindsV768": [
@@ -62993,7 +63044,19 @@
           "UFFICIALITÀ"
         ],
         "publicSourceV776": "LISTONE",
-        "sosFlagActiveV776": false
+        "sosFlagActiveV776": false,
+        "identityStatusV780": "CANONICO V780",
+        "identityNotesV780": "Aggiornato da Excel V167; identità stabile e controllo duplicati completo.",
+        "sosFlagActiveV780": true,
+        "sourceKindsV780": [
+          "AMICHEVOLE",
+          "FORMAZIONE",
+          "LISTONE",
+          "ROSA",
+          "UFFICIALITÀ"
+        ],
+        "catalogSourcesCountV780": 5,
+        "publicSourceV780": "LISTONE"
       },
       {
         "id": "milan-odogu",
@@ -63166,7 +63229,16 @@
           "ROSA"
         ],
         "publicSourceV776": "LISTONE",
-        "sosFlagActiveV776": false
+        "sosFlagActiveV776": false,
+        "sourceKindsV780": [
+          "AMICHEVOLE",
+          "LISTONE",
+          "ROSA"
+        ],
+        "catalogSourcesCountV780": 3,
+        "publicSourceV780": "LISTONE",
+        "identityStatusV780": "CANONICO V780",
+        "sosFlagActiveV780": false
       },
       {
         "id": "milan-pavlovic",
@@ -63348,7 +63420,17 @@
           "ROSA"
         ],
         "publicSourceV776": "LISTONE",
-        "sosFlagActiveV776": false
+        "sosFlagActiveV776": false,
+        "sourceKindsV780": [
+          "AMICHEVOLE",
+          "FORMAZIONE",
+          "LISTONE",
+          "ROSA"
+        ],
+        "catalogSourcesCountV780": 4,
+        "publicSourceV780": "LISTONE",
+        "identityStatusV780": "CANONICO V780",
+        "sosFlagActiveV780": false
       },
       {
         "id": "milan-spyridon-petros-zormpas",
@@ -63661,7 +63743,17 @@
           "TRATTATIVA"
         ],
         "publicSourceV776": "LISTONE",
-        "sosFlagActiveV776": false
+        "sosFlagActiveV776": false,
+        "sourceKindsV780": [
+          "AMICHEVOLE",
+          "LISTONE",
+          "ROSA",
+          "TRATTATIVA"
+        ],
+        "catalogSourcesCountV780": 4,
+        "publicSourceV780": "LISTONE",
+        "identityStatusV780": "CANONICO V780",
+        "sosFlagActiveV780": false
       },
       {
         "id": "milan-zukic",
@@ -64143,119 +64235,6 @@
         "sosFlagActiveV776": false
       },
       {
-        "id": "milan-bennacer",
-        "teamId": "milan",
-        "teamName": "Milan",
-        "playerName": "Bennacer",
-        "target": "Bennacer",
-        "role": "C",
-        "coach": "Ruben Amorim",
-        "module": "3-4-2-1 / 3-4-3",
-        "rosterSource": "https://www.transfermarkt.it/ac-mailand/startseite/verein/5/saison_id/2026",
-        "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
-        "updatedAt": "2026-07-12",
-        "flag": "",
-        "marketStatus": "In rosa",
-        "marketDetail": "Nessuna segnalazione mercato rilevante nelle fonti consultate.",
-        "marketSource": "",
-        "marketNote": "",
-        "probableXi": false,
-        "formationPosition": "",
-        "formationSourcePosition": "",
-        "formationLine": "",
-        "physicalStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "formationPhysicalStatus": "Disponibile / nessuna segnalazione SOS recente",
-        "injuryDetail": "Nessuna segnalazione specifica nelle fonti SOS consultate.",
-        "injuryReturn": "",
-        "injurySource": "",
-        "injuryUpdatedAt": "2026-07-10",
-        "injuryNote": "",
-        "injuryImpact": "",
-        "formationCheck": "",
-        "formationRoleOk": "",
-        "formationModuleUsed": "",
-        "formationCorrectionNote": "",
-        "originalName": "Bennacer",
-        "disambiguatedName": "Bennacer",
-        "newAcquisition": false,
-        "qualityControl": "",
-        "sosFantaFlag": false,
-        "hasRenewal": false,
-        "roleSource": "ROSA",
-        "nameSource": "ROSA",
-        "nameAliasesV755": [
-          "Bennacer"
-        ],
-        "canonicalFullName": "Bennacer",
-        "nameCanonicalizationReasonV755": "nessuna espansione sicura",
-        "sourceKindsV756": [
-          "ROSA"
-        ],
-        "catalogSourcesCountV756": 1,
-        "identityStatusV757": "CANONICO V757",
-        "identityNotesV757": "Mappa costruita fondendo v145 operativo e metadati V754; nessuna fusione globale di cognomi ambigui.",
-        "sourceKindsV757": [
-          "ROSA"
-        ],
-        "catalogSourcesCountV757": 1,
-        "identityStatusV765": "CANONICO V765",
-        "identityNotesV765": "Identità unica da rose, listone e flussi; alias contestuali per squadra.",
-        "publicSourceV765": "ROSA",
-        "sourceKindsV765": [
-          "ROSA"
-        ],
-        "catalogSourcesCountV765": 1,
-        "injurySeverity": "",
-        "identityStatusV768": "CANONICO V768",
-        "identityNotesV768": "Aggiornato da Excel V154; roster attivo ereditato dalla deduplica V767.",
-        "sourceKindsV768": [
-          "ROSA"
-        ],
-        "catalogSourcesCountV768": 1,
-        "publicSourceV768": "ROSA",
-        "sosFlagActiveV769": false,
-        "sosFlagActiveV770": false,
-        "identityStatusV771": "CANONICO V771",
-        "identityNotesV771": "Rosa ricostruita dal workbook V157; identità deduplicata per nome, squadra, ruolo, alias e storico.",
-        "sosFlagActiveV771": false,
-        "sourceKindsV771": [
-          "ROSA"
-        ],
-        "catalogSourcesCountV771": 1,
-        "publicSourceV771": "ROSA",
-        "identityStatusV772": "CANONICO V772",
-        "identityNotesV772": "Aggiornato da Excel V158; identità stabile e deduplicata.",
-        "sosFlagActiveV772": false,
-        "sourceKindsV772": [
-          "ROSA"
-        ],
-        "catalogSourcesCountV772": 1,
-        "publicSourceV772": "ROSA",
-        "sourceKindsV773": [
-          "ROSA"
-        ],
-        "catalogSourcesCountV773": 1,
-        "publicSourceV773": "ROSA",
-        "identityStatusV773": "CANONICO V773",
-        "identityNotesV773": "Identità stabile; probabili XI V159 collegati per ID canonico e squadra.",
-        "sourceKindsV774": [
-          "ROSA"
-        ],
-        "catalogSourcesCountV774": 1,
-        "publicSourceV774": "ROSA",
-        "identityStatusV774": "CANONICO V774",
-        "identityNotesV774": "Aggiornato da Excel V161; identità stabile, alias contestuali e controllo duplicati completo.",
-        "sosFlagActiveV774": false,
-        "identityStatusV776": "CANONICO V776",
-        "identityNotesV776": "Aggiornato da Excel V163; identità stabile e controllo duplicati completo.",
-        "sourceKindsV776": [
-          "ROSA"
-        ],
-        "publicSourceV776": "ROSA",
-        "sosFlagActiveV776": false
-      },
-      {
         "id": "milan-bondo",
         "teamId": "milan",
         "teamName": "Milan",
@@ -64543,7 +64522,15 @@
           "ROSA"
         ],
         "publicSourceV776": "ROSA",
-        "sosFlagActiveV776": false
+        "sosFlagActiveV776": false,
+        "sourceKindsV780": [
+          "AMICHEVOLE",
+          "ROSA"
+        ],
+        "catalogSourcesCountV780": 2,
+        "publicSourceV780": "ROSA",
+        "identityStatusV780": "CANONICO V780",
+        "sosFlagActiveV780": false
       },
       {
         "id": "milan-comotto",
@@ -64687,7 +64674,17 @@
           "UFFICIALITÀ"
         ],
         "publicSourceV776": "ROSA",
-        "sosFlagActiveV776": false
+        "sosFlagActiveV776": false,
+        "sourceKindsV780": [
+          "AMICHEVOLE",
+          "ROSA",
+          "TRATTATIVA",
+          "UFFICIALITÀ"
+        ],
+        "catalogSourcesCountV780": 4,
+        "publicSourceV780": "ROSA",
+        "identityStatusV780": "CANONICO V780",
+        "sosFlagActiveV780": false
       },
       {
         "id": "milan-christian-pulisic",
@@ -65113,7 +65110,15 @@
           "ROSA"
         ],
         "publicSourceV776": "ROSA",
-        "sosFlagActiveV776": false
+        "sosFlagActiveV776": false,
+        "sourceKindsV780": [
+          "AMICHEVOLE",
+          "ROSA"
+        ],
+        "catalogSourcesCountV780": 2,
+        "publicSourceV780": "ROSA",
+        "identityStatusV780": "CANONICO V780",
+        "sosFlagActiveV780": false
       },
       {
         "id": "milan-jashari",
@@ -65454,7 +65459,16 @@
           "ROSA"
         ],
         "publicSourceV776": "LISTONE",
-        "sosFlagActiveV776": false
+        "sosFlagActiveV776": false,
+        "sourceKindsV780": [
+          "AMICHEVOLE",
+          "LISTONE",
+          "ROSA"
+        ],
+        "catalogSourcesCountV780": 3,
+        "publicSourceV780": "LISTONE",
+        "identityStatusV780": "CANONICO V780",
+        "sosFlagActiveV780": false
       },
       {
         "id": "milan-modric",
@@ -65942,7 +65956,17 @@
           "TRATTATIVA"
         ],
         "publicSourceV776": "LISTONE",
-        "sosFlagActiveV776": false
+        "sosFlagActiveV776": false,
+        "sourceKindsV780": [
+          "AMICHEVOLE",
+          "LISTONE",
+          "ROSA",
+          "TRATTATIVA"
+        ],
+        "catalogSourcesCountV780": 4,
+        "publicSourceV780": "LISTONE",
+        "identityStatusV780": "CANONICO V780",
+        "sosFlagActiveV780": false
       },
       {
         "id": "milan-sardo",
@@ -66236,7 +66260,16 @@
           "ROSA"
         ],
         "publicSourceV776": "LISTONE",
-        "sosFlagActiveV776": false
+        "sosFlagActiveV776": false,
+        "sourceKindsV780": [
+          "AMICHEVOLE",
+          "LISTONE",
+          "ROSA"
+        ],
+        "catalogSourcesCountV780": 3,
+        "publicSourceV780": "LISTONE",
+        "identityStatusV780": "CANONICO V780",
+        "sosFlagActiveV780": false
       },
       {
         "id": "milan-yunus-musah",
@@ -66441,7 +66474,18 @@
           "UFFICIALITÀ"
         ],
         "publicSourceV776": "LISTONE",
-        "sosFlagActiveV776": false
+        "sosFlagActiveV776": false,
+        "sourceKindsV780": [
+          "AMICHEVOLE",
+          "LISTONE",
+          "ROSA",
+          "TRATTATIVA",
+          "UFFICIALITÀ"
+        ],
+        "catalogSourcesCountV780": 5,
+        "publicSourceV780": "LISTONE",
+        "identityStatusV780": "CANONICO V780",
+        "sosFlagActiveV780": false
       },
       {
         "id": "milan-zeroli",
@@ -66674,7 +66718,15 @@
           "ROSA"
         ],
         "publicSourceV776": "ROSA",
-        "sosFlagActiveV776": false
+        "sosFlagActiveV776": false,
+        "sourceKindsV780": [
+          "AMICHEVOLE",
+          "ROSA"
+        ],
+        "catalogSourcesCountV780": 2,
+        "publicSourceV780": "ROSA",
+        "identityStatusV780": "CANONICO V780",
+        "sosFlagActiveV780": false
       },
       {
         "id": "milan-kostic",
@@ -66799,7 +66851,15 @@
           "ROSA"
         ],
         "publicSourceV776": "ROSA",
-        "sosFlagActiveV776": false
+        "sosFlagActiveV776": false,
+        "sourceKindsV780": [
+          "AMICHEVOLE",
+          "ROSA"
+        ],
+        "catalogSourcesCountV780": 2,
+        "publicSourceV780": "ROSA",
+        "identityStatusV780": "CANONICO V780",
+        "sosFlagActiveV780": false
       },
       {
         "id": "milan-balentien",
@@ -67273,7 +67333,17 @@
           "UFFICIALITÀ"
         ],
         "publicSourceV776": "LISTONE",
-        "sosFlagActiveV776": false
+        "sosFlagActiveV776": false,
+        "sourceKindsV780": [
+          "AMICHEVOLE",
+          "LISTONE",
+          "ROSA",
+          "UFFICIALITÀ"
+        ],
+        "catalogSourcesCountV780": 4,
+        "publicSourceV780": "LISTONE",
+        "identityStatusV780": "CANONICO V780",
+        "sosFlagActiveV780": false
       },
       {
         "id": "milan-gimenez",
@@ -67760,7 +67830,15 @@
           "ROSA"
         ],
         "publicSourceV776": "ROSA",
-        "sosFlagActiveV776": false
+        "sosFlagActiveV776": false,
+        "sourceKindsV780": [
+          "AMICHEVOLE",
+          "ROSA"
+        ],
+        "catalogSourcesCountV780": 2,
+        "publicSourceV780": "ROSA",
+        "identityStatusV780": "CANONICO V780",
+        "sosFlagActiveV780": false
       },
       {
         "id": "milan-rafael-leao",
@@ -67774,9 +67852,9 @@
         "rosterSource": "https://www.transfermarkt.it/ac-mailand/startseite/verein/5/saison_id/2026",
         "note": "Fonte master rose: Transfermarkt Serie A 26/27; controlli ufficialita Sky/Eurosport al 10/07/2026; mercato estivo aperto.",
         "updatedAt": "2026-07-25",
-        "flag": "",
-        "marketStatus": "Uscita possibile / Fenerbahçe smentisce offerta",
-        "marketDetail": "Il club turco ha smentito l’offerta da circa 100 milioni complessivi; Leão resta in rosa e si presenterà in ritiro il 29 luglio.",
+        "flag": "AGG V780",
+        "marketStatus": "Uscita possibile / interesse Galatasaray",
+        "marketDetail": "Galatasaray interessato ma senza offerta formale; il giocatore è atteso nella tournée del Milan dal 29 luglio.",
         "marketSource": "https://sport.sky.it/calciomercato/2026/07/25/calciomercato-news-trattative-oggi-25-luglio",
         "marketNote": "Smentita ufficiale del Fenerbahçe recepita; nessuna offerta accettata.",
         "probableXi": false,
@@ -67934,7 +68012,9 @@
           "TRATTATIVA"
         ],
         "publicSourceV776": "LISTONE",
-        "sosFlagActiveV776": false
+        "sosFlagActiveV776": false,
+        "identityStatusV780": "CANONICO V780",
+        "identityNotesV780": "Aggiornato da Excel V167; identità stabile e controllo duplicati completo."
       },
       {
         "id": "milan-ramos",
@@ -125119,18 +125199,18 @@
           ],
           "direction": "incoming",
           "directionLabel": "Entrata",
-          "status": "TRATTATIVA AVANZATA / NUOVO INCONTRO",
+          "status": "TRATTATIVA IN CORSO / DISTANZA RIDOTTA",
           "updatedAt": "2026-07-25",
           "date": "2026-07-25",
-          "note": "Nuovo incontro sui bonus: Chelsea chiede 30 milioni garantiti; Como propone 25 più bonus legati alle presenze.",
+          "note": "Chelsea sceso a 30 milioni più bonus; Como fermo a 25 milioni. Distanza residua di circa 5 milioni.",
           "role": "D",
           "roleBrief": "D",
           "origin": "Chelsea -> Como",
           "destination": "Chelsea -> Como",
           "probability": "63%",
-          "reliability": "OK_AGGIORNATO_V778",
-          "check": "Aggiornare rosa se ufficiale",
-          "rule": "Rumor TM normale: senza stretta verde resta trattativa.",
+          "reliability": "OK_ARTICOLO",
+          "check": "Non aggiornare Rose fino a ufficialità.",
+          "rule": "Fonte giornalistica: aggiornare Rose solo dopo comunicato/deposito ufficiale.",
           "isTransfermarktRumor": false,
           "source": "Sky Sport",
           "url": "https://sport.sky.it/calciomercato/2026/07/25/calciomercato-news-trattative-oggi-25-luglio",
@@ -125138,9 +125218,9 @@
           "href": "https://sport.sky.it/calciomercato/2026/07/25/calciomercato-news-trattative-oggi-25-luglio",
           "sourceName": "Sky Sport",
           "sourceLabel": "Sky Sport",
-          "sourceType": "Sky Sport - live mercato puntuale",
-          "sourceVerification": "OK_AGGIORNATO_V778",
-          "sourceVerificationNote": "Rose invariata: nessun trasferimento ufficiale al cutoff.",
+          "sourceType": "Fonte giornalistica primaria",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "Verificato al cutoff 18:05 CEST.",
           "sources": [
             {
               "source": "Sky Sport",
@@ -125149,12 +125229,12 @@
               "href": "https://sport.sky.it/calciomercato/2026/07/25/calciomercato-news-trattative-oggi-25-luglio",
               "sourceName": "Sky Sport",
               "sourceLabel": "Sky Sport",
-              "status": "TRATTATIVA AVANZATA / NUOVO INCONTRO",
+              "status": "TRATTATIVA IN CORSO / DISTANZA RIDOTTA",
               "updatedAt": "2026-07-25",
-              "sourceType": "Sky Sport - live mercato puntuale",
-              "sourceVerification": "OK_AGGIORNATO_V778",
-              "sourceVerificationNote": "Rose invariata: nessun trasferimento ufficiale al cutoff.",
-              "note": "Nuovo incontro sui bonus: Chelsea chiede 30 milioni garantiti; Como propone 25 più bonus legati alle presenze."
+              "sourceType": "Fonte giornalistica primaria",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Verificato al cutoff 18:05 CEST.",
+              "note": "Chelsea sceso a 30 milioni più bonus; Como fermo a 25 milioni. Distanza residua di circa 5 milioni."
             }
           ]
         },
@@ -125325,18 +125405,18 @@
           ],
           "direction": "incoming",
           "directionLabel": "Entrata",
-          "status": "TRATTATIVA AVANZATA / NUOVO INCONTRO",
+          "status": "TRATTATIVA IN CORSO / DISTANZA RIDOTTA",
           "updatedAt": "2026-07-25",
           "date": "2026-07-25",
-          "note": "Nuovo incontro sui bonus: Chelsea chiede 30 milioni garantiti; Como propone 25 più bonus legati alle presenze.",
+          "note": "Chelsea sceso a 30 milioni più bonus; Como fermo a 25 milioni. Distanza residua di circa 5 milioni.",
           "role": "D",
           "roleBrief": "D",
           "origin": "Chelsea -> Como",
           "destination": "Chelsea -> Como",
           "probability": "63%",
-          "reliability": "OK_AGGIORNATO_V778",
-          "check": "Aggiornare rosa se ufficiale",
-          "rule": "Rumor TM normale: senza stretta verde resta trattativa.",
+          "reliability": "OK_ARTICOLO",
+          "check": "Non aggiornare Rose fino a ufficialità.",
+          "rule": "Fonte giornalistica: aggiornare Rose solo dopo comunicato/deposito ufficiale.",
           "isTransfermarktRumor": false,
           "source": "Sky Sport",
           "url": "https://sport.sky.it/calciomercato/2026/07/25/calciomercato-news-trattative-oggi-25-luglio",
@@ -125344,9 +125424,9 @@
           "href": "https://sport.sky.it/calciomercato/2026/07/25/calciomercato-news-trattative-oggi-25-luglio",
           "sourceName": "Sky Sport",
           "sourceLabel": "Sky Sport",
-          "sourceType": "Sky Sport - live mercato puntuale",
-          "sourceVerification": "OK_AGGIORNATO_V778",
-          "sourceVerificationNote": "Rose invariata: nessun trasferimento ufficiale al cutoff.",
+          "sourceType": "Fonte giornalistica primaria",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "Verificato al cutoff 18:05 CEST.",
           "sources": [
             {
               "source": "Sky Sport",
@@ -125355,12 +125435,12 @@
               "href": "https://sport.sky.it/calciomercato/2026/07/25/calciomercato-news-trattative-oggi-25-luglio",
               "sourceName": "Sky Sport",
               "sourceLabel": "Sky Sport",
-              "status": "TRATTATIVA AVANZATA / NUOVO INCONTRO",
+              "status": "TRATTATIVA IN CORSO / DISTANZA RIDOTTA",
               "updatedAt": "2026-07-25",
-              "sourceType": "Sky Sport - live mercato puntuale",
-              "sourceVerification": "OK_AGGIORNATO_V778",
-              "sourceVerificationNote": "Rose invariata: nessun trasferimento ufficiale al cutoff.",
-              "note": "Nuovo incontro sui bonus: Chelsea chiede 30 milioni garantiti; Como propone 25 più bonus legati alle presenze."
+              "sourceType": "Fonte giornalistica primaria",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Verificato al cutoff 18:05 CEST.",
+              "note": "Chelsea sceso a 30 milioni più bonus; Como fermo a 25 milioni. Distanza residua di circa 5 milioni."
             }
           ]
         }
@@ -126399,47 +126479,47 @@
           "target": "Joao Mario",
           "direction": "incoming",
           "directionLabel": "Entrata",
-          "status": "TRATTATIVA AVANZATA / FORMULA DA DEFINIRE",
+          "status": "TRATTATIVA AVANZATA / OFFERTA UFFICIALE",
           "updatedAt": "2026-07-25",
           "date": "2026-07-25",
-          "note": "Pressing viola; prestito con opzione in discussione, accordo definitivo ancora da chiudere.",
+          "note": "Fiorentina: offerta alla Juventus per prestito con diritto di riscatto tra 8 e 9 milioni di euro; chiusura possibile nei prossimi giorni.",
           "role": "D",
           "canonicalPlayerId": "juventus-joao-mario",
           "canonicalPlayerIds": [
             "juventus-joao-mario"
           ],
-          "source": "SOS Fanta / Fabrizio Romano",
+          "source": "Sky Sport",
           "url": "https://sport.sky.it/calciomercato/2026/07/25/calciomercato-news-trattative-oggi-25-luglio",
           "articleUrl": "https://sport.sky.it/calciomercato/2026/07/25/calciomercato-news-trattative-oggi-25-luglio",
           "href": "https://sport.sky.it/calciomercato/2026/07/25/calciomercato-news-trattative-oggi-25-luglio",
-          "sourceName": "SOS Fanta / Fabrizio Romano",
-          "sourceLabel": "SOS Fanta / Fabrizio Romano",
-          "sourceType": "SOS Fanta / Fabrizio Romano",
-          "sourceVerification": "OK_AGGIORNATO_V779",
-          "sourceVerificationNote": "Aggiornato al cutoff 15:20 CEST; nessun trasferimento ufficiale. | Fonte consolidata nella riga più recente dello stesso giocatore.",
+          "sourceName": "Sky Sport",
+          "sourceLabel": "Sky Sport",
+          "sourceType": "Fonte giornalistica primaria",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "Verificato al cutoff 18:05 CEST.",
           "probability": "",
-          "check": "Rose invariate salvo ufficialità",
+          "check": "Non aggiornare Rose fino a ufficialità.",
           "rule": "Fonte non ufficiale: aggiornare Rose solo dopo comunicato/deposito.",
           "sources": [
             {
-              "source": "SOS Fanta / Fabrizio Romano",
+              "source": "Sky Sport",
               "url": "https://sport.sky.it/calciomercato/2026/07/25/calciomercato-news-trattative-oggi-25-luglio",
               "articleUrl": "https://sport.sky.it/calciomercato/2026/07/25/calciomercato-news-trattative-oggi-25-luglio",
               "href": "https://sport.sky.it/calciomercato/2026/07/25/calciomercato-news-trattative-oggi-25-luglio",
-              "sourceName": "SOS Fanta / Fabrizio Romano",
-              "sourceLabel": "SOS Fanta / Fabrizio Romano",
-              "status": "TRATTATIVA AVANZATA / FORMULA DA DEFINIRE",
+              "sourceName": "Sky Sport",
+              "sourceLabel": "Sky Sport",
+              "status": "TRATTATIVA AVANZATA / OFFERTA UFFICIALE",
               "updatedAt": "2026-07-25",
-              "sourceType": "SOS Fanta / Fabrizio Romano",
-              "sourceVerification": "OK_AGGIORNATO_V779",
-              "sourceVerificationNote": "Aggiornato al cutoff 15:20 CEST; nessun trasferimento ufficiale. | Fonte consolidata nella riga più recente dello stesso giocatore.",
-              "note": "Pressing viola; prestito con opzione in discussione, accordo definitivo ancora da chiudere."
+              "sourceType": "Fonte giornalistica primaria",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Verificato al cutoff 18:05 CEST.",
+              "note": "Fiorentina: offerta alla Juventus per prestito con diritto di riscatto tra 8 e 9 milioni di euro; chiusura possibile nei prossimi giorni."
             }
           ],
           "roleBrief": "D",
           "origin": "Juventus -> Fiorentina",
           "destination": "Juventus -> Fiorentina",
-          "reliability": "OK_AGGIORNATO_V779",
+          "reliability": "OK_ARTICOLO",
           "isTransfermarktRumor": false
         },
         {
@@ -127217,47 +127297,47 @@
           "target": "Joao Mario",
           "direction": "incoming",
           "directionLabel": "Entrata",
-          "status": "TRATTATIVA AVANZATA / FORMULA DA DEFINIRE",
+          "status": "TRATTATIVA AVANZATA / OFFERTA UFFICIALE",
           "updatedAt": "2026-07-25",
           "date": "2026-07-25",
-          "note": "Pressing viola; prestito con opzione in discussione, accordo definitivo ancora da chiudere.",
+          "note": "Fiorentina: offerta alla Juventus per prestito con diritto di riscatto tra 8 e 9 milioni di euro; chiusura possibile nei prossimi giorni.",
           "role": "D",
           "canonicalPlayerId": "juventus-joao-mario",
           "canonicalPlayerIds": [
             "juventus-joao-mario"
           ],
-          "source": "SOS Fanta / Fabrizio Romano",
+          "source": "Sky Sport",
           "url": "https://sport.sky.it/calciomercato/2026/07/25/calciomercato-news-trattative-oggi-25-luglio",
           "articleUrl": "https://sport.sky.it/calciomercato/2026/07/25/calciomercato-news-trattative-oggi-25-luglio",
           "href": "https://sport.sky.it/calciomercato/2026/07/25/calciomercato-news-trattative-oggi-25-luglio",
-          "sourceName": "SOS Fanta / Fabrizio Romano",
-          "sourceLabel": "SOS Fanta / Fabrizio Romano",
-          "sourceType": "SOS Fanta / Fabrizio Romano",
-          "sourceVerification": "OK_AGGIORNATO_V779",
-          "sourceVerificationNote": "Aggiornato al cutoff 15:20 CEST; nessun trasferimento ufficiale. | Fonte consolidata nella riga più recente dello stesso giocatore.",
+          "sourceName": "Sky Sport",
+          "sourceLabel": "Sky Sport",
+          "sourceType": "Fonte giornalistica primaria",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "Verificato al cutoff 18:05 CEST.",
           "probability": "",
-          "check": "Rose invariate salvo ufficialità",
+          "check": "Non aggiornare Rose fino a ufficialità.",
           "rule": "Fonte non ufficiale: aggiornare Rose solo dopo comunicato/deposito.",
           "sources": [
             {
-              "source": "SOS Fanta / Fabrizio Romano",
+              "source": "Sky Sport",
               "url": "https://sport.sky.it/calciomercato/2026/07/25/calciomercato-news-trattative-oggi-25-luglio",
               "articleUrl": "https://sport.sky.it/calciomercato/2026/07/25/calciomercato-news-trattative-oggi-25-luglio",
               "href": "https://sport.sky.it/calciomercato/2026/07/25/calciomercato-news-trattative-oggi-25-luglio",
-              "sourceName": "SOS Fanta / Fabrizio Romano",
-              "sourceLabel": "SOS Fanta / Fabrizio Romano",
-              "status": "TRATTATIVA AVANZATA / FORMULA DA DEFINIRE",
+              "sourceName": "Sky Sport",
+              "sourceLabel": "Sky Sport",
+              "status": "TRATTATIVA AVANZATA / OFFERTA UFFICIALE",
               "updatedAt": "2026-07-25",
-              "sourceType": "SOS Fanta / Fabrizio Romano",
-              "sourceVerification": "OK_AGGIORNATO_V779",
-              "sourceVerificationNote": "Aggiornato al cutoff 15:20 CEST; nessun trasferimento ufficiale. | Fonte consolidata nella riga più recente dello stesso giocatore.",
-              "note": "Pressing viola; prestito con opzione in discussione, accordo definitivo ancora da chiudere."
+              "sourceType": "Fonte giornalistica primaria",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Verificato al cutoff 18:05 CEST.",
+              "note": "Fiorentina: offerta alla Juventus per prestito con diritto di riscatto tra 8 e 9 milioni di euro; chiusura possibile nei prossimi giorni."
             }
           ],
           "roleBrief": "D",
           "origin": "Juventus -> Fiorentina",
           "destination": "Juventus -> Fiorentina",
-          "reliability": "OK_AGGIORNATO_V779",
+          "reliability": "OK_ARTICOLO",
           "isTransfermarktRumor": false
         },
         {
@@ -134329,47 +134409,47 @@
           "target": "Joao Mario",
           "direction": "outgoing",
           "directionLabel": "Uscita",
-          "status": "USCITA PROBABILE / FIORENTINA IN PRESSING",
+          "status": "TRATTATIVA AVANZATA / OFFERTA UFFICIALE",
           "updatedAt": "2026-07-25",
           "date": "2026-07-25",
-          "note": "I club lavorano alla formula; il giocatore resta della Juventus fino all’ufficialità.",
+          "note": "Fiorentina: offerta alla Juventus per prestito con diritto di riscatto tra 8 e 9 milioni di euro; chiusura possibile nei prossimi giorni.",
           "role": "D/C",
           "canonicalPlayerId": "juventus-joao-mario",
           "canonicalPlayerIds": [
             "juventus-joao-mario"
           ],
-          "source": "SOS Fanta / Fabrizio Romano",
-          "url": "https://www.sosfanta.com/news/fiorentina-spinge-joao-mario-formula-echeverri/",
-          "articleUrl": "https://www.sosfanta.com/news/fiorentina-spinge-joao-mario-formula-echeverri/",
-          "href": "https://www.sosfanta.com/news/fiorentina-spinge-joao-mario-formula-echeverri/",
-          "sourceName": "SOS Fanta / Fabrizio Romano",
-          "sourceLabel": "SOS Fanta / Fabrizio Romano",
-          "sourceType": "SOS Fanta / Fabrizio Romano",
-          "sourceVerification": "OK_AGGIORNATO_V779",
-          "sourceVerificationNote": "Aggiornato al cutoff 15:20 CEST; nessun trasferimento ufficiale.",
+          "source": "Sky Sport",
+          "url": "https://sport.sky.it/calciomercato/2026/07/25/fiorentina-joao-mario-calciomercato-news",
+          "articleUrl": "https://sport.sky.it/calciomercato/2026/07/25/fiorentina-joao-mario-calciomercato-news",
+          "href": "https://sport.sky.it/calciomercato/2026/07/25/fiorentina-joao-mario-calciomercato-news",
+          "sourceName": "Sky Sport",
+          "sourceLabel": "Sky Sport",
+          "sourceType": "Fonte giornalistica primaria",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "Verificato al cutoff 18:05 CEST.",
           "probability": "",
-          "check": "Joao Mario resta nella Juventus.",
+          "check": "Non aggiornare Rose fino a ufficialità.",
           "rule": "Fonte non ufficiale: aggiornare Rose solo dopo comunicato/deposito.",
           "sources": [
             {
-              "source": "SOS Fanta / Fabrizio Romano",
-              "url": "https://www.sosfanta.com/news/fiorentina-spinge-joao-mario-formula-echeverri/",
-              "articleUrl": "https://www.sosfanta.com/news/fiorentina-spinge-joao-mario-formula-echeverri/",
-              "href": "https://www.sosfanta.com/news/fiorentina-spinge-joao-mario-formula-echeverri/",
-              "sourceName": "SOS Fanta / Fabrizio Romano",
-              "sourceLabel": "SOS Fanta / Fabrizio Romano",
-              "status": "USCITA PROBABILE / FIORENTINA IN PRESSING",
+              "source": "Sky Sport",
+              "url": "https://sport.sky.it/calciomercato/2026/07/25/fiorentina-joao-mario-calciomercato-news",
+              "articleUrl": "https://sport.sky.it/calciomercato/2026/07/25/fiorentina-joao-mario-calciomercato-news",
+              "href": "https://sport.sky.it/calciomercato/2026/07/25/fiorentina-joao-mario-calciomercato-news",
+              "sourceName": "Sky Sport",
+              "sourceLabel": "Sky Sport",
+              "status": "TRATTATIVA AVANZATA / OFFERTA UFFICIALE",
               "updatedAt": "2026-07-25",
-              "sourceType": "SOS Fanta / Fabrizio Romano",
-              "sourceVerification": "OK_AGGIORNATO_V779",
-              "sourceVerificationNote": "Aggiornato al cutoff 15:20 CEST; nessun trasferimento ufficiale.",
-              "note": "I club lavorano alla formula; il giocatore resta della Juventus fino all’ufficialità."
+              "sourceType": "Fonte giornalistica primaria",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Verificato al cutoff 18:05 CEST.",
+              "note": "Fiorentina: offerta alla Juventus per prestito con diritto di riscatto tra 8 e 9 milioni di euro; chiusura possibile nei prossimi giorni."
             }
           ],
           "roleBrief": "D/C",
           "origin": "Juventus -> Fiorentina",
           "destination": "Juventus -> Fiorentina",
-          "reliability": "OK_AGGIORNATO_V779",
+          "reliability": "OK_ARTICOLO",
           "isTransfermarktRumor": false
         },
         {
@@ -134430,47 +134510,47 @@
           "target": "Lois Openda",
           "direction": "outgoing",
           "directionLabel": "Uscita",
-          "status": "A un passo dal Lione / prestito con diritto di riscatto",
-          "updatedAt": "2026-07-23",
-          "date": "2026-07-23",
-          "note": "Il giocatore avrebbe accettato il ritorno in Francia. Ipotesi prestito con diritto di riscatto e contributo Juventus all’ingaggio; nessuna ufficialità.",
+          "status": "USCITA DEFINITA / COMUNICATO ATTESO",
+          "updatedAt": "2026-07-25",
+          "date": "2026-07-25",
+          "note": "Accordo per il Lione: prestito oneroso con diritto di riscatto. Resta formalmente nella Juventus fino al comunicato ufficiale.",
           "role": "A",
           "roleBrief": "A",
           "formula": "",
           "origin": "Juventus -> Lione",
           "destination": "Juventus -> Lione",
           "probability": "",
-          "reliability": "OK_AGGIORNATO_V766",
-          "check": "OK_AGGIORNATO_V766",
+          "reliability": "OK_ARTICOLO",
+          "check": "Non aggiornare Rose fino a ufficialità.",
           "rule": "Rumor avanzato: la rosa cambia solo con una nuova ufficialità.",
           "isTransfermarktRumor": false,
           "canonicalPlayerId": "juventus-lois-openda",
           "canonicalPlayerIds": [
             "juventus-lois-openda"
           ],
-          "source": "https://www.sportmediaset.mediaset.it/mercato/juventus-si-sblocca-il-mercato-in-uscita-openda-e-a-un-passo-dal-lione_114747269-202602k.shtml",
-          "url": "https://www.sportmediaset.mediaset.it/mercato/juventus-si-sblocca-il-mercato-in-uscita-openda-e-a-un-passo-dal-lione_114747269-202602k.shtml",
-          "articleUrl": "https://www.sportmediaset.mediaset.it/mercato/juventus-si-sblocca-il-mercato-in-uscita-openda-e-a-un-passo-dal-lione_114747269-202602k.shtml",
-          "href": "https://www.sportmediaset.mediaset.it/mercato/juventus-si-sblocca-il-mercato-in-uscita-openda-e-a-un-passo-dal-lione_114747269-202602k.shtml",
-          "sourceName": "https://www.sportmediaset.mediaset.it/mercato/juventus-si-sblocca-il-mercato-in-uscita-openda-e-a-un-passo-dal-lione_114747269-202602k.shtml",
-          "sourceLabel": "https://www.sportmediaset.mediaset.it/mercato/juventus-si-sblocca-il-mercato-in-uscita-openda-e-a-un-passo-dal-lione_114747269-202602k.shtml",
-          "sourceType": "Articolo puntuale",
-          "sourceVerification": "OK_AGGIORNATO_V766",
-          "sourceVerificationNote": "Sviluppo serale; nessun trasferimento applicato.",
+          "source": "Sky Sport",
+          "url": "https://sport.sky.it/calciomercato/2026/07/25/openda-juventus-lione-calciomercato-news",
+          "articleUrl": "https://sport.sky.it/calciomercato/2026/07/25/openda-juventus-lione-calciomercato-news",
+          "href": "https://sport.sky.it/calciomercato/2026/07/25/openda-juventus-lione-calciomercato-news",
+          "sourceName": "Sky Sport",
+          "sourceLabel": "Sky Sport",
+          "sourceType": "Fonte giornalistica primaria",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "Verificato al cutoff 18:05 CEST.",
           "sources": [
             {
-              "source": "https://www.sportmediaset.mediaset.it/mercato/juventus-si-sblocca-il-mercato-in-uscita-openda-e-a-un-passo-dal-lione_114747269-202602k.shtml",
-              "url": "https://www.sportmediaset.mediaset.it/mercato/juventus-si-sblocca-il-mercato-in-uscita-openda-e-a-un-passo-dal-lione_114747269-202602k.shtml",
-              "articleUrl": "https://www.sportmediaset.mediaset.it/mercato/juventus-si-sblocca-il-mercato-in-uscita-openda-e-a-un-passo-dal-lione_114747269-202602k.shtml",
-              "href": "https://www.sportmediaset.mediaset.it/mercato/juventus-si-sblocca-il-mercato-in-uscita-openda-e-a-un-passo-dal-lione_114747269-202602k.shtml",
-              "sourceName": "https://www.sportmediaset.mediaset.it/mercato/juventus-si-sblocca-il-mercato-in-uscita-openda-e-a-un-passo-dal-lione_114747269-202602k.shtml",
-              "sourceLabel": "https://www.sportmediaset.mediaset.it/mercato/juventus-si-sblocca-il-mercato-in-uscita-openda-e-a-un-passo-dal-lione_114747269-202602k.shtml",
-              "status": "A un passo dal Lione / prestito con diritto di riscatto",
-              "updatedAt": "2026-07-23",
-              "sourceType": "Articolo puntuale",
-              "sourceVerification": "OK_AGGIORNATO_V766",
-              "sourceVerificationNote": "Sviluppo serale; nessun trasferimento applicato.",
-              "note": "Il giocatore avrebbe accettato il ritorno in Francia. Ipotesi prestito con diritto di riscatto e contributo Juventus all’ingaggio; nessuna ufficialità."
+              "source": "Sky Sport",
+              "url": "https://sport.sky.it/calciomercato/2026/07/25/openda-juventus-lione-calciomercato-news",
+              "articleUrl": "https://sport.sky.it/calciomercato/2026/07/25/openda-juventus-lione-calciomercato-news",
+              "href": "https://sport.sky.it/calciomercato/2026/07/25/openda-juventus-lione-calciomercato-news",
+              "sourceName": "Sky Sport",
+              "sourceLabel": "Sky Sport",
+              "status": "USCITA DEFINITA / COMUNICATO ATTESO",
+              "updatedAt": "2026-07-25",
+              "sourceType": "Fonte giornalistica primaria",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Verificato al cutoff 18:05 CEST.",
+              "note": "Accordo per il Lione: prestito oneroso con diritto di riscatto. Resta formalmente nella Juventus fino al comunicato ufficiale."
             }
           ]
         },
@@ -135350,47 +135430,47 @@
           "target": "Joao Mario",
           "direction": "outgoing",
           "directionLabel": "Uscita",
-          "status": "USCITA PROBABILE / FIORENTINA IN PRESSING",
+          "status": "TRATTATIVA AVANZATA / OFFERTA UFFICIALE",
           "updatedAt": "2026-07-25",
           "date": "2026-07-25",
-          "note": "I club lavorano alla formula; il giocatore resta della Juventus fino all’ufficialità.",
+          "note": "Fiorentina: offerta alla Juventus per prestito con diritto di riscatto tra 8 e 9 milioni di euro; chiusura possibile nei prossimi giorni.",
           "role": "D/C",
           "canonicalPlayerId": "juventus-joao-mario",
           "canonicalPlayerIds": [
             "juventus-joao-mario"
           ],
-          "source": "SOS Fanta / Fabrizio Romano",
-          "url": "https://www.sosfanta.com/news/fiorentina-spinge-joao-mario-formula-echeverri/",
-          "articleUrl": "https://www.sosfanta.com/news/fiorentina-spinge-joao-mario-formula-echeverri/",
-          "href": "https://www.sosfanta.com/news/fiorentina-spinge-joao-mario-formula-echeverri/",
-          "sourceName": "SOS Fanta / Fabrizio Romano",
-          "sourceLabel": "SOS Fanta / Fabrizio Romano",
-          "sourceType": "SOS Fanta / Fabrizio Romano",
-          "sourceVerification": "OK_AGGIORNATO_V779",
-          "sourceVerificationNote": "Aggiornato al cutoff 15:20 CEST; nessun trasferimento ufficiale.",
+          "source": "Sky Sport",
+          "url": "https://sport.sky.it/calciomercato/2026/07/25/fiorentina-joao-mario-calciomercato-news",
+          "articleUrl": "https://sport.sky.it/calciomercato/2026/07/25/fiorentina-joao-mario-calciomercato-news",
+          "href": "https://sport.sky.it/calciomercato/2026/07/25/fiorentina-joao-mario-calciomercato-news",
+          "sourceName": "Sky Sport",
+          "sourceLabel": "Sky Sport",
+          "sourceType": "Fonte giornalistica primaria",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "Verificato al cutoff 18:05 CEST.",
           "probability": "",
-          "check": "Joao Mario resta nella Juventus.",
+          "check": "Non aggiornare Rose fino a ufficialità.",
           "rule": "Fonte non ufficiale: aggiornare Rose solo dopo comunicato/deposito.",
           "sources": [
             {
-              "source": "SOS Fanta / Fabrizio Romano",
-              "url": "https://www.sosfanta.com/news/fiorentina-spinge-joao-mario-formula-echeverri/",
-              "articleUrl": "https://www.sosfanta.com/news/fiorentina-spinge-joao-mario-formula-echeverri/",
-              "href": "https://www.sosfanta.com/news/fiorentina-spinge-joao-mario-formula-echeverri/",
-              "sourceName": "SOS Fanta / Fabrizio Romano",
-              "sourceLabel": "SOS Fanta / Fabrizio Romano",
-              "status": "USCITA PROBABILE / FIORENTINA IN PRESSING",
+              "source": "Sky Sport",
+              "url": "https://sport.sky.it/calciomercato/2026/07/25/fiorentina-joao-mario-calciomercato-news",
+              "articleUrl": "https://sport.sky.it/calciomercato/2026/07/25/fiorentina-joao-mario-calciomercato-news",
+              "href": "https://sport.sky.it/calciomercato/2026/07/25/fiorentina-joao-mario-calciomercato-news",
+              "sourceName": "Sky Sport",
+              "sourceLabel": "Sky Sport",
+              "status": "TRATTATIVA AVANZATA / OFFERTA UFFICIALE",
               "updatedAt": "2026-07-25",
-              "sourceType": "SOS Fanta / Fabrizio Romano",
-              "sourceVerification": "OK_AGGIORNATO_V779",
-              "sourceVerificationNote": "Aggiornato al cutoff 15:20 CEST; nessun trasferimento ufficiale.",
-              "note": "I club lavorano alla formula; il giocatore resta della Juventus fino all’ufficialità."
+              "sourceType": "Fonte giornalistica primaria",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Verificato al cutoff 18:05 CEST.",
+              "note": "Fiorentina: offerta alla Juventus per prestito con diritto di riscatto tra 8 e 9 milioni di euro; chiusura possibile nei prossimi giorni."
             }
           ],
           "roleBrief": "D/C",
           "origin": "Juventus -> Fiorentina",
           "destination": "Juventus -> Fiorentina",
-          "reliability": "OK_AGGIORNATO_V779",
+          "reliability": "OK_ARTICOLO",
           "isTransfermarktRumor": false
         },
         {
@@ -135451,47 +135531,47 @@
           "target": "Lois Openda",
           "direction": "outgoing",
           "directionLabel": "Uscita",
-          "status": "A un passo dal Lione / prestito con diritto di riscatto",
-          "updatedAt": "2026-07-23",
-          "date": "2026-07-23",
-          "note": "Il giocatore avrebbe accettato il ritorno in Francia. Ipotesi prestito con diritto di riscatto e contributo Juventus all’ingaggio; nessuna ufficialità.",
+          "status": "USCITA DEFINITA / COMUNICATO ATTESO",
+          "updatedAt": "2026-07-25",
+          "date": "2026-07-25",
+          "note": "Accordo per il Lione: prestito oneroso con diritto di riscatto. Resta formalmente nella Juventus fino al comunicato ufficiale.",
           "role": "A",
           "roleBrief": "A",
           "formula": "",
           "origin": "Juventus -> Lione",
           "destination": "Juventus -> Lione",
           "probability": "",
-          "reliability": "OK_AGGIORNATO_V766",
-          "check": "OK_AGGIORNATO_V766",
+          "reliability": "OK_ARTICOLO",
+          "check": "Non aggiornare Rose fino a ufficialità.",
           "rule": "Rumor avanzato: la rosa cambia solo con una nuova ufficialità.",
           "isTransfermarktRumor": false,
           "canonicalPlayerId": "juventus-lois-openda",
           "canonicalPlayerIds": [
             "juventus-lois-openda"
           ],
-          "source": "https://www.sportmediaset.mediaset.it/mercato/juventus-si-sblocca-il-mercato-in-uscita-openda-e-a-un-passo-dal-lione_114747269-202602k.shtml",
-          "url": "https://www.sportmediaset.mediaset.it/mercato/juventus-si-sblocca-il-mercato-in-uscita-openda-e-a-un-passo-dal-lione_114747269-202602k.shtml",
-          "articleUrl": "https://www.sportmediaset.mediaset.it/mercato/juventus-si-sblocca-il-mercato-in-uscita-openda-e-a-un-passo-dal-lione_114747269-202602k.shtml",
-          "href": "https://www.sportmediaset.mediaset.it/mercato/juventus-si-sblocca-il-mercato-in-uscita-openda-e-a-un-passo-dal-lione_114747269-202602k.shtml",
-          "sourceName": "https://www.sportmediaset.mediaset.it/mercato/juventus-si-sblocca-il-mercato-in-uscita-openda-e-a-un-passo-dal-lione_114747269-202602k.shtml",
-          "sourceLabel": "https://www.sportmediaset.mediaset.it/mercato/juventus-si-sblocca-il-mercato-in-uscita-openda-e-a-un-passo-dal-lione_114747269-202602k.shtml",
-          "sourceType": "Articolo puntuale",
-          "sourceVerification": "OK_AGGIORNATO_V766",
-          "sourceVerificationNote": "Sviluppo serale; nessun trasferimento applicato.",
+          "source": "Sky Sport",
+          "url": "https://sport.sky.it/calciomercato/2026/07/25/openda-juventus-lione-calciomercato-news",
+          "articleUrl": "https://sport.sky.it/calciomercato/2026/07/25/openda-juventus-lione-calciomercato-news",
+          "href": "https://sport.sky.it/calciomercato/2026/07/25/openda-juventus-lione-calciomercato-news",
+          "sourceName": "Sky Sport",
+          "sourceLabel": "Sky Sport",
+          "sourceType": "Fonte giornalistica primaria",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "Verificato al cutoff 18:05 CEST.",
           "sources": [
             {
-              "source": "https://www.sportmediaset.mediaset.it/mercato/juventus-si-sblocca-il-mercato-in-uscita-openda-e-a-un-passo-dal-lione_114747269-202602k.shtml",
-              "url": "https://www.sportmediaset.mediaset.it/mercato/juventus-si-sblocca-il-mercato-in-uscita-openda-e-a-un-passo-dal-lione_114747269-202602k.shtml",
-              "articleUrl": "https://www.sportmediaset.mediaset.it/mercato/juventus-si-sblocca-il-mercato-in-uscita-openda-e-a-un-passo-dal-lione_114747269-202602k.shtml",
-              "href": "https://www.sportmediaset.mediaset.it/mercato/juventus-si-sblocca-il-mercato-in-uscita-openda-e-a-un-passo-dal-lione_114747269-202602k.shtml",
-              "sourceName": "https://www.sportmediaset.mediaset.it/mercato/juventus-si-sblocca-il-mercato-in-uscita-openda-e-a-un-passo-dal-lione_114747269-202602k.shtml",
-              "sourceLabel": "https://www.sportmediaset.mediaset.it/mercato/juventus-si-sblocca-il-mercato-in-uscita-openda-e-a-un-passo-dal-lione_114747269-202602k.shtml",
-              "status": "A un passo dal Lione / prestito con diritto di riscatto",
-              "updatedAt": "2026-07-23",
-              "sourceType": "Articolo puntuale",
-              "sourceVerification": "OK_AGGIORNATO_V766",
-              "sourceVerificationNote": "Sviluppo serale; nessun trasferimento applicato.",
-              "note": "Il giocatore avrebbe accettato il ritorno in Francia. Ipotesi prestito con diritto di riscatto e contributo Juventus all’ingaggio; nessuna ufficialità."
+              "source": "Sky Sport",
+              "url": "https://sport.sky.it/calciomercato/2026/07/25/openda-juventus-lione-calciomercato-news",
+              "articleUrl": "https://sport.sky.it/calciomercato/2026/07/25/openda-juventus-lione-calciomercato-news",
+              "href": "https://sport.sky.it/calciomercato/2026/07/25/openda-juventus-lione-calciomercato-news",
+              "sourceName": "Sky Sport",
+              "sourceLabel": "Sky Sport",
+              "status": "USCITA DEFINITA / COMUNICATO ATTESO",
+              "updatedAt": "2026-07-25",
+              "sourceType": "Fonte giornalistica primaria",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Verificato al cutoff 18:05 CEST.",
+              "note": "Accordo per il Lione: prestito oneroso con diritto di riscatto. Resta formalmente nella Juventus fino al comunicato ufficiale."
             }
           ]
         },
@@ -140117,10 +140197,10 @@
           "target": "Rafael Leao",
           "direction": "outgoing",
           "directionLabel": "Uscita",
-          "status": "USCITA POSSIBILE / OFFERTA FENERBAHÇE SMENTITA",
+          "status": "USCITA POSSIBILE / INTERESSE GALATASARAY",
           "updatedAt": "2026-07-25",
           "date": "2026-07-25",
-          "note": "Il Fenerbahçe ha negato qualsiasi offerta al giocatore o al Milan; restano possibili altre piste, ma non esiste una cessione definita.",
+          "note": "Galatasaray interessato ma senza offerta formale; il giocatore è atteso nella tournée del Milan dal 29 luglio.",
           "role": "A",
           "canonicalPlayerId": "milan-rafael-leao",
           "canonicalPlayerIds": [
@@ -140132,11 +140212,11 @@
           "href": "https://sport.sky.it/calciomercato/2026/07/25/calciomercato-news-trattative-oggi-25-luglio",
           "sourceName": "Sky Sport",
           "sourceLabel": "Sky Sport",
-          "sourceType": "Sky Sport - live mercato puntuale",
-          "sourceVerification": "OK_AGGIORNATO_V778",
-          "sourceVerificationNote": "Rose invariata: nessun trasferimento ufficiale al cutoff.",
+          "sourceType": "Fonte giornalistica primaria",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "Verificato al cutoff 18:05 CEST.",
           "probability": "",
-          "check": "Rose invariate salvo ufficialità",
+          "check": "Non aggiornare Rose fino a ufficialità.",
           "rule": "Fonte non ufficiale: aggiornare Rose solo dopo comunicato/deposito.",
           "sources": [
             {
@@ -140146,18 +140226,18 @@
               "href": "https://sport.sky.it/calciomercato/2026/07/25/calciomercato-news-trattative-oggi-25-luglio",
               "sourceName": "Sky Sport",
               "sourceLabel": "Sky Sport",
-              "status": "USCITA POSSIBILE / OFFERTA FENERBAHÇE SMENTITA",
+              "status": "USCITA POSSIBILE / INTERESSE GALATASARAY",
               "updatedAt": "2026-07-25",
-              "sourceType": "Sky Sport - live mercato puntuale",
-              "sourceVerification": "OK_AGGIORNATO_V778",
-              "sourceVerificationNote": "Rose invariata: nessun trasferimento ufficiale al cutoff.",
-              "note": "Il Fenerbahçe ha negato qualsiasi offerta al giocatore o al Milan; restano possibili altre piste, ma non esiste una cessione definita."
+              "sourceType": "Fonte giornalistica primaria",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Verificato al cutoff 18:05 CEST.",
+              "note": "Galatasaray interessato ma senza offerta formale; il giocatore è atteso nella tournée del Milan dal 29 luglio."
             }
           ],
           "roleBrief": "A",
           "origin": "Milan -> destinazione da definire",
           "destination": "Milan -> destinazione da definire",
-          "reliability": "OK_AGGIORNATO_V778",
+          "reliability": "OK_ARTICOLO",
           "isTransfermarktRumor": false
         },
         {
@@ -140732,10 +140812,10 @@
           "target": "Rafael Leao",
           "direction": "outgoing",
           "directionLabel": "Uscita",
-          "status": "USCITA POSSIBILE / OFFERTA FENERBAHÇE SMENTITA",
+          "status": "USCITA POSSIBILE / INTERESSE GALATASARAY",
           "updatedAt": "2026-07-25",
           "date": "2026-07-25",
-          "note": "Il Fenerbahçe ha negato qualsiasi offerta al giocatore o al Milan; restano possibili altre piste, ma non esiste una cessione definita.",
+          "note": "Galatasaray interessato ma senza offerta formale; il giocatore è atteso nella tournée del Milan dal 29 luglio.",
           "role": "A",
           "canonicalPlayerId": "milan-rafael-leao",
           "canonicalPlayerIds": [
@@ -140747,11 +140827,11 @@
           "href": "https://sport.sky.it/calciomercato/2026/07/25/calciomercato-news-trattative-oggi-25-luglio",
           "sourceName": "Sky Sport",
           "sourceLabel": "Sky Sport",
-          "sourceType": "Sky Sport - live mercato puntuale",
-          "sourceVerification": "OK_AGGIORNATO_V778",
-          "sourceVerificationNote": "Rose invariata: nessun trasferimento ufficiale al cutoff.",
+          "sourceType": "Fonte giornalistica primaria",
+          "sourceVerification": "OK_ARTICOLO",
+          "sourceVerificationNote": "Verificato al cutoff 18:05 CEST.",
           "probability": "",
-          "check": "Rose invariate salvo ufficialità",
+          "check": "Non aggiornare Rose fino a ufficialità.",
           "rule": "Fonte non ufficiale: aggiornare Rose solo dopo comunicato/deposito.",
           "sources": [
             {
@@ -140761,18 +140841,18 @@
               "href": "https://sport.sky.it/calciomercato/2026/07/25/calciomercato-news-trattative-oggi-25-luglio",
               "sourceName": "Sky Sport",
               "sourceLabel": "Sky Sport",
-              "status": "USCITA POSSIBILE / OFFERTA FENERBAHÇE SMENTITA",
+              "status": "USCITA POSSIBILE / INTERESSE GALATASARAY",
               "updatedAt": "2026-07-25",
-              "sourceType": "Sky Sport - live mercato puntuale",
-              "sourceVerification": "OK_AGGIORNATO_V778",
-              "sourceVerificationNote": "Rose invariata: nessun trasferimento ufficiale al cutoff.",
-              "note": "Il Fenerbahçe ha negato qualsiasi offerta al giocatore o al Milan; restano possibili altre piste, ma non esiste una cessione definita."
+              "sourceType": "Fonte giornalistica primaria",
+              "sourceVerification": "OK_ARTICOLO",
+              "sourceVerificationNote": "Verificato al cutoff 18:05 CEST.",
+              "note": "Galatasaray interessato ma senza offerta formale; il giocatore è atteso nella tournée del Milan dal 29 luglio."
             }
           ],
           "roleBrief": "A",
           "origin": "Milan -> destinazione da definire",
           "destination": "Milan -> destinazione da definire",
-          "reliability": "OK_AGGIORNATO_V778",
+          "reliability": "OK_ARTICOLO",
           "isTransfermarktRumor": false
         },
         {
@@ -153012,6 +153092,70 @@
             "note": "Non modificare stabilmente la gerarchia stagionale; monitorare il recupero prima delle prossime amichevoli."
           }
         ]
+      },
+      {
+        "teamId": "milan",
+        "teamName": "Milan",
+        "playerName": "Gila",
+        "target": "Gila",
+        "direction": "status",
+        "directionLabel": "SOS",
+        "status": "Da valutare / monitoraggio",
+        "updatedAt": "2026-07-25",
+        "date": "2026-07-25",
+        "note": "Monitoraggio precauzionale; attendere aggiornamento medico ufficiale.",
+        "role": "D",
+        "injuryStatus": "Da valutare / monitoraggio",
+        "injury": "Problema muscolare durante Celtic-Milan; entrato al 46’ e sostituito al 68’. Entità non comunicata dal club.",
+        "injuryDetail": "Problema muscolare durante Celtic-Milan; entrato al 46’ e sostituito al 68’. Entità non comunicata dal club.",
+        "potentialReturn": "Da valutare prima della prossima amichevole",
+        "returnDate": "",
+        "injuryReturn": "Da valutare prima della prossima amichevole",
+        "impact": "Medio",
+        "injuryImpact": "Medio",
+        "canonicalPlayerId": "milan-gila",
+        "canonicalPlayerIds": [
+          "milan-gila"
+        ],
+        "source": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+        "url": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+        "articleUrl": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+        "href": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+        "sourceName": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+        "sourceLabel": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+        "sourceType": "Fonte infortunio",
+        "sourceVerification": "MONITORAGGIO",
+        "sourceVerificationNote": "Monitoraggio precauzionale; attendere aggiornamento medico ufficiale.",
+        "sources": [
+          {
+            "source": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+            "url": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+            "articleUrl": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+            "href": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+            "sourceName": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+            "sourceLabel": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+            "status": "Da valutare / monitoraggio",
+            "updatedAt": "2026-07-25",
+            "sourceType": "Fonte infortunio",
+            "sourceVerification": "MONITORAGGIO",
+            "sourceVerificationNote": "Monitoraggio precauzionale; attendere aggiornamento medico ufficiale.",
+            "note": "Monitoraggio precauzionale; attendere aggiornamento medico ufficiale."
+          },
+          {
+            "source": "https://www.acmilan.com/it/news/articoli/amichevole/2026-07-25/celtic-milan-le-formazioni-ufficiali",
+            "url": "https://www.acmilan.com/it/news/articoli/amichevole/2026-07-25/celtic-milan-le-formazioni-ufficiali",
+            "articleUrl": "https://www.acmilan.com/it/news/articoli/amichevole/2026-07-25/celtic-milan-le-formazioni-ufficiali",
+            "href": "https://www.acmilan.com/it/news/articoli/amichevole/2026-07-25/celtic-milan-le-formazioni-ufficiali",
+            "sourceName": "https://www.acmilan.com/it/news/articoli/amichevole/2026-07-25/celtic-milan-le-formazioni-ufficiali",
+            "sourceLabel": "https://www.acmilan.com/it/news/articoli/amichevole/2026-07-25/celtic-milan-le-formazioni-ufficiali",
+            "status": "Da valutare / monitoraggio",
+            "updatedAt": "2026-07-25",
+            "sourceType": "Fonte infortunio",
+            "sourceVerification": "MONITORAGGIO",
+            "sourceVerificationNote": "Monitoraggio precauzionale; attendere aggiornamento medico ufficiale.",
+            "note": "Monitoraggio precauzionale; attendere aggiornamento medico ufficiale."
+          }
+        ]
       }
     ],
     "inter": [
@@ -157131,24 +157275,24 @@
         "directionLabel": "Entrata",
         "event": "Celtic-Milan",
         "date": "2026-07-25",
-        "status": "Annunciata",
-        "result": "",
-        "score": "",
-        "finalScore": "",
-        "source": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
-        "url": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
-        "articleUrl": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
-        "href": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
-        "sourceName": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
-        "sourceLabel": "https://www.tuttomercatoweb.com/serie-a/serie-2026-2027-ritiri-amichevoli-precampionato-squadre-2244433",
+        "status": "Conclusa: Celtic-Milan 2-2",
+        "result": "2-2",
+        "score": "2-2",
+        "finalScore": "2-2",
+        "source": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+        "url": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+        "articleUrl": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+        "href": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+        "sourceName": "Sky Sport - Celtic-Milan 2-2",
+        "sourceLabel": "Sky Sport - Celtic-Milan 2-2",
         "matchKey": "milan 2026 07 25 celtic milan",
-        "updatedAt": "2026-07-23",
-        "note": "Test il 12 luglio e primo allenamento il 13 luglio; data conclusiva non ancora ufficializzata.",
-        "sourceType": "Articolo ritiri/amichevoli",
+        "updatedAt": "2026-07-25",
+        "note": "Finale 2-2. Reti Celtic: Duran 11’, Forrest 28’; Milan: Camarda 47’ rig. e 52’. Gila uscito al 68’ per problema muscolare.",
+        "sourceType": "Fonte giornalistica con tabellino",
         "sourceVerification": "OK_ARTICOLO",
-        "sourceVerificationNote": "Articolo TMW ritiri/amichevoli",
+        "sourceVerificationNote": "Formazioni iniziali verificate anche sul sito ufficiale AC Milan.",
         "venue": "Celtic Park, Glasgow",
-        "time": "orario da confermare",
+        "time": "16:00",
         "location": "Celtic Park, Glasgow"
       },
       {
@@ -178768,6 +178912,744 @@
         "ownGoals": 0,
         "injuries": 1
       }
+    },
+    "milan 2026 07 25 celtic milan": {
+      "key": "milan 2026 07 25 celtic milan",
+      "teamId": "milan",
+      "teamName": "Milan",
+      "event": "Celtic-Milan",
+      "date": "2026-07-25",
+      "match": "Celtic-Milan 2-2 | 2026-07-25",
+      "players": [
+        {
+          "teamId": "milan",
+          "teamName": "Milan",
+          "playerName": "Torriani",
+          "role": "P",
+          "match": "Celtic-Milan 2-2 | 2026-07-25",
+          "event": "Celtic-Milan",
+          "date": "2026-07-25",
+          "summary": "90’ | TIT | G0 | AG0 | INF NO | Intera gara.",
+          "minutes": 90,
+          "startStatus": "TIT",
+          "starter": true,
+          "goals": 0,
+          "ownGoals": 0,
+          "injuryGame": "NO",
+          "note": "Intera gara.",
+          "source": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "url": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "articleUrl": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "href": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "sourceName": "Sky Sport - Celtic-Milan 2-2",
+          "sourceLabel": "Sky Sport - Celtic-Milan 2-2",
+          "matchKey": "milan 2026 07 25 celtic milan",
+          "result": "2-2",
+          "completeness": "Completo secondo la fonte disponibile",
+          "canonicalPlayerId": "milan-torriani",
+          "canonicalPlayerIds": [
+            "milan-torriani"
+          ],
+          "target": "Torriani"
+        },
+        {
+          "teamId": "milan",
+          "teamName": "Milan",
+          "playerName": "Tomori",
+          "role": "D",
+          "match": "Celtic-Milan 2-2 | 2026-07-25",
+          "event": "Celtic-Milan",
+          "date": "2026-07-25",
+          "summary": "45’ | TIT | G0 | AG0 | INF NO | Primo tempo.",
+          "minutes": 45,
+          "startStatus": "TIT",
+          "starter": true,
+          "goals": 0,
+          "ownGoals": 0,
+          "injuryGame": "NO",
+          "note": "Primo tempo.",
+          "source": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "url": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "articleUrl": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "href": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "sourceName": "Sky Sport - Celtic-Milan 2-2",
+          "sourceLabel": "Sky Sport - Celtic-Milan 2-2",
+          "matchKey": "milan 2026 07 25 celtic milan",
+          "result": "2-2",
+          "completeness": "Completo secondo la fonte disponibile",
+          "canonicalPlayerId": "milan-tomori",
+          "canonicalPlayerIds": [
+            "milan-tomori"
+          ],
+          "target": "Tomori"
+        },
+        {
+          "teamId": "milan",
+          "teamName": "Milan",
+          "playerName": "Gabbia",
+          "role": "D",
+          "match": "Celtic-Milan 2-2 | 2026-07-25",
+          "event": "Celtic-Milan",
+          "date": "2026-07-25",
+          "summary": "45’ | TIT | G0 | AG0 | INF NO | Primo tempo.",
+          "minutes": 45,
+          "startStatus": "TIT",
+          "starter": true,
+          "goals": 0,
+          "ownGoals": 0,
+          "injuryGame": "NO",
+          "note": "Primo tempo.",
+          "source": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "url": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "articleUrl": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "href": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "sourceName": "Sky Sport - Celtic-Milan 2-2",
+          "sourceLabel": "Sky Sport - Celtic-Milan 2-2",
+          "matchKey": "milan 2026 07 25 celtic milan",
+          "result": "2-2",
+          "completeness": "Completo secondo la fonte disponibile",
+          "canonicalPlayerId": "milan-gabbia",
+          "canonicalPlayerIds": [
+            "milan-gabbia"
+          ],
+          "target": "Gabbia"
+        },
+        {
+          "teamId": "milan",
+          "teamName": "Milan",
+          "playerName": "Pavlovic",
+          "role": "D",
+          "match": "Celtic-Milan 2-2 | 2026-07-25",
+          "event": "Celtic-Milan",
+          "date": "2026-07-25",
+          "summary": "45’ | TIT | G0 | AG0 | INF NO | Primo tempo.",
+          "minutes": 45,
+          "startStatus": "TIT",
+          "starter": true,
+          "goals": 0,
+          "ownGoals": 0,
+          "injuryGame": "NO",
+          "note": "Primo tempo.",
+          "source": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "url": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "articleUrl": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "href": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "sourceName": "Sky Sport - Celtic-Milan 2-2",
+          "sourceLabel": "Sky Sport - Celtic-Milan 2-2",
+          "matchKey": "milan 2026 07 25 celtic milan",
+          "result": "2-2",
+          "completeness": "Completo secondo la fonte disponibile",
+          "canonicalPlayerId": "milan-pavlovic",
+          "canonicalPlayerIds": [
+            "milan-pavlovic"
+          ],
+          "target": "Pavlovic"
+        },
+        {
+          "teamId": "milan",
+          "teamName": "Milan",
+          "playerName": "Athekame",
+          "role": "D",
+          "match": "Celtic-Milan 2-2 | 2026-07-25",
+          "event": "Celtic-Milan",
+          "date": "2026-07-25",
+          "summary": "45’ | TIT | G0 | AG0 | INF NO | Primo tempo.",
+          "minutes": 45,
+          "startStatus": "TIT",
+          "starter": true,
+          "goals": 0,
+          "ownGoals": 0,
+          "injuryGame": "NO",
+          "note": "Primo tempo.",
+          "source": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "url": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "articleUrl": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "href": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "sourceName": "Sky Sport - Celtic-Milan 2-2",
+          "sourceLabel": "Sky Sport - Celtic-Milan 2-2",
+          "matchKey": "milan 2026 07 25 celtic milan",
+          "result": "2-2",
+          "completeness": "Completo secondo la fonte disponibile",
+          "canonicalPlayerId": "milan-athekame",
+          "canonicalPlayerIds": [
+            "milan-athekame"
+          ],
+          "target": "Athekame"
+        },
+        {
+          "teamId": "milan",
+          "teamName": "Milan",
+          "playerName": "Samuele Ricci",
+          "role": "C",
+          "match": "Celtic-Milan 2-2 | 2026-07-25",
+          "event": "Celtic-Milan",
+          "date": "2026-07-25",
+          "summary": "45’ | TIT | G0 | AG0 | INF NO | Primo tempo.",
+          "minutes": 45,
+          "startStatus": "TIT",
+          "starter": true,
+          "goals": 0,
+          "ownGoals": 0,
+          "injuryGame": "NO",
+          "note": "Primo tempo.",
+          "source": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "url": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "articleUrl": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "href": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "sourceName": "Sky Sport - Celtic-Milan 2-2",
+          "sourceLabel": "Sky Sport - Celtic-Milan 2-2",
+          "matchKey": "milan 2026 07 25 celtic milan",
+          "result": "2-2",
+          "completeness": "Completo secondo la fonte disponibile",
+          "canonicalPlayerId": "milan-samuele-ricci",
+          "canonicalPlayerIds": [
+            "milan-samuele-ricci"
+          ],
+          "target": "Samuele Ricci"
+        },
+        {
+          "teamId": "milan",
+          "teamName": "Milan",
+          "playerName": "Christian Comotto",
+          "role": "C",
+          "match": "Celtic-Milan 2-2 | 2026-07-25",
+          "event": "Celtic-Milan",
+          "date": "2026-07-25",
+          "summary": "45’ | TIT | G0 | AG0 | INF NO | Primo tempo.",
+          "minutes": 45,
+          "startStatus": "TIT",
+          "starter": true,
+          "goals": 0,
+          "ownGoals": 0,
+          "injuryGame": "NO",
+          "note": "Primo tempo.",
+          "source": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "url": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "articleUrl": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "href": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "sourceName": "Sky Sport - Celtic-Milan 2-2",
+          "sourceLabel": "Sky Sport - Celtic-Milan 2-2",
+          "matchKey": "milan 2026 07 25 celtic milan",
+          "result": "2-2",
+          "completeness": "Completo secondo la fonte disponibile",
+          "canonicalPlayerId": "milan-comotto",
+          "canonicalPlayerIds": [
+            "milan-comotto"
+          ],
+          "target": "Christian Comotto"
+        },
+        {
+          "teamId": "milan",
+          "teamName": "Milan",
+          "playerName": "Bartesaghi",
+          "role": "D",
+          "match": "Celtic-Milan 2-2 | 2026-07-25",
+          "event": "Celtic-Milan",
+          "date": "2026-07-25",
+          "summary": "60’ | TIT | G0 | AG0 | INF NO | Sostituito al 60’.",
+          "minutes": 60,
+          "startStatus": "TIT",
+          "starter": true,
+          "goals": 0,
+          "ownGoals": 0,
+          "injuryGame": "NO",
+          "note": "Sostituito al 60’.",
+          "source": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "url": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "articleUrl": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "href": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "sourceName": "Sky Sport - Celtic-Milan 2-2",
+          "sourceLabel": "Sky Sport - Celtic-Milan 2-2",
+          "matchKey": "milan 2026 07 25 celtic milan",
+          "result": "2-2",
+          "completeness": "Completo secondo la fonte disponibile",
+          "canonicalPlayerId": "milan-bartesaghi",
+          "canonicalPlayerIds": [
+            "milan-bartesaghi"
+          ],
+          "target": "Bartesaghi"
+        },
+        {
+          "teamId": "milan",
+          "teamName": "Milan",
+          "playerName": "Loftus-Cheek",
+          "role": "C",
+          "match": "Celtic-Milan 2-2 | 2026-07-25",
+          "event": "Celtic-Milan",
+          "date": "2026-07-25",
+          "summary": "60’ | TIT | G0 | AG0 | INF NO | Sostituito al 60’.",
+          "minutes": 60,
+          "startStatus": "TIT",
+          "starter": true,
+          "goals": 0,
+          "ownGoals": 0,
+          "injuryGame": "NO",
+          "note": "Sostituito al 60’.",
+          "source": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "url": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "articleUrl": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "href": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "sourceName": "Sky Sport - Celtic-Milan 2-2",
+          "sourceLabel": "Sky Sport - Celtic-Milan 2-2",
+          "matchKey": "milan 2026 07 25 celtic milan",
+          "result": "2-2",
+          "completeness": "Completo secondo la fonte disponibile",
+          "canonicalPlayerId": "milan-loftus-cheek",
+          "canonicalPlayerIds": [
+            "milan-loftus-cheek"
+          ],
+          "target": "Loftus-Cheek"
+        },
+        {
+          "teamId": "milan",
+          "teamName": "Milan",
+          "playerName": "Ossola",
+          "role": "A",
+          "match": "Celtic-Milan 2-2 | 2026-07-25",
+          "event": "Celtic-Milan",
+          "date": "2026-07-25",
+          "summary": "45’ | TIT | G0 | AG0 | INF NO | Primo tempo.",
+          "minutes": 45,
+          "startStatus": "TIT",
+          "starter": true,
+          "goals": 0,
+          "ownGoals": 0,
+          "injuryGame": "NO",
+          "note": "Primo tempo.",
+          "source": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "url": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "articleUrl": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "href": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "sourceName": "Sky Sport - Celtic-Milan 2-2",
+          "sourceLabel": "Sky Sport - Celtic-Milan 2-2",
+          "matchKey": "milan 2026 07 25 celtic milan",
+          "result": "2-2",
+          "completeness": "Completo secondo la fonte disponibile",
+          "canonicalPlayerId": "milan-ossola",
+          "canonicalPlayerIds": [
+            "milan-ossola"
+          ],
+          "target": "Ossola"
+        },
+        {
+          "teamId": "milan",
+          "teamName": "Milan",
+          "playerName": "Kostic",
+          "role": "A",
+          "match": "Celtic-Milan 2-2 | 2026-07-25",
+          "event": "Celtic-Milan",
+          "date": "2026-07-25",
+          "summary": "45’ | TIT | G0 | AG0 | INF NO | Primo tempo.",
+          "minutes": 45,
+          "startStatus": "TIT",
+          "starter": true,
+          "goals": 0,
+          "ownGoals": 0,
+          "injuryGame": "NO",
+          "note": "Primo tempo.",
+          "source": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "url": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "articleUrl": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "href": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "sourceName": "Sky Sport - Celtic-Milan 2-2",
+          "sourceLabel": "Sky Sport - Celtic-Milan 2-2",
+          "matchKey": "milan 2026 07 25 celtic milan",
+          "result": "2-2",
+          "completeness": "Completo secondo la fonte disponibile",
+          "canonicalPlayerId": "milan-kostic",
+          "canonicalPlayerIds": [
+            "milan-kostic"
+          ],
+          "target": "Kostic"
+        },
+        {
+          "teamId": "milan",
+          "teamName": "Milan",
+          "playerName": "Gila",
+          "role": "D",
+          "match": "Celtic-Milan 2-2 | 2026-07-25",
+          "event": "Celtic-Milan",
+          "date": "2026-07-25",
+          "summary": "22’ | SOST/2T | G0 | AG0 | INF SI | Entrato al 46’, sostituito al 68’ per problema muscolare.",
+          "minutes": 22,
+          "startStatus": "SOST/2T",
+          "starter": false,
+          "goals": 0,
+          "ownGoals": 0,
+          "injuryGame": "SI",
+          "note": "Entrato al 46’, sostituito al 68’ per problema muscolare.",
+          "source": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "url": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "articleUrl": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "href": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "sourceName": "Sky Sport - Celtic-Milan 2-2",
+          "sourceLabel": "Sky Sport - Celtic-Milan 2-2",
+          "matchKey": "milan 2026 07 25 celtic milan",
+          "result": "2-2",
+          "completeness": "Completo secondo la fonte disponibile",
+          "canonicalPlayerId": "milan-gila",
+          "canonicalPlayerIds": [
+            "milan-gila"
+          ],
+          "target": "Gila"
+        },
+        {
+          "teamId": "milan",
+          "teamName": "Milan",
+          "playerName": "Odogu",
+          "role": "D",
+          "match": "Celtic-Milan 2-2 | 2026-07-25",
+          "event": "Celtic-Milan",
+          "date": "2026-07-25",
+          "summary": "45’ | SOST/2T | G0 | AG0 | INF NO | Secondo tempo.",
+          "minutes": 45,
+          "startStatus": "SOST/2T",
+          "starter": false,
+          "goals": 0,
+          "ownGoals": 0,
+          "injuryGame": "NO",
+          "note": "Secondo tempo.",
+          "source": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "url": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "articleUrl": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "href": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "sourceName": "Sky Sport - Celtic-Milan 2-2",
+          "sourceLabel": "Sky Sport - Celtic-Milan 2-2",
+          "matchKey": "milan 2026 07 25 celtic milan",
+          "result": "2-2",
+          "completeness": "Completo secondo la fonte disponibile",
+          "canonicalPlayerId": "milan-odogu",
+          "canonicalPlayerIds": [
+            "milan-odogu"
+          ],
+          "target": "Odogu"
+        },
+        {
+          "teamId": "milan",
+          "teamName": "Milan",
+          "playerName": "Filippo Terracciano",
+          "role": "D",
+          "match": "Celtic-Milan 2-2 | 2026-07-25",
+          "event": "Celtic-Milan",
+          "date": "2026-07-25",
+          "summary": "45’ | SOST/2T | G0 | AG0 | INF NO | Secondo tempo.",
+          "minutes": 45,
+          "startStatus": "SOST/2T",
+          "starter": false,
+          "goals": 0,
+          "ownGoals": 0,
+          "injuryGame": "NO",
+          "note": "Secondo tempo.",
+          "source": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "url": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "articleUrl": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "href": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "sourceName": "Sky Sport - Celtic-Milan 2-2",
+          "sourceLabel": "Sky Sport - Celtic-Milan 2-2",
+          "matchKey": "milan 2026 07 25 celtic milan",
+          "result": "2-2",
+          "completeness": "Completo secondo la fonte disponibile",
+          "canonicalPlayerId": "milan-filippo-terracciano",
+          "canonicalPlayerIds": [
+            "milan-filippo-terracciano"
+          ],
+          "target": "Filippo Terracciano"
+        },
+        {
+          "teamId": "milan",
+          "teamName": "Milan",
+          "playerName": "Samuel Chukwueze",
+          "role": "A/C",
+          "match": "Celtic-Milan 2-2 | 2026-07-25",
+          "event": "Celtic-Milan",
+          "date": "2026-07-25",
+          "summary": "45’ | SOST/2T | G0 | AG0 | INF NO | Secondo tempo.",
+          "minutes": 45,
+          "startStatus": "SOST/2T",
+          "starter": false,
+          "goals": 0,
+          "ownGoals": 0,
+          "injuryGame": "NO",
+          "note": "Secondo tempo.",
+          "source": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "url": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "articleUrl": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "href": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "sourceName": "Sky Sport - Celtic-Milan 2-2",
+          "sourceLabel": "Sky Sport - Celtic-Milan 2-2",
+          "matchKey": "milan 2026 07 25 celtic milan",
+          "result": "2-2",
+          "completeness": "Completo secondo la fonte disponibile",
+          "canonicalPlayerId": "milan-samuel-chukwueze",
+          "canonicalPlayerIds": [
+            "milan-samuel-chukwueze"
+          ],
+          "target": "Samuel Chukwueze"
+        },
+        {
+          "teamId": "milan",
+          "teamName": "Milan",
+          "playerName": "Yunus Musah",
+          "role": "C",
+          "match": "Celtic-Milan 2-2 | 2026-07-25",
+          "event": "Celtic-Milan",
+          "date": "2026-07-25",
+          "summary": "45’ | SOST/2T | G0 | AG0 | INF NO | Secondo tempo.",
+          "minutes": 45,
+          "startStatus": "SOST/2T",
+          "starter": false,
+          "goals": 0,
+          "ownGoals": 0,
+          "injuryGame": "NO",
+          "note": "Secondo tempo.",
+          "source": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "url": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "articleUrl": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "href": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "sourceName": "Sky Sport - Celtic-Milan 2-2",
+          "sourceLabel": "Sky Sport - Celtic-Milan 2-2",
+          "matchKey": "milan 2026 07 25 celtic milan",
+          "result": "2-2",
+          "completeness": "Completo secondo la fonte disponibile",
+          "canonicalPlayerId": "milan-yunus-musah",
+          "canonicalPlayerIds": [
+            "milan-yunus-musah"
+          ],
+          "target": "Yunus Musah"
+        },
+        {
+          "teamId": "milan",
+          "teamName": "Milan",
+          "playerName": "Y. Fofana",
+          "role": "C",
+          "match": "Celtic-Milan 2-2 | 2026-07-25",
+          "event": "Celtic-Milan",
+          "date": "2026-07-25",
+          "summary": "45’ | SOST/2T | G0 | AG0 | INF NO | Secondo tempo.",
+          "minutes": 45,
+          "startStatus": "SOST/2T",
+          "starter": false,
+          "goals": 0,
+          "ownGoals": 0,
+          "injuryGame": "NO",
+          "note": "Secondo tempo.",
+          "source": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "url": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "articleUrl": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "href": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "sourceName": "Sky Sport - Celtic-Milan 2-2",
+          "sourceLabel": "Sky Sport - Celtic-Milan 2-2",
+          "matchKey": "milan 2026 07 25 celtic milan",
+          "result": "2-2",
+          "completeness": "Completo secondo la fonte disponibile",
+          "canonicalPlayerId": "milan-y-fofana",
+          "canonicalPlayerIds": [
+            "milan-y-fofana"
+          ],
+          "target": "Y. Fofana"
+        },
+        {
+          "teamId": "milan",
+          "teamName": "Milan",
+          "playerName": "Guernier",
+          "role": "A/C",
+          "match": "Celtic-Milan 2-2 | 2026-07-25",
+          "event": "Celtic-Milan",
+          "date": "2026-07-25",
+          "summary": "30’ | SOST/2T | G0 | AG0 | INF NO | Entrato al 46’, sostituito al 76’.",
+          "minutes": 30,
+          "startStatus": "SOST/2T",
+          "starter": false,
+          "goals": 0,
+          "ownGoals": 0,
+          "injuryGame": "NO",
+          "note": "Entrato al 46’, sostituito al 76’.",
+          "source": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "url": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "articleUrl": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "href": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "sourceName": "Sky Sport - Celtic-Milan 2-2",
+          "sourceLabel": "Sky Sport - Celtic-Milan 2-2",
+          "matchKey": "milan 2026 07 25 celtic milan",
+          "result": "2-2",
+          "completeness": "Completo secondo la fonte disponibile",
+          "canonicalPlayerId": "milan-guernier",
+          "canonicalPlayerIds": [
+            "milan-guernier"
+          ],
+          "target": "Guernier"
+        },
+        {
+          "teamId": "milan",
+          "teamName": "Milan",
+          "playerName": "Francesco Camarda",
+          "role": "A",
+          "match": "Celtic-Milan 2-2 | 2026-07-25",
+          "event": "Celtic-Milan",
+          "date": "2026-07-25",
+          "summary": "45’ | SOST/2T | G2 | AG0 | INF NO | Doppietta: rigore al 47’ e rete al 52’.",
+          "minutes": 45,
+          "startStatus": "SOST/2T",
+          "starter": false,
+          "goals": 2,
+          "ownGoals": 0,
+          "injuryGame": "NO",
+          "note": "Doppietta: rigore al 47’ e rete al 52’.",
+          "source": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "url": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "articleUrl": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "href": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "sourceName": "Sky Sport - Celtic-Milan 2-2",
+          "sourceLabel": "Sky Sport - Celtic-Milan 2-2",
+          "matchKey": "milan 2026 07 25 celtic milan",
+          "result": "2-2",
+          "completeness": "Completo secondo la fonte disponibile",
+          "canonicalPlayerId": "milan-francesco-camarda",
+          "canonicalPlayerIds": [
+            "milan-francesco-camarda"
+          ],
+          "target": "Francesco Camarda"
+        },
+        {
+          "teamId": "milan",
+          "teamName": "Milan",
+          "playerName": "Borsani",
+          "role": "C",
+          "match": "Celtic-Milan 2-2 | 2026-07-25",
+          "event": "Celtic-Milan",
+          "date": "2026-07-25",
+          "summary": "30’ | SOST | G0 | AG0 | INF NO | Entrato al 60’.",
+          "minutes": 30,
+          "startStatus": "SOST",
+          "starter": false,
+          "goals": 0,
+          "ownGoals": 0,
+          "injuryGame": "NO",
+          "note": "Entrato al 60’.",
+          "source": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "url": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "articleUrl": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "href": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "sourceName": "Sky Sport - Celtic-Milan 2-2",
+          "sourceLabel": "Sky Sport - Celtic-Milan 2-2",
+          "matchKey": "milan 2026 07 25 celtic milan",
+          "result": "2-2",
+          "completeness": "Completo secondo la fonte disponibile",
+          "canonicalPlayerId": "milan-borsani",
+          "canonicalPlayerIds": [
+            "milan-borsani"
+          ],
+          "target": "Borsani"
+        },
+        {
+          "teamId": "milan",
+          "teamName": "Milan",
+          "playerName": "Vos",
+          "role": "C",
+          "match": "Celtic-Milan 2-2 | 2026-07-25",
+          "event": "Celtic-Milan",
+          "date": "2026-07-25",
+          "summary": "30’ | SOST | G0 | AG0 | INF NO | Entrato al 60’.",
+          "minutes": 30,
+          "startStatus": "SOST",
+          "starter": false,
+          "goals": 0,
+          "ownGoals": 0,
+          "injuryGame": "NO",
+          "note": "Entrato al 60’.",
+          "source": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "url": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "articleUrl": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "href": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "sourceName": "Sky Sport - Celtic-Milan 2-2",
+          "sourceLabel": "Sky Sport - Celtic-Milan 2-2",
+          "matchKey": "milan 2026 07 25 celtic milan",
+          "result": "2-2",
+          "completeness": "Completo secondo la fonte disponibile",
+          "canonicalPlayerId": "milan-vos",
+          "canonicalPlayerIds": [
+            "milan-vos"
+          ],
+          "target": "Vos"
+        },
+        {
+          "teamId": "milan",
+          "teamName": "Milan",
+          "playerName": "Vladimirov",
+          "role": "D",
+          "match": "Celtic-Milan 2-2 | 2026-07-25",
+          "event": "Celtic-Milan",
+          "date": "2026-07-25",
+          "summary": "22’ | SOST | G0 | AG0 | INF NO | Entrato al 68’ per Gila.",
+          "minutes": 22,
+          "startStatus": "SOST",
+          "starter": false,
+          "goals": 0,
+          "ownGoals": 0,
+          "injuryGame": "NO",
+          "note": "Entrato al 68’ per Gila.",
+          "source": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "url": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "articleUrl": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "href": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "sourceName": "Sky Sport - Celtic-Milan 2-2",
+          "sourceLabel": "Sky Sport - Celtic-Milan 2-2",
+          "matchKey": "milan 2026 07 25 celtic milan",
+          "result": "2-2",
+          "completeness": "Completo secondo la fonte disponibile",
+          "canonicalPlayerId": "milan-vladimirov",
+          "canonicalPlayerIds": [
+            "milan-vladimirov"
+          ],
+          "target": "Vladimirov"
+        },
+        {
+          "teamId": "milan",
+          "teamName": "Milan",
+          "playerName": "A. Cisse",
+          "role": "A",
+          "match": "Celtic-Milan 2-2 | 2026-07-25",
+          "event": "Celtic-Milan",
+          "date": "2026-07-25",
+          "summary": "14’ | SOST | G0 | AG0 | INF NO | Entrato al 76’ per Guernier.",
+          "minutes": 14,
+          "startStatus": "SOST",
+          "starter": false,
+          "goals": 0,
+          "ownGoals": 0,
+          "injuryGame": "NO",
+          "note": "Entrato al 76’ per Guernier.",
+          "source": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "url": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "articleUrl": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "href": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+          "sourceName": "Sky Sport - Celtic-Milan 2-2",
+          "sourceLabel": "Sky Sport - Celtic-Milan 2-2",
+          "matchKey": "milan 2026 07 25 celtic milan",
+          "result": "2-2",
+          "completeness": "Completo secondo la fonte disponibile",
+          "canonicalPlayerId": "milan-a-cisse",
+          "canonicalPlayerIds": [
+            "milan-a-cisse"
+          ],
+          "target": "A. Cisse"
+        }
+      ],
+      "source": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+      "result": "2-2",
+      "finalScore": "2-2",
+      "score": "2-2",
+      "url": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+      "articleUrl": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+      "href": "https://sport.sky.it/calcio/serie-a/2026/07/25/celtic-milan-risultato-gol",
+      "matchKey": "milan 2026 07 25 celtic milan",
+      "totals": {
+        "players": 23,
+        "starters": 11,
+        "goals": 2,
+        "ownGoals": 0,
+        "injuries": 1
+      }
     }
   },
   "playerDirectory": [
@@ -184848,9 +185730,6 @@
       ],
       "publicSourceV776": "LISTONE",
       "sosFlagActiveV776": false
-    },
-    {
-      "id": "milan-bennacer"
     },
     {
       "id": "inter-berenbruch"
@@ -221972,7 +222851,15 @@
         "LISTONE"
       ],
       "publicSourceV776": "LISTONE",
-      "sosFlagActiveV776": false
+      "sosFlagActiveV776": false,
+      "sourceKindsV780": [
+        "AMICHEVOLE",
+        "LISTONE"
+      ],
+      "catalogSourcesCountV780": 2,
+      "publicSourceV780": "LISTONE",
+      "identityStatusV780": "CANONICO V780",
+      "sosFlagActiveV780": false
     },
     {
       "id": "atalanta-giovane-atalanta"
@@ -230860,6 +231747,82 @@
     },
     {
       "id": "milan-zukic"
+    },
+    {
+      "id": "milan-vladimirov",
+      "playerName": "Vladimirov",
+      "target": "Vladimirov",
+      "canonicalFullName": "Vladimirov",
+      "originalName": "Vladimirov",
+      "disambiguatedName": "Vladimirov",
+      "role": "D",
+      "roleSource": "AMICHEVOLE",
+      "nameSource": "AMICHEVOLE",
+      "catalogOnly": true,
+      "teamId": "milan",
+      "teamName": "Milan",
+      "updatedAt": "2026-07-25",
+      "marketStatus": "",
+      "marketDetail": "Profilo emerso dal tabellino Celtic-Milan del 25/07/2026.",
+      "sosFantaFlag": false,
+      "hasRenewal": false,
+      "nameAliasesV755": [
+        "Vladimirov"
+      ],
+      "probableXi": false,
+      "formationPosition": "",
+      "formationSourcePosition": "",
+      "formationLine": "",
+      "formationCheck": "",
+      "formationRoleOk": "",
+      "formationModuleUsed": "",
+      "formationCorrectionNote": "",
+      "sourceKindsV780": [
+        "AMICHEVOLE"
+      ],
+      "catalogSourcesCountV780": 1,
+      "publicSourceV780": "AMICHEVOLE",
+      "identityStatusV780": "CANONICO V780",
+      "identityNotesV780": "Identità da tabellino Celtic-Milan V167; alias contestuale alla squadra Milan.",
+      "sosFlagActiveV780": false
+    },
+    {
+      "id": "milan-vos",
+      "playerName": "Vos",
+      "target": "Vos",
+      "canonicalFullName": "Vos",
+      "originalName": "Vos",
+      "disambiguatedName": "Vos",
+      "role": "C",
+      "roleSource": "AMICHEVOLE",
+      "nameSource": "AMICHEVOLE",
+      "catalogOnly": true,
+      "teamId": "milan",
+      "teamName": "Milan",
+      "updatedAt": "2026-07-25",
+      "marketStatus": "",
+      "marketDetail": "Profilo emerso dal tabellino Celtic-Milan del 25/07/2026.",
+      "sosFantaFlag": false,
+      "hasRenewal": false,
+      "nameAliasesV755": [
+        "Vos"
+      ],
+      "probableXi": false,
+      "formationPosition": "",
+      "formationSourcePosition": "",
+      "formationLine": "",
+      "formationCheck": "",
+      "formationRoleOk": "",
+      "formationModuleUsed": "",
+      "formationCorrectionNote": "",
+      "sourceKindsV780": [
+        "AMICHEVOLE"
+      ],
+      "catalogSourcesCountV780": 1,
+      "publicSourceV780": "AMICHEVOLE",
+      "identityStatusV780": "CANONICO V780",
+      "identityNotesV780": "Identità da tabellino Celtic-Milan V167; alias contestuale alla squadra Milan.",
+      "sosFlagActiveV780": false
     }
   ],
   "updateLogV766": {
@@ -231155,5 +232118,53 @@
       "lazio-filipe-bordon",
       "lazio-ricardo-bordon"
     ]
+  },
+  "updateLogV780": {
+    "version": "V780",
+    "date": "2026-07-25",
+    "time": "18:05 CEST",
+    "sourceWorkbook": "v167_2026-07-25_fantacalcio_serie_a_2026_27_iosudo_v780_aggiornato_1805.xlsx",
+    "changes": [
+      "Celtic-Milan 2-2 con 23 prestazioni e problema muscolare di Gila.",
+      "Aggiornati Joao Mario, Openda, Chalobah e Rafael Leao.",
+      "Rimosso Bennacer dalla rosa Milan secondo V167.",
+      "Controllo duplicati completo e rumor runtime preservati."
+    ]
+  },
+  "duplicateAuditV780": {
+    "catalogPlayers": 1123,
+    "rosterPlayers": 739,
+    "duplicateIds": 0,
+    "duplicateDisplayNames": 0,
+    "duplicateTalkRows": 0,
+    "protectedPessina": [
+      "bologna-pessina-mas",
+      "monza-pessina-mas"
+    ],
+    "protectedBordon": [
+      "lazio-filipe-bordon",
+      "lazio-ricardo-bordon"
+    ]
+  },
+  "talkAuditV780": {
+    "total": 176,
+    "incoming": 108,
+    "outgoing": 64,
+    "other": 4,
+    "runtimeBucketsVisible": true
+  },
+  "friendlyAuditV780": {
+    "matchDetails": 33,
+    "playerStats": 687,
+    "newMatch": "milan 2026 07 25 celtic milan",
+    "newMatchPlayers": 23,
+    "allWorkbookRowsCovered": true
+  },
+  "sosFlagAuditV780": {
+    "activeInjuryRows": 57,
+    "activeCanonicalIds": 57,
+    "rosterPlayers": 739,
+    "flaggedRosterPlayers": 52,
+    "mode": "active-injury-index-only"
   }
 }
