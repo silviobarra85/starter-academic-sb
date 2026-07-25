@@ -1,4 +1,4 @@
-const IOSUDO_CACHE = 'iosudo-shell-v774';
+const IOSUDO_CACHE = 'iosudo-shell-v776';
 const IOSUDO_SHELL = [
   './',
   './index.html',
@@ -6,8 +6,8 @@ const IOSUDO_SHELL = [
   './assets/icon.svg',
   './assets/icon-192.png',
   './assets/icon-512.png',
-  '../fanta-engine/css/iosudo-app-v774.css?v=774',
-  '../fanta-engine/js/apps/iosudo-app-v774.js?v=774'
+  '../fanta-engine/css/iosudo-app-v776.css?v=776',
+  '../fanta-engine/js/apps/iosudo-app-v776.js?v=776'
 ];
 
 async function safePrecache() {
@@ -59,4 +59,4 @@ self.addEventListener('fetch', function (event) {
   }).catch(function () { return caches.match(event.request); }));
 });
 
-// V774: cache applicazione sincronizzata con dati V161.
+// V776: cache applicazione sincronizzata con dati V161.

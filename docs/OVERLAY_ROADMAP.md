@@ -1,6 +1,5 @@
 # Roadmap overlay
 
-- Prossima release: importare il nuovo listone in `assets/listoni`.
-- Rifare il matching degli ID, che possono cambiare.
-- Aggiungere il badge `FUORI LISTONE` ai giocatori ancora nelle rose ma assenti dal listone corrente.
-- Aggiornare sempre header, manifest, JavaScript, CSS e cache PWA.
+- Prossimo listone: inserirlo in `assets/listoni`, rifare integralmente il matching degli ID e attivare il badge `FUORI LISTONE`.
+- Aggiornare sempre header, manifest, cache PWA e audit.
+- Eseguire sempre il controllo duplicati completo.
