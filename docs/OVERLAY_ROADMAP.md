@@ -13,3 +13,12 @@
 - Aggiunto Gila al monitoraggio SOS; totale 57 segnalazioni attive/monitorate.
 - Bennacer rimosso dalla rosa Milan; aggiunti Vladimirov e Vos come profili da tabellino.
 - Controllo duplicati obbligatorio su catalogo, rose, listone e flussi informativi.
+
+## Aggiornamento V781 / overlay V791
+
+- Sorgente: `v168_2026-07-25_fantacalcio_serie_a_2026_27_iosudo_v781_aggiornato_1845.xlsx`, cutoff 25/07/2026 18:45 CEST.
+- Header, asset applicativi, manifest e cache PWA sincronizzati a V781.
+- Pubblicate 158 uscite ufficiali nelle schede delle 20 squadre di origine, incluse destinazioni estere, Serie B, U23 e svincolati.
+- I giocatori ceduti sono rimossi soltanto dalla rosa attiva e restano nel catalogo storico e nella sottosezione `Mercato → UFFICIALITÀ IN USCITA`.
+- Rumor e tabellini preservati: 176 trattative, 33 dettagli partita e 687 prestazioni.
+- Audit bloccante su completezza delle uscite, duplicati, header e dati preservati.
