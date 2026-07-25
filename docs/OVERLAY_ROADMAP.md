@@ -1,4 +1,4 @@
 # Roadmap overlay
 
-- Prossimo listone: inserirlo in `assets/listoni`, rifare il matching degli ID e attivare il badge `FUORI LISTONE`.
-- Continuare il controllo duplicati su rose, listone, rumor, ufficialità, SOS e tabellini.
+- V789 / ioSudo V779: dati Excel V166, rinnovo Vergara, Quintero, mercato aggiornato e deduplica Akarakiri.
+- Prossimo listone: import in `assets/listoni`, rematching completo degli ID e badge `FUORI LISTONE` per i giocatori ancora nelle rose ma assenti dal listone corrente.

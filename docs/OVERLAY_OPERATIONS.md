@@ -1,3 +1,3 @@
 # Operazioni overlay
 
-V788 aggiorna ioSudo a V778. Copiare `static/` e `docs/`, quindi eseguire `node static/fanta-engine/tools/audit-iosudo-v778.mjs .`. L’header, il manifest e la cache devono indicare V778.
+V789 applica ioSudo V779 con payload completo V166. L'overlay è autosufficiente, non modifica `.github/workflows` e deve essere copiato con `cp -R static/* static/` e `cp -R docs/* docs/`.
