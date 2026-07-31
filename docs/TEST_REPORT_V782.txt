@@ -1,0 +1,24 @@
+ioSudo V782 - report di generazione
+Sorgente: v169_2026-07-31_fantacalcio_serie_a_2026_27_iosudo_v782_aggiornato_1050(2).xlsx
+Cutoff: 31/07/2026 10:50 CEST
+Rose: 814
+Catalogo: 1226
+Ufficialità: 390
+Trattative attive: 196
+Rumor Transfermarkt: 16
+SOS operativi: 58
+SOS chiusi in archivio: 9
+Amichevoli datate: 111
+Partite con tabellino giocatori: 51
+Prestazioni individuali: 1031
+Probabili XI: 220
+Formazioni non risolte: 0
+Statistiche amichevoli non associate al calendario: 0
+Duplicati ID: 0
+Duplicati squadra-nome: 0
+Duplicati ID Fantacalcio: 0
+Duplicati trattative: 0
+Duplicati ufficialità: 0
+Duplicati SOS: 0
+Duplicati amichevoli: 0
+Duplicati prestazioni per partita: 0

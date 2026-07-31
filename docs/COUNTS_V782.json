@@ -1,0 +1,79 @@
+{
+  "version": "V782",
+  "sourceWorkbook": "v169_2026-07-31_fantacalcio_serie_a_2026_27_iosudo_v782_aggiornato_1050(2).xlsx",
+  "updatedAt": "2026-07-31",
+  "updatedAtTime": "10:50 CEST",
+  "counts": {
+    "teams": 20,
+    "players": 1226,
+    "rosterPlayers": 814,
+    "officialMoves": 390,
+    "teamTransferTalks": 196,
+    "transfermarktRumors": 16,
+    "injuries": 58,
+    "injuriesArchive": 67,
+    "friendlies": 111,
+    "friendlyMatchDetails": 51,
+    "friendlyPlayerStats": 1031,
+    "sources": 926,
+    "duplicatesExact": 0,
+    "duplicateIds": 0,
+    "duplicateFantacalcioIds": 0,
+    "duplicateTalkRows": 0,
+    "duplicateOfficialRows": 0,
+    "duplicateInjuryRows": 0,
+    "duplicateFriendlyRows": 0,
+    "duplicateFriendlyStatRows": 0,
+    "formationPlayers": 220,
+    "formationTeams": 20
+  },
+  "duplicateAudit": {
+    "catalogPlayers": 1226,
+    "rosterPlayers": 814,
+    "duplicateIds": 0,
+    "duplicateDisplayNames": 0,
+    "duplicateFantacalcioIds": 0,
+    "duplicateTalkRows": 0,
+    "duplicateOfficialRows": 0,
+    "duplicateInjuryRows": 0,
+    "duplicateFriendlyRows": 0,
+    "duplicateFriendlyStatRows": 0,
+    "protectedPessina": [
+      "bologna-pessina-mas",
+      "monza-pessina-mas"
+    ],
+    "protectedBordon": [
+      "lazio-filipe-bordon",
+      "lazio-ricardo-bordon"
+    ],
+    "protectedKostic": [
+      "milan-kostic",
+      "juventus-kostic"
+    ],
+    "movedCanonicalIds": {
+      "bologna-castro": "Roma",
+      "roma-dovbyk": "Bologna",
+      "fiorentina-pietro-comuzzo": "Torino"
+    }
+  },
+  "sosAudit": {
+    "operationalRows": 58,
+    "activeRows": 32,
+    "monitoringRows": 26,
+    "closedArchiveRows": 9,
+    "activeCanonicalIds": 58,
+    "rosterPlayers": 814,
+    "flaggedRosterPlayers": 58,
+    "mode": "active-and-monitoring-index"
+  },
+  "formationAudit": {
+    "teams": 20,
+    "slots": 220,
+    "slotsPerTeam": 11,
+    "resolvedCanonicalIds": 220,
+    "duplicateCanonicalIds": 0,
+    "unresolvedPlayers": 0,
+    "sourcePrimary": "Goal / workbook V169",
+    "sourceSecondary": "Transfermarkt e controlli al 31/07/2026"
+  }
+}
