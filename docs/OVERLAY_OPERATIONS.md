@@ -1,11 +1,13 @@
 # Operazioni overlay
 
-Overlay V782 pronto per la GitHub Action.
+Overlay cumulativo V785, pronto per la GitHub Action.
 
-1. Caricare lo zip in `incoming/overlays/` e fare commit/push.
-2. Il workflow estrae `static/` e `docs/` nella radice del repository.
-3. Il workflow esegue automaticamente l'audit più recente: `node static/fanta-engine/tools/audit-iosudo-v782.mjs .`.
-4. Vengono inoltre controllati la sintassi dell'app V782 e il service worker.
-5. Lo zip viene rimosso automaticamente dopo l'applicazione e le modifiche vengono committate dal bot.
-
-L'overlay contiene soltanto i file effettivamente modificati e non modifica `.github/workflows`.
+- Caricare lo zip integro in `incoming/overlays/` e fare commit/push.
+- Non applicare prima la V783: questa V785 ne contiene integralmente le modifiche.
+- La action copia `static/` e `docs/` nella radice del repository.
+- ioSudo viene sostituito dalla pagina di manutenzione V785.
+- Il nuovo listone `2026-08-05` diventa il predefinito condiviso; `2026-07-04` resta selezionabile.
+- Le configurazioni e i footer di ZonaOrientale/FantaMantraManager restano invariati per preservare il contratto static-first.
+- Audit inclusi: `audit-sudatori-section-v785.mjs` e `audit-iosudo-v785.mjs`.
+- Il nome `audit-iosudo-v785.mjs` rispetta il pattern `audit-iosudo-v*.mjs` usato dalla GitHub Action; in questo modo il vecchio audit V782 non viene più selezionato.
+- L'overlay non modifica `.github/workflows` e contiene soltanto file effettivamente aggiornati.

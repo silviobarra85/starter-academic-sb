@@ -1,3 +1,14 @@
+## Aggiornamento V783 - Listoni condivisi 2026-2027 e ioSudo in manutenzione
+
+- ZonaOrientale legge il manifest canonico `../fanta-engine/data/shared-assets/current/assets/listoni/manifest.json`.
+- L'aggiunta di un listone richiede sia il nuovo JSON sia l'aggiornamento del manifest; copiare soltanto il file non lo rende visibile.
+- La schermata Listone filtra per la stagione corrente `2026-2027`, ordina per data/ID decrescente e seleziona automaticamente la versione più recente.
+- Il listone `2026-07-04.json` resta nel manifest con `seasonId: "2026-2027"` e continuerà a essere selezionabile dopo l'aggiunta del nuovo file.
+- Gli ID Fantacalcio possono cambiare tra listoni: i link giocatore usano l'ID contenuto nella versione selezionata; rose e quotazioni sono abbinate principalmente tramite nome normalizzato.
+- Il confronto storico dispone di fallback nome+squadra, nome+ruolo e nome, ma ogni nuovo import va verificato contro collisioni, omonimie e ID eventualmente riutilizzati.
+- ioSudo V783 è in manutenzione; questa scelta non modifica la sezione Listone di ZonaOrientale.
+- `docs/zonaorientale/FUNZIONALITA'.md` non è stato modificato.
+
 ## Nota V440 su Bilanci e sezioni dati
 
 - Nessuna modifica a Calciomercato, Listone, Rose o filtri.
@@ -3987,3 +3998,13 @@ I 42 asset comuni listone/calciomercato sono stati copiati nel motore centrale `
 ## Aggiornamento V488
 
 V488 aggiunge l'inventario delle dipendenze JS comuni (`shared-js-dependency-inventory-v488.json`) senza spostare i JS runtime e senza cancellare copie locali.
+
+## V785 - nuovo listone condiviso del 05/08/2026
+
+- Convertito `Quotazioni_Fantacalcio_Stagione_2026_27.xlsx` nel formato JSON canonico del FantaEngine.
+- Pubblicato `2026-08-05.json` con 494 giocatori attivi, 20 squadre, ruoli Classic/Mantra, quotazioni e FVM.
+- Aggiornato il manifest condiviso mantenendo il listone `2026-07-04` nello storico della stagione `2026-2027`.
+- Il nuovo listone è selezionato automaticamente perché è la voce più recente della stagione.
+- I link alle schede Fantacalcio.it usano gli ID del listone selezionato; le rose restano abbinate tramite nome normalizzato.
+- Nessuna modifica a Firebase, Admin, snapshot, competizioni o dati delle rose.
+- Correzione condivisa link giocatori Frosinone: `FRO -> frosinone`.

@@ -1,14 +1,20 @@
-# Handoff ioSudo V782
+# Handoff ioSudo V785
 
-- Sorgente: `v169_2026-07-31_fantacalcio_serie_a_2026_27_iosudo_v782_aggiornato_1050(2).xlsx`.
-- Cutoff: 31/07/2026 10:50 CEST.
-- Catalogo: 1226 identità; rose tecniche attive: 814.
-- Ufficialità: 390; trattative attive: 196; rumor Transfermarkt: 16.
-- SOS operativi: 58 (32 attivi e 26 monitoraggi); 9 record chiusi conservati nell'archivio.
-- Probabili XI: 20 squadre e 220 slot, tutti collegati a un ID canonico.
-- Amichevoli datate: 111; partite con dettaglio giocatori: 51; prestazioni: 1031.
-- Trasferimenti con ID persistente: Santiago Castro `bologna-castro` ora Roma; Artem Dovbyk `roma-dovbyk` ora Bologna; Pietro Comuzzo `fiorentina-pietro-comuzzo` ora Torino.
-- Nuovi ingressi principali: John Stones all'Inter, Sankhoun Diawara al Milan, Gustavo Varela al Monza, Eray Cömert al Torino.
-- Controllo duplicati completo su catalogo, rose, ID Fantacalcio, trattative, ufficialità, SOS, XI e amichevoli: nessun duplicato operativo.
-- Disambiguazioni protette: Matteo/Massimo Pessina, Filipe/Ricardo Bordon, Andrej Kostić/Filip Kostic, Adams, Giovane, Stankovic, Massolin/Nzingoula.
-- Shell sincronizzata: header, JS, CSS, manifest PWA, service worker e cache sono tutti V782.
+## Stato applicazione
+
+- ioSudo è temporaneamente disattivato.
+- `/iosudo/` mostra una pagina `Site under construction` V785 e non avvia l'applicazione o i fetch dei payload.
+- I redirect delle singole leghe restano validi e raggiungono la pagina centrale di manutenzione.
+- Il service worker usa la cache `iosudo-maintenance-v785` e rimuove le precedenti cache ioSudo.
+
+## Dati preservati
+
+- I payload normalizzati V782 restano in `static/fanta-engine/data/sudatori/current/`.
+- Gli asset applicativi V782 non vengono cancellati e potranno essere riutilizzati alla riattivazione.
+- Il nuovo listone condiviso non viene ancora innestato nel catalogo ioSudo perché l'app resta disattivata; alla riattivazione servirà il matching integrale delle identità.
+
+## Listoni condivisi
+
+- Manifest canonico: `static/fanta-engine/data/shared-assets/current/assets/listoni/manifest.json`.
+- Nuovo listone predefinito: `2026-08-05.json`, 494 giocatori attivi.
+- Vecchio listone storico preservato: `2026-07-04.json`.

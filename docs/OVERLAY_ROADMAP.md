@@ -1,8 +1,15 @@
 # Roadmap overlay
 
-- Prossimo listone: inserirlo in `assets/listoni`, assumerlo come listone corrente e ricostruire integralmente il catalogo e il matching degli ID Fantacalcio senza riutilizzare alla cieca gli ID del listone precedente.
-- Attivare il badge `FUORI LISTONE` sulla base del nuovo listone, non di quello del 4 luglio 2026.
-- Aggiornare sempre insieme header visibile, asset JS/CSS, manifest dati, manifest PWA, cache del service worker, audit, handoff e documentazione.
-- Eseguire sempre il controllo duplicati completo su catalogo, rose, listone, trattative, ufficialità, SOS, probabili XI e amichevoli.
-- Preservare gli ID canonici nei cambi squadra finché non viene eseguito il nuovo matching integrale col nuovo listone.
-- Mantenere separati ATTIVO, MONITORAGGIO e CHIUSO_STORICO negli infortuni.
+## Stato V785
+
+- ioSudo è temporaneamente disattivato tramite pagina `Site under construction` V785.
+- I dati V782 restano conservati in `static/fanta-engine/data/sudatori/current/` per una futura riattivazione.
+- Il nuovo listone ufficiale `2026-08-05` è stato convertito dal file `Quotazioni_Fantacalcio_Stagione_2026_27.xlsx` e pubblicato negli asset condivisi del FantaEngine.
+- ZonaOrientale e FantaMantraManager leggono lo stesso manifest e selezionano automaticamente il nuovo listone per la stagione `2026-2027`.
+- Il listone `2026-07-04` resta disponibile nello storico e nel selettore.
+
+## Verifiche successive
+
+- Controllare visivamente ricerca, filtri Classic/Mantra, svincolati, ordinamenti e link Fantacalcio.it in entrambe le leghe.
+- Quando verrà riattivato ioSudo, rifare il matching completo del catalogo V782 sul listone `2026-08-05`, senza riutilizzare alla cieca gli ID del listone precedente.
+- Conservare sempre le versioni storiche del listone nel manifest della stessa stagione.

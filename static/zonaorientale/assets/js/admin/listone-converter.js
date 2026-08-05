@@ -29,6 +29,7 @@ const REAL_TEAM_CANONICAL_CODES_V274 = Object.freeze({
   cre: "CRE", cremonese: "CRE",
   emp: "EMP", empoli: "EMP",
   fio: "FIO", fiorentina: "FIO",
+  fro: "FRO", frosinone: "FRO",
   gen: "GEN", genoa: "GEN",
   int: "INT", inter: "INT", internazionale: "INT",
   juv: "JUV", juventus: "JUV", juve: "JUV",

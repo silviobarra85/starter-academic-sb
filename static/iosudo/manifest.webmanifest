@@ -1,1 +1,31 @@
-{"name":"ioSudo - Per i SUDATORI","short_name":"ioSudo","description":"Mini app mobile per la sezione Per i SUDATORI.","start_url":"/iosudo/","scope":"/iosudo/","display":"standalone","orientation":"portrait","background_color":"#18030b","theme_color":"#3b0618","icons":[{"src":"./assets/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"},{"src":"./assets/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},{"src":"./assets/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}],"version":"V782","data_version":"V169","updated_at":"2026-07-31T10:50:00+02:00"}
+{
+  "name": "ioSudo - Site under construction",
+  "short_name": "ioSudo",
+  "description": "ioSudo è temporaneamente in manutenzione.",
+  "start_url": "/iosudo/",
+  "scope": "/iosudo/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#13040a",
+  "theme_color": "#210812",
+  "icons": [
+    {
+      "src": "./assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

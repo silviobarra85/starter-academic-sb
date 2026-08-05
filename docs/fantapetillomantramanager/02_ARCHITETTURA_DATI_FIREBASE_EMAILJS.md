@@ -1,3 +1,16 @@
+## Aggiornamento V783 - asset listoni condivisi
+
+FantaMantraManager usa ora in produzione gli stessi listoni centrali di ZonaOrientale:
+
+```text
+static/fanta-engine/data/shared-assets/current/assets/listoni/manifest.json
+static/fanta-engine/data/shared-assets/current/assets/listoni/<id>.json
+```
+
+La config della lega punta a `../fanta-engine/data/shared-assets/current/assets/listoni/`. Il sito carica tutte le voci del manifest, filtra `seasonId: "2026-2027"`, mostra lo storico nel selettore e apre per default la voce con data/ID più recente. Il file `2026-07-04.json` deve restare nel manifest quando verrà aggiunto il nuovo listone.
+
+Il nuovo listone può avere ID Fantacalcio diversi: i link pubblici usano gli ID del JSON selezionato, mentre l'arricchimento con le rose usa il nome normalizzato. L'import va comunque verificato per omonimie e collisioni. ioSudo V783 è in manutenzione e non modifica il funzionamento del Listone di FantaMantraManager.
+
 # FantaMantraManager - Architettura dati, Firebase ed EmailJS
 
 Aggiornato alla **V483**.
@@ -101,12 +114,7 @@ Il motore comune e' in:
 static/fanta-engine/
 ```
 
-Ad oggi V483 non sposta listoni o calciomercato nel motore comune. La centralizzazione e' candidata per una patch successiva perche' questi file possono essere comuni a piu' leghe, ma bisogna prima verificare:
-
-- quali file sono davvero identici;
-- quali includono riferimenti a rose/squadre specifiche di lega;
-- quali path sono letti da Listone, Player, Calciomercato, Fantamercato e snapshot;
-- quali fallback storici servono per evitare 404.
+La centralizzazione di listoni e calciomercato nel FantaEngine è attiva. I path condivisi sono configurati in `assets/league-config.json`; le rose, le competizioni e gli snapshot restano invece specifici della lega. I fallback locali restano previsti dal resolver, ma non sono la sorgente canonica.
 
 ## Regolamento
 
@@ -127,3 +135,8 @@ Il redirect per FantaMantraManager e' separato da ZonaOrientale:
 ```
 
 La funzione Netlify usa il parametro lega per distinguere FantaMantraManager.
+
+## V785 - listone centralizzato 2026-2027
+
+FantaMantraManager legge il nuovo `2026-08-05.json` dallo stesso manifest del FantaEngine usato da ZonaOrientale. Il file contiene 494 giocatori e ruoli Mantra ufficiali. Il precedente `2026-07-04.json` resta disponibile nel selettore storico. Nessuna configurazione Firebase o EmailJS viene modificata.
+- Correzione condivisa link giocatori Frosinone: `FRO -> frosinone`.

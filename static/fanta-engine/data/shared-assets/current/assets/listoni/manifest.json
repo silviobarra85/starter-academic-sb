@@ -13,7 +13,7 @@
       "rosterLoadedAt": "2026-05-12",
       "rosteredRows": 299,
       "freeAgentRows": 362
-    }, 
+    },
     {
       "id": "2026-05-30",
       "seasonId": "2025-2026",
@@ -27,7 +27,7 @@
       "sourceSheets": [
         "Lista calciatori"
       ]
-    }, 
+    },
     {
       "id": "2026-06-04",
       "seasonId": "2025-2026",
@@ -71,6 +71,36 @@
       ],
       "comparedWith": "",
       "changeSummary": null
+    },
+    {
+      "id": "2026-08-05",
+      "seasonId": "2026-2027",
+      "label": "Listone 5 agosto 2026",
+      "loadedAt": "2026-08-05",
+      "file": "2026-08-05.json",
+      "rows": 494,
+      "activeRows": 494,
+      "asteriskRows": 0,
+      "detectedFormat": "Fantacalcio storico: fogli Tutti/Ceduti",
+      "sourceSheets": [
+        "Tutti",
+        "Ceduti"
+      ],
+      "sourceFile": "Quotazioni_Fantacalcio_Stagione_2026_27.xlsx",
+      "comparedWith": "2026-07-04",
+      "changeSummary": {
+        "comparedWith": "2026-07-04",
+        "comparedWithLabel": "2026-07-04 · listone 4 luglio 2026",
+        "newPlayers": 108,
+        "removedPlayers": 277,
+        "quotationUp": 73,
+        "quotationDown": 253,
+        "quotationChanged": 326,
+        "statusChanged": 18,
+        "teamChanged": 41,
+        "roleChanged": 11,
+        "unchanged": 54
+      }
     }
   ]
 }
