@@ -1,4 +1,4 @@
-const IOSUDO_CACHE = 'iosudo-maintenance-v786';
+const IOSUDO_CACHE = 'iosudo-maintenance-v787';
 const IOSUDO_MAINTENANCE_SHELL = [
   './',
   './index.html',
@@ -64,4 +64,4 @@ self.addEventListener('fetch', function (event) {
   }).catch(function () { return caches.match(event.request); }));
 });
 
-// V786: ioSudo disattivato; pubblicata esclusivamente la pagina di manutenzione.
+// V787: ioSudo disattivato; pubblicata esclusivamente la pagina di manutenzione.

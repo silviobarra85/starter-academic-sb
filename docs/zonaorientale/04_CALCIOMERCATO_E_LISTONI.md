@@ -1,3 +1,12 @@
+## Aggiornamento V787 - rose coerenti con ultimo listone e ordine ruoli
+
+- Le rose non riscrivono gli snapshot: a runtime ogni giocatore viene arricchito dall'ultimo listone della stagione selezionata.
+- La squadra mostrata viene sempre dal listone corrente. Caso di controllo: `Sohm` passa da `BOL / Bologna` nello snapshot a `VEN / Venezia` nella UI.
+- Il refresh post-caricamento listoni usa gli eventi V760 su `window`, quindi aggiorna anche una scheda squadra gia aperta.
+- All'apertura di una fantasquadra i giocatori sono ordinati `P -> D -> C -> A`, alfabeticamente dentro ogni ruolo.
+- Gli ordinamenti manuali, i badge `In listone` / `Asteriscato`, i costi e lo storico restano preservati.
+- `FUNZIONALITA'.md` non e stato modificato.
+
 ## Aggiornamento V783 - Listoni condivisi 2026-2027 e ioSudo in manutenzione
 
 - ZonaOrientale legge il manifest canonico `../fanta-engine/data/shared-assets/current/assets/listoni/manifest.json`.

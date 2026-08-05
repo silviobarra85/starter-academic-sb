@@ -1,14 +1,13 @@
 # Operazioni overlay
 
-Overlay V786 pronto per la GitHub Action.
+Overlay V787 pronto per la GitHub Action.
 
-- Presuppone che V785 sia stata applicata correttamente.
+- Presuppone che V786 sia stata applicata correttamente.
 - Caricare lo zip integro in `incoming/overlays/` e fare commit/push.
-- La action copia le sole radici `static/` e `docs/`.
-- ioSudo resta in manutenzione ed espone la versione V786.
-- Il nuovo helper condiviso sincronizza ogni rosa con l'ultimo listone della stagione selezionata.
-- Il listone storico scelto nella pagina Listone non influenza i badge delle rose.
-- Badge ammessi: `In listone` e `Asteriscato`.
-- Audit automatico incluso: `static/fanta-engine/tools/audit-iosudo-v786.mjs`.
-- La action continuerà a eseguire anche l'ultimo audit dati Sudatori disponibile, senza modificare i payload V782.
-- L'overlay non modifica workflow, Firebase, snapshot, rose o manifest listoni.
+- La Action copia le sole radici `static/` e `docs/`.
+- ioSudo resta in manutenzione ed espone la versione V787.
+- Le rose vengono sincronizzate con squadra, ruolo, quotazione e link dell'ultimo listone della stagione.
+- Il refresh dopo il caricamento dei listoni usa gli eventi V760 emessi su `window`.
+- All'apertura di una fantasquadra l'ordine iniziale e `P, D, C, A`; gli ordinamenti manuali restano disponibili.
+- Audit automatici inclusi: `audit-sudatori-section-v787.mjs` e `audit-iosudo-v787.mjs`.
+- L'overlay non modifica rose JSON, manifest listoni, costi d'asta, saldi FM, Firebase, EmailJS o competizioni.

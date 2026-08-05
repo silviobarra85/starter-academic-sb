@@ -1,3 +1,10 @@
+## Aggiornamento V787 - sincronizzazione rose/listone condivisa
+
+- FantaMantraManager usa lo stesso helper V787 di ZonaOrientale per squadra reale, ruolo, quotazioni, link e badge delle rose.
+- Gli eventi di caricamento statico sono ascoltati su `window`, coerentemente con il bootstrap V760.
+- Ogni nuova fantasquadra aperta parte con ordine `P -> D -> C -> A`; gli ordinamenti manuali esistenti restano disponibili.
+- La modifica non tocca Firebase, EmailJS, configurazioni sensibili, rose specifiche della lega o competizioni.
+
 ## Aggiornamento V783 - asset listoni condivisi
 
 FantaMantraManager usa ora in produzione gli stessi listoni centrali di ZonaOrientale:

@@ -483,11 +483,12 @@ import { createPublicAdminRenderOrchestratorV221 } from "../../fanta-engine/js/s
 import { createZonaDataRepositoryV222 } from "./js/data/repository-v222.js?v=485";
 import { runRefactorStabilityChecksV225 } from "./js/refactor/refactor-stability-v225.js?v=485";
 import {
-  findLatestListonePlayerForRosterPlayerV786,
-  getLatestListoneForSeasonV786,
-  getRosterListoneStatusV786,
-  syncRosterPlayerWithLatestListoneV786
-} from "../../fanta-engine/js/core/roster-listone-sync-v786.js?v=786";
+  findLatestListonePlayerForRosterPlayerV787,
+  getLatestListoneForSeasonV787,
+  getRosterListoneStatusV787,
+  getRosterRoleOrderV787,
+  syncRosterPlayerWithLatestListoneV787
+} from "../../fanta-engine/js/core/roster-listone-sync-v787.js?v=787";
 
 
 function getRosterSnapshotForSeason(seasonId = getCurrentSeasonId()) {
@@ -41775,15 +41776,15 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
 })();
 
 
-/* V786 - Rose sempre sincronizzate con l'ultimo listone della stagione selezionata.
- * Il listone scelto nella schermata Listone resta solo una vista storica e non cambia
- * stato, ruoli, squadra reale, quotazione o link delle rose delle fantasquadre.
+/* V787 - Rose sincronizzate con squadra e ruolo dell'ultimo listone stagionale.
+ * Corregge il refresh dopo il caricamento asincrono dei listoni e mantiene
+ * l'ordine iniziale P -> D -> C -> A quando si apre una fantasquadra.
  */
-(function installLatestSeasonListoneRosterSyncV786(){
-  const VERSION = "V786";
-  const VERSION_LABEL = "Fantacalcio - V786 - Aggiornato al 05/08/2026";
+(function installLatestSeasonListoneRosterSyncV787(){
+  const VERSION = "V787";
+  const VERSION_LABEL = "Fantacalcio - V787 - Aggiornato al 05/08/2026";
 
-  function resolveRosterSeasonIdV786(player = {}, explicitSeasonId = "") {
+  function resolveRosterSeasonIdV787(player = {}, explicitSeasonId = "") {
     if (explicitSeasonId) return String(explicitSeasonId);
     if (player?.seasonId) return String(player.seasonId);
     if (player?.seasonTeamId && typeof getSeasonTeamById === "function") {
@@ -41793,130 +41794,177 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
     return typeof getCurrentSeasonId === "function" ? String(getCurrentSeasonId() || "") : "";
   }
 
-  function latestListoneForPlayerV786(player = {}, explicitSeasonId = "") {
-    const seasonId = resolveRosterSeasonIdV786(player, explicitSeasonId);
-    return getLatestListoneForSeasonV786(state?.listoni || [], seasonId);
+  function latestListoneForPlayerV787(player = {}, explicitSeasonId = "") {
+    const seasonId = resolveRosterSeasonIdV787(player, explicitSeasonId);
+    return getLatestListoneForSeasonV787(state?.listoni || [], seasonId);
   }
 
-  function findLatestListonePlayerV786(player = {}, explicitSeasonId = "") {
-    const seasonId = resolveRosterSeasonIdV786(player, explicitSeasonId);
-    return findLatestListonePlayerForRosterPlayerV786(state?.listoni || [], player, seasonId);
+  function findLatestListonePlayerV787(player = {}, explicitSeasonId = "") {
+    const seasonId = resolveRosterSeasonIdV787(player, explicitSeasonId);
+    return findLatestListonePlayerForRosterPlayerV787(state?.listoni || [], player, seasonId);
   }
 
-  function syncRosterPlayerForUiV786(player = {}, explicitSeasonId = "") {
-    const seasonId = resolveRosterSeasonIdV786(player, explicitSeasonId);
-    return syncRosterPlayerWithLatestListoneV786(state?.listoni || [], player, seasonId);
+  function syncRosterPlayerForUiV787(player = {}, explicitSeasonId = "") {
+    const seasonId = resolveRosterSeasonIdV787(player, explicitSeasonId);
+    return syncRosterPlayerWithLatestListoneV787(state?.listoni || [], player, seasonId);
   }
 
-  const getRosterForSeasonTeamBeforeV786 = typeof getRosterForSeasonTeam === "function" ? getRosterForSeasonTeam : null;
-  if (getRosterForSeasonTeamBeforeV786) {
-    getRosterForSeasonTeam = function getRosterForSeasonTeamV786(seasonTeam) {
-      const roster = getRosterForSeasonTeamBeforeV786(seasonTeam);
+  function syncRosterPlayersForUiV787(players = [], explicitSeasonId = "") {
+    return (Array.isArray(players) ? players : []).map((player) => syncRosterPlayerForUiV787(player, explicitSeasonId));
+  }
+
+  function resetRosterRoleOrderV787() {
+    if (!state) return;
+    state.rosterSort = { key: "role", direction: "asc" };
+  }
+
+  const getRosterForSeasonTeamBeforeV787 = typeof getRosterForSeasonTeam === "function" ? getRosterForSeasonTeam : null;
+  if (getRosterForSeasonTeamBeforeV787) {
+    getRosterForSeasonTeam = function getRosterForSeasonTeamV787(seasonTeam) {
+      const roster = getRosterForSeasonTeamBeforeV787(seasonTeam);
       if (!roster) return roster;
       const seasonId = String(seasonTeam?.seasonId || getCurrentSeasonId?.() || "");
-      const players = (roster.players || []).map((player) => syncRosterPlayerForUiV786(player, seasonId));
+      const players = syncRosterPlayersForUiV787(roster.players || [], seasonId);
       return { ...roster, playerCount: players.length, players };
     };
   }
 
-  findListonePlayerForRosterPlayer = function findListonePlayerForRosterPlayerV786(player = {}) {
-    return findLatestListonePlayerV786(player);
+  findListonePlayerForRosterPlayer = function findListonePlayerForRosterPlayerV787(player = {}) {
+    return findLatestListonePlayerV787(player);
   };
 
-  getRosterRoleRawValueV551 = function getRosterRoleRawValueV786(player = {}) {
-    const listonePlayer = findLatestListonePlayerV786(player);
-    return String(
-      listonePlayer?.classicRole || listonePlayer?.role ||
-      player?.classicRole || player?.rosterRole || player?.role || ""
-    ).trim();
+  getRosterRoleRawValueV551 = function getRosterRoleRawValueV787(player = {}) {
+    const synced = syncRosterPlayerForUiV787(player);
+    return String(synced?.classicRole || synced?.rosterRole || synced?.role || "").trim();
   };
 
-  getRosterRoleDisplay = function getRosterRoleDisplayV786(player = {}) {
-    const listonePlayer = findLatestListonePlayerV786(player);
-    const role = String(
-      listonePlayer?.classicRole || listonePlayer?.role ||
-      player?.classicRole || player?.rosterRole || player?.role || "-"
-    ).trim() || "-";
-    const mantra = String(
-      listonePlayer?.mantraRoles || listonePlayer?.mantra_roles ||
-      player?.mantraRoles || player?.mantra_roles || ""
-    ).trim();
+  getRosterRoleDisplay = function getRosterRoleDisplayV787(player = {}) {
+    const synced = syncRosterPlayerForUiV787(player);
+    const role = String(synced?.classicRole || synced?.rosterRole || synced?.role || "-").trim() || "-";
+    const mantra = String(synced?.mantraRoles || synced?.mantra_roles || "").trim();
     return `${escapeHtml(role)}${mantra ? ` <span class="muted role-extra">(${escapeHtml(mantra)})</span>` : ""}`;
   };
 
-  getRosterPlayerQuotationCurrent = function getRosterPlayerQuotationCurrentV786(player = {}) {
-    const latestListone = latestListoneForPlayerV786(player);
-    const listonePlayer = findLatestListonePlayerV786(player);
+  getRosterPlayerQuotationCurrent = function getRosterPlayerQuotationCurrentV787(player = {}) {
+    const latestListone = latestListoneForPlayerV787(player);
+    const listonePlayer = findLatestListonePlayerV787(player);
     if (listonePlayer) return listonePlayer.quotationCurrent ?? listonePlayer.quotation_current ?? "";
     if (latestListone) return "";
     return player?.quotationCurrent ?? player?.quotation_current ?? player?.qtA ?? player?.qta ?? "";
   };
 
-  getRosterPlayerListoneStatusV551 = function getRosterPlayerListoneStatusV786(player = {}) {
-    const seasonId = resolveRosterSeasonIdV786(player);
-    const status = getRosterListoneStatusV786(state?.listoni || [], player, seasonId);
+  getRosterPlayerListoneStatusV551 = function getRosterPlayerListoneStatusV787(player = {}) {
+    const seasonId = resolveRosterSeasonIdV787(player);
+    const status = getRosterListoneStatusV787(state?.listoni || [], player, seasonId);
     return { code: status.code, label: status.label, className: status.className };
   };
 
-  const getRosterSortValueBeforeV786 = typeof getRosterSortValue === "function" ? getRosterSortValue : null;
-  getRosterSortValue = function getRosterSortValueV786(player, key) {
-    const synced = syncRosterPlayerForUiV786(player || {});
-    if (key === "role") return getRosterRoleRawValueV551(synced);
-    if (key === "realTeam") return String(synced.realTeam || "");
+  const getRosterSortValueBeforeV787 = typeof getRosterSortValue === "function" ? getRosterSortValue : null;
+  getRosterSortValue = function getRosterSortValueV787(player, key) {
+    const synced = syncRosterPlayerForUiV787(player || {});
+    if (key === "role") return getRosterRoleOrderV787(synced);
+    if (key === "realTeam") return String(synced.realTeam || synced.realTeamCodeV787 || "");
     if (key === "quotationCurrent") return Number(getRosterPlayerQuotationCurrent(synced) || 0);
-    return getRosterSortValueBeforeV786 ? getRosterSortValueBeforeV786(synced, key) : String(synced?.[key] || "");
+    return getRosterSortValueBeforeV787 ? getRosterSortValueBeforeV787(synced, key) : String(synced?.[key] || "");
   };
 
-  const renderTeamProfileContentBeforeV786 = typeof renderTeamProfileContentV42 === "function" ? renderTeamProfileContentV42 : null;
-  if (renderTeamProfileContentBeforeV786) {
-    renderTeamProfileContentV42 = function renderTeamProfileContentV786(snapshot) {
-      const seasonId = String(snapshot?.seasonId || getCurrentSeasonId?.() || "");
-      const syncedSnapshot = snapshot ? {
-        ...snapshot,
-        rosterEntries: (snapshot.rosterEntries || []).map((player) => syncRosterPlayerForUiV786({
-          ...player,
-          seasonId: player?.seasonId || seasonId,
-          seasonTeamId: player?.seasonTeamId || snapshot?.seasonTeamId || ""
-        }, seasonId))
-      } : snapshot;
-      return renderTeamProfileContentBeforeV786.call(this, syncedSnapshot);
+  // Ultima barriera: qualunque renderer di rosa riceve record gia sincronizzati.
+  // Questo copre tabelle desktop, card mobile, Area squadra e profilo pubblico.
+  const renderRosterPlayerTableBeforeV787 = typeof renderRosterPlayerTable === "function" ? renderRosterPlayerTable : null;
+  if (renderRosterPlayerTableBeforeV787) {
+    renderRosterPlayerTable = function renderRosterPlayerTableV787(players = []) {
+      const seasonId = resolveRosterSeasonIdV787((players || [])[0] || {});
+      const syncedPlayers = syncRosterPlayersForUiV787(players, seasonId);
+      return renderRosterPlayerTableBeforeV787.call(this, syncedPlayers);
     };
   }
 
-  function forceFooterV786() {
+  const renderTeamProfileContentBeforeV787 = typeof renderTeamProfileContentV42 === "function" ? renderTeamProfileContentV42 : null;
+  if (renderTeamProfileContentBeforeV787) {
+    renderTeamProfileContentV42 = function renderTeamProfileContentV787(snapshot) {
+      const seasonId = String(snapshot?.seasonId || getCurrentSeasonId?.() || "");
+      const syncedSnapshot = snapshot ? {
+        ...snapshot,
+        rosterEntries: syncRosterPlayersForUiV787((snapshot.rosterEntries || []).map((player) => ({
+          ...player,
+          seasonId: player?.seasonId || seasonId,
+          seasonTeamId: player?.seasonTeamId || snapshot?.seasonTeamId || ""
+        })), seasonId)
+      } : snapshot;
+      return renderTeamProfileContentBeforeV787.call(this, syncedSnapshot);
+    };
+  }
+
+  const openTeamProfilePageBeforeV787 = typeof openTeamProfilePageV42 === "function" ? openTeamProfilePageV42 : null;
+  if (openTeamProfilePageBeforeV787) {
+    openTeamProfilePageV42 = function openTeamProfilePageV787() {
+      resetRosterRoleOrderV787();
+      return openTeamProfilePageBeforeV787.apply(this, arguments);
+    };
+  }
+
+  const openTeamProfileBeforeV787 = typeof openTeamProfileV34 === "function" ? openTeamProfileV34 : null;
+  if (openTeamProfileBeforeV787) {
+    openTeamProfileV34 = function openTeamProfileV787() {
+      resetRosterRoleOrderV787();
+      return openTeamProfileBeforeV787.apply(this, arguments);
+    };
+  }
+
+  // Nella schermata Tutte le rose, l'apertura di una diversa fantasquadra riparte
+  // da P-D-C-A. Gli ordinamenti manuali restano disponibili finche la card resta aperta.
+  let expandedRosterSignatureV787 = "";
+  const renderTeamsTableBeforeV787 = typeof renderTeamsTable === "function" ? renderTeamsTable : null;
+  if (renderTeamsTableBeforeV787) {
+    renderTeamsTable = function renderTeamsTableV787() {
+      const nextSignature = state?.expandedRosterClubIds instanceof Set
+        ? [...state.expandedRosterClubIds].sort().join("|")
+        : "";
+      if (nextSignature && nextSignature !== expandedRosterSignatureV787) resetRosterRoleOrderV787();
+      expandedRosterSignatureV787 = nextSignature;
+      return renderTeamsTableBeforeV787.apply(this, arguments);
+    };
+  }
+
+  function forceFooterV787() {
     const nodes = Array.from(document.querySelectorAll('[data-league-footer-v445], .app-footer p, footer p, .site-footer p, .footer p, .footer-version, [data-footer-version]'));
     const targets = nodes.length ? nodes : Array.from(document.querySelectorAll("footer"));
     targets.forEach((node) => {
       if (!node) return;
       node.textContent = VERSION_LABEL;
-      node.dataset.footerVersionV786 = VERSION;
+      node.dataset.footerVersionV787 = VERSION;
     });
   }
 
-  function refreshRosterViewsV786() {
-    try { if (typeof renderTeamsTable === "function") renderTeamsTable(); } catch (error) { console.error("[V786] render rose", error); }
+  function refreshRosterViewsV787() {
+    try { if (typeof renderTeamsTable === "function") renderTeamsTable(); } catch (error) { console.error("[V787] render rose", error); }
     try {
       if (state?.activeTeamProfileSeasonTeamId && typeof openTeamProfilePageV42 === "function") {
         openTeamProfilePageV42(state.activeTeamProfileSeasonTeamId, { pushHash: false, scroll: false });
       }
-    } catch (_) {}
-    forceFooterV786();
+    } catch (error) { console.error("[V787] refresh profilo squadra", error); }
+    forceFooterV787();
   }
 
-  document.addEventListener("fanta:static-assets-ready-v760", refreshRosterViewsV786);
-  document.addEventListener("fanta:public-core-ready-v760", () => window.setTimeout(refreshRosterViewsV786, 0));
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", forceFooterV786, { once: true });
-  else forceFooterV786();
-  window.addEventListener("load", forceFooterV786, { once: true });
-  [0, 100, 500, 1500, 4000, 9000].forEach((delay) => window.setTimeout(forceFooterV786, delay));
+  // Gli eventi V760 sono emessi su window: ascoltarli su document lasciava il profilo
+  // squadra con i dati dello snapshot precedente (es. Sohm ancora BOL invece di VEN).
+  window.addEventListener("fanta:static-assets-ready-v760", refreshRosterViewsV787);
+  window.addEventListener("fanta:public-core-ready-v760", () => window.setTimeout(refreshRosterViewsV787, 0));
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", forceFooterV787, { once: true });
+  else forceFooterV787();
+  window.addEventListener("load", forceFooterV787, { once: true });
+  [0, 100, 500, 1500, 4000, 9000].forEach((delay) => window.setTimeout(forceFooterV787, delay));
+  window.setTimeout(refreshRosterViewsV787, 0);
 
   try {
-    window.FantaRosterLatestListoneV786 = Object.freeze({
+    window.FantaRosterLatestListoneV787 = Object.freeze({
       version: VERSION,
       latestListonePerSeason: true,
+      realTeamFromLatestListone: true,
+      roleOrder: Object.freeze(["P", "D", "C", "A"]),
       idsAreNotIdentityKeys: true,
       statuses: Object.freeze(["IN_LISTONE", "ASTERISCATO"])
     });
-    window.refreshRosterLatestListoneV786 = refreshRosterViewsV786;
+    window.refreshRosterLatestListoneV787 = refreshRosterViewsV787;
   } catch (_) {}
 })();
