@@ -4008,3 +4008,13 @@ V488 aggiunge l'inventario delle dipendenze JS comuni (`shared-js-dependency-inv
 - I link alle schede Fantacalcio.it usano gli ID del listone selezionato; le rose restano abbinate tramite nome normalizzato.
 - Nessuna modifica a Firebase, Admin, snapshot, competizioni o dati delle rose.
 - Correzione condivisa link giocatori Frosinone: `FRO -> frosinone`.
+
+## V786 - rose sempre allineate all'ultimo listone della stagione
+
+- La rosa di ogni fantasquadra usa sempre il listone più recente della stagione selezionata, non il listone storico eventualmente scelto nella schermata Listone.
+- L'abbinamento identità usa il nome normalizzato e non l'ID Fantacalcio, perché gli ID possono cambiare normalmente tra versioni del listone.
+- Giocatore presente e attivo nell'ultimo listone: badge `In listone`.
+- Giocatore assente oppure marcato ceduto/asteriscato: badge `Asteriscato`; il giocatore resta nella fantasquadra con costo e storico invariati.
+- Squadra reale, ruolo Classic, ruoli Mantra, quotazione e link scheda vengono letti dall'ultimo listone.
+- La regola vale per Tutte le rose, scheda squadra, Area squadra, trattative e futuri aggiornamenti del manifest.
+- Sullo snapshot rose 2026-2027 corrente risultano 210 giocatori in listone e 20 asteriscati rispetto al listone del 05/08/2026.

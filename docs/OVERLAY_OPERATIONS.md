@@ -1,13 +1,14 @@
 # Operazioni overlay
 
-Overlay cumulativo V785, pronto per la GitHub Action.
+Overlay V786 pronto per la GitHub Action.
 
+- Presuppone che V785 sia stata applicata correttamente.
 - Caricare lo zip integro in `incoming/overlays/` e fare commit/push.
-- Non applicare prima la V783: questa V785 ne contiene integralmente le modifiche.
-- La action copia `static/` e `docs/` nella radice del repository.
-- ioSudo viene sostituito dalla pagina di manutenzione V785.
-- Il nuovo listone `2026-08-05` diventa il predefinito condiviso; `2026-07-04` resta selezionabile.
-- Le configurazioni e i footer di ZonaOrientale/FantaMantraManager restano invariati per preservare il contratto static-first.
-- Audit inclusi: `audit-sudatori-section-v785.mjs` e `audit-iosudo-v785.mjs`.
-- Il nome `audit-iosudo-v785.mjs` rispetta il pattern `audit-iosudo-v*.mjs` usato dalla GitHub Action; in questo modo il vecchio audit V782 non viene più selezionato.
-- L'overlay non modifica `.github/workflows` e contiene soltanto file effettivamente aggiornati.
+- La action copia le sole radici `static/` e `docs/`.
+- ioSudo resta in manutenzione ed espone la versione V786.
+- Il nuovo helper condiviso sincronizza ogni rosa con l'ultimo listone della stagione selezionata.
+- Il listone storico scelto nella pagina Listone non influenza i badge delle rose.
+- Badge ammessi: `In listone` e `Asteriscato`.
+- Audit automatico incluso: `static/fanta-engine/tools/audit-iosudo-v786.mjs`.
+- La action continuerà a eseguire anche l'ultimo audit dati Sudatori disponibile, senza modificare i payload V782.
+- L'overlay non modifica workflow, Firebase, snapshot, rose o manifest listoni.

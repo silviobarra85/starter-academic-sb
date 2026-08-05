@@ -140,3 +140,7 @@ La funzione Netlify usa il parametro lega per distinguere FantaMantraManager.
 
 FantaMantraManager legge il nuovo `2026-08-05.json` dallo stesso manifest del FantaEngine usato da ZonaOrientale. Il file contiene 494 giocatori e ruoli Mantra ufficiali. Il precedente `2026-07-04.json` resta disponibile nel selettore storico. Nessuna configurazione Firebase o EmailJS viene modificata.
 - Correzione condivisa link giocatori Frosinone: `FRO -> frosinone`.
+
+## V786 - stato rose derivato dall'ultimo listone stagionale
+
+FantaMantraManager usa il nuovo helper condiviso del FantaEngine `roster-listone-sync-v786.js`. Ogni rosa, sia proveniente da Firebase sia da snapshot statico, viene confrontata con il listone più recente della stagione selezionata. Gli ID Fantacalcio non vengono usati come chiave identità. I giocatori presenti ricevono il badge `In listone`; quelli assenti o ceduti/asteriscati ricevono `Asteriscato` senza essere rimossi dalla rosa. Ruoli Classic/Mantra, squadra reale, quotazione e link vengono aggiornati dal listone corrente, mentre costo d'asta e appartenenza alla fantasquadra restano invariati.
