@@ -70,7 +70,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
   shortName: 'ZonaOrientale',
   basePath: '/zonaorientale/',
   siteUrl: 'https://silviobarra.com/zonaorientale/',
-  currentVersion: '761',
+  currentVersion: '788',
   currentSeasonId: '2026-2027',
   assetsBasePath: './assets/',
   snapshotBasePath: './assets/snapshots/',
@@ -90,7 +90,8 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
     homeEyebrow: 'Lega Fantacalcio',
     homeTitle: 'ZonaOrientale Salerno',
     homeSubtitle: 'Dashboard operativa per club, rose, listoni, competizioni e regolamento.',
-    footerLastUpdated: '22/07/2026',
+    footerLastUpdated: '12/08/2026',
+    footerTemplate: 'Fantacalcio - V{version} - Aggiornato al {lastUpdated}',
     imageUrl: 'https://silviobarra.com/zonaorientale/assets/icons/android-chrome-512x512.png',
     pages: DEFAULT_LEAGUE_PAGES_V445,
     mobileMore: DEFAULT_MOBILE_MORE_V445
@@ -102,6 +103,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
     calciomercato: false,
     fantamercato: true,
     presidentReleasePlayers: true,
+    presidentTradeAnnouncement: true,
     mantraFilters: true,
     sudatoriStandaloneSection: true,
     sudatoriStandaloneSectionVersion: 'V594'
@@ -122,6 +124,18 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
         order: 120,
         safeEnforce: true,
         enforceVisibility: true
+      }),
+      Object.freeze({
+        id: 'trade-announcement',
+        title: 'Comunicato avvenuto scambio',
+        enabled: true,
+        visibility: 'president',
+        featureKey: 'presidentTradeAnnouncement',
+        hiddenForAdmin: true,
+        leagues: Object.freeze(['zonaorientale']),
+        order: 130,
+        safeEnforce: true,
+        enforceVisibility: true
       })
     ])
   }),
@@ -137,7 +151,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
   })
 });
 
-const CONFIG_URL_V443 = './assets/league-config.json?v=761';
+const CONFIG_URL_V443 = './assets/league-config.json?v=788';
 
 const PRESENTATION_ENGINE_CANDIDATES_V481 = [
   '../../../../fanta-engine/js/core/league-presentation-v481.js',

@@ -1,5 +1,21 @@
 # Roadmap overlay
 
+## Stato V788
+
+- Risolto alla radice il flicker del footer ZonaOrientale: esiste una release canonica V788 e tutti i writer/MutationObserver legacy convergono su quella invece di contendersi il DOM.
+- `index.html`, `release.json`, `league-config.json`, fallback config e cache-buster dell'app sono sincronizzati a V788 / 12-08-2026.
+- Riattivata la card presidente `trade-announcement` / modalita Scambio nella sola ZonaOrientale.
+- Il flusso EmailJS V242 esistente non viene duplicato: invia il comunicato di scambio/vendita a `caparrotti86@yahoo.it`, registra la richiesta `TRANSFER_NEWS` e lascia all'Admin l'eventuale pubblicazione nelle News.
+- La card e riservata al presidente e resta nascosta nel contesto Admin.
+- Nessuna modifica al listone, alle rose, ai badge `In listone/Asteriscato`, all'ordinamento P-D-C-A, a FantaMantraManager o ai dati ioSudo.
+
+## Verifiche V788
+
+- Navigare tra Dashboard, Rose, Bilanci e Admin e verificare che il footer resti V788 senza lampeggiamenti verso V694.
+- Fare hard reload e navigazione hash su desktop/mobile: il footer deve restare identico prima e dopo il caricamento asincrono.
+- Login presidente: verificare che `Scambio` sia nuovamente disponibile e apra il pannello `Comunicato avvenuto scambio`.
+- Eseguire un invio EmailJS reale solo se desiderato: il destinatario configurato e `caparrotti86@yahoo.it`; controllare poi la richiesta `TRANSFER_NEWS` in Admin.
+
 ## Stato V787
 
 - ioSudo resta temporaneamente disattivato tramite pagina `Site under construction` V787; i dati V782 restano conservati.

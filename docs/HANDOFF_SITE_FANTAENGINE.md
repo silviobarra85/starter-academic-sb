@@ -1,5 +1,32 @@
 # Handoff sito e FantaEngine
 
+## Overlay V788
+
+V788 interviene solo su ZonaOrientale e sui relativi audit. Corregge il flicker del footer eliminando il conflitto tra numerosi writer/MutationObserver legacy e riattiva la modalita presidente `Scambio` tramite il Feature Card Registry, preservando il flusso EmailJS V242 gia esistente.
+
+## Footer canonico V788
+
+- Sorgente runtime unica: `ZONAORIENTALE_RELEASE_V788` in `static/zonaorientale/assets/app.js`.
+- Label canonica: `Fantacalcio - V788 - Aggiornato al 12/08/2026`.
+- Tutti i writer legacy del footer delegano immediatamente alla funzione canonica se V788 e attiva; gli observer precedenti quindi non possono piu ripristinare V694/V698/etc.
+- Un solo observer canonico, marcato sul `body`, riallinea eventuali sostituzioni del nodo senza generare ping-pong.
+- `index.html`, `release.json`, `league-config.json` e fallback `league-config-v443.js` sono coerenti con V788.
+
+## Modalita Scambio presidente
+
+- Card registry: `trade-announcement`, `enabled: true`, feature flag `presidentTradeAnnouncement: true`, visibile al presidente e nascosta all'Admin.
+- Il runtime V788 forza la riattivazione anche sul registry gia installato, per coprire il bootstrap che precede il caricamento asincrono della league config.
+- Viene riutilizzato il pannello storico `teamTransferCommunicationPanelV242`; non viene creato un secondo flusso.
+- Destinatario EmailJS preservato: `caparrotti86@yahoo.it`.
+- Flusso preservato: crea richiesta `TRANSFER_NEWS` / topic `COMUNICATO_AVVENUTO_SCAMBIO`, invia EmailJS, poi l'Admin puo approvare/pubblicare la comunicazione nelle News.
+
+## Funzionalita preservate
+
+- Sincronizzazione rose/listone V787, badge e ordine P-D-C-A invariati.
+- FantaMantraManager non modificato.
+- ioSudo resta in manutenzione e i dati V782 restano disponibili.
+- Firebase, snapshot, competizioni e manifest listoni non vengono modificati da V788.
+
 ## Overlay V787
 
 V787 corregge la visualizzazione delle rose dopo V786. Le rose continuano a usare l'ultimo listone della stagione, ma ora ogni renderer riceve esplicitamente il record sincronizzato e le schede gia aperte vengono aggiornate quando termina il caricamento asincrono dei listoni.

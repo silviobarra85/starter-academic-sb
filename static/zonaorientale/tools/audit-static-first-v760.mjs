@@ -28,8 +28,8 @@ const entrypoint = String(release.entrypoint || '').trim();
 check(index.includes("import(entryUrlV760)"), 'entrypoint intercetta gli errori del grafo moduli');
 check(Boolean(entrypoint) && index.includes(`./${entrypoint}`), 'index richiede l entrypoint dichiarato dal release manifest', entrypoint);
 check(/^\d+$/.test(shellVersion), 'release manifest contiene una versione shell numerica', shellVersion);
-check(entrypoint === 'assets/app.js?v=761', 'release manifest punta all entrypoint applicativo V761');
-check(index.includes(`Fantacalcio - V${shellVersion} - Aggiornato al 22/07/2026`), 'footer home allineato alla release shell', shellVersion);
+check(entrypoint === `assets/app.js?v=${shellVersion}`, 'release manifest punta all entrypoint applicativo della shell', entrypoint);
+check(index.includes(`Fantacalcio - V${shellVersion} - Aggiornato al ${leagueConfig.branding?.footerLastUpdated || ''}`), 'footer home allineato alla release shell', shellVersion);
 const escapedEntrypoint = entrypoint.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 check(!new RegExp(`<script[^>]+src=[\"']\\./${escapedEntrypoint}[\"']`, 'i').test(index), 'app non e caricata con uno script modulo non osservabile');
 check(!app.includes('from "../../fanta-engine/js/core/static-first-bootstrap-v760.js'), 'bootstrap pubblico senza dipendenza statica cross-root');
@@ -40,11 +40,11 @@ check(app.includes('loadStaticPublicSeasonSnapshotV172(seasonId)') && app.includ
 check(app.includes('fanta:public-core-ready-v760'), 'evento primo render pubblico presente');
 check(app.includes('fanta:static-assets-ready-v760'), 'evento asset complementari presente');
 check(app.indexOf('if (render) renderAll();') < app.indexOf('zonaDataRepositoryV222.loadStaticAssets()', app.indexOf('loadPublicDataForSelectedSeasonV760')), 'primo render precede gli asset complementari');
-check(app.includes('DEPLOY_EXPECTED_VERSION_V181 = "761"'), 'diagnostica deploy attende V761');
-check(leagueConfig.currentVersion === '761', 'league-config JSON allineato a V761');
-check(String(leagueConfig.lastOverlay || '').startsWith('V761'), 'league-config registra overlay V761');
-check(leagueConfigJs.includes("currentVersion: '761'"), 'fallback league-config allineato a V761');
-check(leagueConfigJs.includes('league-config.json?v=761'), 'config JSON usa cache-buster V761');
+check(app.includes(`DEPLOY_EXPECTED_VERSION_V181 = "${shellVersion}"`), 'diagnostica deploy allineata alla shell', shellVersion);
+check(leagueConfig.currentVersion === shellVersion, 'league-config JSON allineato alla shell', leagueConfig.currentVersion);
+check(String(leagueConfig.lastOverlay || '').startsWith(`V${shellVersion}`), 'league-config registra overlay corrente', leagueConfig.lastOverlay || '');
+check(leagueConfigJs.includes(`currentVersion: '${shellVersion}'`), 'fallback league-config allineato alla shell', shellVersion);
+check(leagueConfigJs.includes(`league-config.json?v=${shellVersion}`), 'config JSON usa cache-buster della shell', shellVersion);
 check(exists('fanta-engine', 'js', 'core', 'static-first-bootstrap-v760.js'), 'contratto canonico FantaEngine V760 pubblicato');
 
 const essentialFiles = [

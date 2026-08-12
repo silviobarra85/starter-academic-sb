@@ -1,3 +1,13 @@
+## Aggiornamento V788 - Footer canonico e Scambio presidente (12/08/2026)
+
+- Riattivata per il presidente la card/modalita `Scambio` (`trade-announcement`) nella Dashboard/Area Squadra di ZonaOrientale.
+- Il form operativo resta quello V242 `Comunicato avvenuto scambio`: serve a comunicare uno scambio/vendita concluso con un'altra fantasquadra.
+- Il destinatario EmailJS resta `caparrotti86@yahoo.it`.
+- Al salvataggio viene creata la richiesta `TRANSFER_NEWS` con topic `COMUNICATO_AVVENUTO_SCAMBIO`; l'email parte tramite il flusso EmailJS esistente e la richiesta resta disponibile all'Admin per l'eventuale pubblicazione News.
+- La card e visibile ai presidenti e nascosta nel contesto Admin; non sono stati duplicati handler, template o invii.
+- Corretto anche il footer ZonaOrientale: V788 e ora la sorgente canonica e i vecchi observer V694/V698/etc. non possono piu riscriverlo.
+- Test consigliato: login presidente, apertura `Scambio`, compilazione campi e verifica del destinatario; fare un invio reale solo quando si vuole effettivamente notificare Caparrotti.
+
 ## Aggiornamento V454 - Selettore card Admin e Checklist QA opzionale (15/06/2026)
 
 - Runtime avanzato a V454 con footer e cache-buster coerenti su ZonaOrientale e FantaPetilloMantraManager.

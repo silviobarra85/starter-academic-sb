@@ -1,3 +1,50 @@
+/* V788 - Footer canonico ZonaOrientale.
+ * Unica sorgente runtime per versione/data. Tutti i writer legacy del footer
+ * delegano qui, evitando gare tra MutationObserver di release differenti.
+ */
+const ZONAORIENTALE_RELEASE_V788 = Object.freeze({
+  version: "V788",
+  lastUpdated: "12/08/2026",
+  label: "Fantacalcio - V788 - Aggiornato al 12/08/2026"
+});
+
+function applyZonaOrientaleCanonicalFooterV788() {
+  const nodes = Array.from(document.querySelectorAll('[data-league-footer-v445], .app-footer p, footer p, .site-footer p, .footer p, .footer-version, [data-footer-version]'));
+  const targets = nodes.length ? nodes : Array.from(document.querySelectorAll('footer'));
+  targets.forEach((node) => {
+    if (!node) return;
+    if ((node.textContent || "").trim() !== ZONAORIENTALE_RELEASE_V788.label) node.textContent = ZONAORIENTALE_RELEASE_V788.label;
+    node.dataset.footerCanonicalVersion = ZONAORIENTALE_RELEASE_V788.version;
+  });
+  return ZONAORIENTALE_RELEASE_V788.label;
+}
+
+function installZonaOrientaleCanonicalFooterV788() {
+  applyZonaOrientaleCanonicalFooterV788();
+  if (!document.body || document.body.dataset.footerCanonicalObserverV788 === "true" || !window.MutationObserver) return;
+  document.body.dataset.footerCanonicalObserverV788 = "true";
+  let timer = null;
+  const observer = new MutationObserver(() => {
+    window.clearTimeout(timer);
+    timer = window.setTimeout(applyZonaOrientaleCanonicalFooterV788, 0);
+  });
+  observer.observe(document.body, { childList: true, subtree: true, characterData: true });
+  window.ZonaOrientaleCanonicalFooterObserverV788 = observer;
+}
+
+window.ZonaOrientaleCanonicalFooterV788 = Object.freeze({
+  active: true,
+  version: ZONAORIENTALE_RELEASE_V788.version,
+  lastUpdated: ZONAORIENTALE_RELEASE_V788.lastUpdated,
+  label: ZONAORIENTALE_RELEASE_V788.label,
+  apply: applyZonaOrientaleCanonicalFooterV788,
+  install: installZonaOrientaleCanonicalFooterV788
+});
+
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", installZonaOrientaleCanonicalFooterV788, { once: true });
+else installZonaOrientaleCanonicalFooterV788();
+window.addEventListener("load", installZonaOrientaleCanonicalFooterV788, { once: true });
+
 let db = null;
 let auth = null;
 let collection = null;
@@ -16419,7 +16466,7 @@ window.ZonaOrientaleAdminMobileButtonTopV430 = Object.freeze({
   ]
 });
 
-const DEPLOY_EXPECTED_VERSION_V181 = "761";
+const DEPLOY_EXPECTED_VERSION_V181 = "788";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -39024,6 +39071,7 @@ if (typeof renderListoneMobileCardV664 === "function") {
 }
 
 function forceFooterVersionV665() {
+    if (window.ZonaOrientaleCanonicalFooterV788?.active) return window.ZonaOrientaleCanonicalFooterV788.apply();
   const footer = document.querySelector('[data-league-footer-v445]');
   if (!footer) return;
   const text = footer.textContent || "";
@@ -39091,6 +39139,7 @@ if (typeof renderRosterPlayerMobileCardV664 === "function") {
 }
 
 function forceFooterVersionV667() {
+    if (window.ZonaOrientaleCanonicalFooterV788?.active) return window.ZonaOrientaleCanonicalFooterV788.apply();
   const footer = document.querySelector('[data-league-footer-v445]');
   if (!footer) return;
   const text = footer.textContent || "";
@@ -39264,6 +39313,7 @@ if (typeof renderRosterPlayerMobileCardV664 === "function") {
 }
 
 function forceFooterVersionV668() {
+    if (window.ZonaOrientaleCanonicalFooterV788?.active) return window.ZonaOrientaleCanonicalFooterV788.apply();
   const footer = document.querySelector("[data-league-footer-v445]");
   if (!footer) return;
   const text = footer.textContent || "Fantacalcio";
@@ -39291,6 +39341,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
 (function fantaSiteMobileCardsV672(){
   const VERSION = "V672";
   function forceFooter(){
+    if (window.ZonaOrientaleCanonicalFooterV788?.active) return window.ZonaOrientaleCanonicalFooterV788.apply();
     const footer = document.querySelector("[data-league-footer-v445]");
     if (!footer) return;
     const text = footer.textContent || "Fantacalcio";
@@ -39317,6 +39368,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
   const VERSION = "V673";
 
   function forceFooter(){
+    if (window.ZonaOrientaleCanonicalFooterV788?.active) return window.ZonaOrientaleCanonicalFooterV788.apply();
     const footer = document.querySelector("[data-league-footer-v445]");
     if (!footer) return;
     const text = footer.textContent || "Fantacalcio";
@@ -39414,6 +39466,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
   const VERSION = "V675";
 
   function forceFooter(){
+    if (window.ZonaOrientaleCanonicalFooterV788?.active) return window.ZonaOrientaleCanonicalFooterV788.apply();
     const footer = document.querySelector("[data-league-footer-v445]");
     if (!footer) return;
     const text = footer.textContent || "Fantacalcio";
@@ -39622,6 +39675,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
   }
 
   function forceFooter(){
+    if (window.ZonaOrientaleCanonicalFooterV788?.active) return window.ZonaOrientaleCanonicalFooterV788.apply();
     const footer = document.querySelector("[data-league-footer-v445]");
     if (!footer) return;
     const text = footer.textContent || "Fantacalcio";
@@ -39757,6 +39811,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
   ]);
 
   function forceFooter(){
+    if (window.ZonaOrientaleCanonicalFooterV788?.active) return window.ZonaOrientaleCanonicalFooterV788.apply();
     const footers = document.querySelectorAll('[data-league-footer-v445], footer p, .footer p, footer');
     footers.forEach((footer) => {
       if (!footer) return;
@@ -40083,6 +40138,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
   }
 
   function forceFooter(){
+    if (window.ZonaOrientaleCanonicalFooterV788?.active) return window.ZonaOrientaleCanonicalFooterV788.apply();
     const footers = document.querySelectorAll('[data-league-footer-v445], footer p, .footer p, footer');
     footers.forEach((footer) => {
       if (!footer) return;
@@ -40516,6 +40572,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
   }
 
   function forceFooter(){
+    if (window.ZonaOrientaleCanonicalFooterV788?.active) return window.ZonaOrientaleCanonicalFooterV788.apply();
     const footers = document.querySelectorAll('[data-league-footer-v445], footer p, .footer p, footer');
     footers.forEach((footer) => {
       if (!footer) return;
@@ -40818,6 +40875,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
   }
 
   function forceFooter(){
+    if (window.ZonaOrientaleCanonicalFooterV788?.active) return window.ZonaOrientaleCanonicalFooterV788.apply();
     const footers = document.querySelectorAll('[data-league-footer-v445], footer p, .footer p, footer');
     footers.forEach((footer) => {
       if (!footer) return;
@@ -40962,6 +41020,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
     };
   }
   function forceFooterV690() {
+    if (window.ZonaOrientaleCanonicalFooterV788?.active) return window.ZonaOrientaleCanonicalFooterV788.apply();
     const nodes = document.querySelectorAll('footer, [data-league-footer-v445], .site-footer, .footer-version');
     nodes.forEach((node) => {
       if (!node) return;
@@ -41049,6 +41108,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
   }
 
   function forceFooterV691() {
+    if (window.ZonaOrientaleCanonicalFooterV788?.active) return window.ZonaOrientaleCanonicalFooterV788.apply();
     const nodes = Array.from(document.querySelectorAll('[data-league-footer-v445], .app-footer p, footer p, .site-footer p, .footer p, .footer-version, [data-footer-version]'));
     const targets = nodes.length ? nodes : Array.from(document.querySelectorAll('footer'));
     targets.forEach((node) => {
@@ -41232,6 +41292,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
     return /V\d+/i.test(raw) ? raw.replace(/V\d+/gi, VERSION) : `${raw} · ${VERSION}`;
   }
   function forceFooterV692() {
+    if (window.ZonaOrientaleCanonicalFooterV788?.active) return window.ZonaOrientaleCanonicalFooterV788.apply();
     const nodes = Array.from(document.querySelectorAll('[data-league-footer-v445], .app-footer p, footer p, .site-footer p, .footer p, .footer-version, [data-footer-version]'));
     const targets = nodes.length ? nodes : Array.from(document.querySelectorAll('footer'));
     targets.forEach((node) => {
@@ -41307,6 +41368,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
     return raw.replace(/V\d+/g, VERSION).replace(/\d{2}\/\d{2}\/\d{4}|\d{4}-\d{2}-\d{2}/g, '16/07/2026');
   }
   function forceFooter(){
+    if (window.ZonaOrientaleCanonicalFooterV788?.active) return window.ZonaOrientaleCanonicalFooterV788.apply();
     const nodes = Array.from(document.querySelectorAll('[data-league-footer-v445], .app-footer p, footer p, .site-footer p, .footer p, .footer-version, [data-footer-version]'));
     const targets = nodes.length ? nodes : Array.from(document.querySelectorAll('footer'));
     targets.forEach(function(node){
@@ -41373,6 +41435,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
     };
   }
   function forceFooter(){
+    if (window.ZonaOrientaleCanonicalFooterV788?.active) return window.ZonaOrientaleCanonicalFooterV788.apply();
     const nodes = Array.from(document.querySelectorAll('[data-league-footer-v445], .app-footer p, footer p, .site-footer p, .footer p, .footer-version, [data-footer-version]'));
     const targets = nodes.length ? nodes : Array.from(document.querySelectorAll('footer'));
     targets.forEach(function(node){
@@ -41559,6 +41622,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
   }, true);
 
   function forceFooterV751(){
+    if (window.ZonaOrientaleCanonicalFooterV788?.active) return window.ZonaOrientaleCanonicalFooterV788.apply();
     const nodes = Array.from(document.querySelectorAll('[data-league-footer-v445], .app-footer p, footer p, .site-footer p, .footer p, .footer-version, [data-footer-version]'));
     const targets = nodes.length ? nodes : Array.from(document.querySelectorAll('footer'));
     targets.forEach(function(node){
@@ -41732,6 +41796,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
   }
 
   function forceFooterV755(){
+    if (window.ZonaOrientaleCanonicalFooterV788?.active) return window.ZonaOrientaleCanonicalFooterV788.apply();
     const nodes = Array.from(document.querySelectorAll('[data-league-footer-v445], .app-footer p, footer p, .site-footer p, .footer p, .footer-version, [data-footer-version]'));
     const targets = nodes.length ? nodes : Array.from(document.querySelectorAll('footer'));
     targets.forEach(function(node){
@@ -41765,6 +41830,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
 (function zonaOrientaleFooterV760(){
   const VERSION_LABEL = 'Fantacalcio - V760 - Aggiornato al 22/07/2026';
   function apply(){
+    if (window.ZonaOrientaleCanonicalFooterV788?.active) return window.ZonaOrientaleCanonicalFooterV788.apply();
     document.querySelectorAll('[data-league-footer-v445], .app-footer p, footer p').forEach((node) => {
       if (!node) return;
       node.textContent = VERSION_LABEL;
@@ -41927,6 +41993,7 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
   }
 
   function forceFooterV787() {
+    if (window.ZonaOrientaleCanonicalFooterV788?.active) return window.ZonaOrientaleCanonicalFooterV788.apply();
     const nodes = Array.from(document.querySelectorAll('[data-league-footer-v445], .app-footer p, footer p, .site-footer p, .footer p, .footer-version, [data-footer-version]'));
     const targets = nodes.length ? nodes : Array.from(document.querySelectorAll("footer"));
     targets.forEach((node) => {
@@ -41968,3 +42035,103 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
     window.refreshRosterLatestListoneV787 = refreshRosterViewsV787;
   } catch (_) {}
 })();
+
+
+/* V788 - ZonaOrientale: riattiva il comunicato di avvenuto scambio nella Dashboard Presidente.
+ * Il flusso canonico V242 resta invariato: teamRequests/TRANSFER_NEWS + EmailJS
+ * immediata a caparrotti86@yahoo.it + approvazione Admin per eventuale News.
+ */
+const ZONA_TRADE_ANNOUNCEMENT_VERSION_V788 = "V788";
+const ZONA_TRADE_ANNOUNCEMENT_CARD_ID_V788 = "trade-announcement";
+const ZONA_TRADE_ANNOUNCEMENT_PANEL_ID_V788 = "teamTransferCommunicationPanelV242";
+
+function isZonaOrientaleRuntimeV788() {
+  return String(getLeagueConfigValueV443?.("leagueId", "zonaorientale") || "zonaorientale") === "zonaorientale";
+}
+
+function enableZonaTradeAnnouncementRegistryV788() {
+  if (!isZonaOrientaleRuntimeV788()) return false;
+  try {
+    const registryApi = window.FantaEngineFeatureCardRegistryRuntimeV497;
+    const cards = typeof registryApi?.getAllCards === "function" ? registryApi.getAllCards() : [];
+    let touched = false;
+    cards.forEach((card) => {
+      if (String(card?.id || "") !== ZONA_TRADE_ANNOUNCEMENT_CARD_ID_V788) return;
+      card.enabled = true;
+      card.visibility = "president";
+      card.featureKey = "presidentTradeAnnouncement";
+      card.hiddenForAdmin = true;
+      card.leagues = ["zonaorientale"];
+      card.safeEnforce = true;
+      card.enforceVisibility = true;
+      touched = true;
+    });
+    return touched;
+  } catch (error) {
+    console.warn("Scambio V788: registry non aggiornato", error);
+    return false;
+  }
+}
+
+function markZonaTradeAnnouncementPanelVisibleV788(panel) {
+  if (!panel) return false;
+  panel.dataset.featureCardId = ZONA_TRADE_ANNOUNCEMENT_CARD_ID_V788;
+  panel.dataset.zonaTradeAnnouncementV788 = "active";
+  panel.hidden = false;
+  panel.setAttribute("aria-hidden", "false");
+  panel.classList.remove("fanta-dashboard-card-disabled-v500", "fanta-dashboard-card-hidden-v504");
+  return true;
+}
+
+function activateZonaTradeAnnouncementV788(source = "runtime") {
+  if (!isZonaOrientaleRuntimeV788() || state?.isAdmin) return false;
+  const approved = typeof getApprovedTeamUser === "function" ? getApprovedTeamUser() : null;
+  if (!state?.user || !approved?.seasonTeamId) return false;
+  enableZonaTradeAnnouncementRegistryV788();
+  try { enhanceTransferCommunicationPresidentAreaV242?.(); } catch (error) { console.warn("Scambio V788: enhance fallito", error); }
+  try { attachTransferCommunicationHandlerV242?.(); } catch (error) { console.warn("Scambio V788: handler non agganciato", error); }
+  const panel = document.getElementById(ZONA_TRADE_ANNOUNCEMENT_PANEL_ID_V788);
+  markZonaTradeAnnouncementPanelVisibleV788(panel);
+  try { window.FantaEngineDashboardCardsRuntimeV504?.refresh?.({ root: document }); } catch (error) { console.warn("Scambio V788: dashboard refresh non riuscito", error); }
+  const refreshedPanel = document.getElementById(ZONA_TRADE_ANNOUNCEMENT_PANEL_ID_V788);
+  markZonaTradeAnnouncementPanelVisibleV788(refreshedPanel);
+  if (refreshedPanel) refreshedPanel.dataset.zonaTradeAnnouncementSourceV788 = source;
+  return Boolean(refreshedPanel || panel);
+}
+
+const renderUserAreaBeforeV788 = typeof renderUserAreaV34 === "function" ? renderUserAreaV34 : null;
+if (renderUserAreaBeforeV788) {
+  renderUserAreaV34 = function renderUserAreaV788() {
+    const result = renderUserAreaBeforeV788?.();
+    activateZonaTradeAnnouncementV788("renderUserArea");
+    applyZonaOrientaleCanonicalFooterV788();
+    return result;
+  };
+}
+
+const renderAllBeforeV788 = typeof renderAll === "function" ? renderAll : null;
+if (renderAllBeforeV788) {
+  renderAll = function renderAllV788() {
+    const result = renderAllBeforeV788?.();
+    activateZonaTradeAnnouncementV788("renderAll");
+    applyZonaOrientaleCanonicalFooterV788();
+    return result;
+  };
+}
+
+["DOMContentLoaded", "load", "hashchange", "fanta:auth-state-changed", "fanta:dashboard-context-changed"].forEach((eventName) => {
+  window.addEventListener(eventName, () => window.setTimeout(() => activateZonaTradeAnnouncementV788(eventName), 0), { passive: true });
+});
+window.setTimeout(() => activateZonaTradeAnnouncementV788("timer-250"), 250);
+window.setTimeout(() => activateZonaTradeAnnouncementV788("timer-1000"), 1000);
+
+window.ZonaOrientaleTradeAnnouncementV788 = Object.freeze({
+  version: ZONA_TRADE_ANNOUNCEMENT_VERSION_V788,
+  scope: "zonaorientale-only",
+  cardId: ZONA_TRADE_ANNOUNCEMENT_CARD_ID_V788,
+  panelId: ZONA_TRADE_ANNOUNCEMENT_PANEL_ID_V788,
+  canonicalFlow: "V242",
+  recipient: typeof TRANSFER_COMMUNICATION_RECIPIENT_V242 !== "undefined" ? TRANSFER_COMMUNICATION_RECIPIENT_V242 : "caparrotti86@yahoo.it",
+  emailProvider: "EmailJS",
+  activate: activateZonaTradeAnnouncementV788
+});
