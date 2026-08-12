@@ -22,3 +22,14 @@ Overlay V787 pronto per la GitHub Action.
 - All'apertura di una fantasquadra l'ordine iniziale e `P, D, C, A`; gli ordinamenti manuali restano disponibili.
 - Audit automatici inclusi: `audit-sudatori-section-v787.mjs` e `audit-iosudo-v787.mjs`.
 - L'overlay non modifica rose JSON, manifest listoni, costi d'asta, saldi FM, Firebase, EmailJS o competizioni.
+
+Overlay V789 pronto per la GitHub Action.
+
+- Presuppone V787/V788 gia presenti nel repository; sostituisce la correzione incompleta V788 con un root fix.
+- Caricare lo zip integro in `incoming/overlays/` e fare commit/push.
+- La Action copia solo `static/` e `docs/`.
+- Tutti gli import runtime di `league-config-v443.js` in ZonaOrientale sono allineati a `?v=789`; non deve restare alcun `?v=761` nel grafo corrente.
+- Footer statici di home/competition/player, release manifest, config JSON e fallback config sono V789.
+- Feature Card Registry: sanitizer corretto + `refresh()` realmente operativo.
+- Dashboard Presidente: pulsante `Scambio/Vendita` -> pannello V242 -> richiesta `TRANSFER_NEWS` + EmailJS a `caparrotti86@yahoo.it`.
+- Audit automatici inclusi: `audit-sudatori-section-v789.mjs` e `audit-iosudo-v789.mjs`; resta anche l'audit static-first V760 parametrico sulla release.

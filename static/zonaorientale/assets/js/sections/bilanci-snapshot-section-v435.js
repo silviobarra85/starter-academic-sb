@@ -1,4 +1,4 @@
-import { getLeagueDataPathV446, getLeagueWhatsappBilanciUrlV443, joinLeagueDataPathV446, loadLeagueConfigV443 } from '../core/league-config-v443.js?v=761';
+import { getLeagueDataPathV446, getLeagueWhatsappBilanciUrlV443, joinLeagueDataPathV446, loadLeagueConfigV443 } from '../core/league-config-v443.js?v=789';
 
 const BILANCI_SNAPSHOT_V435 = Object.freeze({
   manifestUrl: './assets/snapshots/seasons/manifest.json',

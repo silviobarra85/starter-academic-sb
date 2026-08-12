@@ -129,15 +129,14 @@ function installFeatureCardRegistryV497(options = {}) {
   const api = {
     version: FEATURE_CARD_REGISTRY_VERSION_V497,
     registry,
-    describe: () => registry.describe(),
-    getAllCards: () => registry.getAllCards(),
-    getCard: (id) => registry.getCard(id),
-    getEnabledCards: (context = {}) => registry.getEnabledCards(context),
-    getCardsByVisibility: (visibility, context = {}) => registry.getCardsByVisibility(visibility, context),
+    describe() { return this.registry.describe(); },
+    getAllCards() { return this.registry.getAllCards(); },
+    getCard(id) { return this.registry.getCard(id); },
+    getEnabledCards(context = {}) { return this.registry.getEnabledCards(context); },
+    getCardsByVisibility(visibility, context = {}) { return this.registry.getCardsByVisibility(visibility, context); },
     refresh(nextOptions = {}) {
-      const fresh = buildFeatureCardRegistryV497({ ...options, ...nextOptions });
-      this.registry = fresh;
-      return fresh;
+      this.registry = buildFeatureCardRegistryV497({ ...options, ...nextOptions });
+      return this.registry;
     }
   };
   if (win) win.FantaEngineFeatureCardRegistryV497 = api;

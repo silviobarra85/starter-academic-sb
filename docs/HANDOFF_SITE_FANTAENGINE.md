@@ -54,3 +54,30 @@ V787 corregge la visualizzazione delle rose dopo V786. Le rose continuano a usar
 - Nessuna modifica a costi d'asta, saldi FM, movimenti, competizioni, Firebase, EmailJS, Admin o storico listoni.
 - Nessuna cancellazione di giocatori asteriscati.
 - ioSudo resta in manutenzione V787; i dati V782 restano disponibili.
+
+## Overlay V789 - root fix footer e Scambio/Vendita
+
+La V788 aveva aggiunto un controller canonico, ma restavano due problemi di architettura. Primo: il sito importava `league-config-v443.js` con URL diversi (`?v=761` e release corrente), permettendo al browser di creare istanze modulo separate e, in presenza di cache, di applicare una configurazione vecchia. Secondo: `sanitizeConfigV443()` scartava tutte le card del Feature Card Registry tranne `release-players`, rendendo instabile `trade-announcement`.
+
+### Footer V789
+
+- `index.html`, `competition.html`, `player.html`, `app.js` e tutti i moduli interni coinvolti usano `league-config-v443.js?v=789`.
+- `static-files-service.js`, `ui.js` e `bilanci-snapshot-section-v435.js` non importano piu l'istanza V761.
+- Il controller `ZonaOrientaleCanonicalFooterV789` e disponibile dall'inizio di `app.js`.
+- Tutti i writer legacy V665-V787, incluso il writer V694 con MutationObserver e timer fino a 32 secondi, delegano al controller V789 prima di scrivere.
+- Le tre pagine con footer statico contengono gia la label V789, evitando flicker prima del bootstrap.
+
+### Feature Card Registry
+
+- `sanitizeConfigV443()` conserva `merged.featureCardRegistry` e congela tutte le card invece di ricostruire un array hard-coded con il solo svincolo.
+- `feature-card-registry-v497.js` usa `this.registry` nei getter. Dopo `refresh()` il motore dashboard legge quindi il registry nuovo, non l'istanza iniziale.
+- Per ZonaOrientale `presidentTradeAnnouncement` e `trade-announcement` restano attivi solo nel contesto presidente e nascosti all'Admin.
+
+### Scambio/Vendita
+
+- Il form canonico resta `teamTransferCommunicationFormV242` dentro `teamTransferCommunicationPanelV242`.
+- La Dashboard Presidente riceve un pulsante `Scambio/Vendita`; il click espande il pannello V242, esegue scroll e porta il focus sul testo comunicato.
+- Il pulsante mobile Scambio viene collegato allo stesso opener V789.
+- L'attivazione ascolta `fanta:auth-state-v760`, l'evento realmente emesso dal bootstrap auth.
+- Submit preservato: `teamRequests/TRANSFER_NEWS` + EmailJS verso `caparrotti86@yahoo.it`; l'Admin puo poi pubblicare nelle News.
+- Nessuna modifica a svincoli, rose/listoni, Firebase rules, snapshot o FantaMantraManager.

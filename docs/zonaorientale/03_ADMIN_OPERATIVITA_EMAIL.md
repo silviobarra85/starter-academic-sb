@@ -1974,3 +1974,14 @@ Correzioni:
 - Checklist QA Admin nascosta di default e visibile solo dal checkbox del selettore.
 
 Invarianti: nessuna modifica a Firebase, rules, salvataggi Admin, snapshot generator, Area Squadra, Bilanci mobile V438, badge dispositivo V434 o `FUNZIONALITA'.md`.
+
+## V789 - Scambio/Vendita Presidente e stabilizzazione runtime EmailJS
+
+- Ripristinata in modo strutturale la card `trade-announcement` nella Dashboard Presidente.
+- Corretto `sanitizeConfigV443()`: il Feature Card Registry non perde piu `trade-announcement` durante la sanificazione della config.
+- Corretto `FeatureCardRegistryV497.refresh()`: i getter usano il registry aggiornato dopo il refresh.
+- Aggiunto pulsante `Scambio/Vendita` nella Dashboard Presidente; apre il form canonico V242 anche se il pannello operativo e collassato.
+- Il flusso resta unico: richiesta Firestore `TRANSFER_NEWS`, destinatario EmailJS `caparrotti86@yahoo.it`, eventuale pubblicazione News dopo gestione Admin.
+- L'attivazione reagisce anche a `fanta:auth-state-v760`, l'evento auth realmente emesso dal bootstrap corrente.
+- Nessuna modifica al flusso `Svincola Giocatori`, ai suoi handler o al destinatario.
+- `FUNZIONALITA'.md` non modificato.

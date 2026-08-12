@@ -5,7 +5,7 @@
   "shortName": "ZonaOrientale",
   "basePath": "/zonaorientale/",
   "siteUrl": "https://silviobarra.com/zonaorientale/",
-  "currentVersion": "788",
+  "currentVersion": "789",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -561,7 +561,7 @@
     ],
     "footerLastUpdated": "12/08/2026",
     "footerTemplate": "Fantacalcio - V{version} - Aggiornato al {lastUpdated}",
-    "footerVersion": 788,
+    "footerVersion": 789,
     "ioSudoPlayerSourceLabelsV639": true,
     "ioSudoListoneAllPlayersV639": true,
     "ioSudoPlayerSourceLabelsV643": true,
@@ -1889,5 +1889,5 @@
   "ioSudoListoneAllPlayersV643": true,
   "updatedAt": "2026-07-22T00:30:00+02:00",
   "lastUpdated": "2026-07-22",
-  "lastOverlay": "V788 - footer canonico e scambio presidente riattivato"
+  "lastOverlay": "V789 - root fix footer e Scambio/Vendita presidente"
 }
