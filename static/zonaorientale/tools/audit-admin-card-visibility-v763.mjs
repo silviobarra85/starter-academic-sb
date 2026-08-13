@@ -96,8 +96,9 @@ check('ZonaOrientale JS cache-bust V763', zonaIndex.includes('admin-card-visibil
 check('ZonaOrientale CSS cache-bust V763', zonaIndex.includes('admin-card-visibility-v456.css?v=763'));
 check('FantaPetillo JS cache-bust V763', petilloIndex.includes('admin-card-visibility-v456.js?v=763'));
 check('FantaPetillo CSS cache-bust V763', petilloIndex.includes('admin-card-visibility-v456.css?v=763'));
-check('footer ZonaOrientale V763', zonaIndex.includes('Fantacalcio - V763'));
-check('release manifest V763', String(release.version) === '763');
+const shellVersion = String(release.version || '').trim();
+check('release manifest shell numerica', /^\d+$/.test(shellVersion), shellVersion);
+check('footer ZonaOrientale allineato alla shell corrente', Boolean(shellVersion) && zonaIndex.includes(`Fantacalcio - V${shellVersion}`), shellVersion);
 check(
   'release manifest include controller condiviso V763',
   Array.isArray(release.runtimeFixes) && release.runtimeFixes.some((item) => String(item).includes('admin-card-visibility-v456.js?v=763'))
@@ -108,5 +109,5 @@ for (const item of checks) {
   const suffix = item.detail ? ` - ${item.detail}` : '';
   console.log(`${item.ok ? 'OK' : 'FAIL'} - ${item.label}${suffix}`);
 }
-console.log(`\nV763 audit: ${checks.length - failed.length}/${checks.length} controlli superati.`);
+console.log(`\nV763 controller compatibility audit: ${checks.length - failed.length}/${checks.length} controlli superati. Shell corrente V${String(release.version || '').trim() || '?'}.`);
 if (failed.length) process.exit(1);

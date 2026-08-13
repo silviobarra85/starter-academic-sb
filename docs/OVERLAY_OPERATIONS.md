@@ -33,3 +33,12 @@ Overlay V789 pronto per la GitHub Action.
 - Feature Card Registry: sanitizer corretto + `refresh()` realmente operativo.
 - Dashboard Presidente: pulsante `Scambio/Vendita` -> pannello V242 -> richiesta `TRANSFER_NEWS` + EmailJS a `caparrotti86@yahoo.it`.
 - Audit automatici inclusi: `audit-sudatori-section-v789.mjs` e `audit-iosudo-v789.mjs`; resta anche l'audit static-first V760 parametrico sulla release.
+
+Overlay V790 - sblocco deploy Netlify.
+
+- Presuppone che V789 sia gia presente su `master`; non richiede che V789 sia mai stata pubblicata da Netlify.
+- Corregge direttamente `static/zonaorientale/tools/audit-admin-card-visibility-v763.mjs`, cioe lo script che il build Netlify richiama ancora esplicitamente.
+- Il contratto del controller Admin resta V763; solo gli assert della shell diventano dinamici (`release.json` + footer della release corrente).
+- Aggiorna ZonaOrientale a V790 e conserva il root fix V789 per footer e Scambio/Vendita.
+- Non sovrascrive `tools/apply-overlay-from-zip.sh` durante la propria esecuzione; la pipeline Netlify verra modernizzata in un overlay infrastrutturale separato.
+- Dopo il push, attendere il deploy Netlify e controllare `https://silviobarra.com/zonaorientale/release.json?nocache=V790`.

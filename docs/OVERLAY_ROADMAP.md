@@ -53,3 +53,20 @@
 - Aprire `competition.html` e `player.html`: footer V789 gia al primo paint.
 - Login presidente: nella Dashboard deve comparire `Scambio/Vendita`; il pulsante deve aprire il form `Comunicato avvenuto scambio` anche se il pannello era collassato.
 - Verificare un invio reale solo quando desiderato: deve comparire la richiesta `TRANSFER_NEWS` in Admin e partire una sola email EmailJS verso Caparrotti.
+
+## Stato V790 - sblocco deploy Netlify
+
+- Individuata la causa reale del mancato aggiornamento pubblico: Netlify completava l'audit static-first 42/42 ma bloccava ogni deploy sull'audit storico `audit-admin-card-visibility-v763.mjs`, che pretendeva erroneamente che la release shell fosse ancora V763.
+- Il controller Admin condiviso resta correttamente al contratto V763; l'audit ora distingue la versione del controller dalla versione shell di ZonaOrientale e verifica che footer e `release.json` siano allineati dinamicamente alla shell corrente.
+- ZonaOrientale viene riallineata a V790 / 13-08-2026 conservando integralmente il root fix V789 di footer e Scambio/Vendita.
+- La V790 non modifica intenzionalmente `tools/apply-overlay-from-zip.sh`: lo script corrente non deve sovrascrivere se stesso mentre e in esecuzione. L estensione della pipeline per `netlify/` e `netlify.toml` verra fatta in un passaggio separato dopo il ripristino del deploy.
+- Il vecchio header Netlify `X-Fanta-Release: V763` resta da riallineare in un overlay successivo ora che il meccanismo di applicazione supporta i file Netlify; non influenza il DOM o il runtime applicativo e non blocca il deploy V790.
+
+## Verifiche V790
+
+- Audit static-first ZonaOrientale: 42/42.
+- Audit controller Admin V763 compatibile con shell corrente: 71/71 su V790.
+- Audit ioSudo/dati preservati: 12/12.
+- Audit footer/Scambio/rose: 36/36.
+- Verificare dopo il deploy che `/zonaorientale/release.json` riporti `790` e che il footer mostri V790 senza ritorni a V694.
+- Login presidente: verificare apertura del form `Scambio/Vendita` e, solo se desiderato, eseguire un invio EmailJS reale.

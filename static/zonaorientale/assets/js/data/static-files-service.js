@@ -1,5 +1,5 @@
 import { state } from "../core/state.js";
-import { getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, getLeagueConfigValueV443 } from "../core/league-config-v443.js?v=789";
+import { getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, getLeagueConfigValueV443 } from "../core/league-config-v443.js?v=790";
 
 const DATA_PATH_ENGINE_CANDIDATES_V490 = [
   '../../../../fanta-engine/js/core/data-paths-v490.js',

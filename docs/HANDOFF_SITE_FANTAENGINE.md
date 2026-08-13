@@ -81,3 +81,11 @@ La V788 aveva aggiunto un controller canonico, ma restavano due problemi di arch
 - L'attivazione ascolta `fanta:auth-state-v760`, l'evento realmente emesso dal bootstrap auth.
 - Submit preservato: `teamRequests/TRANSFER_NEWS` + EmailJS verso `caparrotti86@yahoo.it`; l'Admin puo poi pubblicare nelle News.
 - Nessuna modifica a svincoli, rose/listoni, Firebase rules, snapshot o FantaMantraManager.
+
+## Overlay V790 - Netlify deploy unblock
+
+Il sito pubblico era fermo alla V763 non per cache browser ma per un build Netlify fallito. `netlify/build-hugo-0.80.sh` esegue ancora il controller audit storico V763 prima e dopo Hugo. Il controller condiviso e correttamente V763, ma l'audit confondeva questa versione di contratto con la release shell e richiedeva anche footer V763 e `release.version === 763`; con V789 tali due assert bloccavano il deploy a 69/71.
+
+V790 rende quei due controlli parametrizzati sulla release corrente, mantenendo invariati gli altri test del controller V763. Il risultato atteso e 71/71 sia sui sorgenti sia sugli artefatti pubblicati. Il root fix V789 per `league-config`, footer canonico e Scambio/Vendita viene preservato e riallineato alla shell V790.
+
+La V790 non aggiorna lo script `tools/apply-overlay-from-zip.sh` durante la sua stessa esecuzione, per evitare una sovrascrittura del processo Bash in corso. Dopo che Netlify avra pubblicato V790, la pipeline potra essere modernizzata in un passaggio infrastrutturale separato per supportare anche `netlify/` e `netlify.toml` e rimuovere gli header storici `X-Fanta-Release: V763`.
