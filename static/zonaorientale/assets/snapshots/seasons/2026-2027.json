@@ -1,7 +1,7 @@
 {
   "id": "2026-2027",
   "seasonId": "2026-2027",
-  "generatedAt": "2026-08-18T14:09:00+02:00",
+  "generatedAt": "2026-08-18T14:34:00+02:00",
   "teams": [
     {
       "id": "WMdzHRRpUP8lHvsdwM7W",
@@ -5405,5 +5405,5 @@
       "publishedAt": "2026-07-04T11:55"
     }
   ],
-  "snapshotVersion": "V791"
+  "snapshotVersion": "V793"
 }

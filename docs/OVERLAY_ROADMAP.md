@@ -80,3 +80,7 @@ Completato: nuovo listone 18/08, rose aggiornate, regola permanente ultima quota
 - Overlay cumulativo rispetto a V790: include listone/rose/svincoli V791 e audit `audit-iosudo-v792.mjs` / `audit-sudatori-section-v792.mjs` affinche la GitHub Action selezioni controlli coerenti con la release corrente.
 - Il listone corrente resta 2026-08-18; i listoni 2026-08-05 e 2026-07-04 restano storici e selezionabili.
 - Gli asteriscati in rosa restano svincolabili all'ultima quotazione disponibile della stagione.
+
+
+## V793 - Rose ZonaOrientale fonte primaria
+Completato: aggiornamento reale della sorgente `assets/rose` al file del 18/08/2026, con 211/211 righe coerenti con lo snapshot. Questo diventa il requisito per ogni futuro aggiornamento rose: aggiornare sempre JSON rose + manifest, non soltanto lo snapshot stagionale.

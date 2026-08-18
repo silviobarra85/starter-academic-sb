@@ -1,6 +1,16 @@
 {
   "rosters": [
     {
+      "id": "2026-2027-2026-08-18",
+      "seasonId": "2026-2027",
+      "label": "Rose ZonaOrientale Salerno 2026/27 - 18 agosto 2026",
+      "loadedAt": "2026-08-18",
+      "file": "2026-2027-2026-08-18.json",
+      "teams": 10,
+      "players": 211,
+      "sourceFile": "zonaorientale-salerno-rosters-1787054918853.xlsx"
+    },
+    {
       "id": "2026-2027-2026-07-05",
       "seasonId": "2026-2027",
       "label": "Rose ZonaOrientale Salerno 2026/27",

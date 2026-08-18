@@ -1,0 +1,8 @@
+import fs from 'node:fs'; import path from 'node:path';
+const root=path.resolve(process.argv[2]||process.cwd(),'static'); const j=p=>JSON.parse(fs.readFileSync(path.join(root,p),'utf8')); let n=0;
+function c(x,m){if(!x) throw new Error(m); n++; console.log('OK - '+m)}
+const m=j('zonaorientale/assets/rose/manifest.json'); const r=j('zonaorientale/assets/rose/2026-2027-2026-08-18.json'); const s=j('zonaorientale/assets/snapshots/seasons/2026-2027.json');
+const latest=(m.rosters||[]).filter(x=>x.seasonId==='2026-2027').sort((a,b)=>String(b.loadedAt||b.id).localeCompare(String(a.loadedAt||a.id)))[0]; c(latest?.id==='2026-2027-2026-08-18','manifest rosa corrente 18 agosto');
+const rows=(r.rosters||[]).flatMap(t=>(t.players||[]).map(p=>({team:t.name,...p}))); c(rows.length===211,'211 giocatori nelle rose primarie'); c((r.rosters||[]).length===10,'10 fantasquadre');
+const laur=rows.find(x=>String(x.playerName).toLowerCase().includes('laurient')); c(laur?.team?.trim()==='Afc Severgas Baronissi','Lauriente assegnato ad AFC Severgas Baronissi'); c(Number(laur?.cost)===9,'Lauriente costo 9');
+const norm=x=>String(x||'').trim().replace(/\s+/g,' '); const byId=new Map((s.seasonTeams||[]).map(x=>[x.id,x.name])); const sr=(s.rosterEntries||[]).map(x=>`${norm(byId.get(x.seasonTeamId)||'')}|${norm(x.playerName)}|${Number(x.cost)}`); const rr=rows.map(x=>`${norm(x.team)}|${norm(x.playerName)}|${Number(x.cost)}`); const srSet=new Set(sr); c(rr.length===sr.length && rr.every(x=>srSet.has(x)),'snapshot e assets/rose coincidono'); console.log(`[audit-rosters-primary-v793] ${n}/6 controlli superati.`);

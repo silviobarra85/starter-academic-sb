@@ -52,3 +52,7 @@ Il nuovo listone deve essere aggiunto al manifest condiviso senza rimuovere i pr
 - Overlay cumulativo rispetto a V790: include listone/rose/svincoli V791 e audit `audit-iosudo-v792.mjs` / `audit-sudatori-section-v792.mjs` affinche la GitHub Action selezioni controlli coerenti con la release corrente.
 - Il listone corrente resta 2026-08-18; i listoni 2026-08-05 e 2026-07-04 restano storici e selezionabili.
 - Gli asteriscati in rosa restano svincolabili all'ultima quotazione disponibile della stagione.
+
+
+## V793 - Regola operativa aggiornamento rose
+Per ZonaOrientale, da V588 `assets/rose` e' la sorgente primaria. Ogni nuovo file rose deve generare un nuovo JSON in `static/zonaorientale/assets/rose/`, aggiungere la relativa voce al manifest e mantenere coerente lo snapshot della stagione. L'audit deve confrontare le due sorgenti per squadra, giocatore e costo.

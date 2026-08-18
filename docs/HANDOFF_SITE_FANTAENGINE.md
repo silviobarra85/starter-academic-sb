@@ -103,3 +103,10 @@ La V790 non aggiorna lo script `tools/apply-overlay-from-zip.sh` durante la sua 
 - Overlay cumulativo rispetto a V790: include listone/rose/svincoli V791 e audit `audit-iosudo-v792.mjs` / `audit-sudatori-section-v792.mjs` affinche la GitHub Action selezioni controlli coerenti con la release corrente.
 - Il listone corrente resta 2026-08-18; i listoni 2026-08-05 e 2026-07-04 restano storici e selezionabili.
 - Gli asteriscati in rosa restano svincolabili all'ultima quotazione disponibile della stagione.
+
+
+## V793 - 18 agosto 2026: rose primarie corrette
+- Corretto il difetto V791/V792: il sito usa da V588 `static/zonaorientale/assets/rose/` come fonte visuale primaria, quindi aggiornare solo lo snapshot stagionale non aggiorna stabilmente le rose.
+- Pubblicata `assets/rose/2026-2027-2026-08-18.json` e aggiornato `assets/rose/manifest.json`: 10 fantasquadre, 211 giocatori, sorgente `zonaorientale-salerno-rosters-1787054918853.xlsx`.
+- `assets/rose` e snapshot 2026-2027 sono verificati 211/211 per fantasquadra, giocatore e costo. Laurientè e' AFC Severgas Baronissi (costo 9), non Real Pisistrius.
+- Listone 18/08, badge In listone/Asteriscato, ultima quotazione di svincolo, ordine P-D-C-A, footer canonico e Scambio/Vendita restano preservati.
