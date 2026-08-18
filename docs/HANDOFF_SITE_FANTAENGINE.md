@@ -89,3 +89,17 @@ Il sito pubblico era fermo alla V763 non per cache browser ma per un build Netli
 V790 rende quei due controlli parametrizzati sulla release corrente, mantenendo invariati gli altri test del controller V763. Il risultato atteso e 71/71 sia sui sorgenti sia sugli artefatti pubblicati. Il root fix V789 per `league-config`, footer canonico e Scambio/Vendita viene preservato e riallineato alla shell V790.
 
 La V790 non aggiorna lo script `tools/apply-overlay-from-zip.sh` durante la sua stessa esecuzione, per evitare una sovrascrittura del processo Bash in corso. Dopo che Netlify avra pubblicato V790, la pipeline potra essere modernizzata in un passaggio infrastrutturale separato per supportare anche `netlify/` e `netlify.toml` e rimuovere gli header storici `X-Fanta-Release: V763`.
+
+
+## V791 - 18 agosto 2026: listone, rose e svincoli
+- Listone condiviso corrente: `2026-08-18.json` (519 righe, 504 in listone, 15 asteriscati).
+- Rose ZonaOrientale aggiornate dal file `zonaorientale-salerno-rosters-1787054918853.xlsx`: 211 giocatori su 10 fantasquadre.
+- I giocatori in rosa ma fuori listone restano `Asteriscato`. Per gli svincoli la quotazione da restituire e' sempre l'ultima disponibile nella stagione, cercando i listoni dal piu' recente al piu' vecchio e senza usare l'ID Fantacalcio come chiave identita'.
+- Asteriscati attualmente in rosa: Gutierrez 8, Angelino 3, Ondrejka 5, Lukaku 10, Athekame 3.
+- I listoni 2026-08-05 e 2026-07-04 restano consultabili nello storico.
+
+
+## V792 - correzione audit overlay (18/08/2026)
+- Overlay cumulativo rispetto a V790: include listone/rose/svincoli V791 e audit `audit-iosudo-v792.mjs` / `audit-sudatori-section-v792.mjs` affinche la GitHub Action selezioni controlli coerenti con la release corrente.
+- Il listone corrente resta 2026-08-18; i listoni 2026-08-05 e 2026-07-04 restano storici e selezionabili.
+- Gli asteriscati in rosa restano svincolabili all'ultima quotazione disponibile della stagione.

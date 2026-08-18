@@ -42,3 +42,13 @@ Overlay V790 - sblocco deploy Netlify.
 - Aggiorna ZonaOrientale a V790 e conserva il root fix V789 per footer e Scambio/Vendita.
 - Non sovrascrive `tools/apply-overlay-from-zip.sh` durante la propria esecuzione; la pipeline Netlify verra modernizzata in un overlay infrastrutturale separato.
 - Dopo il push, attendere il deploy Netlify e controllare `https://silviobarra.com/zonaorientale/release.json?nocache=V790`.
+
+
+## V791 - Dati pre-svincoli
+Il nuovo listone deve essere aggiunto al manifest condiviso senza rimuovere i precedenti. Le rose sono autorevoli per appartenenza/costo; il listone corrente e' autorevole per squadra reale, ruolo, stato e quotazione. Un giocatore assente/fuori-listone ma ancora in rosa resta svincolabile all'ultima quotazione disponibile nella stagione.
+
+
+## V792 - correzione audit overlay (18/08/2026)
+- Overlay cumulativo rispetto a V790: include listone/rose/svincoli V791 e audit `audit-iosudo-v792.mjs` / `audit-sudatori-section-v792.mjs` affinche la GitHub Action selezioni controlli coerenti con la release corrente.
+- Il listone corrente resta 2026-08-18; i listoni 2026-08-05 e 2026-07-04 restano storici e selezionabili.
+- Gli asteriscati in rosa restano svincolabili all'ultima quotazione disponibile della stagione.

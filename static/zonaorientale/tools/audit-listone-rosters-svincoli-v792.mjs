@@ -1,0 +1,32 @@
+import fs from 'node:fs';
+import path from 'node:path';
+const root = path.resolve(process.cwd(), 'static');
+let ok=0,total=0;
+function check(c,m){total++; if(!c){console.error('FAIL - '+m); process.exitCode=1;} else {ok++; console.log('OK - '+m);}}
+const read=(p)=>fs.readFileSync(path.join(root,p),'utf8');
+const j=(p)=>JSON.parse(read(p));
+const listone=j('fanta-engine/data/shared-assets/current/assets/listoni/2026-08-18.json');
+const manifest=j('fanta-engine/data/shared-assets/current/assets/listoni/manifest.json');
+const snap=j('zonaorientale/assets/snapshots/seasons/2026-2027.json');
+const release=j('zonaorientale/release.json');
+const app=read('zonaorientale/assets/app.js');
+check(release.version==='792','release ZonaOrientale V792');
+check(listone.meta?.seasonId==='2026-2027','stagione listone 2026-2027');
+check(listone.players?.length===519,'519 righe listone');
+check(listone.meta?.activeRows===504,'504 giocatori in listone');
+check(listone.meta?.asteriskRows===15,'15 asteriscati nel listone');
+check(new Set(listone.players.map(p=>p.fantacalcioId)).size===519,'ID Fantacalcio senza duplicati nel file corrente');
+check(new Set(listone.players.map(p=>String(p.playerName).toLowerCase())).size===519,'nomi senza duplicati nel file corrente');
+const latest=manifest.listoni.filter(x=>x.seasonId==='2026-2027').sort((a,b)=>String(b.loadedAt).localeCompare(String(a.loadedAt)))[0];
+check(latest?.id==='2026-08-18','manifest seleziona 18 agosto come ultimo listone');
+check(manifest.listoni.some(x=>x.id==='2026-08-05'),'listone 5 agosto preservato');
+check(manifest.listoni.some(x=>x.id==='2026-07-04'),'listone 4 luglio preservato');
+check(snap.rosterEntries?.length===211,'211 giocatori nelle rose aggiornate');
+check(new Set(snap.rosterEntries.map(r=>r.seasonTeamId)).size===10,'10 fantasquadre nelle rose');
+const expected=new Map([['Gutierrez',8],['Angelino',3],['Ondrejka',5],['Lukaku',10],['Athekame',3]]);
+for(const [name,q] of expected){ const r=snap.rosterEntries.find(x=>x.playerName===name); check(r?.listoneStatusCodeV791==='ASTERISCATO' && Number(r?.lastKnownQuotation)===q,`${name} asteriscato con ultima quotazione ${q}`); }
+check(app.includes("releaseQuotationRule: \"ultima quotazione disponibile nella stagione\""),'regola ultima quotazione esposta dal runtime');
+check(app.includes('sameName.length === 1'),'matching svincolo non dipende dall ID Fantacalcio');
+check(app.includes('per gli asteriscati si usa sempre l\'ultima quotazione disponibile nella stagione'),'UI svincoli documenta la regola');
+console.log(`[audit-listone-rosters-svincoli-v792] ${ok}/${total} controlli superati.`);
+if(ok!==total) process.exit(1);

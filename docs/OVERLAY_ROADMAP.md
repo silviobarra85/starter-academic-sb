@@ -70,3 +70,13 @@
 - Audit footer/Scambio/rose: 36/36.
 - Verificare dopo il deploy che `/zonaorientale/release.json` riporti `790` e che il footer mostri V790 senza ritorni a V694.
 - Login presidente: verificare apertura del form `Scambio/Vendita` e, solo se desiderato, eseguire un invio EmailJS reale.
+
+
+## V791 - Listone/Rose pre-svincoli 19 agosto
+Completato: nuovo listone 18/08, rose aggiornate, regola permanente ultima quotazione per asteriscati. Prossimo controllo operativo: sessione svincoli del 19/08 e successiva rigenerazione snapshot dopo i movimenti.
+
+
+## V792 - correzione audit overlay (18/08/2026)
+- Overlay cumulativo rispetto a V790: include listone/rose/svincoli V791 e audit `audit-iosudo-v792.mjs` / `audit-sudatori-section-v792.mjs` affinche la GitHub Action selezioni controlli coerenti con la release corrente.
+- Il listone corrente resta 2026-08-18; i listoni 2026-08-05 e 2026-07-04 restano storici e selezionabili.
+- Gli asteriscati in rosa restano svincolabili all'ultima quotazione disponibile della stagione.

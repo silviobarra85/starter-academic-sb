@@ -1,11 +1,11 @@
-/* V790 - Footer canonico ZonaOrientale.
+/* V792 - Footer canonico ZonaOrientale (compatibilita API V790).
  * Unica sorgente runtime per versione/data. Tutti i writer legacy del footer
  * delegano qui, evitando gare tra MutationObserver di release differenti.
  */
 const ZONAORIENTALE_RELEASE_V790 = Object.freeze({
-  version: "V790",
-  lastUpdated: "12/08/2026",
-  label: "Fantacalcio - V790 - Aggiornato al 13/08/2026"
+  version: "V792",
+  lastUpdated: "18/08/2026",
+  label: "Fantacalcio - V792 - Aggiornato al 18/08/2026"
 });
 
 function applyZonaOrientaleCanonicalFooterV790() {
@@ -321,7 +321,7 @@ import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "../../fanta-engine/js/shared/v491/assets/js/mobile/mobile-tables.js?v=491";
 import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=485";
 import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=485";
-import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=790";
+import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=792";
 import { createMobileRosterHelpersV169 } from "../../fanta-engine/js/shared/v491/assets/js/mobile/mobile-rosters.js?v=491";
 
 const ZonaOrientaleSharedHelperBridgeV341 = createSharedHelperBridgeV341({
@@ -16466,7 +16466,7 @@ window.ZonaOrientaleAdminMobileButtonTopV430 = Object.freeze({
   ]
 });
 
-const DEPLOY_EXPECTED_VERSION_V181 = "790";
+const DEPLOY_EXPECTED_VERSION_V181 = "792";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -22601,23 +22601,38 @@ function getPlayerReleaseListoneLabelV261(listone) {
 function getPlayerReleaseQuotationFromListoniV261(player) {
   const targetName = normalizePlayerName?.(player?.playerName || player?.name || "") || "";
   const targetTeam = normalizeKey?.(player?.realTeam || "") || "";
-  if (!targetName) return { quotation: "", listone: null, listoneLabel: "" };
+  if (!targetName) return { quotation: "", listone: null, listoneLabel: "", historicalFallback: false };
+
+  // V791: per gli asteriscati la quotazione di svincolo e' l'ultima quotazione
+  // disponibile nella stagione. Gli ID Fantacalcio non partecipano al matching.
+  // Se il nome e' univoco nel listone, un eventuale cambio squadra non deve
+  // impedire di recuperare la quotazione storica.
   const listoni = getPlayerReleaseListoniV261();
-  for (const listone of listoni) {
+  for (let index = 0; index < listoni.length; index += 1) {
+    const listone = listoni[index];
     const rows = Array.isArray(listone?.players) ? listone.players : [];
-    const match = rows.find((row) => {
-      const sameName = (normalizePlayerName?.(row.playerName || row.name || "") || "") === targetName;
-      if (!sameName) return false;
-      const rowTeam = normalizeKey?.(row.realTeam || row.team || row.squadra || "") || "";
-      return !targetTeam || !rowTeam || rowTeam === targetTeam;
-    });
+    const sameName = rows.filter((row) => (normalizePlayerName?.(row.playerName || row.name || "") || "") === targetName);
+    let match = null;
+    if (sameName.length === 1) {
+      match = sameName[0];
+    } else if (sameName.length > 1) {
+      match = sameName.find((row) => {
+        const rowTeam = normalizeKey?.(row.realTeam || row.team || row.squadra || "") || "";
+        return targetTeam && rowTeam === targetTeam;
+      }) || null;
+    }
     const quotation = match?.quotationCurrent ?? match?.quotation_current ?? match?.qtA ?? match?.qta ?? match?.quotazioneAttuale ?? "";
     if (quotation !== undefined && quotation !== null && quotation !== "") {
-      return { quotation, listone, listoneLabel: getPlayerReleaseListoneLabelV261(listone) };
+      return {
+        quotation,
+        listone,
+        listoneLabel: getPlayerReleaseListoneLabelV261(listone),
+        historicalFallback: index > 0
+      };
     }
   }
-  const fallback = getRosterPlayerQuotationCurrent?.(player) ?? "";
-  return { quotation: fallback, listone: null, listoneLabel: "" };
+  const fallback = player?.lastKnownQuotation ?? player?.quotationCurrent ?? player?.quotation_current ?? getRosterPlayerQuotationCurrent?.(player) ?? "";
+  return { quotation: fallback, listone: null, listoneLabel: "", historicalFallback: true };
 }
 
 function getSelectedPlayerReleaseKeysV261() {
@@ -22662,10 +22677,10 @@ function buildPlayerReleaseMailDraftV261({ requireSelection = true } = {}) {
     ? items.map((item) => `- ${item.playerName}${item.realTeam ? ` (${item.realTeam})` : ""} (Qt.A: ${formatPlayerReleaseQuotationV261(item.quotation)})`).join("\n")
     : "- [seleziona uno o piu' giocatori dalla rosa]";
   const sourceLine = listoneLabels.length === 1
-    ? `Il listone da cui e' stata recuperata la quotazione attuale e' ${listoneLabels[0]}.`
+    ? `Il listone da cui e' stata recuperata la quotazione valida per lo svincolo e' ${listoneLabels[0]}.`
     : listoneLabels.length > 1
-      ? `I listoni da cui sono state recuperate le quotazioni attuali sono ${listoneLabels.join(", ")}.`
-      : "Non e' stato possibile individuare un listone con quotazione attuale per tutti i giocatori selezionati.";
+      ? `I listoni da cui sono state recuperate le ultime quotazioni valide per lo svincolo sono ${listoneLabels.join(", ")}.`
+      : "Non e' stato possibile individuare una quotazione valida per tutti i giocatori selezionati.";
   const body = [
     "Presidente Caparrotti, con la presente comunico i giocatori che intendo svincolare:",
     "",
@@ -22694,7 +22709,7 @@ function renderPlayerReleaseOptionsV261() {
     const labelParts = [
       player.playerName || player.name || "Giocatore",
       player.realTeam || "-",
-      `Qt.A ${formatPlayerReleaseQuotationV261(quotation)}`
+      `Qt. svincolo ${formatPlayerReleaseQuotationV261(quotation)}`
     ];
     return `<option value="${escapeHtml(getPlayerReleaseKeyV261(player))}">${escapeHtml(labelParts.join(" · "))}</option>`;
   }).join("");
@@ -22707,7 +22722,7 @@ function renderPlayerReleasePanelV261() {
       <form id="teamPlayerReleaseFormV261" class="form-grid" data-player-release-handler="V261">
         <label class="span-2">Giocatori da svincolare
           <select id="teamPlayerReleaseSelectV261" class="input" multiple size="9" required>${renderPlayerReleaseOptionsV261()}</select>
-          <small class="field-hint">Tieni premuto Ctrl/Cmd per selezionare piu' giocatori. La quotazione viene cercata a partire dal listone piu' recente.</small>
+          <small class="field-hint">Tieni premuto Ctrl/Cmd per selezionare piu' giocatori. Per i giocatori in listone si usa la quotazione corrente; per gli asteriscati si usa sempre l'ultima quotazione disponibile nella stagione.</small>
         </label>
         <label class="span-2">Corpo email generato
           <textarea id="teamPlayerReleaseBodyPreviewV261" class="input textarea" rows="11" readonly></textarea>
@@ -22736,7 +22751,7 @@ async function sendPlayerReleaseEmailV261(draft) {
     president_name: draft.presidentName,
     title: "Svincolo giocatori",
     message: draft.body,
-    players: draft.items.map((item) => `${item.playerName} (Qt.A: ${formatPlayerReleaseQuotationV261(item.quotation)})`).join("\n"),
+    players: draft.items.map((item) => `${item.playerName} (Qt. svincolo: ${formatPlayerReleaseQuotationV261(item.quotation)})`).join("\n"),
     other_team: "",
     created_at: new Date().toLocaleString("it-IT"),
     subject: draft.subject
@@ -22973,7 +22988,7 @@ sendPlayerReleaseEmailV261 = async function sendPlayerReleaseEmailV266(draft) {
     president_name: draft.presidentName,
     title: "Svincolo giocatori",
     message: appendOperationalEmailFooterV266(draft.body),
-    players: (draft.items || []).map((item) => `${item.playerName} (Qt.A: ${formatPlayerReleaseQuotationV261(item.quotation)})`).join("\n"),
+    players: (draft.items || []).map((item) => `${item.playerName} (Qt. svincolo: ${formatPlayerReleaseQuotationV261(item.quotation)})`).join("\n"),
     other_team: "",
     created_at: new Date().toLocaleString("it-IT"),
     subject: draft.subject
@@ -42188,4 +42203,14 @@ window.ZonaOrientaleTradeAnnouncementV790 = Object.freeze({
   emailProvider: "EmailJS",
   activate: activateZonaTradeV790,
   open: openZonaTradeV790
+});
+
+
+/* V791 - Listone/rose 18 agosto e regola svincoli asteriscati. */
+window.ZonaOrientaleSvincoliV791 = Object.freeze({
+  version: "V791",
+  latestListoneId: "2026-08-18",
+  releaseQuotationRule: "ultima quotazione disponibile nella stagione",
+  idsAreNotIdentityKeys: true,
+  rosterSource: "zonaorientale-salerno-rosters-1787054918853.xlsx"
 });
