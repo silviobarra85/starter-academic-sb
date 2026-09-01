@@ -84,3 +84,17 @@ Completato: nuovo listone 18/08, rose aggiornate, regola permanente ultima quota
 
 ## V793 - Rose ZonaOrientale fonte primaria
 Completato: aggiornamento reale della sorgente `assets/rose` al file del 18/08/2026, con 211/211 righe coerenti con lo snapshot. Questo diventa il requisito per ogni futuro aggiornamento rose: aggiornare sempre JSON rose + manifest, non soltanto lo snapshot stagionale.
+
+## V794 - Avvio stagione 2026/2027 (01/09/2026)
+- ioSudo rimosso completamente dal sito.
+- Listone e rose aggiornati al 01/09/2026.
+- Prime due giornate di Campionato inserite con risultati e classifica.
+
+## V795 - Calendari completi + Admin risultati (01/09/2026)
+- Inseriti i calendari 2026/2027 di Campionato, Coppa Italia e Champion's League in `assets/competitions`.
+- JSON = calendario base; Firebase = override Admin per risultato/stato.
+- Le righe JSON sono ora modificabili dall'Admin tramite `Inserisci risultato` / `Modifica risultato`.
+- Corretto il merge: un risultato Firebase non viene piu sovrascritto da FP/stato del JSON statico.
+- Classifiche live di Campionato e formule ranking calcolate automaticamente dalle partite giocate.
+- Corretto l'import Excel calendari: `-` resta `DA_GIOCARE` e sono supportati anche file a giornate senza riga di stage.
+- Audit V795 calendari/Admin: 53/53; static-first: 42/42; Admin controller: 71/71.

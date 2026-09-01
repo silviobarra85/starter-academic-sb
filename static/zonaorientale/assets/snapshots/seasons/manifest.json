@@ -1,12 +1,12 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-01T11:29:00+02:00",
+  "generatedAt": "2026-09-01T11:30:00+02:00",
   "snapshots": [
     {
       "seasonId": "2026-2027",
       "file": "2026-2027.json",
-      "generatedAt": "2026-09-01T11:29:00+02:00",
-      "snapshotVersion": 34
+      "generatedAt": "2026-09-01T11:30:00+02:00",
+      "snapshotVersion": "V795"
     },
     {
       "seasonId": "2025-2026",

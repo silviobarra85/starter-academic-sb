@@ -1,7 +1,7 @@
 {
   "id": "2026-2027",
   "seasonId": "2026-2027",
-  "generatedAt": "2026-09-01T11:29:00+02:00",
+  "generatedAt": "2026-09-01T11:30:00+02:00",
   "teams": [
     {
       "id": "WMdzHRRpUP8lHvsdwM7W",
@@ -713,23 +713,27 @@
       },
       "seasonId": "2026-2027",
       "name": "Campionato",
-      "type": "CAMPIONATO"
+      "type": "CAMPIONATO",
+      "format": "CLASSIFICA",
+      "source": "static-calendar-v795"
     },
     {
       "id": "2026-2027_champions",
       "formula": "GIRONI_KO",
-      "status": "PLANNED",
+      "status": "PROGRAMMATA",
       "updatedAt": {
         "seconds": 1783158829,
         "nanoseconds": 441000000
       },
-      "type": "CHAMPIONS",
+      "type": "CHAMPIONS_LEAGUE",
       "createdAt": {
         "seconds": 1783158829,
         "nanoseconds": 441000000
       },
-      "name": "Champions League",
-      "seasonId": "2026-2027"
+      "name": "Champion's League",
+      "seasonId": "2026-2027",
+      "format": "GIRONI_KO",
+      "source": "static-calendar-v795"
     },
     {
       "id": "2026-2027_coppa_italia",
@@ -740,12 +744,14 @@
       },
       "name": "Coppa Italia",
       "seasonId": "2026-2027",
-      "formula": "GIRONI_KO",
-      "status": "PLANNED",
+      "formula": "UNO_VS_TUTTI",
+      "status": "PROGRAMMATA",
       "updatedAt": {
         "seconds": 1783158829,
         "nanoseconds": 375000000
-      }
+      },
+      "format": "UNO_VS_TUTTI",
+      "source": "static-calendar-v795"
     },
     {
       "id": "2026-2027_playoff",
@@ -757,11 +763,12 @@
       "name": "Playoff",
       "seasonId": "2026-2027",
       "formula": "GIRONI_KO",
-      "status": "PLANNED",
+      "status": "PROGRAMMATA",
       "updatedAt": {
         "seconds": 1783158829,
         "nanoseconds": 579000000
-      }
+      },
+      "format": "GIRONI_KO"
     }
   ],
   "competitionMatches": [
@@ -7267,5 +7274,5 @@
       "publishedAt": "2026-07-04T11:55"
     }
   ],
-  "snapshotVersion": "V794"
+  "snapshotVersion": "V795"
 }

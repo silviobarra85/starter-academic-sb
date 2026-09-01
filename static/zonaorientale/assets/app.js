@@ -1,11 +1,11 @@
-/* V794 - Footer canonico ZonaOrientale (compatibilita API V790).
+/* V795 - Footer canonico ZonaOrientale (compatibilita API V790).
  * Unica sorgente runtime per versione/data. Tutti i writer legacy del footer
  * delegano qui, evitando gare tra MutationObserver di release differenti.
  */
 const ZONAORIENTALE_RELEASE_V790 = Object.freeze({
-  version: "V794",
+  version: "V795",
   lastUpdated: "01/09/2026",
-  label: "Fantacalcio - V794 - Aggiornato al 01/09/2026"
+  label: "Fantacalcio - V795 - Aggiornato al 01/09/2026"
 });
 
 function applyZonaOrientaleCanonicalFooterV790() {
@@ -321,7 +321,7 @@ import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "../../fanta-engine/js/shared/v491/assets/js/mobile/mobile-tables.js?v=491";
 import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=485";
 import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=485";
-import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=794";
+import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=795";
 import { createMobileRosterHelpersV169 } from "../../fanta-engine/js/shared/v491/assets/js/mobile/mobile-rosters.js?v=491";
 
 const ZonaOrientaleSharedHelperBridgeV341 = createSharedHelperBridgeV341({
@@ -764,7 +764,9 @@ function readStandingNumberInputV216(position, selector) {
 }
 
 function isRankingCompetition(competition) {
-  return competition?.format === "CLASSIFICA" || competition?.type === "CAMPIONATO";
+  return competition?.format === "CLASSIFICA"
+    || competition?.format === "UNO_VS_TUTTI"
+    || competition?.type === "CAMPIONATO";
 }
 
 function getParticipantsCount(seasonId) {
@@ -3528,6 +3530,8 @@ async function saveCompetitionMatch(event) {
     homeScore: nullableNumberFromInput("adminCompetitionMatchHomeScore"),
     awayScore: nullableNumberFromInput("adminCompetitionMatchAwayScore"),
     notes: document.getElementById("adminCompetitionMatchNotes").value.trim(),
+    source: "firebase-admin-v795",
+    deleted: false,
     updatedAt: serverTimestamp()
   };
 
@@ -8725,10 +8729,11 @@ function mergeStaticValueV107(target, source, field, options = {}) {
 function enrichExistingMatchWithStaticDataV107(existingMatch, staticMatch, calendar = {}) {
   if (!existingMatch || !staticMatch) return existingMatch;
 
-  // Fantapoints are the key difference between Firebase-entered matches and
-  // static calendar imports. Always trust the static JSON for these fields.
-  mergeStaticValueV107(existingMatch, staticMatch, "homeScore", { overwrite: true });
-  mergeStaticValueV107(existingMatch, staticMatch, "awayScore", { overwrite: true });
+  // V795: il calendario JSON e la base; un risultato inserito/modificato
+  // dall'Admin in Firebase ha sempre precedenza su gol, FP e stato.
+  // Lo statico completa soltanto i campi mancanti.
+  mergeStaticValueV107(existingMatch, staticMatch, "homeScore");
+  mergeStaticValueV107(existingMatch, staticMatch, "awayScore");
 
   // Preserve Firebase official score if present; otherwise use the static one.
   mergeStaticValueV107(existingMatch, staticMatch, "homeGoals");
@@ -9771,20 +9776,24 @@ function buildStaticCompetitionMatchV105({ row, start, stageInfo, leg, leagueMat
   if (!homeTeamName || !awayTeamName) return null;
 
   const goals = parseGoalsFromScoreV105(score);
+  const played = goals.homeGoals !== "" && goals.awayGoals !== "" && Number.isFinite(Number(goals.homeGoals)) && Number.isFinite(Number(goals.awayGoals));
+  const genericMatchday = stageInfo?.stage === "GIORNATE" && leagueMatchday
+    ? `${leagueMatchday}° Giornata`
+    : getMatchdayLabelFromStageV105(stageInfo, leg);
   return {
     stage: stageInfo.stage,
-    leg,
-    matchday: getMatchdayLabelFromStageV105(stageInfo, leg),
+    leg: stageInfo?.stage === "GIORNATE" ? "" : leg,
+    matchday: genericMatchday,
     leagueMatchday,
     serieAMatchday,
     matchDate: "",
     homeTeamName,
     awayTeamName,
-    homeScore: parseNumberV105(getCellValueV105(row, start + 1)),
-    awayScore: parseNumberV105(getCellValueV105(row, start + 2)),
-    homeGoals: goals.homeGoals,
-    awayGoals: goals.awayGoals,
-    status: score ? "GIOCATA" : "DA_GIOCARE",
+    homeScore: played ? parseNumberV105(getCellValueV105(row, start + 1)) : "",
+    awayScore: played ? parseNumberV105(getCellValueV105(row, start + 2)) : "",
+    homeGoals: played ? goals.homeGoals : "",
+    awayGoals: played ? goals.awayGoals : "",
+    status: played ? "GIOCATA" : "DA_GIOCARE",
     sourceRow: index + 1
   };
 }
@@ -9806,12 +9815,16 @@ function parseStaticCompetitionWorkbookRowsV105(rows) {
       rightSerieAMatchday = "";
       return;
     }
-    if (!currentStage) return;
-
     const first = String(getCellValueV105(row, 0) || "");
     const third = String(getCellValueV105(row, 2) || "");
     const seventh = String(getCellValueV105(row, 6) || "");
     const ninth = String(getCellValueV105(row, 8) || "");
+    if (!currentStage && (/giornata/i.test(first) || /giornata/i.test(third) || /giornata/i.test(seventh) || /giornata/i.test(ninth))) {
+      currentStage = { stage: "GIORNATE", label: "Giornate", code: "g" };
+    }
+    if (!currentStage) return;
+
+
     if (/giornata/i.test(first) || /giornata/i.test(third) || /giornata/i.test(seventh) || /giornata/i.test(ninth)) {
       leftLeagueMatchday = parseOrdinalNumberV105(first);
       leftSerieAMatchday = parseOrdinalNumberV105(third);
@@ -10717,9 +10730,52 @@ function getStaticCompetitionResultsCanonicalV109(competition) {
   })).sort((a, b) => Number(a.position || 999) - Number(b.position || 999));
 }
 
+function computeCompetitionStandingsFromMatchesV795(competition) {
+  if (!competition?.id) return [];
+  const playedMatches = (getCompetitionMatches(competition.id) || []).filter((match) => (
+    String(match.status || "").toUpperCase() === "GIOCATA"
+    && Number.isFinite(Number(match.homeGoals))
+    && Number.isFinite(Number(match.awayGoals))
+  ));
+  if (!playedMatches.length) return [];
+
+  const rows = new Map(getSeasonTeamsForSeason(competition.seasonId).map((team) => [team.id, {
+    competitionId: competition.id, seasonId: competition.seasonId, seasonTeamId: team.id,
+    played: 0, wins: 0, draws: 0, losses: 0, goalsFor: 0, goalsAgainst: 0, fantapoints: 0, points: 0
+  }]));
+  const ensure = (id) => {
+    if (!id) return null;
+    if (!rows.has(id)) rows.set(id, { competitionId: competition.id, seasonId: competition.seasonId, seasonTeamId: id, played: 0, wins: 0, draws: 0, losses: 0, goalsFor: 0, goalsAgainst: 0, fantapoints: 0, points: 0 });
+    return rows.get(id);
+  };
+
+  playedMatches.forEach((match) => {
+    const home = ensure(match.homeSeasonTeamId);
+    const away = ensure(match.awaySeasonTeamId);
+    if (!home || !away) return;
+    const hg = Number(match.homeGoals); const ag = Number(match.awayGoals);
+    home.played += 1; away.played += 1;
+    home.goalsFor += hg; home.goalsAgainst += ag;
+    away.goalsFor += ag; away.goalsAgainst += hg;
+    if (Number.isFinite(Number(match.homeScore))) home.fantapoints += Number(match.homeScore);
+    if (Number.isFinite(Number(match.awayScore))) away.fantapoints += Number(match.awayScore);
+    if (hg > ag) { home.wins += 1; away.losses += 1; home.points += 3; }
+    else if (hg < ag) { away.wins += 1; home.losses += 1; away.points += 3; }
+    else { home.draws += 1; away.draws += 1; home.points += 1; away.points += 1; }
+  });
+
+  return [...rows.values()].map((row) => ({ ...row, goalDifference: row.goalsFor - row.goalsAgainst }))
+    .sort((a, b) => (b.points - a.points) || (b.fantapoints - a.fantapoints) || (b.goalDifference - a.goalDifference) || (b.goalsFor - a.goalsFor) || String(getSeasonTeamDisplayName(a.seasonTeamId)).localeCompare(String(getSeasonTeamDisplayName(b.seasonTeamId)), "it", { sensitivity: "base" }))
+    .map((row, index) => ({ ...row, id: `${competition.id}_live_${index + 1}`, position: index + 1, source: "computed-from-matches-v795" }));
+}
+
 const getCompetitionResultsBeforeV109 = getCompetitionResults;
-getCompetitionResults = function getCompetitionResultsV109(competitionId) {
+getCompetitionResults = function getCompetitionResultsV795(competitionId) {
   const competition = getCompetitionForStaticLookupV109(competitionId);
+  const liveRanking = competition && String(competition.status || "").toUpperCase() !== "CONCLUSA" && isRankingCompetition(competition)
+    ? computeCompetitionStandingsFromMatchesV795(competition)
+    : [];
+  if (liveRanking.length) return liveRanking;
   const staticResults = getStaticCompetitionResultsCanonicalV109(competition);
   if (staticResults) return staticResults;
   return getCompetitionResultsBeforeV109(competitionId);
@@ -12455,10 +12511,17 @@ function isSameMatchKeyV117(a, b) {
   return getMatchMergeKeySafeV116(a) === getMatchMergeKeySafeV116(b);
 }
 
+function isStaticOnlyCompetitionMatchV795(match) {
+  const source = String(match?.source || "").toLowerCase();
+  return source.startsWith("static-competition-calendar")
+    || source.startsWith("static-results-")
+    || source === "static-season-snapshot";
+}
+
 function getActiveFirebaseMatchForStaticMatchV117(staticMatch, firebaseMatches) {
   const staticKey = getMatchMergeKeySafeV116(staticMatch);
   return (firebaseMatches || []).find((match) => {
-    if (isMatchDeletedV116(match)) return false;
+    if (isStaticOnlyCompetitionMatchV795(match) || isMatchDeletedV116(match)) return false;
     if (match.id && staticMatch.id && match.id === staticMatch.id) return true;
     return getMatchMergeKeySafeV116(match) === staticKey;
   }) || null;
@@ -12467,19 +12530,32 @@ function getActiveFirebaseMatchForStaticMatchV117(staticMatch, firebaseMatches) 
 function getDeletedFirebaseMarkerForStaticMatchV117(staticMatch, firebaseMatches) {
   const staticKey = getMatchMergeKeySafeV116(staticMatch);
   return (firebaseMatches || []).find((match) => {
-    if (!isMatchDeletedV116(match)) return false;
+    if (isStaticOnlyCompetitionMatchV795(match) || !isMatchDeletedV116(match)) return false;
     if (match.id && staticMatch.id && match.id === staticMatch.id) return true;
     return getMatchMergeKeySafeV116(match) === staticKey;
   }) || null;
 }
 
-getCompetitionMatches = function getCompetitionMatchesV117(competitionId) {
+getCompetitionMatches = function getCompetitionMatchesV795(competitionId) {
   const competition = typeof getCompetitionForStaticLookupV109 === "function" ? getCompetitionForStaticLookupV109(competitionId) : null;
   const staticMatches = typeof getStaticCompetitionMatchesCanonicalV109 === "function" ? getStaticCompetitionMatchesCanonicalV109(competition) : null;
-  if (staticMatches) return sortMatchesForDisplay(staticMatches.filter((match) => !isMatchDeletedV116(match)));
-  return sortMatchesForDisplay((state.raw.competitionMatches || []).filter((match) => (
-    match.competitionId === competitionId && !isMatchDeletedV116(match)
-  )));
+  const rawMatches = (state.raw.competitionMatches || []).filter((match) => match.competitionId === competitionId);
+  if (!staticMatches) return sortMatchesForDisplay(rawMatches.filter((match) => !isMatchDeletedV116(match)));
+
+  const activeOverrides = rawMatches.filter((match) => !isStaticOnlyCompetitionMatchV795(match) && !isMatchDeletedV116(match));
+  const merged = [];
+  const usedIds = new Set();
+  staticMatches.forEach((staticMatch) => {
+    const override = getActiveFirebaseMatchForStaticMatchV117(staticMatch, activeOverrides);
+    if (override?.id) usedIds.add(override.id);
+    merged.push(override ? { ...staticMatch, ...override, hasStaticCalendarData: true } : staticMatch);
+  });
+  activeOverrides.forEach((match) => {
+    if (match.id && usedIds.has(match.id)) return;
+    if (staticMatches.some((staticMatch) => getMatchMergeKeySafeV116(staticMatch) === getMatchMergeKeySafeV116(match))) return;
+    merged.push(match);
+  });
+  return sortMatchesForDisplay(merged);
 };
 
 function getAdminMatchDisplayRowsV117(selectedCompetition, firebaseMatches) {
@@ -12489,8 +12565,9 @@ function getAdminMatchDisplayRowsV117(selectedCompetition, firebaseMatches) {
   const staticMatches = selectedCompetition && typeof getStaticCompetitionMatchesCanonicalV109 === "function"
     ? getStaticCompetitionMatchesCanonicalV109(selectedCompetition) || []
     : [];
-  const activeFirebaseMatches = (firebaseMatches || []).filter((match) => !isMatchDeletedV116(match));
-  const deletedFirebaseMarkers = (firebaseMatches || []).filter((match) => isMatchDeletedV116(match));
+  const actualFirebaseMatches = (firebaseMatches || []).filter((match) => !isStaticOnlyCompetitionMatchV795(match));
+  const activeFirebaseMatches = actualFirebaseMatches.filter((match) => !isMatchDeletedV116(match));
+  const deletedFirebaseMarkers = actualFirebaseMatches.filter((match) => isMatchDeletedV116(match));
 
   staticMatches.forEach((staticMatch, index) => {
     const firebaseMatch = getActiveFirebaseMatchForStaticMatchV117(staticMatch, activeFirebaseMatches);
@@ -12499,7 +12576,7 @@ function getAdminMatchDisplayRowsV117(selectedCompetition, firebaseMatches) {
     if (deletedMarker?.id) usedDeletedMarkerIds.add(deletedMarker.id);
     rows.push({
       key: `json-${index}-${getMatchMergeKeySafeV116(staticMatch)}`,
-      displayMatch: firebaseMatch ? { ...staticMatch, ...firebaseMatch } : staticMatch,
+      displayMatch: firebaseMatch ? { ...staticMatch, ...firebaseMatch, hasStaticCalendarData: true } : staticMatch,
       staticMatch,
       firebaseMatch,
       deletedMarker,
@@ -12537,17 +12614,14 @@ function getAdminMatchDisplayRowsV117(selectedCompetition, firebaseMatches) {
     });
   });
 
-  return sortMatchesForDisplay(rows.map((row) => row.displayMatch)).map((displayMatch) => (
-    rows.find((row) => row.displayMatch === displayMatch)
-    || rows.find((row) => row.displayMatch.id && row.displayMatch.id === displayMatch.id)
-    || rows[0]
-  )).filter(Boolean);
+  const rowByObject = new Map(rows.map((row) => [row.displayMatch, row]));
+  return sortMatchesForDisplay(rows.map((row) => row.displayMatch)).map((displayMatch) => rowByObject.get(displayMatch)).filter(Boolean);
 }
 
 function renderAdminMatchSourceBadgesV117(row) {
   return `
-    ${row.hasJson ? `<span class="admin-match-source-badge admin-match-source-badge-json" title="Partita recuperata dal calendario JSON statico">JSON</span>` : ""}
-    ${row.hasFirebase ? `<span class="admin-match-source-badge admin-match-source-badge-firebase" title="Partita presente come record attivo nella raccolta Firestore competitionMatches">Firebase</span>` : ""}
+    ${row.hasJson ? `<span class="admin-match-source-badge admin-match-source-badge-json" title="Calendario base recuperato dal JSON statico">JSON</span>` : ""}
+    ${row.hasFirebase ? `<span class="admin-match-source-badge admin-match-source-badge-firebase" title="Risultato/override attivo salvato in Firestore">Firebase</span>` : ""}
     ${row.isDeleted ? `<span class="admin-match-source-badge admin-match-source-badge-deleted" title="La copia Firebase e marcata deleted: true">deleted</span>` : ""}
   `;
 }
@@ -12566,15 +12640,11 @@ async function softDeleteCompetitionMatchV117(matchId) {
     const staticMatches = getStaticCompetitionMatchesCanonicalV109(competition) || [];
     return staticMatches.some((staticMatch) => isSameMatchKeyV117(staticMatch, match));
   })());
-  const confirmed = window.confirm(`Eliminare questa partita dai record Firebase attivi?\n${label}\n\n${hasStaticCopy ? "La partita resta visibile dal JSON statico e avra badge JSON + deleted." : "Il record viene marcato deleted e non sara mostrato nel pubblico se manca il JSON statico."}`);
+  const confirmed = window.confirm(`Eliminare questa partita dai record Firebase attivi?\n${label}\n\n${hasStaticCopy ? "La partita resta visibile dal JSON statico e potrai reinserire il risultato in seguito." : "Il record viene marcato deleted e non sara mostrato nel pubblico se manca il JSON statico."}`);
   if (!confirmed) return;
   try {
     const marker = {
-      ...(match || {}),
-      id: matchId,
-      deleted: true,
-      deletedAt: serverTimestamp(),
-      updatedAt: serverTimestamp(),
+      ...(match || {}), id: matchId, deleted: true, deletedAt: serverTimestamp(), updatedAt: serverTimestamp(),
       source: hasStaticCopy ? "firebase-delete-marker-static-json" : "firebase-delete-marker"
     };
     await deleteDoc(doc(db, "competitionMatches", matchId));
@@ -12591,18 +12661,52 @@ softDeleteCompetitionMatchV116 = softDeleteCompetitionMatchV117;
 function getAdminMatchActionButtonsV117(row) {
   if (row.hasFirebase && row.firebaseMatch?.id) {
     return `
-      <button class="button button-secondary button-small" type="button" data-admin-edit-match="${escapeHtml(row.firebaseMatch.id)}">Modifica</button>
-      <button class="button button-danger button-small" type="button" data-admin-soft-delete-match="${escapeHtml(row.firebaseMatch.id)}">Elimina Firebase</button>`;
+      <button class="button button-secondary button-small" type="button" data-admin-edit-match="${escapeHtml(row.firebaseMatch.id)}">Modifica risultato</button>
+      <button class="button button-danger button-small" type="button" data-admin-soft-delete-match="${escapeHtml(row.firebaseMatch.id)}">Rimuovi override</button>`;
   }
   if (row.isDeleted && row.deletedMarker?.id) {
     return `<button class="button button-secondary button-small" type="button" data-admin-restore-match="${escapeHtml(row.deletedMarker.id)}">Ripristina Firebase</button>`;
   }
-  if (row.hasJson) return `<span class="muted">Solo JSON</span>`;
+  if (row.hasJson && row.staticMatch?.id) {
+    return `<button class="button button-primary button-small" type="button" data-admin-edit-match="${escapeHtml(row.staticMatch.id)}">${String(row.staticMatch.status || "").toUpperCase() === "GIOCATA" ? "Modifica risultato" : "Inserisci risultato"}</button>`;
+  }
   return `<span class="muted">Solo lettura</span>`;
 }
 getAdminMatchActionButtonsV116 = getAdminMatchActionButtonsV117;
 
-renderCompetitionMatchesAdminPanel = function renderCompetitionMatchesAdminPanelV117() {
+const editCompetitionMatchBeforeV795 = editCompetitionMatch;
+editCompetitionMatch = function editCompetitionMatchV795(id) {
+  let match = (state.raw.competitionMatches || []).find((item) => item.id === id);
+  if (!match && Array.isArray(state.competitionCalendars)) {
+    for (const calendar of state.competitionCalendars) {
+      const raw = (calendar.matches || []).find((item) => item.id === id);
+      if (!raw) continue;
+      const seasonId = calendar.seasonId || calendar.meta?.seasonId || calendar.competition?.seasonId || getCurrentSeasonId();
+      const competitionId = calendar.competitionId || calendar.meta?.competitionId || calendar.competition?.id || raw.competitionId || "";
+      match = normalizeStaticCompetitionMatchV101(raw, seasonId, competitionId, 0);
+      break;
+    }
+  }
+  if (!match) return editCompetitionMatchBeforeV795(id);
+
+  expandAdminPanel("adminCompetitionMatchesPanel");
+  document.getElementById("adminCompetitionMatchId").value = match.id || id;
+  document.getElementById("adminCompetitionMatchCompetitionId").value = match.competitionId || "";
+  updateCompetitionMatchTeamOptions(match.homeSeasonTeamId || "", match.awaySeasonTeamId || "");
+  document.getElementById("adminCompetitionMatchday").value = match.matchday || match.stage || "";
+  document.getElementById("adminCompetitionMatchDate").value = match.matchDate || "";
+  document.getElementById("adminCompetitionMatchSerieAMatchday").value = match.serieAMatchday ?? match.realSerieAMatchday ?? match.serieAGiornata ?? "";
+  document.getElementById("adminCompetitionMatchStatus").value = match.status || "DA_GIOCARE";
+  document.getElementById("adminCompetitionMatchHomeGoals").value = match.homeGoals ?? "";
+  document.getElementById("adminCompetitionMatchAwayGoals").value = match.awayGoals ?? "";
+  document.getElementById("adminCompetitionMatchHomeScore").value = match.homeScore ?? "";
+  document.getElementById("adminCompetitionMatchAwayScore").value = match.awayScore ?? "";
+  document.getElementById("adminCompetitionMatchNotes").value = match.notes || "";
+  showMessage("adminCompetitionMatchStatusText", match.hasStaticCalendarData || isStaticOnlyCompetitionMatchV795(match) ? "Calendario JSON caricato: il salvataggio crea/aggiorna l'override Firebase del risultato." : "");
+  document.getElementById("adminCompetitionMatchesPanel")?.scrollIntoView({ behavior: "smooth", block: "start" });
+};
+
+renderCompetitionMatchesAdminPanel = function renderCompetitionMatchesAdminPanelV795() {
   return adminCompetitionHelpersV131.renderCompetitionMatchesAdminPanel();
 };
 
@@ -12613,6 +12717,7 @@ restoreCompetitionMatchV116 = async function restoreCompetitionMatchV117(matchId
   openCompetitionMatchesListV117();
 };
 
+/* V795_ADMIN_STATIC_RESULT_OVERRIDE: JSON calendario base + Firebase risultato override. */
 
 /* V119 - Fantamercato, trattative squadra e badge uniformi. */
 // V168: transfer market collections are loaded with targeted queries in loadTransferMarketCollectionsV133.
@@ -16466,7 +16571,7 @@ window.ZonaOrientaleAdminMobileButtonTopV430 = Object.freeze({
   ]
 });
 
-const DEPLOY_EXPECTED_VERSION_V181 = "794";
+const DEPLOY_EXPECTED_VERSION_V181 = "795";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -42230,3 +42335,7 @@ window.ZonaOrientaleRostersPrimaryV794 = Object.freeze({
 
 /* V794 - listone/rose 01/09/2026 + giornate 1-2 Campionato. ioSudo rimosso dal sito. */
 window.ZonaOrientaleSeasonStartV794 = Object.freeze({ version: 'V794', listone: '2026-09-01', roster: '2026-09-01', campionatoMatchdays: 2, iosudoRemoved: true });
+
+
+/* V795 - calendari completi 2026/27 e Admin risultati su calendario statico. */
+window.ZonaOrientaleCalendarsAdminV795 = Object.freeze({ version: "V795", season: "2026-2027", staticBase: true, firebaseResultOverride: true, autoStandings: true });

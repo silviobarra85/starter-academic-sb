@@ -1,6 +1,6 @@
 {
-  "version": 1,
-  "generatedAt": "2026-05-20T05:15:42.578Z",
+  "version": 2,
+  "generatedAt": "2026-09-01T11:30:00+02:00",
   "competitions": [
     {
       "id": "2025-2026-champions-league",
@@ -31,6 +31,54 @@
       "matches": 5,
       "playedMatches": 5,
       "status": "CONCLUSA"
+    },
+    {
+      "id": "2026-2027-campionato",
+      "seasonId": "2026-2027",
+      "competitionId": "2026-2027_campionato",
+      "competitionName": "Campionato",
+      "competitionSlug": "campionato",
+      "competitionType": "CAMPIONATO",
+      "competitionFormat": "CLASSIFICA",
+      "label": "Campionato 2026/2027",
+      "loadedAt": "2026-09-01",
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027(1).xlsx",
+      "file": "2026-2027/campionato-2026-2027.json",
+      "matches": 180,
+      "playedMatches": 10,
+      "status": "ATTIVA"
+    },
+    {
+      "id": "2026-2027-coppa-italia",
+      "seasonId": "2026-2027",
+      "competitionId": "2026-2027_coppa_italia",
+      "competitionName": "Coppa Italia",
+      "competitionSlug": "coppa-italia",
+      "competitionType": "COPPA_ITALIA",
+      "competitionFormat": "UNO_VS_TUTTI",
+      "label": "Coppa Italia 2026/2027",
+      "loadedAt": "2026-09-01",
+      "sourceFile": "Calendario_Coppa-Italia-2026-2027.xlsx",
+      "file": "2026-2027/coppa-italia-2026-2027.json",
+      "matches": 180,
+      "playedMatches": 0,
+      "status": "PROGRAMMATA"
+    },
+    {
+      "id": "2026-2027-champions-league",
+      "seasonId": "2026-2027",
+      "competitionId": "2026-2027_champions",
+      "competitionName": "Champion's League",
+      "competitionSlug": "champions-league",
+      "competitionType": "CHAMPIONS_LEAGUE",
+      "competitionFormat": "GIRONI_KO",
+      "label": "Champion's League 2026/2027",
+      "loadedAt": "2026-09-01",
+      "sourceFile": "Calendario_Champion's-League-2026-2027.xlsx",
+      "file": "2026-2027/champions-league-2026-2027.json",
+      "matches": 8,
+      "playedMatches": 0,
+      "status": "PROGRAMMATA"
     }
   ]
 }
