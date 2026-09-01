@@ -1,0 +1,2639 @@
+{
+  "meta": {
+    "id": "2026-2027-2026-09-01",
+    "seasonId": "2026-2027",
+    "label": "Rose ZonaOrientale Salerno 2026/27 - 1 settembre 2026",
+    "loadedAt": "2026-09-01",
+    "sourceFile": "zonaorientale-salerno-rosters-1788255085854.xlsx",
+    "teams": 10,
+    "players": 286,
+    "sourcePriority": "assets/rose primary V588",
+    "overlayVersion": "V794"
+  },
+  "rosters": [
+    {
+      "name": "Afc Severgas Baronissi",
+      "players": [
+        {
+          "role": "P",
+          "playerName": "Martinez Jo.",
+          "realTeam": "INT",
+          "cost": 9,
+          "mantraRoles": "Por",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 17
+        },
+        {
+          "role": "P",
+          "playerName": "Provedel",
+          "realTeam": "INT",
+          "cost": 4,
+          "mantraRoles": "Por",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 2
+        },
+        {
+          "role": "D",
+          "playerName": "Britschgi",
+          "realTeam": "PAR",
+          "cost": 3,
+          "mantraRoles": "Dd/Ds/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 3
+        },
+        {
+          "role": "D",
+          "playerName": "Comuzzo",
+          "realTeam": "TOR",
+          "cost": 2,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 8
+        },
+        {
+          "role": "D",
+          "playerName": "Di Lorenzo",
+          "realTeam": "NAP",
+          "cost": 50,
+          "mantraRoles": "Dd/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 12
+        },
+        {
+          "role": "D",
+          "playerName": "Doig",
+          "realTeam": "SAS",
+          "cost": 8,
+          "mantraRoles": "Ds/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 5
+        },
+        {
+          "role": "D",
+          "playerName": "Hien",
+          "realTeam": "ATA",
+          "cost": 1,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 7
+        },
+        {
+          "role": "D",
+          "playerName": "Idzes",
+          "realTeam": "SAS",
+          "cost": 2,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 7
+        },
+        {
+          "role": "D",
+          "playerName": "Kossounou",
+          "realTeam": "ATA",
+          "cost": 12,
+          "mantraRoles": "Dd/Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 4
+        },
+        {
+          "role": "D",
+          "playerName": "Rensch",
+          "realTeam": "ROM",
+          "cost": 10,
+          "mantraRoles": "B/Dd/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 4
+        },
+        {
+          "role": "D",
+          "playerName": "Valdepenas",
+          "realTeam": "FIO",
+          "cost": 19,
+          "mantraRoles": "Ds/Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 5
+        },
+        {
+          "role": "D",
+          "playerName": "Valle",
+          "realTeam": "COM",
+          "cost": 8,
+          "mantraRoles": "Ds/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "D",
+          "playerName": "Wesley",
+          "realTeam": "ROM",
+          "cost": 28,
+          "mantraRoles": "E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 18
+        },
+        {
+          "role": "C",
+          "playerName": "Adzic",
+          "realTeam": "SAS",
+          "cost": 13,
+          "mantraRoles": "C/T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "C",
+          "playerName": "Cacciamani",
+          "realTeam": "TOR",
+          "cost": 9,
+          "mantraRoles": "E/W",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "C",
+          "playerName": "Conceicao",
+          "realTeam": "JUV",
+          "cost": 0,
+          "mantraRoles": "W/A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 13
+        },
+        {
+          "role": "C",
+          "playerName": "Cristante",
+          "realTeam": "ROM",
+          "cost": 7,
+          "mantraRoles": "M/C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 9
+        },
+        {
+          "role": "C",
+          "playerName": "Da Cunha",
+          "realTeam": "COM",
+          "cost": 49,
+          "mantraRoles": "C/T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 18
+        },
+        {
+          "role": "C",
+          "playerName": "Ekkelenkamp",
+          "realTeam": "UDI",
+          "cost": 1,
+          "mantraRoles": "C/T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 12
+        },
+        {
+          "role": "C",
+          "playerName": "Fazzini",
+          "realTeam": "CAG",
+          "cost": 1,
+          "mantraRoles": "C/T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "C",
+          "playerName": "Oulai",
+          "realTeam": "FIO",
+          "cost": 8,
+          "mantraRoles": "M/C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "C",
+          "playerName": "Sucic P.",
+          "realTeam": "INT",
+          "cost": 14,
+          "mantraRoles": "C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 9
+        },
+        {
+          "role": "A",
+          "playerName": "Boga",
+          "realTeam": "JUV",
+          "cost": 3,
+          "mantraRoles": "W/A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 7
+        },
+        {
+          "role": "A",
+          "playerName": "Colombo",
+          "realTeam": "GEN",
+          "cost": 9,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 11
+        },
+        {
+          "role": "A",
+          "playerName": "De Ketelaere",
+          "realTeam": "ATA",
+          "cost": 81,
+          "mantraRoles": "A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 17
+        },
+        {
+          "role": "A",
+          "playerName": "Frigan",
+          "realTeam": "PAR",
+          "cost": 1,
+          "mantraRoles": "A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 4
+        },
+        {
+          "role": "A",
+          "playerName": "Ghedjemis",
+          "realTeam": "FRO",
+          "cost": 7,
+          "mantraRoles": "W/A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 8
+        },
+        {
+          "role": "A",
+          "playerName": "Laurientè",
+          "realTeam": "SAS",
+          "cost": 9,
+          "mantraRoles": "A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 15
+        },
+        {
+          "role": "A",
+          "playerName": "Vaz",
+          "realTeam": "ROM",
+          "cost": 10,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 1
+        },
+        {
+          "role": "A",
+          "playerName": "Yeboah J.",
+          "realTeam": "VEN",
+          "cost": 32,
+          "mantraRoles": "A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 9
+        }
+      ]
+    },
+    {
+      "name": "Ac Milan",
+      "players": [
+        {
+          "role": "P",
+          "playerName": "Mandas",
+          "realTeam": "LAZ",
+          "cost": 16,
+          "mantraRoles": "Por",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 10
+        },
+        {
+          "role": "P",
+          "playerName": "Montipò",
+          "realTeam": "VEN",
+          "cost": 1,
+          "mantraRoles": "Por",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 1
+        },
+        {
+          "role": "P",
+          "playerName": "Motta",
+          "realTeam": "LAZ",
+          "cost": 1,
+          "mantraRoles": "Por",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 1
+        },
+        {
+          "role": "P",
+          "playerName": "Okoye",
+          "realTeam": "UDI",
+          "cost": 5,
+          "mantraRoles": "Por",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 9
+        },
+        {
+          "role": "D",
+          "playerName": "Coco",
+          "realTeam": "TOR",
+          "cost": 1,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 7
+        },
+        {
+          "role": "D",
+          "playerName": "Dodò",
+          "realTeam": "FIO",
+          "cost": 20,
+          "mantraRoles": "Dd/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 9
+        },
+        {
+          "role": "D",
+          "playerName": "Doekhi",
+          "realTeam": "LAZ",
+          "cost": 3,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 8
+        },
+        {
+          "role": "D",
+          "playerName": "Gallo",
+          "realTeam": "LEC",
+          "cost": 1,
+          "mantraRoles": "Ds/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "D",
+          "playerName": "Mancini",
+          "realTeam": "ROM",
+          "cost": 13,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 16
+        },
+        {
+          "role": "D",
+          "playerName": "N'Dicka",
+          "realTeam": "ROM",
+          "cost": 10,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 13
+        },
+        {
+          "role": "D",
+          "playerName": "Provstgaard",
+          "realTeam": "LAZ",
+          "cost": 1,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 4
+        },
+        {
+          "role": "D",
+          "playerName": "Romagnoli",
+          "realTeam": "LAZ",
+          "cost": 3,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "D",
+          "playerName": "Tavares N.",
+          "realTeam": "LAZ",
+          "cost": 3,
+          "mantraRoles": "Ds/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 7
+        },
+        {
+          "role": "C",
+          "playerName": "Baldanzi",
+          "realTeam": "GEN",
+          "cost": 7,
+          "mantraRoles": "T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 11
+        },
+        {
+          "role": "C",
+          "playerName": "Busio",
+          "realTeam": "VEN",
+          "cost": 3,
+          "mantraRoles": "M/C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 5
+        },
+        {
+          "role": "C",
+          "playerName": "Ederson D.S.",
+          "realTeam": "ATA",
+          "cost": 25,
+          "mantraRoles": "M/C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 12
+        },
+        {
+          "role": "C",
+          "playerName": "Gudmundsson A.",
+          "realTeam": "FIO",
+          "cost": 37,
+          "mantraRoles": "T/A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 12
+        },
+        {
+          "role": "C",
+          "playerName": "Jashari",
+          "realTeam": "MIL",
+          "cost": 23,
+          "mantraRoles": "C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 5
+        },
+        {
+          "role": "C",
+          "playerName": "Perrone",
+          "realTeam": "COM",
+          "cost": 1,
+          "mantraRoles": "M/C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 10
+        },
+        {
+          "role": "C",
+          "playerName": "Rabiot",
+          "realTeam": "MIL",
+          "cost": 30,
+          "mantraRoles": "C/T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 23
+        },
+        {
+          "role": "C",
+          "playerName": "Rowe",
+          "realTeam": "BOL",
+          "cost": 28,
+          "mantraRoles": "W/T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 10
+        },
+        {
+          "role": "C",
+          "playerName": "Thorstvedt",
+          "realTeam": "SAS",
+          "cost": 7,
+          "mantraRoles": "C/T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 10
+        },
+        {
+          "role": "C",
+          "playerName": "Zaccagni",
+          "realTeam": "LAZ",
+          "cost": 8,
+          "mantraRoles": "W/A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 16
+        },
+        {
+          "role": "A",
+          "playerName": "Geubbels",
+          "realTeam": "LEC",
+          "cost": 6,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 8
+        },
+        {
+          "role": "A",
+          "playerName": "Gimenez",
+          "realTeam": "MIL",
+          "cost": 142,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "ASTERISCATO",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "A",
+          "playerName": "Krstovic",
+          "realTeam": "ATA",
+          "cost": 28,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 18
+        },
+        {
+          "role": "A",
+          "playerName": "Lucca",
+          "realTeam": "NAP",
+          "cost": 4,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 4
+        },
+        {
+          "role": "A",
+          "playerName": "Malen",
+          "realTeam": "ROM",
+          "cost": 46,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 38
+        },
+        {
+          "role": "A",
+          "playerName": "Pinamonti",
+          "realTeam": "LAZ",
+          "cost": 1,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 12
+        },
+        {
+          "role": "A",
+          "playerName": "Tourè E.",
+          "realTeam": "PAR",
+          "cost": 33,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 10
+        }
+      ]
+    },
+    {
+      "name": "FC DueFratelli2005",
+      "players": [
+        {
+          "role": "P",
+          "playerName": "Gollini",
+          "realTeam": "ROM",
+          "cost": 1,
+          "mantraRoles": "Por",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 1
+        },
+        {
+          "role": "P",
+          "playerName": "Muric",
+          "realTeam": "SAS",
+          "cost": 2,
+          "mantraRoles": "Por",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 7
+        },
+        {
+          "role": "P",
+          "playerName": "Svilar",
+          "realTeam": "ROM",
+          "cost": 1,
+          "mantraRoles": "Por",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 19
+        },
+        {
+          "role": "D",
+          "playerName": "Bella-Kotchap",
+          "realTeam": "VEN",
+          "cost": 1,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 5
+        },
+        {
+          "role": "D",
+          "playerName": "Chalobah T.",
+          "realTeam": "COM",
+          "cost": 8,
+          "mantraRoles": "Dd/Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 10
+        },
+        {
+          "role": "D",
+          "playerName": "Hermoso",
+          "realTeam": "ROM",
+          "cost": 9,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 11
+        },
+        {
+          "role": "D",
+          "playerName": "Kempf",
+          "realTeam": "COM",
+          "cost": 1,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 5
+        },
+        {
+          "role": "D",
+          "playerName": "Norton-Cuffy",
+          "realTeam": "GEN",
+          "cost": 2,
+          "mantraRoles": "Dd/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 8
+        },
+        {
+          "role": "D",
+          "playerName": "Obert",
+          "realTeam": "CAG",
+          "cost": 1,
+          "mantraRoles": "B/Ds/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 7
+        },
+        {
+          "role": "D",
+          "playerName": "Spinazzola",
+          "realTeam": "NAP",
+          "cost": 1,
+          "mantraRoles": "Ds/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 8
+        },
+        {
+          "role": "D",
+          "playerName": "Troilo",
+          "realTeam": "PAR",
+          "cost": 1,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 3
+        },
+        {
+          "role": "D",
+          "playerName": "Zortea",
+          "realTeam": "BOL",
+          "cost": 1,
+          "mantraRoles": "Dd/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 7
+        },
+        {
+          "role": "C",
+          "playerName": "Bakola",
+          "realTeam": "SAS",
+          "cost": 1,
+          "mantraRoles": "C/T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "C",
+          "playerName": "Isaksen",
+          "realTeam": "LAZ",
+          "cost": 18,
+          "mantraRoles": "W/A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 9
+        },
+        {
+          "role": "C",
+          "playerName": "Mandragora",
+          "realTeam": "FIO",
+          "cost": 1,
+          "mantraRoles": "C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 8
+        },
+        {
+          "role": "C",
+          "playerName": "Mora",
+          "realTeam": "ROM",
+          "cost": 51,
+          "mantraRoles": "T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 20
+        },
+        {
+          "role": "C",
+          "playerName": "Oristanio",
+          "realTeam": "TOR",
+          "cost": 9,
+          "mantraRoles": "W/T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "C",
+          "playerName": "Paz N.",
+          "realTeam": "COM",
+          "cost": 0,
+          "mantraRoles": "T/A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 29
+        },
+        {
+          "role": "C",
+          "playerName": "Pellegrini Lo.",
+          "realTeam": "ROM",
+          "cost": 23,
+          "mantraRoles": "C/T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 9
+        },
+        {
+          "role": "C",
+          "playerName": "Rodriguez Je.",
+          "realTeam": "COM",
+          "cost": 20,
+          "mantraRoles": "W/A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 11
+        },
+        {
+          "role": "C",
+          "playerName": "Unai Gomez",
+          "realTeam": "UDI",
+          "cost": 1,
+          "mantraRoles": "T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 7
+        },
+        {
+          "role": "C",
+          "playerName": "Vlasic",
+          "realTeam": "TOR",
+          "cost": 7,
+          "mantraRoles": "T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 13
+        },
+        {
+          "role": "C",
+          "playerName": "Volpato",
+          "realTeam": "SAS",
+          "cost": 7,
+          "mantraRoles": "W/T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 9
+        },
+        {
+          "role": "A",
+          "playerName": "Cutrone",
+          "realTeam": "MON",
+          "cost": 5,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 9
+        },
+        {
+          "role": "A",
+          "playerName": "Giovane",
+          "realTeam": "NAP",
+          "cost": 1,
+          "mantraRoles": "A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 4
+        },
+        {
+          "role": "A",
+          "playerName": "Kvernadze",
+          "realTeam": "FRO",
+          "cost": 4,
+          "mantraRoles": "W/A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "A",
+          "playerName": "Ramos G.",
+          "realTeam": "MIL",
+          "cost": 126,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 27
+        },
+        {
+          "role": "A",
+          "playerName": "Ratkov",
+          "realTeam": "LAZ",
+          "cost": 2,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 9
+        },
+        {
+          "role": "A",
+          "playerName": "Santos A.",
+          "realTeam": "NAP",
+          "cost": 2,
+          "mantraRoles": "W/A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 14
+        },
+        {
+          "role": "A",
+          "playerName": "Scamacca",
+          "realTeam": "ATA",
+          "cost": 95,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 19
+        }
+      ]
+    },
+    {
+      "name": "As Paperopoli",
+      "players": [
+        {
+          "role": "P",
+          "playerName": "Corvi",
+          "realTeam": "PAR",
+          "cost": 2,
+          "mantraRoles": "Por",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 2
+        },
+        {
+          "role": "P",
+          "playerName": "Daffara",
+          "realTeam": "PAR",
+          "cost": 6,
+          "mantraRoles": "Por",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "D",
+          "playerName": "Ahanor",
+          "realTeam": "ATA",
+          "cost": 2,
+          "mantraRoles": "B/Ds/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "D",
+          "playerName": "Bernasconi",
+          "realTeam": "ATA",
+          "cost": 12,
+          "mantraRoles": "Ds/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "D",
+          "playerName": "Couto",
+          "realTeam": "COM",
+          "cost": 16,
+          "mantraRoles": "Dd/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 8
+        },
+        {
+          "role": "D",
+          "playerName": "Fortini",
+          "realTeam": "TOR",
+          "cost": 0,
+          "mantraRoles": "E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "D",
+          "playerName": "Heggem",
+          "realTeam": "BOL",
+          "cost": 1,
+          "mantraRoles": "Ds/Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "D",
+          "playerName": "Idrissi R.",
+          "realTeam": "CAG",
+          "cost": 2,
+          "mantraRoles": "Ds/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 3
+        },
+        {
+          "role": "D",
+          "playerName": "Lucumì",
+          "realTeam": "JUV",
+          "cost": 3,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 7
+        },
+        {
+          "role": "D",
+          "playerName": "Marcandalli",
+          "realTeam": "GEN",
+          "cost": 7,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "D",
+          "playerName": "Miranda J.",
+          "realTeam": "BOL",
+          "cost": 17,
+          "mantraRoles": "Ds/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 8
+        },
+        {
+          "role": "C",
+          "playerName": "Chukwueze",
+          "realTeam": "MIL",
+          "cost": 5,
+          "mantraRoles": "W",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 8
+        },
+        {
+          "role": "C",
+          "playerName": "De Bruyne",
+          "realTeam": "NAP",
+          "cost": 60,
+          "mantraRoles": "T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 17
+        },
+        {
+          "role": "C",
+          "playerName": "Diouf",
+          "realTeam": "INT",
+          "cost": 25,
+          "mantraRoles": "E/C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 9
+        },
+        {
+          "role": "C",
+          "playerName": "Fabbian",
+          "realTeam": "PAR",
+          "cost": 5,
+          "mantraRoles": "C/T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 4
+        },
+        {
+          "role": "C",
+          "playerName": "Fagioli",
+          "realTeam": "FIO",
+          "cost": 16,
+          "mantraRoles": "M/C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 7
+        },
+        {
+          "role": "C",
+          "playerName": "Keita M.",
+          "realTeam": "PAR",
+          "cost": 3,
+          "mantraRoles": "M/C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 5
+        },
+        {
+          "role": "C",
+          "playerName": "Mastantuono",
+          "realTeam": "FIO",
+          "cost": 40,
+          "mantraRoles": "W/T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 11
+        },
+        {
+          "role": "C",
+          "playerName": "Pisilli",
+          "realTeam": "ROM",
+          "cost": 7,
+          "mantraRoles": "C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 7
+        },
+        {
+          "role": "C",
+          "playerName": "Saelemaekers",
+          "realTeam": "MIL",
+          "cost": 11,
+          "mantraRoles": "E/W",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 11
+        },
+        {
+          "role": "A",
+          "playerName": "Adams C.",
+          "realTeam": "TOR",
+          "cost": 3,
+          "mantraRoles": "A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 10
+        },
+        {
+          "role": "A",
+          "playerName": "Bowie",
+          "realTeam": "SAS",
+          "cost": 27,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 9
+        },
+        {
+          "role": "A",
+          "playerName": "Castro S.",
+          "realTeam": "ROM",
+          "cost": 20,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 14
+        },
+        {
+          "role": "A",
+          "playerName": "Douvikas",
+          "realTeam": "COM",
+          "cost": 9,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 22
+        },
+        {
+          "role": "A",
+          "playerName": "Kuhn",
+          "realTeam": "COM",
+          "cost": 35,
+          "mantraRoles": "W/A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 3
+        }
+      ]
+    },
+    {
+      "name": "Beetlejuice",
+      "players": [
+        {
+          "role": "P",
+          "playerName": "Butez",
+          "realTeam": "COM",
+          "cost": 6,
+          "mantraRoles": "Por",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 15
+        },
+        {
+          "role": "P",
+          "playerName": "Milinkovic-Savic V.",
+          "realTeam": "NAP",
+          "cost": 5,
+          "mantraRoles": "Por",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 5
+        },
+        {
+          "role": "P",
+          "playerName": "Stankovic F.",
+          "realTeam": "VEN",
+          "cost": 1,
+          "mantraRoles": "Por",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "P",
+          "playerName": "Tornqvist",
+          "realTeam": "MON",
+          "cost": 1,
+          "mantraRoles": "Por",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 1
+        },
+        {
+          "role": "D",
+          "playerName": "Beukema",
+          "realTeam": "NAP",
+          "cost": 1,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "D",
+          "playerName": "Carboni A.",
+          "realTeam": "MON",
+          "cost": 1,
+          "mantraRoles": "Ds/Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 3
+        },
+        {
+          "role": "D",
+          "playerName": "Carlos Augusto",
+          "realTeam": "INT",
+          "cost": 8,
+          "mantraRoles": "B/Ds/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "D",
+          "playerName": "Kabasele",
+          "realTeam": "UDI",
+          "cost": 1,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 4
+        },
+        {
+          "role": "D",
+          "playerName": "Kouadio",
+          "realTeam": "MON",
+          "cost": 1,
+          "mantraRoles": "Dd/Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 3
+        },
+        {
+          "role": "D",
+          "playerName": "Stones",
+          "realTeam": "INT",
+          "cost": 11,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 12
+        },
+        {
+          "role": "D",
+          "playerName": "Tiago Gabriel",
+          "realTeam": "LEC",
+          "cost": 1,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 8
+        },
+        {
+          "role": "D",
+          "playerName": "Veiga D.",
+          "realTeam": "LEC",
+          "cost": 1,
+          "mantraRoles": "Dd/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "D",
+          "playerName": "Zè Pedro",
+          "realTeam": "CAG",
+          "cost": 1,
+          "mantraRoles": "Dd/Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 5
+        },
+        {
+          "role": "C",
+          "playerName": "Basic",
+          "realTeam": "VEN",
+          "cost": 4,
+          "mantraRoles": "M/C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "C",
+          "playerName": "Colpani",
+          "realTeam": "MON",
+          "cost": 1,
+          "mantraRoles": "T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 9
+        },
+        {
+          "role": "C",
+          "playerName": "Gineitis",
+          "realTeam": "TOR",
+          "cost": 1,
+          "mantraRoles": "M/C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 5
+        },
+        {
+          "role": "C",
+          "playerName": "Locatelli",
+          "realTeam": "JUV",
+          "cost": 7,
+          "mantraRoles": "M/C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 9
+        },
+        {
+          "role": "C",
+          "playerName": "McTominay",
+          "realTeam": "NAP",
+          "cost": 25,
+          "mantraRoles": "C/T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 27
+        },
+        {
+          "role": "C",
+          "playerName": "Moreira",
+          "realTeam": "MIL",
+          "cost": 72,
+          "mantraRoles": "W",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 11
+        },
+        {
+          "role": "C",
+          "playerName": "Odgaard",
+          "realTeam": "BOL",
+          "cost": 1,
+          "mantraRoles": "T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 8
+        },
+        {
+          "role": "C",
+          "playerName": "Pasalic",
+          "realTeam": "ATA",
+          "cost": 6,
+          "mantraRoles": "C/T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 8
+        },
+        {
+          "role": "C",
+          "playerName": "Pierotti",
+          "realTeam": "LEC",
+          "cost": 4,
+          "mantraRoles": "W",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "C",
+          "playerName": "Ricci S.",
+          "realTeam": "COM",
+          "cost": 1,
+          "mantraRoles": "M/C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 4
+        },
+        {
+          "role": "C",
+          "playerName": "Zambo Anguissa",
+          "realTeam": "NAP",
+          "cost": 6,
+          "mantraRoles": "C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 10
+        },
+        {
+          "role": "A",
+          "playerName": "Hojlund",
+          "realTeam": "NAP",
+          "cost": 108,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 28
+        },
+        {
+          "role": "A",
+          "playerName": "Kevin Carlos",
+          "realTeam": "CAG",
+          "cost": 17,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 12
+        },
+        {
+          "role": "A",
+          "playerName": "Leao",
+          "realTeam": "MIL",
+          "cost": 3,
+          "mantraRoles": "A",
+          "listoneStatusCode": "ASTERISCATO",
+          "quotationCurrent": 18
+        },
+        {
+          "role": "A",
+          "playerName": "Neres",
+          "realTeam": "NAP",
+          "cost": 61,
+          "mantraRoles": "W/A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "A",
+          "playerName": "Piccoli",
+          "realTeam": "BOL",
+          "cost": 1,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 8
+        }
+      ]
+    },
+    {
+      "name": "real mappine",
+      "players": [
+        {
+          "role": "P",
+          "playerName": "Maignan",
+          "realTeam": "MIL",
+          "cost": 20,
+          "mantraRoles": "Por",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 15
+        },
+        {
+          "role": "P",
+          "playerName": "Terracciano",
+          "realTeam": "MIL",
+          "cost": 1,
+          "mantraRoles": "Por",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 1
+        },
+        {
+          "role": "P",
+          "playerName": "Torriani",
+          "realTeam": "MIL",
+          "cost": 1,
+          "mantraRoles": "Por",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 1
+        },
+        {
+          "role": "D",
+          "playerName": "Bastoni",
+          "realTeam": "INT",
+          "cost": 11,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 14
+        },
+        {
+          "role": "D",
+          "playerName": "Bisseck",
+          "realTeam": "INT",
+          "cost": 1,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 12
+        },
+        {
+          "role": "D",
+          "playerName": "Celik",
+          "realTeam": "JUV",
+          "cost": 5,
+          "mantraRoles": "B/Dd/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 8
+        },
+        {
+          "role": "D",
+          "playerName": "Gaspar K.",
+          "realTeam": "LEC",
+          "cost": 1,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 5
+        },
+        {
+          "role": "D",
+          "playerName": "Kalulu",
+          "realTeam": "JUV",
+          "cost": 1,
+          "mantraRoles": "Dd/Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 14
+        },
+        {
+          "role": "D",
+          "playerName": "Kelly L.",
+          "realTeam": "JUV",
+          "cost": 1,
+          "mantraRoles": "Ds/Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 5
+        },
+        {
+          "role": "D",
+          "playerName": "Koulierakis",
+          "realTeam": "ROM",
+          "cost": 10,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 8
+        },
+        {
+          "role": "D",
+          "playerName": "Mina",
+          "realTeam": "CAG",
+          "cost": 4,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 7
+        },
+        {
+          "role": "D",
+          "playerName": "Obrador",
+          "realTeam": "SAS",
+          "cost": 2,
+          "mantraRoles": "Ds/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "C",
+          "playerName": "Atta",
+          "realTeam": "FIO",
+          "cost": 6,
+          "mantraRoles": "C/T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 15
+        },
+        {
+          "role": "C",
+          "playerName": "Cissè A.",
+          "realTeam": "MIL",
+          "cost": 5,
+          "mantraRoles": "W/T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 5
+        },
+        {
+          "role": "C",
+          "playerName": "Douglas Luiz",
+          "realTeam": "JUV",
+          "cost": 3,
+          "mantraRoles": "C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 4
+        },
+        {
+          "role": "C",
+          "playerName": "Ellertsson",
+          "realTeam": "GEN",
+          "cost": 1,
+          "mantraRoles": "E/C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "C",
+          "playerName": "Liberali",
+          "realTeam": "COM",
+          "cost": 18,
+          "mantraRoles": "T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "C",
+          "playerName": "Matic",
+          "realTeam": "SAS",
+          "cost": 1,
+          "mantraRoles": "M/C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "C",
+          "playerName": "McKennie",
+          "realTeam": "JUV",
+          "cost": 1,
+          "mantraRoles": "C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 17
+        },
+        {
+          "role": "C",
+          "playerName": "Sow",
+          "realTeam": "GEN",
+          "cost": 1,
+          "mantraRoles": "M/C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 7
+        },
+        {
+          "role": "C",
+          "playerName": "Thuram K.",
+          "realTeam": "JUV",
+          "cost": 40,
+          "mantraRoles": "C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 9
+        },
+        {
+          "role": "C",
+          "playerName": "Zhegrova",
+          "realTeam": "JUV",
+          "cost": 39,
+          "mantraRoles": "W",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "A",
+          "playerName": "David",
+          "realTeam": "JUV",
+          "cost": 95,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 8
+        },
+        {
+          "role": "A",
+          "playerName": "Dovbyk",
+          "realTeam": "BOL",
+          "cost": 143,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 15
+        },
+        {
+          "role": "A",
+          "playerName": "Ekhator",
+          "realTeam": "JUV",
+          "cost": 3,
+          "mantraRoles": "A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 3
+        },
+        {
+          "role": "A",
+          "playerName": "Kolo Muani",
+          "realTeam": "JUV",
+          "cost": 100,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 25
+        },
+        {
+          "role": "A",
+          "playerName": "Maldini",
+          "realTeam": "CAG",
+          "cost": 15,
+          "mantraRoles": "T/A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 5
+        },
+        {
+          "role": "A",
+          "playerName": "Mendy P.",
+          "realTeam": "CAG",
+          "cost": 3,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 4
+        },
+        {
+          "role": "A",
+          "playerName": "Nkunku",
+          "realTeam": "MIL",
+          "cost": 83,
+          "mantraRoles": "A",
+          "listoneStatusCode": "ASTERISCATO",
+          "quotationCurrent": 13
+        },
+        {
+          "role": "A",
+          "playerName": "Vitinha O.",
+          "realTeam": "GEN",
+          "cost": 13,
+          "mantraRoles": "A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 8
+        }
+      ]
+    },
+    {
+      "name": "Olympic Salerno FC",
+      "players": [
+        {
+          "role": "P",
+          "playerName": "Carnesecchi",
+          "realTeam": "ATA",
+          "cost": 1,
+          "mantraRoles": "Por",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 17
+        },
+        {
+          "role": "P",
+          "playerName": "Meret",
+          "realTeam": "NAP",
+          "cost": 3,
+          "mantraRoles": "Por",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 11
+        },
+        {
+          "role": "P",
+          "playerName": "Sportiello",
+          "realTeam": "ATA",
+          "cost": 1,
+          "mantraRoles": "Por",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 1
+        },
+        {
+          "role": "D",
+          "playerName": "Bremer",
+          "realTeam": "JUV",
+          "cost": 7,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 16
+        },
+        {
+          "role": "D",
+          "playerName": "Gabbia",
+          "realTeam": "MIL",
+          "cost": 3,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 7
+        },
+        {
+          "role": "D",
+          "playerName": "Hainaut",
+          "realTeam": "VEN",
+          "cost": 3,
+          "mantraRoles": "Dd/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 4
+        },
+        {
+          "role": "D",
+          "playerName": "Joao Mario",
+          "realTeam": "FIO",
+          "cost": 19,
+          "mantraRoles": "Dd/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 3
+        },
+        {
+          "role": "D",
+          "playerName": "Kaiki",
+          "realTeam": "COM",
+          "cost": 10,
+          "mantraRoles": "Ds/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "D",
+          "playerName": "Kristensen T.",
+          "realTeam": "ATA",
+          "cost": 8,
+          "mantraRoles": "Dd/Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "D",
+          "playerName": "Molina N.",
+          "realTeam": "ROM",
+          "cost": 42,
+          "mantraRoles": "E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 18
+        },
+        {
+          "role": "D",
+          "playerName": "Pavlovic",
+          "realTeam": "MIL",
+          "cost": 19,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 14
+        },
+        {
+          "role": "D",
+          "playerName": "Rrahmani",
+          "realTeam": "NAP",
+          "cost": 8,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 15
+        },
+        {
+          "role": "D",
+          "playerName": "Scalvini",
+          "realTeam": "ATA",
+          "cost": 20,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 10
+        },
+        {
+          "role": "C",
+          "playerName": "Alajbegovic",
+          "realTeam": "JUV",
+          "cost": 51,
+          "mantraRoles": "W/T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 11
+        },
+        {
+          "role": "C",
+          "playerName": "Baturina",
+          "realTeam": "COM",
+          "cost": 46,
+          "mantraRoles": "T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 20
+        },
+        {
+          "role": "C",
+          "playerName": "Bernabè",
+          "realTeam": "PAR",
+          "cost": 47,
+          "mantraRoles": "C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 7
+        },
+        {
+          "role": "C",
+          "playerName": "Ferguson",
+          "realTeam": "BOL",
+          "cost": 1,
+          "mantraRoles": "M/C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 7
+        },
+        {
+          "role": "C",
+          "playerName": "Frendrup",
+          "realTeam": "GEN",
+          "cost": 3,
+          "mantraRoles": "M/C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 7
+        },
+        {
+          "role": "C",
+          "playerName": "Konè M.",
+          "realTeam": "ROM",
+          "cost": 14,
+          "mantraRoles": "M/C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 10
+        },
+        {
+          "role": "C",
+          "playerName": "Koopmeiners",
+          "realTeam": "JUV",
+          "cost": 22,
+          "mantraRoles": "C/T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 7
+        },
+        {
+          "role": "C",
+          "playerName": "Samardzic",
+          "realTeam": "ATA",
+          "cost": 1,
+          "mantraRoles": "C/T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 13
+        },
+        {
+          "role": "C",
+          "playerName": "Taylor K.",
+          "realTeam": "LAZ",
+          "cost": 12,
+          "mantraRoles": "C/T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 13
+        },
+        {
+          "role": "C",
+          "playerName": "Zaniolo",
+          "realTeam": "UDI",
+          "cost": 0,
+          "mantraRoles": "T/A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 18
+        },
+        {
+          "role": "A",
+          "playerName": "Camarda",
+          "realTeam": "MIL",
+          "cost": 10,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 4
+        },
+        {
+          "role": "A",
+          "playerName": "Diao",
+          "realTeam": "COM",
+          "cost": 40,
+          "mantraRoles": "W/A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 12
+        },
+        {
+          "role": "A",
+          "playerName": "Esposito F.P.",
+          "realTeam": "INT",
+          "cost": 41,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 17
+        },
+        {
+          "role": "A",
+          "playerName": "Kean",
+          "realTeam": "FIO",
+          "cost": 6,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 24
+        },
+        {
+          "role": "A",
+          "playerName": "Pellegrino M.",
+          "realTeam": "FIO",
+          "cost": 38,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 14
+        },
+        {
+          "role": "A",
+          "playerName": "Rrahmani Al.",
+          "realTeam": "VEN",
+          "cost": 5,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 7
+        },
+        {
+          "role": "A",
+          "playerName": "Yildiz",
+          "realTeam": "JUV",
+          "cost": 1,
+          "mantraRoles": "A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 22
+        }
+      ]
+    },
+    {
+      "name": "River Plaid",
+      "players": [
+        {
+          "role": "P",
+          "playerName": "Bijlow",
+          "realTeam": "GEN",
+          "cost": 4,
+          "mantraRoles": "Por",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 8
+        },
+        {
+          "role": "P",
+          "playerName": "De Gea",
+          "realTeam": "FIO",
+          "cost": 16,
+          "mantraRoles": "Por",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 11
+        },
+        {
+          "role": "P",
+          "playerName": "Falcone",
+          "realTeam": "LEC",
+          "cost": 25,
+          "mantraRoles": "Por",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 8
+        },
+        {
+          "role": "D",
+          "playerName": "Bellanova",
+          "realTeam": "ATA",
+          "cost": 25,
+          "mantraRoles": "Dd/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "D",
+          "playerName": "Dimarco",
+          "realTeam": "INT",
+          "cost": 4,
+          "mantraRoles": "E/W",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 31
+        },
+        {
+          "role": "D",
+          "playerName": "Floriani Mussolini",
+          "realTeam": "LAZ",
+          "cost": 1,
+          "mantraRoles": "Dd/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 4
+        },
+        {
+          "role": "D",
+          "playerName": "Holm",
+          "realTeam": "BOL",
+          "cost": 9,
+          "mantraRoles": "Dd/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "D",
+          "playerName": "Jimenez A.",
+          "realTeam": "FIO",
+          "cost": 13,
+          "mantraRoles": "Dd/Ds/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 7
+        },
+        {
+          "role": "D",
+          "playerName": "Ramon",
+          "realTeam": "COM",
+          "cost": 9,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 10
+        },
+        {
+          "role": "D",
+          "playerName": "Vasquez",
+          "realTeam": "GEN",
+          "cost": 1,
+          "mantraRoles": "Ds/Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 9
+        },
+        {
+          "role": "D",
+          "playerName": "Viery",
+          "realTeam": "FIO",
+          "cost": 5,
+          "mantraRoles": "Ds/Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "D",
+          "playerName": "Vojvoda",
+          "realTeam": "UDI",
+          "cost": 3,
+          "mantraRoles": "Dd/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 9
+        },
+        {
+          "role": "D",
+          "playerName": "Zappacosta",
+          "realTeam": "ATA",
+          "cost": 16,
+          "mantraRoles": "Dd/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 8
+        },
+        {
+          "role": "C",
+          "playerName": "Calhanoglu",
+          "realTeam": "INT",
+          "cost": 29,
+          "mantraRoles": "M/C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 28
+        },
+        {
+          "role": "C",
+          "playerName": "Caqueret",
+          "realTeam": "COM",
+          "cost": 5,
+          "mantraRoles": "C/T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "C",
+          "playerName": "Cataldi",
+          "realTeam": "LAZ",
+          "cost": 1,
+          "mantraRoles": "M/C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 4
+        },
+        {
+          "role": "C",
+          "playerName": "Dele-Bashiru",
+          "realTeam": "LAZ",
+          "cost": 3,
+          "mantraRoles": "C/T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 5
+        },
+        {
+          "role": "C",
+          "playerName": "Gilmour",
+          "realTeam": "NAP",
+          "cost": 1,
+          "mantraRoles": "M/C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 3
+        },
+        {
+          "role": "C",
+          "playerName": "Lobotka",
+          "realTeam": "NAP",
+          "cost": 14,
+          "mantraRoles": "M/C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 8
+        },
+        {
+          "role": "C",
+          "playerName": "Modric",
+          "realTeam": "MIL",
+          "cost": 13,
+          "mantraRoles": "M/C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 12
+        },
+        {
+          "role": "C",
+          "playerName": "Nicolussi Caviglia",
+          "realTeam": "PAR",
+          "cost": 0,
+          "mantraRoles": "M/C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "C",
+          "playerName": "Politano",
+          "realTeam": "NAP",
+          "cost": 26,
+          "mantraRoles": "W",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 9
+        },
+        {
+          "role": "C",
+          "playerName": "Vergara",
+          "realTeam": "NAP",
+          "cost": 16,
+          "mantraRoles": "W/T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 10
+        },
+        {
+          "role": "A",
+          "playerName": "Bonny",
+          "realTeam": "INT",
+          "cost": 17,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 7
+        },
+        {
+          "role": "A",
+          "playerName": "Davis K.",
+          "realTeam": "UDI",
+          "cost": 12,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 19
+        },
+        {
+          "role": "A",
+          "playerName": "Raimondo",
+          "realTeam": "FRO",
+          "cost": 6,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 9
+        },
+        {
+          "role": "A",
+          "playerName": "Simeone",
+          "realTeam": "TOR",
+          "cost": 16,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 14
+        },
+        {
+          "role": "A",
+          "playerName": "Thuram",
+          "realTeam": "INT",
+          "cost": 59,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 28
+        },
+        {
+          "role": "A",
+          "playerName": "Zapata D.",
+          "realTeam": "TOR",
+          "cost": 54,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        }
+      ]
+    },
+    {
+      "name": "Prestige Worldwide",
+      "players": [
+        {
+          "role": "P",
+          "playerName": "Caprile",
+          "realTeam": "CAG",
+          "cost": 19,
+          "mantraRoles": "Por",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 10
+        },
+        {
+          "role": "P",
+          "playerName": "Skorupski",
+          "realTeam": "BOL",
+          "cost": 20,
+          "mantraRoles": "Por",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 10
+        },
+        {
+          "role": "D",
+          "playerName": "Akanji",
+          "realTeam": "INT",
+          "cost": 15,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 15
+        },
+        {
+          "role": "D",
+          "playerName": "Cambiaso",
+          "realTeam": "JUV",
+          "cost": 7,
+          "mantraRoles": "Dd/Ds/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 8
+        },
+        {
+          "role": "D",
+          "playerName": "Dragusin",
+          "realTeam": "FIO",
+          "cost": 10,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 7
+        },
+        {
+          "role": "D",
+          "playerName": "Ghilardi",
+          "realTeam": "ROM",
+          "cost": 11,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 5
+        },
+        {
+          "role": "D",
+          "playerName": "Ostigard",
+          "realTeam": "GEN",
+          "cost": 4,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 11
+        },
+        {
+          "role": "D",
+          "playerName": "Spence",
+          "realTeam": "INT",
+          "cost": 17,
+          "mantraRoles": "E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 11
+        },
+        {
+          "role": "D",
+          "playerName": "Tomori",
+          "realTeam": "MIL",
+          "cost": 8,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "C",
+          "playerName": "Barella",
+          "realTeam": "INT",
+          "cost": 19,
+          "mantraRoles": "C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 18
+        },
+        {
+          "role": "C",
+          "playerName": "Bernardeschi",
+          "realTeam": "BOL",
+          "cost": 1,
+          "mantraRoles": "W/T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 10
+        },
+        {
+          "role": "C",
+          "playerName": "Cambiaghi",
+          "realTeam": "BOL",
+          "cost": 11,
+          "mantraRoles": "W/A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 8
+        },
+        {
+          "role": "C",
+          "playerName": "Casadei",
+          "realTeam": "TOR",
+          "cost": 25,
+          "mantraRoles": "C/T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 9
+        },
+        {
+          "role": "C",
+          "playerName": "Frattesi",
+          "realTeam": "LAZ",
+          "cost": 3,
+          "mantraRoles": "C/T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 10
+        },
+        {
+          "role": "C",
+          "playerName": "Miretti",
+          "realTeam": "JUV",
+          "cost": 5,
+          "mantraRoles": "C/T",
+          "listoneStatusCode": "ASTERISCATO",
+          "quotationCurrent": 3
+        },
+        {
+          "role": "C",
+          "playerName": "Ndour",
+          "realTeam": "FIO",
+          "cost": 1,
+          "mantraRoles": "C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 7
+        },
+        {
+          "role": "C",
+          "playerName": "Orsolini",
+          "realTeam": "BOL",
+          "cost": 16,
+          "mantraRoles": "W/A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 25
+        },
+        {
+          "role": "C",
+          "playerName": "Pulisic",
+          "realTeam": "MIL",
+          "cost": 83,
+          "mantraRoles": "T/A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 24
+        },
+        {
+          "role": "A",
+          "playerName": "Berardi",
+          "realTeam": "SAS",
+          "cost": 80,
+          "mantraRoles": "A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 19
+        },
+        {
+          "role": "A",
+          "playerName": "Dia",
+          "realTeam": "LAZ",
+          "cost": 8,
+          "mantraRoles": "A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 10
+        },
+        {
+          "role": "A",
+          "playerName": "Esposito Se.",
+          "realTeam": "SAS",
+          "cost": 11,
+          "mantraRoles": "A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 12
+        },
+        {
+          "role": "A",
+          "playerName": "Martinez L.",
+          "realTeam": "INT",
+          "cost": 60,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 33
+        },
+        {
+          "role": "A",
+          "playerName": "Soulè",
+          "realTeam": "ROM",
+          "cost": 1,
+          "mantraRoles": "A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 13
+        }
+      ]
+    },
+    {
+      "name": "Real Pisistrius",
+      "players": [
+        {
+          "role": "P",
+          "playerName": "Di Gregorio",
+          "realTeam": "JUV",
+          "cost": 1,
+          "mantraRoles": "Por",
+          "listoneStatusCode": "ASTERISCATO",
+          "quotationCurrent": 9
+        },
+        {
+          "role": "P",
+          "playerName": "Paleari",
+          "realTeam": "TOR",
+          "cost": 1,
+          "mantraRoles": "Por",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 1
+        },
+        {
+          "role": "P",
+          "playerName": "Perin",
+          "realTeam": "JUV",
+          "cost": 1,
+          "mantraRoles": "Por",
+          "listoneStatusCode": "ASTERISCATO",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "P",
+          "playerName": "Vicario",
+          "realTeam": "JUV",
+          "cost": 35,
+          "mantraRoles": "Por",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 17
+        },
+        {
+          "role": "D",
+          "playerName": "Bartesaghi",
+          "realTeam": "MIL",
+          "cost": 13,
+          "mantraRoles": "Ds/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 8
+        },
+        {
+          "role": "D",
+          "playerName": "Buongiorno",
+          "realTeam": "NAP",
+          "cost": 21,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "D",
+          "playerName": "Delprato",
+          "realTeam": "PAR",
+          "cost": 5,
+          "mantraRoles": "B/Dd/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 8
+        },
+        {
+          "role": "D",
+          "playerName": "Gila",
+          "realTeam": "MIL",
+          "cost": 11,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 13
+        },
+        {
+          "role": "D",
+          "playerName": "Kamara H.",
+          "realTeam": "UDI",
+          "cost": 1,
+          "mantraRoles": "Ds/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 9
+        },
+        {
+          "role": "D",
+          "playerName": "Mangas",
+          "realTeam": "MON",
+          "cost": 4,
+          "mantraRoles": "Ds/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 7
+        },
+        {
+          "role": "D",
+          "playerName": "Marusic",
+          "realTeam": "LAZ",
+          "cost": 7,
+          "mantraRoles": "Dd/Ds/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "D",
+          "playerName": "Pedersen",
+          "realTeam": "TOR",
+          "cost": 2,
+          "mantraRoles": "Dd/E",
+          "listoneStatusCode": "ASTERISCATO",
+          "quotationCurrent": 5
+        },
+        {
+          "role": "D",
+          "playerName": "Solet",
+          "realTeam": "UDI",
+          "cost": 9,
+          "mantraRoles": "Dc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 13
+        },
+        {
+          "role": "D",
+          "playerName": "Valeri",
+          "realTeam": "PAR",
+          "cost": 14,
+          "mantraRoles": "Ds/E",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 8
+        },
+        {
+          "role": "C",
+          "playerName": "Calò",
+          "realTeam": "FRO",
+          "cost": 8,
+          "mantraRoles": "M/C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 8
+        },
+        {
+          "role": "C",
+          "playerName": "Cancellieri",
+          "realTeam": "LAZ",
+          "cost": 6,
+          "mantraRoles": "W/A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 9
+        },
+        {
+          "role": "C",
+          "playerName": "De Roon",
+          "realTeam": "ROM",
+          "cost": 4,
+          "mantraRoles": "M/C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 4
+        },
+        {
+          "role": "C",
+          "playerName": "Fitz-Jim",
+          "realTeam": "TOR",
+          "cost": 1,
+          "mantraRoles": "M/C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 5
+        },
+        {
+          "role": "C",
+          "playerName": "Gaetano",
+          "realTeam": "ATA",
+          "cost": 16,
+          "mantraRoles": "M/C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 7
+        },
+        {
+          "role": "C",
+          "playerName": "Loftus-Cheek",
+          "realTeam": "MIL",
+          "cost": 20,
+          "mantraRoles": "C/T",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 4
+        },
+        {
+          "role": "C",
+          "playerName": "Sohm",
+          "realTeam": "VEN",
+          "cost": 7,
+          "mantraRoles": "C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 5
+        },
+        {
+          "role": "C",
+          "playerName": "Zalewski",
+          "realTeam": "ATA",
+          "cost": 7,
+          "mantraRoles": "W",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 7
+        },
+        {
+          "role": "C",
+          "playerName": "Zielinski",
+          "realTeam": "INT",
+          "cost": 17,
+          "mantraRoles": "C",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 12
+        },
+        {
+          "role": "A",
+          "playerName": "Adams A.",
+          "realTeam": "VEN",
+          "cost": 38,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 11
+        },
+        {
+          "role": "A",
+          "playerName": "Dybala",
+          "realTeam": "ROM",
+          "cost": 49,
+          "mantraRoles": "A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 16
+        },
+        {
+          "role": "A",
+          "playerName": "Havel",
+          "realTeam": "GEN",
+          "cost": 1,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 4
+        },
+        {
+          "role": "A",
+          "playerName": "Raspadori",
+          "realTeam": "ATA",
+          "cost": 26,
+          "mantraRoles": "A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 14
+        },
+        {
+          "role": "A",
+          "playerName": "Romero D.",
+          "realTeam": "PAR",
+          "cost": 20,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 10
+        },
+        {
+          "role": "A",
+          "playerName": "Sulemana K.",
+          "realTeam": "ATA",
+          "cost": 10,
+          "mantraRoles": "A",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 6
+        },
+        {
+          "role": "A",
+          "playerName": "Varela G.",
+          "realTeam": "MON",
+          "cost": 1,
+          "mantraRoles": "Pc",
+          "listoneStatusCode": "IN_LISTONE",
+          "quotationCurrent": 7
+        }
+      ]
+    }
+  ]
+}

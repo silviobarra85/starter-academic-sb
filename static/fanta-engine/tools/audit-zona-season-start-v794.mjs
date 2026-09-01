@@ -1,0 +1,20 @@
+import fs from 'node:fs'; import path from 'node:path';
+const root=path.resolve(process.argv[2]||process.cwd()); let ok=0,total=0; const read=p=>fs.readFileSync(path.join(root,p),'utf8'); const j=p=>JSON.parse(read(p));
+function check(c,m){total++; if(!c){console.error('ERRORE - '+m); process.exitCode=1;} else {ok++; console.log('OK - '+m);}}
+const rel=j('static/zonaorientale/release.json'), snap=j('static/zonaorientale/assets/snapshots/seasons/2026-2027.json'), rm=j('static/zonaorientale/assets/rose/manifest.json'), lm=j('static/fanta-engine/data/shared-assets/current/assets/listoni/manifest.json');
+const rose=j('static/zonaorientale/assets/rose/2026-2027-2026-09-01.json'), list=j('static/fanta-engine/data/shared-assets/current/assets/listoni/2026-09-01.json'), idx=read('static/zonaorientale/index.html');
+check(rel.version==='794' && rel.entrypoint==='assets/app.js?v=794','release V794');
+check(!idx.includes('data-iosudo-link') && !idx.includes('>ioSudo<'),'ZonaOrientale non espone ioSudo');
+check(lm.listoni.filter(x=>x.seasonId==='2026-2027').sort((a,b)=>String(b.loadedAt).localeCompare(String(a.loadedAt)))[0]?.id==='2026-09-01','ultimo listone 01/09/2026');
+check(list.meta.rows===568 && list.meta.asteriskRows===41,'listone 568 righe / 41 asteriscati');
+check(rm.rosters[0]?.id==='2026-2027-2026-09-01','rosa primaria 01/09/2026');
+check(rose.meta.players===286 && rose.meta.teams===10,'rose 286 giocatori / 10 squadre');
+const rows=rose.rosters.flatMap(r=>r.players.map(p=>({team:r.name,...p}))); check(rows.length===286,'conteggio reale rose 286');
+check(rows.filter(p=>p.listoneStatusCode==='ASTERISCATO').length===7,'7 asteriscati in rosa');
+const camp=snap.competitions.find(c=>c.id==='2026-2027_campionato'); check(camp?.status==='ATTIVA','Campionato attivo');
+const matches=snap.competitionMatches.filter(m=>m.competitionId==='2026-2027_campionato'); check(matches.length===10 && matches.every(m=>m.status==='GIOCATA'),'10 partite giocate nelle prime 2 giornate');
+check(matches.filter(m=>m.leagueMatchday===1).length===5 && matches.filter(m=>m.leagueMatchday===2).length===5,'5 partite per giornata');
+const results=snap.competitionResults.filter(r=>r.competitionId==='2026-2027_campionato'); check(results.length===10,'classifica 10 squadre');
+const byPos=new Map(results.map(r=>[r.position,r])); const st=new Map(snap.seasonTeams.map(t=>[t.id,t.name])); check(st.get(byPos.get(1)?.seasonTeamId)==='Real Pisistrius' && byPos.get(1)?.points===6,'Real Pisistrius primo a 6 punti');
+check(st.get(byPos.get(2)?.seasonTeamId)==='Afc Severgas Baronissi' && byPos.get(2)?.points===6,'Baronissi secondo a 6 punti');
+console.log(`Audit V794 avvio stagione: ${ok}/${total} controlli superati.`); if(ok!==total) process.exit(1);

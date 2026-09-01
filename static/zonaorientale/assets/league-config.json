@@ -5,7 +5,7 @@
   "shortName": "ZonaOrientale",
   "basePath": "/zonaorientale/",
   "siteUrl": "https://silviobarra.com/zonaorientale/",
-  "currentVersion": "793",
+  "currentVersion": "794",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -559,9 +559,9 @@
         "ioSudoListoneAllPlayersV643": true
       }
     ],
-    "footerLastUpdated": "18/08/2026",
+    "footerLastUpdated": "01/09/2026",
     "footerTemplate": "Fantacalcio - V{version} - Aggiornato al {lastUpdated}",
-    "footerVersion": 793,
+    "footerVersion": 794,
     "ioSudoPlayerSourceLabelsV639": true,
     "ioSudoListoneAllPlayersV639": true,
     "ioSudoPlayerSourceLabelsV643": true,
@@ -1889,5 +1889,5 @@
   "ioSudoListoneAllPlayersV643": true,
   "updatedAt": "2026-07-22T00:30:00+02:00",
   "lastUpdated": "2026-08-18",
-  "lastOverlay": "V793 - rose primarie assets/rose aggiornate al 18/08/2026"
+  "lastOverlay": "V794 - listone/rose 01/09/2026, prime 2 giornate Campionato, ioSudo rimosso"
 }

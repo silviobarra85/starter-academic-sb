@@ -11,8 +11,8 @@
   <link rel="icon" type="image/png" sizes="16x16" href="./assets/icons/favicon-16x16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/apple-touch-icon.png" />
   <link rel="manifest" href="./site.webmanifest" />
-  <link rel="modulepreload" href="./assets/js/core/league-config-v443.js?v=793" />
-  <link rel="modulepreload" href="./assets/app.js?v=793" />
+  <link rel="modulepreload" href="./assets/js/core/league-config-v443.js?v=794" />
+  <link rel="modulepreload" href="./assets/app.js?v=794" />
   <meta name="theme-color" content="#8b0029" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="ZonaOrientale Salerno" />
@@ -86,8 +86,7 @@
       <a href="#bilanci" class="nav-link" data-page-link="bilanci" data-league-mobile-more="bilanci">Bilanci</a>
       <a href="#fantamercato" class="nav-link" data-page-link="fantamercato" data-league-mobile-more="fantamercato">Fantamercato</a>
       <a href="#listone" class="nav-link" data-page-link="listone" data-league-mobile-more="listone">Listone</a>
-      <a href="./iosudo/" class="nav-link" data-iosudo-link-v619="true">ioSudo</a>
-      <a href="#competitions" class="nav-link" data-page-link="competitions">Competizioni</a>
+<a href="#competitions" class="nav-link" data-page-link="competitions">Competizioni</a>
       <a href="#honor" class="nav-link" data-page-link="honor" data-league-mobile-more="honor">Albo d'Oro e FIFA Ranking</a>
       <a href="#stats" class="nav-link" data-page-link="stats" data-league-mobile-more="stats">Statistiche</a>
       <a href="#archive" class="nav-link" data-page-link="archive" data-league-mobile-more="archive">Archivio</a>
@@ -1359,8 +1358,7 @@
     <a href="#regolamento" class="mobile-more-link" data-league-mobile-more="regolamento" data-page-link="regolamento"><span class="mobile-more-icon">📘</span><span>Regolamento</span></a>
     <a href="#fantamercato" class="mobile-more-link" data-league-mobile-more="fantamercato" data-page-link="fantamercato"><span class="mobile-more-icon">🔁</span><span>Fantamercato</span></a>
     <a href="#listone" class="mobile-more-link" data-league-mobile-more="listone" data-page-link="listone"><span class="mobile-more-icon">📋</span><span>Listone</span></a>
-    <a href="./iosudo/" class="mobile-more-link" data-iosudo-link-v619="true"><span class="mobile-more-icon">io</span><span>ioSudo</span></a>
-    <a href="#admin" class="mobile-more-link nav-link-admin hidden" data-league-mobile-more="admin" data-page-link="admin"><span class="mobile-more-icon">⚙️</span><span>Admin</span></a>
+<a href="#admin" class="mobile-more-link nav-link-admin hidden" data-league-mobile-more="admin" data-page-link="admin"><span class="mobile-more-icon">⚙️</span><span>Admin</span></a>
   </nav>
 
   <nav class="mobile-bottom-nav mobile-bottom-nav-v141" aria-label="Navigazione principale mobile">
@@ -1372,35 +1370,35 @@
   </nav>
 
   <footer class="container app-footer">
-    <p data-league-footer-v445>Fantacalcio - V793 - Aggiornato al 18/08/2026</p>
+    <p data-league-footer-v445>Fantacalcio - V794 - Aggiornato al 01/09/2026</p>
   </footer>
-  <script type="module" src="./assets/js/core/league-config-v443.js?v=793"></script>
+  <script type="module" src="./assets/js/core/league-config-v443.js?v=794"></script>
   <script type="module" src="./assets/js/core/section-registry-v405.js?v=562"></script>
   <script type="module" src="./assets/js/sections/regolamento-section-v402.js?v=562"></script>
   <script type="module" src="./assets/js/sections/compare-section-v403.js?v=562"></script>
   <script type="module" src="./assets/js/sections/stats-section-v404.js?v=562"></script>
   <script type="module" src="./assets/js/sections/archive-section-v405.js?v=562"></script>
-  <script type="module" src="./assets/js/sections/bilanci-snapshot-section-v435.js?v=793"></script>
+  <script type="module" src="./assets/js/sections/bilanci-snapshot-section-v435.js?v=794"></script>
   <script type="module">
-    const entryUrlV760 = new URL('./assets/app.js?v=793', document.baseURI).href;
+    const entryUrlV760 = new URL('./assets/app.js?v=794', document.baseURI).href;
     window.ZonaOrientaleModuleEntryV760 = Object.freeze({
-      version: 'V793',
+      version: 'V794',
       status: 'loading',
       url: entryUrlV760,
       startedAt: new Date().toISOString()
     });
     import(entryUrlV760).then(() => {
       window.ZonaOrientaleModuleEntryV760 = Object.freeze({
-        version: 'V793',
+        version: 'V794',
         status: 'loaded',
         url: entryUrlV760,
         loadedAt: new Date().toISOString()
       });
     }).catch((error) => {
-      console.error('[ZonaOrientale V793] Modulo applicazione non caricato', error);
+      console.error('[ZonaOrientale V794] Modulo applicazione non caricato', error);
       const message = error?.message || String(error);
       window.ZonaOrientaleModuleEntryV760 = Object.freeze({
-        version: 'V793',
+        version: 'V794',
         status: 'failed',
         url: entryUrlV760,
         failedAt: new Date().toISOString(),
@@ -1409,7 +1407,7 @@
       const errorBox = document.getElementById('errorBox');
       if (errorBox) {
         errorBox.classList.remove('hidden');
-        errorBox.textContent = `Avvio applicazione non riuscito. Il deploy non contiene tutti i file V793: ${message}`;
+        errorBox.textContent = `Avvio applicazione non riuscito. Il deploy non contiene tutti i file V794: ${message}`;
       }
       document.documentElement.classList.remove('fanta-boot-preloader-active');
       const overlay = document.getElementById('fantaBootPreloader');

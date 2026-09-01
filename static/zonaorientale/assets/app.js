@@ -1,11 +1,11 @@
-/* V793 - Footer canonico ZonaOrientale (compatibilita API V790).
+/* V794 - Footer canonico ZonaOrientale (compatibilita API V790).
  * Unica sorgente runtime per versione/data. Tutti i writer legacy del footer
  * delegano qui, evitando gare tra MutationObserver di release differenti.
  */
 const ZONAORIENTALE_RELEASE_V790 = Object.freeze({
-  version: "V793",
-  lastUpdated: "18/08/2026",
-  label: "Fantacalcio - V793 - Aggiornato al 18/08/2026"
+  version: "V794",
+  lastUpdated: "01/09/2026",
+  label: "Fantacalcio - V794 - Aggiornato al 01/09/2026"
 });
 
 function applyZonaOrientaleCanonicalFooterV790() {
@@ -321,7 +321,7 @@ import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "../../fanta-engine/js/shared/v491/assets/js/mobile/mobile-tables.js?v=491";
 import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=485";
 import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=485";
-import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=793";
+import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=794";
 import { createMobileRosterHelpersV169 } from "../../fanta-engine/js/shared/v491/assets/js/mobile/mobile-rosters.js?v=491";
 
 const ZonaOrientaleSharedHelperBridgeV341 = createSharedHelperBridgeV341({
@@ -16466,7 +16466,7 @@ window.ZonaOrientaleAdminMobileButtonTopV430 = Object.freeze({
   ]
 });
 
-const DEPLOY_EXPECTED_VERSION_V181 = "793";
+const DEPLOY_EXPECTED_VERSION_V181 = "794";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -42216,9 +42216,9 @@ window.ZonaOrientaleSvincoliV791 = Object.freeze({
 });
 
 
-/* V793 - assets/rose 18/08/2026 e' la fonte primaria delle rose ZonaOrientale. */
-window.ZonaOrientaleRostersPrimaryV793 = Object.freeze({
-  version: "V793",
+/* V794 - assets/rose 01/09/2026 e' la fonte primaria delle rose ZonaOrientale. */
+window.ZonaOrientaleRostersPrimaryV794 = Object.freeze({
+  version: "V794",
   seasonId: "2026-2027",
   rosterId: "2026-2027-2026-08-18",
   players: 211,
@@ -42226,3 +42226,7 @@ window.ZonaOrientaleRostersPrimaryV793 = Object.freeze({
   source: "assets/rose",
   sourceFile: "zonaorientale-salerno-rosters-1787054918853.xlsx"
 });
+
+
+/* V794 - listone/rose 01/09/2026 + giornate 1-2 Campionato. ioSudo rimosso dal sito. */
+window.ZonaOrientaleSeasonStartV794 = Object.freeze({ version: 'V794', listone: '2026-09-01', roster: '2026-09-01', campionatoMatchdays: 2, iosudoRemoved: true });

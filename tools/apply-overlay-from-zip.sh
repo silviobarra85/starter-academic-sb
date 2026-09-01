@@ -58,6 +58,23 @@ copy_dir_contents "$OVERLAY_ROOT/.github" "$ROOT_DIR/.github"
 copy_dir_contents "$OVERLAY_ROOT/tools" "$ROOT_DIR/tools"
 copy_dir_contents "$OVERLAY_ROOT/incoming" "$ROOT_DIR/incoming"
 
+# V794: un overlay puo dichiarare rimozioni esplicite in .overlay-delete.
+# Ogni riga deve essere un percorso relativo al repository; righe vuote e commenti sono ignorati.
+DELETE_MANIFEST="$OVERLAY_ROOT/.overlay-delete"
+if [ -f "$DELETE_MANIFEST" ]; then
+  echo "Applico rimozioni dichiarate in .overlay-delete..."
+  while IFS= read -r relpath || [ -n "$relpath" ]; do
+    case "$relpath" in
+      ''|'#'*) continue ;;
+    esac
+    case "$relpath" in
+      /*|*'..'*) echo "Percorso di rimozione non sicuro: $relpath"; exit 1 ;;
+    esac
+    rm -rf -- "$ROOT_DIR/$relpath"
+    echo "Rimosso: $relpath"
+  done < "$DELETE_MANIFEST"
+fi
+
 run_latest_node_script() {
   local pattern="$1"
   local latest
@@ -83,14 +100,16 @@ check_latest_js() {
 }
 
 echo "Eseguo audit e controlli sintassi se disponibili..."
-run_latest_node_script "static/fanta-engine/tools/audit-sudatori-section-v*.mjs"
-run_latest_node_script "static/fanta-engine/tools/audit-iosudo-v*.mjs"
-check_latest_js "static/fanta-engine/js/sections/sudatori-section-v*.js"
-check_latest_js "static/fanta-engine/js/apps/iosudo-app-v*.js"
-if [ -f "static/iosudo/sw.js" ]; then
-  echo "Controllo sintassi: node --check static/iosudo/sw.js"
-  node --check static/iosudo/sw.js
+run_latest_node_script "static/fanta-engine/tools/audit-zona-season-start-v*.mjs"
+if [ -f "static/zonaorientale/tools/audit-static-first-v760.mjs" ]; then
+  echo "Eseguo: node static/zonaorientale/tools/audit-static-first-v760.mjs ."
+  node static/zonaorientale/tools/audit-static-first-v760.mjs .
 fi
+if [ -f "static/zonaorientale/tools/audit-admin-card-visibility-v763.mjs" ]; then
+  echo "Eseguo: node static/zonaorientale/tools/audit-admin-card-visibility-v763.mjs ."
+  node static/zonaorientale/tools/audit-admin-card-visibility-v763.mjs .
+fi
+check_latest_js "static/zonaorientale/assets/app.js"
 
 # Rimuove lo zip processato per evitare ri-esecuzioni sullo stesso file.
 rm -f "$OVERLAY_PATH"
