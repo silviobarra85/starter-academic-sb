@@ -70,7 +70,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
   shortName: 'ZonaOrientale',
   basePath: '/zonaorientale/',
   siteUrl: 'https://silviobarra.com/zonaorientale/',
-  currentVersion: '797',
+  currentVersion: '798',
   currentSeasonId: '2026-2027',
   assetsBasePath: './assets/',
   snapshotBasePath: './assets/snapshots/',
@@ -90,7 +90,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
     homeEyebrow: 'Lega Fantacalcio',
     homeTitle: 'ZonaOrientale Salerno',
     homeSubtitle: 'Dashboard operativa per club, rose, listoni, competizioni e regolamento.',
-    footerLastUpdated: '12/08/2026',
+    footerLastUpdated: '01/09/2026',
     footerTemplate: 'Fantacalcio - V{version} - Aggiornato al {lastUpdated}',
     imageUrl: 'https://silviobarra.com/zonaorientale/assets/icons/android-chrome-512x512.png',
     pages: DEFAULT_LEAGUE_PAGES_V445,
@@ -151,7 +151,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
   })
 });
 
-const CONFIG_URL_V443 = './assets/league-config.json?v=797';
+const CONFIG_URL_V443 = './assets/league-config.json?v=798';
 
 const PRESENTATION_ENGINE_CANDIDATES_V481 = [
   '../../../../fanta-engine/js/core/league-presentation-v481.js',
@@ -170,10 +170,30 @@ async function loadPresentationEngineV481() {
   throw lastError || new Error('Motore presentazione V481 non disponibile.');
 }
 
-const PRESENTATION_ENGINE_V481 = await loadPresentationEngineV481().catch((error) => {
-  console.warn('Motore comune presentazione V481 non caricato, uso fallback locale V445.', error);
-  return null;
-});
+let readyPromiseV443 = null;
+let PRESENTATION_ENGINE_V481 = null;
+let presentationEnginePromiseV481 = null;
+
+function ensurePresentationEngineV481() {
+  if (presentationEnginePromiseV481) return presentationEnginePromiseV481;
+  presentationEnginePromiseV481 = loadPresentationEngineV481()
+    .then((engine) => {
+      PRESENTATION_ENGINE_V481 = engine;
+      if (document.readyState !== 'loading') {
+        queueMicrotask(() => {
+          try { applyLeagueRuntimePresentationV445(); } catch (error) { console.warn('Refresh presentazione V481 non riuscito.', error); }
+        });
+      }
+      return engine;
+    })
+    .catch((error) => {
+      console.warn('Motore comune presentazione V481 non caricato, uso fallback locale V445.', error);
+      return null;
+    });
+  return presentationEnginePromiseV481;
+}
+
+ensurePresentationEngineV481();
 
 function isPlainObjectV443(value) {
   return value && typeof value === 'object' && !Array.isArray(value);
@@ -249,7 +269,6 @@ function sanitizeConfigV443(config) {
 }
 
 let cachedConfigV443 = sanitizeConfigV443(DEFAULT_LEAGUE_CONFIG_V443);
-let readyPromiseV443 = null;
 
 function publishConfigV443(config, source = 'default') {
   cachedConfigV443 = sanitizeConfigV443(config);

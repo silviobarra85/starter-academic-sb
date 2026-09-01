@@ -77,10 +77,9 @@
   </nav>
 
   <footer class="container app-footer">
-    <p data-league-footer-v445>Fantacalcio - V797 - Aggiornato al 01/09/2026</p>
+    <p data-league-footer-v445>Fantacalcio - V798 - Aggiornato al 01/09/2026</p>
   </footer>
 
-  <script type="module" src="./assets/js/core/league-config-v443.js?v=797"></script>
   <script>
     (function setupCompetitionMobileNavV162() {
       function closeMore() {
@@ -112,7 +111,7 @@
   </script>
 
   <script type="module">
-    import { getLeagueDataPathV446, getLeagueLogoPathV446, joinLeagueDataPathV446, loadLeagueConfigV443 } from "./assets/js/core/league-config-v443.js?v=797";
+    import { getLeagueDataPathV446, getLeagueLogoPathV446, joinLeagueDataPathV446, loadLeagueConfigV443 } from "./assets/js/core/league-config-v443.js?v=798";
 
     const params = new URLSearchParams(window.location.search);
     const requestedSeasonId = params.get("seasonId") || "";
@@ -255,7 +254,7 @@
       ].join("|");
     }
 
-    async function loadLocalSeasonSnapshotV797() {
+    async function loadLocalSeasonSnapshotV798() {
       if (!requestedSeasonId) return null;
       if (localSeasonSnapshotCache !== undefined) return localSeasonSnapshotCache;
       try {
@@ -282,15 +281,15 @@
       return firebaseSeasonSnapshotCache;
     }
 
-    async function loadSeasonSnapshotSourcesV797() {
+    async function loadSeasonSnapshotSourcesV798() {
       const [local, remote] = await Promise.all([
-        loadLocalSeasonSnapshotV797(),
+        loadLocalSeasonSnapshotV798(),
         loadFirebaseSeasonSnapshot()
       ]);
       return { local, remote };
     }
 
-    function mergeDefinedV797(base, override) {
+    function mergeDefinedV798(base, override) {
       const next = { ...(base || {}) };
       Object.entries(override || {}).forEach(([key, value]) => {
         if (value !== undefined) next[key] = value;
@@ -298,7 +297,7 @@
       return next;
     }
 
-    function getCompetitionSnapshotMatchesV797(snapshotData, competitionId, { battleRoyale = false } = {}) {
+    function getCompetitionSnapshotMatchesV798(snapshotData, competitionId, { battleRoyale = false } = {}) {
       return (Array.isArray(snapshotData?.competitionMatches) ? snapshotData.competitionMatches : []).filter((match) => {
         if (match.competitionId !== competitionId) return false;
         const isBattle = String(match.entryMode || "").toUpperCase() === "BATTLE_ROYALE";
@@ -306,10 +305,10 @@
       });
     }
 
-    function mergeCalendarMatchesV797(baseMatches, localSnapshot, remoteSnapshot, competitionId) {
+    function mergeCalendarMatchesV798(baseMatches, localSnapshot, remoteSnapshot, competitionId) {
       let merged = (baseMatches || []).map((match) => ({ ...match, competitionId: match.competitionId || competitionId }));
       const applyOverrides = (snapshotData) => {
-        getCompetitionSnapshotMatchesV797(snapshotData, competitionId).forEach((override) => {
+        getCompetitionSnapshotMatchesV798(snapshotData, competitionId).forEach((override) => {
           const byId = override.id ? merged.findIndex((item) => item.id === override.id) : -1;
           const mergeKey = getMatchMergeKey(override);
           const byKey = byId < 0 && mergeKey ? merged.findIndex((item) => getMatchMergeKey(item) === mergeKey) : -1;
@@ -318,7 +317,7 @@
             if (index >= 0) merged.splice(index, 1);
             return;
           }
-          if (index >= 0) merged[index] = mergeDefinedV797(merged[index], override);
+          if (index >= 0) merged[index] = mergeDefinedV798(merged[index], override);
           else if (override.homeSeasonTeamId || override.homeTeamName) merged.push({ ...override });
         });
       };
@@ -327,13 +326,13 @@
       return filterDeletedMatches(merged);
     }
 
-    function mergeBattleRoyaleEntriesV797(localSnapshot, remoteSnapshot, competitionId) {
+    function mergeBattleRoyaleEntriesV798(localSnapshot, remoteSnapshot, competitionId) {
       const map = new Map();
       const apply = (snapshotData) => {
-        getCompetitionSnapshotMatchesV797(snapshotData, competitionId, { battleRoyale: true }).forEach((entry) => {
+        getCompetitionSnapshotMatchesV798(snapshotData, competitionId, { battleRoyale: true }).forEach((entry) => {
           const key = entry.id || `${entry.competitionId}|${entry.leagueMatchday || entry.serieAMatchday || ""}|${entry.homeSeasonTeamId || entry.homeTeamName || ""}`;
           if (isMatchDeleted(entry)) map.delete(key);
-          else map.set(key, mergeDefinedV797(map.get(key), entry));
+          else map.set(key, mergeDefinedV798(map.get(key), entry));
         });
       };
       apply(localSnapshot);
@@ -341,7 +340,7 @@
       return [...map.values()];
     }
 
-    function mergeCompetitionResultsV797(baseResults, localSnapshot, remoteSnapshot, competitionId) {
+    function mergeCompetitionResultsV798(baseResults, localSnapshot, remoteSnapshot, competitionId) {
       const map = new Map();
       (baseResults || []).forEach((result, index) => map.set(result.id || `base-${index}-${result.position || ""}-${result.seasonTeamId || result.teamName || ""}`, { ...result }));
       const apply = (snapshotData) => {
@@ -350,7 +349,7 @@
           .forEach((result, index) => {
             const key = result.id || `snapshot-${index}-${result.position || ""}-${result.seasonTeamId || result.teamName || ""}`;
             if (isMatchDeleted(result)) map.delete(key);
-            else map.set(key, mergeDefinedV797(map.get(key), result));
+            else map.set(key, mergeDefinedV798(map.get(key), result));
           });
       };
       apply(localSnapshot);
@@ -417,7 +416,7 @@
       return null;
     }
 
-    async function fetchStaticCompetitionPayloadV797(entry) {
+    async function fetchStaticCompetitionPayloadV798(entry) {
       const directUrl = new URL(`./assets/competitions/${String(entry.file || "").replace(/^\.\/?/, "")}`, document.baseURI).href;
       const configuredUrl = joinLeagueDataPathV446("competitionsBase", entry.file, "./assets/competitions/");
       const urls = [...new Set([directUrl, configuredUrl].filter(Boolean))];
@@ -438,18 +437,18 @@
       const manifest = await loadStaticManifest();
       const entry = findStaticManifestEntry(manifest);
       if (!entry?.file) return null;
-      const payload = await fetchStaticCompetitionPayloadV797(entry);
+      const payload = await fetchStaticCompetitionPayloadV798(entry);
       const competition = payload.competition || {};
       const meta = payload.meta || {};
       const competitionId = competition.id || meta.competitionId || entry.competitionId || requestedCompetitionId;
-      const { local, remote } = await loadSeasonSnapshotSourcesV797();
+      const { local, remote } = await loadSeasonSnapshotSourcesV798();
       const seasonTeams = Array.isArray(remote?.seasonTeams) && remote.seasonTeams.length ? remote.seasonTeams : (Array.isArray(local?.seasonTeams) ? local.seasonTeams : []);
       const teams = Array.isArray(remote?.teams) && remote.teams.length ? remote.teams : (Array.isArray(local?.teams) ? local.teams : []);
       const baseMatches = Array.isArray(payload.matches) ? payload.matches : [];
-      const matches = mergeCalendarMatchesV797(baseMatches, local, remote, competitionId);
+      const matches = mergeCalendarMatchesV798(baseMatches, local, remote, competitionId);
       const rounds = Array.isArray(payload.rounds) ? payload.rounds : [];
-      const battleRoyaleEntries = mergeBattleRoyaleEntriesV797(local, remote, competitionId);
-      const results = mergeCompetitionResultsV797(Array.isArray(payload.results) ? payload.results : [], local, remote, competitionId);
+      const battleRoyaleEntries = mergeBattleRoyaleEntriesV798(local, remote, competitionId);
+      const results = mergeCompetitionResultsV798(Array.isArray(payload.results) ? payload.results : [], local, remote, competitionId);
       return {
         source: "static",
         manifestEntry: entry,
@@ -474,7 +473,7 @@
       };
     }
 
-    function findCompetitionInSnapshotV797(snapshotData) {
+    function findCompetitionInSnapshotV798(snapshotData) {
       const competitions = Array.isArray(snapshotData?.competitions) ? snapshotData.competitions : [];
       return competitions.find((item) => {
         if (requestedCompetitionId && item.id === requestedCompetitionId) return true;
@@ -483,22 +482,22 @@
       }) || null;
     }
 
-    async function loadSnapshotCompetitionV797() {
+    async function loadSnapshotCompetitionV798() {
       if (!requestedSeasonId) return null;
-      const { local, remote } = await loadSeasonSnapshotSourcesV797();
-      const competition = findCompetitionInSnapshotV797(remote) || findCompetitionInSnapshotV797(local);
+      const { local, remote } = await loadSeasonSnapshotSourcesV798();
+      const competition = findCompetitionInSnapshotV798(remote) || findCompetitionInSnapshotV798(local);
       if (!competition) return null;
       const competitionId = competition.id;
       return {
-        source: remote && findCompetitionInSnapshotV797(remote) ? "firebase" : "snapshot",
+        source: remote && findCompetitionInSnapshotV798(remote) ? "firebase" : "snapshot",
         competition,
-        matches: mergeCalendarMatchesV797([], local, remote, competitionId),
+        matches: mergeCalendarMatchesV798([], local, remote, competitionId),
         rounds: [],
-        battleRoyaleEntries: mergeBattleRoyaleEntriesV797(local, remote, competitionId),
-        results: mergeCompetitionResultsV797([], local, remote, competitionId),
+        battleRoyaleEntries: mergeBattleRoyaleEntriesV798(local, remote, competitionId),
+        results: mergeCompetitionResultsV798([], local, remote, competitionId),
         seasonTeams: Array.isArray(remote?.seasonTeams) && remote.seasonTeams.length ? remote.seasonTeams : (Array.isArray(local?.seasonTeams) ? local.seasonTeams : []),
         teams: Array.isArray(remote?.teams) && remote.teams.length ? remote.teams : (Array.isArray(local?.teams) ? local.teams : []),
-        sourceFile: remote && findCompetitionInSnapshotV797(remote) ? "Firebase" : "snapshot stagionale"
+        sourceFile: remote && findCompetitionInSnapshotV798(remote) ? "Firebase" : "snapshot stagionale"
       };
     }
 
@@ -995,7 +994,7 @@
         renderPayload(staticPayload);
         return;
       }
-      const snapshotPayload = await loadSnapshotCompetitionV797();
+      const snapshotPayload = await loadSnapshotCompetitionV798();
       renderPayload(snapshotPayload);
     }
 
