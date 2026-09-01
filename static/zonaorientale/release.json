@@ -1,7 +1,7 @@
 {
-  "version": "796",
-  "releasedAt": "2026-09-01T12:30:00+02:00",
-  "entrypoint": "assets/app.js?v=796",
+  "version": "797",
+  "releasedAt": "2026-09-01T13:00:00+02:00",
+  "entrypoint": "assets/app.js?v=797",
   "bootstrapContract": "../fanta-engine/js/core/static-first-bootstrap-v760.js",
   "runtimeFixes": [
     "../fanta-engine/js/shared/v489/assets/js/core/admin-card-visibility-v456.js?v=763"

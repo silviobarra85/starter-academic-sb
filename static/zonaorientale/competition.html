@@ -77,10 +77,10 @@
   </nav>
 
   <footer class="container app-footer">
-    <p data-league-footer-v445>Fantacalcio - V796 - Aggiornato al 01/09/2026</p>
+    <p data-league-footer-v445>Fantacalcio - V797 - Aggiornato al 01/09/2026</p>
   </footer>
 
-  <script type="module" src="./assets/js/core/league-config-v443.js?v=796"></script>
+  <script type="module" src="./assets/js/core/league-config-v443.js?v=797"></script>
   <script>
     (function setupCompetitionMobileNavV162() {
       function closeMore() {
@@ -112,7 +112,7 @@
   </script>
 
   <script type="module">
-    import { getLeagueDataPathV446, getLeagueLogoPathV446, joinLeagueDataPathV446, loadLeagueConfigV443 } from "./assets/js/core/league-config-v443.js?v=796";
+    import { getLeagueDataPathV446, getLeagueLogoPathV446, joinLeagueDataPathV446, loadLeagueConfigV443 } from "./assets/js/core/league-config-v443.js?v=797";
 
     const params = new URLSearchParams(window.location.search);
     const requestedSeasonId = params.get("seasonId") || "";
@@ -238,7 +238,8 @@
       return "";
     }
 
-    let firebaseSeasonSnapshotCache = null;
+    let firebaseSeasonSnapshotCache = undefined;
+    let localSeasonSnapshotCache = undefined;
 
     function isMatchDeleted(match) {
       return match?.deleted === true || String(match?.deleted || "").toLowerCase() === "true" || String(match?.status || "").toUpperCase() === "DELETED";
@@ -254,19 +255,107 @@
       ].join("|");
     }
 
+    async function loadLocalSeasonSnapshotV797() {
+      if (!requestedSeasonId) return null;
+      if (localSeasonSnapshotCache !== undefined) return localSeasonSnapshotCache;
+      try {
+        const url = new URL(`./assets/snapshots/seasons/${encodeURIComponent(requestedSeasonId)}.json`, document.baseURI).href;
+        localSeasonSnapshotCache = await fetchJson(url, { cache: "no-store" });
+      } catch (error) {
+        console.warn("Snapshot statico locale non disponibile", error);
+        localSeasonSnapshotCache = null;
+      }
+      return localSeasonSnapshotCache;
+    }
+
     async function loadFirebaseSeasonSnapshot() {
       if (!requestedSeasonId) return null;
-      if (firebaseSeasonSnapshotCache !== null) return firebaseSeasonSnapshotCache;
+      if (firebaseSeasonSnapshotCache !== undefined) return firebaseSeasonSnapshotCache;
       try {
         const { db, doc, getDoc } = await import("./assets/firebase.js");
         const snapshot = await getDoc(doc(db, "publicSeasonSnapshots", requestedSeasonId));
         firebaseSeasonSnapshotCache = snapshot.exists() ? (snapshot.data() || {}) : null;
-        return firebaseSeasonSnapshotCache;
       } catch (error) {
         console.warn("Snapshot Firebase non disponibile", error);
         firebaseSeasonSnapshotCache = null;
-        return null;
       }
+      return firebaseSeasonSnapshotCache;
+    }
+
+    async function loadSeasonSnapshotSourcesV797() {
+      const [local, remote] = await Promise.all([
+        loadLocalSeasonSnapshotV797(),
+        loadFirebaseSeasonSnapshot()
+      ]);
+      return { local, remote };
+    }
+
+    function mergeDefinedV797(base, override) {
+      const next = { ...(base || {}) };
+      Object.entries(override || {}).forEach(([key, value]) => {
+        if (value !== undefined) next[key] = value;
+      });
+      return next;
+    }
+
+    function getCompetitionSnapshotMatchesV797(snapshotData, competitionId, { battleRoyale = false } = {}) {
+      return (Array.isArray(snapshotData?.competitionMatches) ? snapshotData.competitionMatches : []).filter((match) => {
+        if (match.competitionId !== competitionId) return false;
+        const isBattle = String(match.entryMode || "").toUpperCase() === "BATTLE_ROYALE";
+        return battleRoyale ? isBattle : !isBattle;
+      });
+    }
+
+    function mergeCalendarMatchesV797(baseMatches, localSnapshot, remoteSnapshot, competitionId) {
+      let merged = (baseMatches || []).map((match) => ({ ...match, competitionId: match.competitionId || competitionId }));
+      const applyOverrides = (snapshotData) => {
+        getCompetitionSnapshotMatchesV797(snapshotData, competitionId).forEach((override) => {
+          const byId = override.id ? merged.findIndex((item) => item.id === override.id) : -1;
+          const mergeKey = getMatchMergeKey(override);
+          const byKey = byId < 0 && mergeKey ? merged.findIndex((item) => getMatchMergeKey(item) === mergeKey) : -1;
+          const index = byId >= 0 ? byId : byKey;
+          if (isMatchDeleted(override)) {
+            if (index >= 0) merged.splice(index, 1);
+            return;
+          }
+          if (index >= 0) merged[index] = mergeDefinedV797(merged[index], override);
+          else if (override.homeSeasonTeamId || override.homeTeamName) merged.push({ ...override });
+        });
+      };
+      applyOverrides(localSnapshot);
+      applyOverrides(remoteSnapshot);
+      return filterDeletedMatches(merged);
+    }
+
+    function mergeBattleRoyaleEntriesV797(localSnapshot, remoteSnapshot, competitionId) {
+      const map = new Map();
+      const apply = (snapshotData) => {
+        getCompetitionSnapshotMatchesV797(snapshotData, competitionId, { battleRoyale: true }).forEach((entry) => {
+          const key = entry.id || `${entry.competitionId}|${entry.leagueMatchday || entry.serieAMatchday || ""}|${entry.homeSeasonTeamId || entry.homeTeamName || ""}`;
+          if (isMatchDeleted(entry)) map.delete(key);
+          else map.set(key, mergeDefinedV797(map.get(key), entry));
+        });
+      };
+      apply(localSnapshot);
+      apply(remoteSnapshot);
+      return [...map.values()];
+    }
+
+    function mergeCompetitionResultsV797(baseResults, localSnapshot, remoteSnapshot, competitionId) {
+      const map = new Map();
+      (baseResults || []).forEach((result, index) => map.set(result.id || `base-${index}-${result.position || ""}-${result.seasonTeamId || result.teamName || ""}`, { ...result }));
+      const apply = (snapshotData) => {
+        (Array.isArray(snapshotData?.competitionResults) ? snapshotData.competitionResults : [])
+          .filter((result) => result.competitionId === competitionId)
+          .forEach((result, index) => {
+            const key = result.id || `snapshot-${index}-${result.position || ""}-${result.seasonTeamId || result.teamName || ""}`;
+            if (isMatchDeleted(result)) map.delete(key);
+            else map.set(key, mergeDefinedV797(map.get(key), result));
+          });
+      };
+      apply(localSnapshot);
+      apply(remoteSnapshot);
+      return [...map.values()];
     }
 
     function getDeletedMatchKeys(snapshotData, competitionId) {
@@ -295,40 +384,72 @@
     }
 
     async function loadStaticManifest() {
-      try {
-        await loadLeagueConfigV443().catch(() => null);
-        const manifest = await fetchJson(getLeagueDataPathV446("competitionsManifest", "./assets/competitions/manifest.json"), { cache: "no-store" });
-        const competitions = Array.isArray(manifest.competitions) ? manifest.competitions : Array.isArray(manifest.items) ? manifest.items : [];
-        return { ...manifest, competitions };
-      } catch (error) {
-        return { competitions: [] };
+      const directUrl = new URL("./assets/competitions/manifest.json", document.baseURI).href;
+      const configuredUrl = getLeagueDataPathV446("competitionsManifest", "./assets/competitions/manifest.json");
+      const urls = [...new Set([directUrl, configuredUrl].filter(Boolean))];
+      for (const url of urls) {
+        try {
+          const manifest = await fetchJson(url, { cache: "no-store" });
+          const competitions = Array.isArray(manifest.competitions) ? manifest.competitions : Array.isArray(manifest.items) ? manifest.items : [];
+          if (competitions.length) return { ...manifest, competitions };
+        } catch (error) {
+          console.warn("Manifest competizioni non leggibile", url, error);
+        }
       }
+      return { competitions: [] };
     }
 
     function findStaticManifestEntry(manifest) {
-      const entries = manifest.competitions || [];
-      return entries.find((entry) => {
-        if (requestedStaticCalendarId && entry.id === requestedStaticCalendarId) return true;
-        if (requestedCompetitionId && entry.competitionId === requestedCompetitionId) return true;
-        if (requestedSeasonId && entry.seasonId && entry.seasonId !== requestedSeasonId) return false;
-        if (requestedSlug && (entry.competitionSlug === requestedSlug || slugify(entry.competitionName || entry.label || entry.id) === requestedSlug)) return true;
-        return false;
-      }) || null;
+      const entries = Array.isArray(manifest?.competitions) ? manifest.competitions : [];
+      const sameSeason = (entry) => !requestedSeasonId || !entry.seasonId || entry.seasonId === requestedSeasonId;
+      const exactStatic = entries.find((entry) => requestedStaticCalendarId && entry.id === requestedStaticCalendarId);
+      if (exactStatic) return exactStatic;
+      const exactCompetition = entries.find((entry) => requestedCompetitionId && entry.competitionId === requestedCompetitionId);
+      if (exactCompetition) return exactCompetition;
+      const bySlug = entries.find((entry) => sameSeason(entry) && requestedSlug && (entry.competitionSlug === requestedSlug || slugify(entry.competitionName || entry.label || entry.id) === requestedSlug));
+      if (bySlug) return bySlug;
+      if (requestedCompetitionId) {
+        const requestedKey = normalizeKey(requestedCompetitionId.replace(/^\d{4}[-_]\d{4}[-_]?/, "").replace(/_/g, " "));
+        const fuzzy = entries.find((entry) => sameSeason(entry) && [entry.competitionSlug, entry.competitionName, entry.label, entry.competitionType]
+          .some((value) => normalizeKey(value).includes(requestedKey) || requestedKey.includes(normalizeKey(value))));
+        if (fuzzy) return fuzzy;
+      }
+      return null;
+    }
+
+    async function fetchStaticCompetitionPayloadV797(entry) {
+      const directUrl = new URL(`./assets/competitions/${String(entry.file || "").replace(/^\.\/?/, "")}`, document.baseURI).href;
+      const configuredUrl = joinLeagueDataPathV446("competitionsBase", entry.file, "./assets/competitions/");
+      const urls = [...new Set([directUrl, configuredUrl].filter(Boolean))];
+      let lastError = null;
+      for (const url of urls) {
+        try {
+          return await fetchJson(url, { cache: "no-store" });
+        } catch (error) {
+          lastError = error;
+          console.warn("Calendario competizione non leggibile", url, error);
+        }
+      }
+      throw lastError || new Error(`Calendario non leggibile: ${entry.file || "file mancante"}`);
     }
 
     async function loadStaticCompetition() {
+      await loadLeagueConfigV443().catch(() => null);
       const manifest = await loadStaticManifest();
       const entry = findStaticManifestEntry(manifest);
       if (!entry?.file) return null;
-      const payload = await fetchJson(joinLeagueDataPathV446("competitionsBase", entry.file, "./assets/competitions/"), { cache: "no-store" });
-      currentCompetitionPayload = payload;
+      const payload = await fetchStaticCompetitionPayloadV797(entry);
       const competition = payload.competition || {};
       const meta = payload.meta || {};
       const competitionId = competition.id || meta.competitionId || entry.competitionId || requestedCompetitionId;
-      const snapshotData = await loadFirebaseSeasonSnapshot();
-      const seasonTeams = Array.isArray(snapshotData?.seasonTeams) ? snapshotData.seasonTeams : [];
-      const teams = Array.isArray(snapshotData?.teams) ? snapshotData.teams : [];
-      getDeletedMatchKeys(snapshotData, competitionId);
+      const { local, remote } = await loadSeasonSnapshotSourcesV797();
+      const seasonTeams = Array.isArray(remote?.seasonTeams) && remote.seasonTeams.length ? remote.seasonTeams : (Array.isArray(local?.seasonTeams) ? local.seasonTeams : []);
+      const teams = Array.isArray(remote?.teams) && remote.teams.length ? remote.teams : (Array.isArray(local?.teams) ? local.teams : []);
+      const baseMatches = Array.isArray(payload.matches) ? payload.matches : [];
+      const matches = mergeCalendarMatchesV797(baseMatches, local, remote, competitionId);
+      const rounds = Array.isArray(payload.rounds) ? payload.rounds : [];
+      const battleRoyaleEntries = mergeBattleRoyaleEntriesV797(local, remote, competitionId);
+      const results = mergeCompetitionResultsV797(Array.isArray(payload.results) ? payload.results : [], local, remote, competitionId);
       return {
         source: "static",
         manifestEntry: entry,
@@ -343,40 +464,42 @@
           status: competition.status || entry.status || "",
           notes: competition.notes || ""
         },
-        matches: filterDeletedMatches(Array.isArray(payload.matches) ? payload.matches.map((match) => ({ ...match, competitionId: match.competitionId || competitionId })) : [], new Set()),
-        rounds: Array.isArray(payload.rounds) ? payload.rounds : [],
-        battleRoyaleEntries: (Array.isArray(snapshotData?.competitionMatches) ? snapshotData.competitionMatches : []).filter((match) => match.competitionId === competitionId && String(match.entryMode || "").toUpperCase() === "BATTLE_ROYALE" && !match.deleted),
-        results: Array.isArray(payload.results) ? payload.results : [],
+        matches,
+        rounds,
+        battleRoyaleEntries,
+        results,
         seasonTeams,
         teams,
         sourceFile: entry.sourceFile || meta.sourceFile || "assets/competitions"
       };
     }
 
-    async function loadFirebaseCompetition() {
+    function findCompetitionInSnapshotV797(snapshotData) {
+      const competitions = Array.isArray(snapshotData?.competitions) ? snapshotData.competitions : [];
+      return competitions.find((item) => {
+        if (requestedCompetitionId && item.id === requestedCompetitionId) return true;
+        if (requestedSlug && slugify(item.name || item.competitionName || item.label || item.type || item.id) === requestedSlug) return true;
+        return false;
+      }) || null;
+    }
+
+    async function loadSnapshotCompetitionV797() {
       if (!requestedSeasonId) return null;
-      try {
-        const data = await loadFirebaseSeasonSnapshot();
-        if (!data) return null;
-        const competitions = Array.isArray(data.competitions) ? data.competitions : [];
-        const competition = competitions.find((item) => {
-          if (requestedCompetitionId && item.id === requestedCompetitionId) return true;
-          if (requestedSlug && slugify(item.name || item.competitionName || item.label || item.type || item.id) === requestedSlug) return true;
-          return false;
-        }) || null;
-        if (!competition) return null;
-        return {
-          source: "firebase",
-          competition,
-          matches: filterDeletedMatches((Array.isArray(data.competitionMatches) ? data.competitionMatches : []).filter((match) => match.competitionId === competition.id)),
-          results: (Array.isArray(data.competitionResults) ? data.competitionResults : []).filter((result) => result.competitionId === competition.id),
-          seasonTeams: Array.isArray(data.seasonTeams) ? data.seasonTeams : [],
-          teams: Array.isArray(data.teams) ? data.teams : []
-        };
-      } catch (error) {
-        console.warn("Fallback Firebase non disponibile", error);
-        return null;
-      }
+      const { local, remote } = await loadSeasonSnapshotSourcesV797();
+      const competition = findCompetitionInSnapshotV797(remote) || findCompetitionInSnapshotV797(local);
+      if (!competition) return null;
+      const competitionId = competition.id;
+      return {
+        source: remote && findCompetitionInSnapshotV797(remote) ? "firebase" : "snapshot",
+        competition,
+        matches: mergeCalendarMatchesV797([], local, remote, competitionId),
+        rounds: [],
+        battleRoyaleEntries: mergeBattleRoyaleEntriesV797(local, remote, competitionId),
+        results: mergeCompetitionResultsV797([], local, remote, competitionId),
+        seasonTeams: Array.isArray(remote?.seasonTeams) && remote.seasonTeams.length ? remote.seasonTeams : (Array.isArray(local?.seasonTeams) ? local.seasonTeams : []),
+        teams: Array.isArray(remote?.teams) && remote.teams.length ? remote.teams : (Array.isArray(local?.teams) ? local.teams : []),
+        sourceFile: remote && findCompetitionInSnapshotV797(remote) ? "Firebase" : "snapshot stagionale"
+      };
     }
 
     function getSeasonTeamCandidates(seasonTeam, team) {
@@ -781,7 +904,7 @@
     }
 
     function renderMatches(matches, seasonTeams = [], teams = []) {
-      if (!matches.length) return `<article class="competition-card"><p class="muted">Nessuna partita disponibile.</p></article>`;
+      if (!matches.length) return `<article class="competition-card"><p class="muted">Calendario non ancora configurato per questa competizione.</p></article>`;
       const groups = groupMatches(matches, currentCompetitionPayload?.competition || null);
       return `
         <div class="competition-matches-public competition-match-groups competition-page-match-groups">
@@ -872,8 +995,8 @@
         renderPayload(staticPayload);
         return;
       }
-      const firebasePayload = await loadFirebaseCompetition();
-      renderPayload(firebasePayload);
+      const snapshotPayload = await loadSnapshotCompetitionV797();
+      renderPayload(snapshotPayload);
     }
 
     main().catch((error) => {

@@ -103,3 +103,9 @@ Completato: aggiornamento reale della sorgente `assets/rose` al file del 18/08/2
 - competition.html e' la pagina canonica del calendario della singola competizione.
 - BATTLE_ROYALE e UNO_VS_TUTTI non devono essere trasformate in accoppiamenti H2H fittizi.
 - Admin: risultati Battle Royale per squadra/giornata tramite FPT, salvati in competitionMatches con entryMode dedicato.
+
+## V797 - dettaglio competizioni static-first
+- `competition.html` usa i JSON in `assets/competitions/` come fonte base del calendario.
+- Snapshot locale e Firebase sono override/fallback, non sostituiscono il calendario completo.
+- Campionato e Champions mostrano le partite configurate; Coppa Italia Battle Royale mostra le giornate BR.
+- Gli aggiornamenti Admin dei risultati continuano a prevalere tramite `competitionMatches`.
