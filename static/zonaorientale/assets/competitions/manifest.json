@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generatedAt": "2026-09-01T11:30:00+02:00",
+  "generatedAt": "2026-09-01T12:30:00+02:00",
   "competitions": [
     {
       "id": "2025-2026-champions-league",
@@ -55,14 +55,17 @@
       "competitionName": "Coppa Italia",
       "competitionSlug": "coppa-italia",
       "competitionType": "COPPA_ITALIA",
-      "competitionFormat": "UNO_VS_TUTTI",
+      "competitionFormat": "BATTLE_ROYALE",
       "label": "Coppa Italia 2026/2027",
       "loadedAt": "2026-09-01",
       "sourceFile": "Calendario_Coppa-Italia-2026-2027.xlsx",
       "file": "2026-2027/coppa-italia-2026-2027.json",
-      "matches": 180,
+      "matches": 0,
       "playedMatches": 0,
-      "status": "PROGRAMMATA"
+      "status": "PROGRAMMATA",
+      "displayMode": "BATTLE_ROYALE",
+      "rounds": 4,
+      "participantsPerRound": 10
     },
     {
       "id": "2026-2027-champions-league",

@@ -77,10 +77,10 @@
   </nav>
 
   <footer class="container app-footer">
-    <p data-league-footer-v445>Fantacalcio - V795 - Aggiornato al 01/09/2026</p>
+    <p data-league-footer-v445>Fantacalcio - V796 - Aggiornato al 01/09/2026</p>
   </footer>
 
-  <script type="module" src="./assets/js/core/league-config-v443.js?v=795"></script>
+  <script type="module" src="./assets/js/core/league-config-v443.js?v=796"></script>
   <script>
     (function setupCompetitionMobileNavV162() {
       function closeMore() {
@@ -112,7 +112,7 @@
   </script>
 
   <script type="module">
-    import { getLeagueDataPathV446, getLeagueLogoPathV446, joinLeagueDataPathV446, loadLeagueConfigV443 } from "./assets/js/core/league-config-v443.js?v=795";
+    import { getLeagueDataPathV446, getLeagueLogoPathV446, joinLeagueDataPathV446, loadLeagueConfigV443 } from "./assets/js/core/league-config-v443.js?v=796";
 
     const params = new URLSearchParams(window.location.search);
     const requestedSeasonId = params.get("seasonId") || "";
@@ -337,10 +337,15 @@
           seasonId: competition.seasonId || meta.seasonId || entry.seasonId || requestedSeasonId,
           name: competition.name || meta.competitionName || entry.competitionName || entry.label || "Competizione",
           type: competition.type || meta.competitionType || entry.competitionType || "ALTRO",
+          format: competition.format || competition.formula || meta.competitionFormat || entry.competitionFormat || "",
+          formula: competition.formula || competition.format || meta.competitionFormat || entry.competitionFormat || "",
+          phase: competition.phase || meta.phase || "",
           status: competition.status || entry.status || "",
           notes: competition.notes || ""
         },
         matches: filterDeletedMatches(Array.isArray(payload.matches) ? payload.matches.map((match) => ({ ...match, competitionId: match.competitionId || competitionId })) : [], new Set()),
+        rounds: Array.isArray(payload.rounds) ? payload.rounds : [],
+        battleRoyaleEntries: (Array.isArray(snapshotData?.competitionMatches) ? snapshotData.competitionMatches : []).filter((match) => match.competitionId === competitionId && String(match.entryMode || "").toUpperCase() === "BATTLE_ROYALE" && !match.deleted),
         results: Array.isArray(payload.results) ? payload.results : [],
         seasonTeams,
         teams,
@@ -791,6 +796,33 @@
         </div>`;
     }
 
+
+    function isBattleRoyaleCompetitionV796(competition, payload = currentCompetitionPayload) {
+      const format = String(competition?.format || competition?.formula || "").toUpperCase();
+      return format === "BATTLE_ROYALE" || format === "UNO_VS_TUTTI" || (Array.isArray(payload?.rounds) && payload.rounds.length > 0);
+    }
+
+    function renderBattleRoyaleRoundsV796(payload) {
+      const rounds = Array.isArray(payload?.rounds) ? [...payload.rounds].sort((a,b) => Number(a.leagueMatchday||0)-Number(b.leagueMatchday||0)) : [];
+      if (!rounds.length) return `<article class="competition-card"><p class="muted">Nessuna giornata Battle Royale configurata.</p></article>`;
+      const entries = Array.isArray(payload?.battleRoyaleEntries) ? payload.battleRoyaleEntries : [];
+      return `<div class="competition-page-battle-royale-v796">
+        <article class="competition-card"><div class="detail-section compact-detail-section"><h4>Fase Battle Royale</h4><p class="muted">Non esiste un calendario casa/trasferta: in ogni giornata partecipano contemporaneamente tutte le squadre. I risultati sono registrati come fantapunti della singola squadra.</p></div></article>
+        ${rounds.map((round) => {
+          const dayEntries = entries.filter((entry) => Number(entry.leagueMatchday||0) === Number(round.leagueMatchday||0) && Number.isFinite(Number(entry.homeScore ?? entry.fantapoints)))
+            .map((entry) => ({...entry, _fp:Number(entry.homeScore ?? entry.fantapoints)}))
+            .sort((a,b) => b._fp-a._fp || getSeasonTeamName(a.homeSeasonTeamId, payload.seasonTeams, payload.teams).localeCompare(getSeasonTeamName(b.homeSeasonTeamId, payload.seasonTeams, payload.teams), 'it'));
+          return `<article class="competition-card"><div class="detail-section compact-detail-section"><h4>${escapeHtml(round.label || `${round.leagueMatchday}ª Giornata Battle Royale`)}</h4><p class="muted">Giornata Serie A: ${escapeHtml(round.serieAMatchday || '-')}</p>${dayEntries.length ? `<div class="table-wrap compact-table"><table><thead><tr><th class="number">POS</th><th>SQUADRA</th><th class="number">FPT</th></tr></thead><tbody>${dayEntries.map((entry,index)=>{ const seasonTeam=payload.seasonTeams.find(t=>t.id===entry.homeSeasonTeamId); const team=resolveTeamRecordFromSeasonTeam(seasonTeam,payload.teams); const name=entry.homeTeamName || seasonTeam?.name || team?.name || entry.homeSeasonTeamId; const logo=getLogoForSeasonTeam(seasonTeam,payload.teams,name); return `<tr><td class="number">${index+1}</td><td>${renderTeamNameWithLogo(name,logo)}</td><td class="number">${escapeHtml(formatNumber(entry._fp))}</td></tr>`}).join('')}</tbody></table></div>` : `<p class="muted">Risultati da inserire.</p>`}</div></article>`;
+        }).join('')}
+      </div>`;
+    }
+
+    function getSeasonTeamName(id, seasonTeams = [], teams = []) {
+      const st = seasonTeams.find((item) => item.id === id);
+      const team = resolveTeamRecordFromSeasonTeam(st, teams);
+      return st?.name || team?.name || team?.canonicalName || id || "-";
+    }
+
     function showError(message) {
       errorEl.textContent = message;
       errorEl.classList.remove("hidden");
@@ -818,14 +850,19 @@
       const title = competition.name || competition.competitionName || competition.label || competition.type || "Competizione";
       titleEl.textContent = title;
       if (mobileTitleElV160) mobileTitleElV160.textContent = title;
-      subtitleEl.textContent = competition.notes || `Calendario completo della stagione ${competition.seasonId || requestedSeasonId || ""}.`;
+      const isBattleRoyaleV796 = isBattleRoyaleCompetitionV796(competition, payload);
+      subtitleEl.textContent = competition.notes || (isBattleRoyaleV796
+        ? `Giornate Battle Royale della stagione ${competition.seasonId || requestedSeasonId || ""}.`
+        : `Calendario completo della stagione ${competition.seasonId || requestedSeasonId || ""}.`);
       metaEl.innerHTML = `
         <span class="${sourceClass}">${sourceLabel}</span>
         ${competition.status ? `<span class="status status-muted">${escapeHtml(competition.status)}</span>` : ""}
         ${payload.sourceFile ? `<span class="muted small">Fonte: ${escapeHtml(payload.sourceFile)}</span>` : ""}
-        <span class="muted small">${payload.matches.length} partite</span>
+        <span class="muted small">${isBattleRoyaleV796 ? `${(payload.rounds || []).length} giornate Battle Royale` : `${payload.matches.length} partite`}</span>
       `;
-      contentEl.innerHTML = `${renderResults(payload.results || [], payload.seasonTeams || [], payload.teams || [], competition)}${renderMatches(payload.matches || [], payload.seasonTeams || [], payload.teams || [])}`;
+      contentEl.innerHTML = isBattleRoyaleV796
+        ? `${renderResults(payload.results || [], payload.seasonTeams || [], payload.teams || [], competition)}${renderBattleRoyaleRoundsV796(payload)}${(payload.matches || []).length ? renderMatches(payload.matches || [], payload.seasonTeams || [], payload.teams || []) : ""}`
+        : `${renderResults(payload.results || [], payload.seasonTeams || [], payload.teams || [], competition)}${renderMatches(payload.matches || [], payload.seasonTeams || [], payload.teams || [])}`;
       window.requestAnimationFrame(() => { applyMobileCompactDatesV156(document.body); normalizeMobileMatchResultLabelsV162(document.body); });
     }
 

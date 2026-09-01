@@ -1,11 +1,11 @@
-/* V795 - Footer canonico ZonaOrientale (compatibilita API V790).
+/* V796 - Footer canonico ZonaOrientale (compatibilita API V790).
  * Unica sorgente runtime per versione/data. Tutti i writer legacy del footer
  * delegano qui, evitando gare tra MutationObserver di release differenti.
  */
 const ZONAORIENTALE_RELEASE_V790 = Object.freeze({
-  version: "V795",
+  version: "V796",
   lastUpdated: "01/09/2026",
-  label: "Fantacalcio - V795 - Aggiornato al 01/09/2026"
+  label: "Fantacalcio - V796 - Aggiornato al 01/09/2026"
 });
 
 function applyZonaOrientaleCanonicalFooterV790() {
@@ -321,7 +321,7 @@ import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "../../fanta-engine/js/shared/v491/assets/js/mobile/mobile-tables.js?v=491";
 import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=485";
 import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=485";
-import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=795";
+import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=796";
 import { createMobileRosterHelpersV169 } from "../../fanta-engine/js/shared/v491/assets/js/mobile/mobile-rosters.js?v=491";
 
 const ZonaOrientaleSharedHelperBridgeV341 = createSharedHelperBridgeV341({
@@ -16571,7 +16571,7 @@ window.ZonaOrientaleAdminMobileButtonTopV430 = Object.freeze({
   ]
 });
 
-const DEPLOY_EXPECTED_VERSION_V181 = "795";
+const DEPLOY_EXPECTED_VERSION_V181 = "796";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -42339,3 +42339,169 @@ window.ZonaOrientaleSeasonStartV794 = Object.freeze({ version: 'V794', listone: 
 
 /* V795 - calendari completi 2026/27 e Admin risultati su calendario statico. */
 window.ZonaOrientaleCalendarsAdminV795 = Object.freeze({ version: "V795", season: "2026-2027", staticBase: true, firebaseResultOverride: true, autoStandings: true });
+
+/* V796 - Dettaglio competizioni e Battle Royale senza calendario fittizio.
+ * - Le competizioni a calendario continuano a mostrare tutte le partite reali.
+ * - BATTLE_ROYALE/UNO_VS_TUTTI usano giornate con una prestazione per squadra,
+ *   non la matrice artificiale dei 45 accoppiamenti.
+ * - Admin dedicato: salva i FPT di ogni squadra/giornata in competitionMatches
+ *   come entryMode=BATTLE_ROYALE; gli snapshot pubblici li includono gia'.
+ */
+(function installCompetitionBattleRoyaleV796(){
+  const VERSION = 'V796';
+  const BR_FORMATS = new Set(['BATTLE_ROYALE','UNO_VS_TUTTI']);
+
+  function getCalendarV796(competition){
+    return typeof getStaticCompetitionCalendarForCompetitionV109 === 'function'
+      ? getStaticCompetitionCalendarForCompetitionV109(competition)
+      : (typeof getStaticCompetitionCalendarForCompetitionV102 === 'function' ? getStaticCompetitionCalendarForCompetitionV102(competition) : null);
+  }
+  function isBattleRoyaleV796(competition){
+    if (!competition) return false;
+    const calendar = getCalendarV796(competition);
+    const format = String(competition.format || competition.formula || calendar?.competition?.format || calendar?.meta?.competitionFormat || '').toUpperCase();
+    const displayMode = String(calendar?.meta?.displayMode || calendar?.displayMode || competition.displayMode || '').toUpperCase();
+    return BR_FORMATS.has(format) || displayMode === 'BATTLE_ROYALE';
+  }
+  function getRoundsV796(competition){
+    const calendar = getCalendarV796(competition);
+    const rounds = Array.isArray(calendar?.rounds) ? calendar.rounds : [];
+    return [...rounds].sort((a,b) => Number(a.leagueMatchday||0)-Number(b.leagueMatchday||0));
+  }
+  function getRoundEntriesV796(competitionId, round){
+    const day = Number(round?.leagueMatchday || 0);
+    return (state.raw.competitionMatches || []).filter((entry) => entry.competitionId === competitionId
+      && String(entry.entryMode || '').toUpperCase() === 'BATTLE_ROYALE'
+      && Number(entry.leagueMatchday || 0) === day
+      && !entry.deleted);
+  }
+  function renderRoundTableV796(competition, round){
+    const entries = getRoundEntriesV796(competition.id, round)
+      .filter((entry) => Number.isFinite(Number(entry.homeScore ?? entry.fantapoints)))
+      .map((entry) => ({ ...entry, _fp: Number(entry.homeScore ?? entry.fantapoints) }))
+      .sort((a,b) => b._fp-a._fp || String(getSeasonTeamDisplayName(a.homeSeasonTeamId)).localeCompare(String(getSeasonTeamDisplayName(b.homeSeasonTeamId)), 'it'));
+    if (!entries.length) return `<p class="muted">Risultati da inserire.</p>`;
+    return `<div class="table-wrap compact-table"><table><thead><tr><th class="number">POS</th><th>SQUADRA</th><th class="number">FPT</th></tr></thead><tbody>${entries.map((entry,index)=>`<tr><td class="number">${index+1}</td><td>${renderSeasonTeamNameWithLogo(entry.homeSeasonTeamId)}</td><td class="number">${escapeHtml(formatNumber(entry._fp))}</td></tr>`).join('')}</tbody></table></div>`;
+  }
+  function renderBattleRoyaleRoundsPublicV796(competition){
+    const rounds = getRoundsV796(competition);
+    if (!rounds.length) return `<p class="muted">Nessuna giornata Battle Royale configurata.</p>`;
+    return `<div class="competition-matches-public battle-royale-rounds-v796">
+      <p class="muted">Questa fase non ha un calendario casa/trasferta: in ogni giornata partecipano contemporaneamente tutte le squadre.</p>
+      ${rounds.map((round)=>`<details class="detail-section compact-detail-section competition-match-stage-details" open><summary class="competition-match-stage-summary"><h4>${escapeHtml(round.label || `${round.leagueMatchday}ª Giornata Battle Royale`)}</h4><span class="muted">Serie A ${escapeHtml(round.serieAMatchday || '-')}</span></summary>${renderRoundTableV796(competition,round)}</details>`).join('')}
+    </div>`;
+  }
+
+  const isRankingCompetitionBeforeV796 = isRankingCompetition;
+  isRankingCompetition = function isRankingCompetitionV796(competition){
+    return isBattleRoyaleV796(competition) || isRankingCompetitionBeforeV796(competition);
+  };
+
+  const renderCompetitionMatchesPublicBeforeV796 = renderCompetitionMatchesPublic;
+  renderCompetitionMatchesPublic = function renderCompetitionMatchesPublicV796(competition){
+    if (isBattleRoyaleV796(competition)) return renderBattleRoyaleRoundsPublicV796(competition);
+    return renderCompetitionMatchesPublicBeforeV796(competition);
+  };
+
+  const renderMobileCompetitionNextMatchBeforeV796 = typeof renderMobileCompetitionNextMatchV155 === 'function' ? renderMobileCompetitionNextMatchV155 : null;
+  if (renderMobileCompetitionNextMatchBeforeV796) {
+    renderMobileCompetitionNextMatchV155 = function renderMobileCompetitionNextMatchV796(competition){
+      if (!isBattleRoyaleV796(competition)) return renderMobileCompetitionNextMatchBeforeV796(competition);
+      const round = getRoundsV796(competition).find((item) => !getRoundEntriesV796(competition.id,item).some((entry)=>Number.isFinite(Number(entry.homeScore ?? entry.fantapoints)))) || getRoundsV796(competition)[0];
+      if (!round) return `<p class="mobile-competition-block-next-v155 muted">Nessuna giornata programmata.</p>`;
+      return `<div class="mobile-competition-block-next-v155"><span class="mobile-competition-next-label-v155">Prossima giornata Battle Royale</span><span class="mobile-competition-next-teams-v155">${escapeHtml(round.label || `${round.leagueMatchday}ª giornata`)}</span><span class="mobile-competition-next-date-v155">Serie A ${escapeHtml(round.serieAMatchday || '-')}</span></div>`;
+    };
+  }
+
+  function getBattleCompetitionsV796(){
+    return (state.raw.competitions || []).filter((competition)=>competition.seasonId===getCurrentSeasonId() && isBattleRoyaleV796(competition));
+  }
+  function battleAdminPanelHtmlV796(){
+    const competitions = getBattleCompetitionsV796();
+    if (!competitions.length) return '';
+    const selectedId = state.selectedBattleCompetitionV796 && competitions.some(c=>c.id===state.selectedBattleCompetitionV796) ? state.selectedBattleCompetitionV796 : competitions[0].id;
+    state.selectedBattleCompetitionV796 = selectedId;
+    const competition = competitions.find(c=>c.id===selectedId);
+    const rounds = getRoundsV796(competition);
+    const selectedDay = Number(state.selectedBattleRoundV796 || rounds[0]?.leagueMatchday || 0);
+    const round = rounds.find(r=>Number(r.leagueMatchday)===selectedDay) || rounds[0];
+    if (round) state.selectedBattleRoundV796 = Number(round.leagueMatchday);
+    const existing = new Map(getRoundEntriesV796(competition.id, round).map(e=>[e.homeSeasonTeamId,e]));
+    const participants = Array.isArray(round?.participants) && round.participants.length ? round.participants : getSeasonTeamsForSeason(competition.seasonId).map(t=>({seasonTeamId:t.id,teamName:t.name}));
+    return `<section id="adminBattleRoyalePanelV796" class="panel admin-panel"><div class="panel-header"><div><p class="eyebrow">Firebase</p><h2>Risultati Battle Royale</h2><p>Per le Battle Royale non esistono partite casa/trasferta. Inserisci i fantapunti ottenuti da ciascuna squadra nella giornata selezionata.</p></div></div>
+      <div class="form-grid"><label>Competizione<select id="adminBattleCompetitionV796" class="input">${competitions.map(c=>`<option value="${escapeHtml(c.id)}" ${c.id===competition.id?'selected':''}>${escapeHtml(getCompetitionDisplayNameV111(c))}</option>`).join('')}</select></label>
+      <label>Giornata<select id="adminBattleRoundV796" class="input">${rounds.map(r=>`<option value="${escapeHtml(r.leagueMatchday)}" ${Number(r.leagueMatchday)===Number(round?.leagueMatchday)?'selected':''}>${escapeHtml(r.label)} · Serie A ${escapeHtml(r.serieAMatchday||'-')}</option>`).join('')}</select></label></div>
+      ${round ? `<form id="adminBattleResultsFormV796"><div class="table-wrap"><table><thead><tr><th>SQUADRA</th><th class="number">FPT</th></tr></thead><tbody>${participants.map(p=>{const e=existing.get(p.seasonTeamId)||{}; const value=e.homeScore ?? e.fantapoints ?? ''; return `<tr><td>${renderSeasonTeamNameWithLogo(p.seasonTeamId)}</td><td class="number"><input class="input" type="number" step="0.5" min="0" data-br-team-v796="${escapeHtml(p.seasonTeamId)}" data-br-team-name-v796="${escapeHtml(p.teamName||getSeasonTeamDisplayName(p.seasonTeamId))}" value="${escapeHtml(value)}" placeholder="FPT" /></td></tr>`}).join('')}</tbody></table></div><div class="form-actions"><button class="button button-primary" type="submit">Salva risultati giornata</button><span id="adminBattleStatusV796" class="form-status"></span></div></form>` : '<p class="muted">Nessuna giornata configurata.</p>'}
+    </section>`;
+  }
+  function ensureBattleAdminPanelV796(){
+    if (!state?.isAdmin) return;
+    document.getElementById('adminBattleRoyalePanelV796')?.remove();
+    const anchor = document.getElementById('adminCompetitionMatchesPanel');
+    if (!anchor) return;
+    const wrap=document.createElement('div'); wrap.innerHTML=battleAdminPanelHtmlV796(); const panel=wrap.firstElementChild; if(panel) anchor.insertAdjacentElement('afterend',panel);
+  }
+  async function saveBattleRoundV796(form){
+    const competitionId=document.getElementById('adminBattleCompetitionV796')?.value||'';
+    const competition=(state.raw.competitions||[]).find(c=>c.id===competitionId); if(!competition) return;
+    const day=Number(document.getElementById('adminBattleRoundV796')?.value||0); const round=getRoundsV796(competition).find(r=>Number(r.leagueMatchday)===day); if(!round) return;
+    const inputs=[...form.querySelectorAll('[data-br-team-v796]')];
+    const status=document.getElementById('adminBattleStatusV796'); if(status) status.textContent='Salvataggio...';
+    try{
+      await Promise.all(inputs.map(async(input)=>{
+        const seasonTeamId=input.dataset.brTeamV796; const raw=String(input.value||'').trim();
+        const id=`${makeIdPart(competitionId)}_br_g${day}_${makeIdPart(seasonTeamId)}`;
+        if(!raw){ const current=(state.raw.competitionMatches||[]).find(m=>m.id===id); if(current) await deleteDoc(doc(db,'competitionMatches',id)); return; }
+        const fp=Number(raw); if(!Number.isFinite(fp)) return;
+        await setDoc(doc(db,'competitionMatches',id),{competitionId,seasonId:competition.seasonId,entryMode:'BATTLE_ROYALE',matchday:round.label,leagueMatchday:day,serieAMatchday:Number(round.serieAMatchday||0)||null,homeSeasonTeamId:seasonTeamId,homeTeamName:input.dataset.brTeamNameV796||getSeasonTeamDisplayName(seasonTeamId),homeScore:fp,fantapoints:fp,status:'GIOCATA',source:'firebase-battle-royale-v796',updatedAt:serverTimestamp(),createdAt:serverTimestamp()},{merge:true});
+      }));
+      if(status) status.textContent='Risultati giornata salvati. Pubblica poi lo snapshot competizioni/classifiche.';
+      await loadData();
+    }catch(error){ console.error(error); if(status) status.textContent=error?.message||'Errore salvataggio Battle Royale.'; }
+  }
+  document.addEventListener('change',(event)=>{
+    if(event.target?.id==='adminBattleCompetitionV796'){state.selectedBattleCompetitionV796=event.target.value; state.selectedBattleRoundV796=0; ensureBattleAdminPanelV796();}
+    if(event.target?.id==='adminBattleRoundV796'){state.selectedBattleRoundV796=Number(event.target.value||0); ensureBattleAdminPanelV796();}
+  });
+  document.addEventListener('submit',(event)=>{if(event.target?.id!=='adminBattleResultsFormV796') return; event.preventDefault(); saveBattleRoundV796(event.target);});
+
+  const renderAdminAreaBeforeV796=renderAdminArea;
+  renderAdminArea=function renderAdminAreaV796(){const result=renderAdminAreaBeforeV796(); ensureBattleAdminPanelV796(); return result;};
+  const renderAllBeforeV796=renderAll;
+  renderAll=function renderAllV796(){const result=renderAllBeforeV796(); if(state?.isAdmin) window.setTimeout(ensureBattleAdminPanelV796,0); return result;};
+
+  window.ZonaOrientaleCompetitionModesV796=Object.freeze({version:VERSION,battleRoyaleNoCalendar:true,battleRoyaleAdmin:true,calendarFormats:Object.freeze(['CLASSIFICA','GIRONI_KO','GRUPPI'])});
+})();
+
+/* V796 - Rifiniture UI/Admin Battle Royale. */
+(function refineBattleRoyaleV796(){
+  const previousDisputable = typeof getDisputableCompetitionsForSeasonV116 === 'function' ? getDisputableCompetitionsForSeasonV116 : null;
+  if (previousDisputable) {
+    getDisputableCompetitionsForSeasonV116 = function getDisputableCompetitionsForSeasonV796(seasonId){
+      return previousDisputable(seasonId).filter((competition) => {
+        const format = String(competition?.format || competition?.formula || '').toUpperCase();
+        return format !== 'BATTLE_ROYALE' && format !== 'UNO_VS_TUTTI';
+      });
+    };
+  }
+  const previousSourceLine = typeof renderStaticCompetitionSourceLineV102 === 'function' ? renderStaticCompetitionSourceLineV102 : null;
+  if (previousSourceLine) {
+    renderStaticCompetitionSourceLineV102 = function renderStaticCompetitionSourceLineV796(competition){
+      const calendar = typeof getStaticCompetitionCalendarForCompetitionV109 === 'function' ? getStaticCompetitionCalendarForCompetitionV109(competition) : null;
+      const format = String(competition?.format || competition?.formula || calendar?.competition?.format || '').toUpperCase();
+      if ((format === 'BATTLE_ROYALE' || format === 'UNO_VS_TUTTI') && Array.isArray(calendar?.rounds)) {
+        const sourceFile = calendar.sourceFile || calendar.meta?.sourceFile || 'assets/competitions';
+        return `<p class="static-source-line"><span class="static-source-badge">JSON statico</span><span>Fonte competizione: <strong>${escapeHtml(sourceFile)}</strong> · ${escapeHtml(calendar.rounds.length)} giornate Battle Royale</span></p>`;
+      }
+      return previousSourceLine(competition);
+    };
+  }
+})();
+
+window.ZonaOrientaleCompetitionCalendarsV796 = Object.freeze({
+  version: 'V796',
+  calendarDetailPage: true,
+  battleRoyaleHasNoHeadToHeadCalendar: true,
+  battleRoyaleAdminMode: 'per-team-fantapoints-by-round',
+  coppaItaliaBattleRoyaleRounds: Object.freeze([8,17,24,26])
+});

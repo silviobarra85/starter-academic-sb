@@ -11,8 +11,8 @@
   <link rel="icon" type="image/png" sizes="16x16" href="./assets/icons/favicon-16x16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/apple-touch-icon.png" />
   <link rel="manifest" href="./site.webmanifest" />
-  <link rel="modulepreload" href="./assets/js/core/league-config-v443.js?v=795" />
-  <link rel="modulepreload" href="./assets/app.js?v=795" />
+  <link rel="modulepreload" href="./assets/js/core/league-config-v443.js?v=796" />
+  <link rel="modulepreload" href="./assets/app.js?v=796" />
   <meta name="theme-color" content="#8b0029" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="ZonaOrientale Salerno" />
@@ -1370,35 +1370,35 @@
   </nav>
 
   <footer class="container app-footer">
-    <p data-league-footer-v445>Fantacalcio - V795 - Aggiornato al 01/09/2026</p>
+    <p data-league-footer-v445>Fantacalcio - V796 - Aggiornato al 01/09/2026</p>
   </footer>
-  <script type="module" src="./assets/js/core/league-config-v443.js?v=795"></script>
+  <script type="module" src="./assets/js/core/league-config-v443.js?v=796"></script>
   <script type="module" src="./assets/js/core/section-registry-v405.js?v=562"></script>
   <script type="module" src="./assets/js/sections/regolamento-section-v402.js?v=562"></script>
   <script type="module" src="./assets/js/sections/compare-section-v403.js?v=562"></script>
   <script type="module" src="./assets/js/sections/stats-section-v404.js?v=562"></script>
   <script type="module" src="./assets/js/sections/archive-section-v405.js?v=562"></script>
-  <script type="module" src="./assets/js/sections/bilanci-snapshot-section-v435.js?v=795"></script>
+  <script type="module" src="./assets/js/sections/bilanci-snapshot-section-v435.js?v=796"></script>
   <script type="module">
-    const entryUrlV760 = new URL('./assets/app.js?v=795', document.baseURI).href;
+    const entryUrlV760 = new URL('./assets/app.js?v=796', document.baseURI).href;
     window.ZonaOrientaleModuleEntryV760 = Object.freeze({
-      version: 'V795',
+      version: 'V796',
       status: 'loading',
       url: entryUrlV760,
       startedAt: new Date().toISOString()
     });
     import(entryUrlV760).then(() => {
       window.ZonaOrientaleModuleEntryV760 = Object.freeze({
-        version: 'V795',
+        version: 'V796',
         status: 'loaded',
         url: entryUrlV760,
         loadedAt: new Date().toISOString()
       });
     }).catch((error) => {
-      console.error('[ZonaOrientale V795] Modulo applicazione non caricato', error);
+      console.error('[ZonaOrientale V796] Modulo applicazione non caricato', error);
       const message = error?.message || String(error);
       window.ZonaOrientaleModuleEntryV760 = Object.freeze({
-        version: 'V795',
+        version: 'V796',
         status: 'failed',
         url: entryUrlV760,
         failedAt: new Date().toISOString(),
@@ -1407,7 +1407,7 @@
       const errorBox = document.getElementById('errorBox');
       if (errorBox) {
         errorBox.classList.remove('hidden');
-        errorBox.textContent = `Avvio applicazione non riuscito. Il deploy non contiene tutti i file V795: ${message}`;
+        errorBox.textContent = `Avvio applicazione non riuscito. Il deploy non contiene tutti i file V796: ${message}`;
       }
       document.documentElement.classList.remove('fanta-boot-preloader-active');
       const overlay = document.getElementById('fantaBootPreloader');

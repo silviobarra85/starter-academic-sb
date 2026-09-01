@@ -5,7 +5,7 @@
   "shortName": "ZonaOrientale",
   "basePath": "/zonaorientale/",
   "siteUrl": "https://silviobarra.com/zonaorientale/",
-  "currentVersion": "795",
+  "currentVersion": "796",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -561,7 +561,7 @@
     ],
     "footerLastUpdated": "01/09/2026",
     "footerTemplate": "Fantacalcio - V{version} - Aggiornato al {lastUpdated}",
-    "footerVersion": 795,
+    "footerVersion": 796,
     "ioSudoPlayerSourceLabelsV639": true,
     "ioSudoListoneAllPlayersV639": true,
     "ioSudoPlayerSourceLabelsV643": true,
@@ -718,7 +718,7 @@
     "ioSudoListoneAllPlayersV643": true
   },
   "ui": {
-    "footerVersion": 795,
+    "footerVersion": 796,
     "ioSudoPlayerSourceLabelsV639": true,
     "ioSudoListoneAllPlayersV639": true,
     "ioSudoPlayerSourceLabelsV643": true,
@@ -1889,5 +1889,5 @@
   "ioSudoListoneAllPlayersV643": true,
   "updatedAt": "2026-07-22T00:30:00+02:00",
   "lastUpdated": "2026-08-18",
-  "lastOverlay": "V795 - calendari completi 2026/27, Admin risultati JSON->Firebase, classifiche live"
+  "lastOverlay": "V796 - dettagli competizioni con calendario; Battle Royale a giornate senza calendario fittizio"
 }

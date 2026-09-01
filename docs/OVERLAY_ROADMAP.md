@@ -98,3 +98,8 @@ Completato: aggiornamento reale della sorgente `assets/rose` al file del 18/08/2
 - Classifiche live di Campionato e formule ranking calcolate automaticamente dalle partite giocate.
 - Corretto l'import Excel calendari: `-` resta `DA_GIOCARE` e sono supportati anche file a giornate senza riga di stage.
 - Audit V795 calendari/Admin: 53/53; static-first: 42/42; Admin controller: 71/71.
+
+## V796 - Competition detail / Battle Royale semantics
+- competition.html e' la pagina canonica del calendario della singola competizione.
+- BATTLE_ROYALE e UNO_VS_TUTTI non devono essere trasformate in accoppiamenti H2H fittizi.
+- Admin: risultati Battle Royale per squadra/giornata tramite FPT, salvati in competitionMatches con entryMode dedicato.
