@@ -77,7 +77,7 @@
   </nav>
 
   <footer class="container app-footer">
-    <p data-league-footer-v445>Fantacalcio - V798 - Aggiornato al 01/09/2026</p>
+    <p data-league-footer-v445>Fantacalcio - V799 - Aggiornato al 01/09/2026</p>
   </footer>
 
   <script>
@@ -111,7 +111,7 @@
   </script>
 
   <script type="module">
-    import { getLeagueDataPathV446, getLeagueLogoPathV446, joinLeagueDataPathV446, loadLeagueConfigV443 } from "./assets/js/core/league-config-v443.js?v=798";
+    import { getLeagueDataPathV446, getLeagueLogoPathV446, joinLeagueDataPathV446, loadLeagueConfigV443 } from "./assets/js/core/league-config-v443.js?v=799";
 
     const params = new URLSearchParams(window.location.search);
     const requestedSeasonId = params.get("seasonId") || "";
@@ -305,25 +305,90 @@
       });
     }
 
+    /* V799 - Fixture identity robusta.
+       Il calendario JSON e gli override Firebase possono avere id diversi e
+       descrizioni della giornata diverse (es. "2° Giornata" vs "2").
+       Firebase deve sovrascrivere la gara base, mai creare una seconda riga. */
+    function getFixtureRoundNumberV799(match) {
+      const direct = Number(match?.leagueMatchday);
+      if (Number.isFinite(direct) && direct > 0) return direct;
+      const text = String(match?.matchday || match?.stage || "");
+      const parsed = Number((text.match(/\d+/) || [])[0]);
+      if (Number.isFinite(parsed) && parsed > 0) return parsed;
+      const serieA = Number(match?.serieAMatchday);
+      return Number.isFinite(serieA) && serieA > 0 ? serieA : 0;
+    }
+
+    function sameFixtureTeamV799(left, right, side) {
+      const idKey = side === "home" ? "homeSeasonTeamId" : "awaySeasonTeamId";
+      const nameKey = side === "home" ? "homeTeamName" : "awayTeamName";
+      const leftId = String(left?.[idKey] || "").trim();
+      const rightId = String(right?.[idKey] || "").trim();
+      if (leftId && rightId) return leftId === rightId;
+      const leftName = normalizeKey(left?.[nameKey] || "");
+      const rightName = normalizeKey(right?.[nameKey] || "");
+      return Boolean(leftName && rightName && leftName === rightName);
+    }
+
+    function isSameFixtureV799(left, right) {
+      if (!left || !right) return false;
+      const leftCompetition = String(left.competitionId || "");
+      const rightCompetition = String(right.competitionId || "");
+      if (leftCompetition && rightCompetition && leftCompetition !== rightCompetition) return false;
+      if (!sameFixtureTeamV799(left, right, "home") || !sameFixtureTeamV799(left, right, "away")) return false;
+
+      const leftRound = getFixtureRoundNumberV799(left);
+      const rightRound = getFixtureRoundNumberV799(right);
+      if (leftRound && rightRound && leftRound !== rightRound) return false;
+
+      const leftSerieA = Number(left.serieAMatchday);
+      const rightSerieA = Number(right.serieAMatchday);
+      if (Number.isFinite(leftSerieA) && leftSerieA > 0 && Number.isFinite(rightSerieA) && rightSerieA > 0 && leftSerieA !== rightSerieA) return false;
+      return Boolean(leftRound || rightRound || (leftSerieA > 0 && rightSerieA > 0));
+    }
+
+    function findFixtureIndexV799(matches, candidate) {
+      if (candidate?.id) {
+        const byId = matches.findIndex((item) => item.id === candidate.id);
+        if (byId >= 0) return byId;
+      }
+      const strictKey = getMatchMergeKey(candidate);
+      if (strictKey) {
+        const byStrictKey = matches.findIndex((item) => getMatchMergeKey(item) === strictKey);
+        if (byStrictKey >= 0) return byStrictKey;
+      }
+      return matches.findIndex((item) => isSameFixtureV799(item, candidate));
+    }
+
+    function collapseDuplicateFixturesV799(matches) {
+      const unique = [];
+      (matches || []).forEach((match) => {
+        const index = findFixtureIndexV799(unique, match);
+        if (index < 0) unique.push({ ...match });
+        else unique[index] = mergeDefinedV798(unique[index], match);
+      });
+      return unique;
+    }
+
     function mergeCalendarMatchesV798(baseMatches, localSnapshot, remoteSnapshot, competitionId) {
       let merged = (baseMatches || []).map((match) => ({ ...match, competitionId: match.competitionId || competitionId }));
       const applyOverrides = (snapshotData) => {
         getCompetitionSnapshotMatchesV798(snapshotData, competitionId).forEach((override) => {
-          const byId = override.id ? merged.findIndex((item) => item.id === override.id) : -1;
-          const mergeKey = getMatchMergeKey(override);
-          const byKey = byId < 0 && mergeKey ? merged.findIndex((item) => getMatchMergeKey(item) === mergeKey) : -1;
-          const index = byId >= 0 ? byId : byKey;
-          if (isMatchDeleted(override)) {
+          const normalizedOverride = { ...override, competitionId: override.competitionId || competitionId };
+          const index = findFixtureIndexV799(merged, normalizedOverride);
+          if (isMatchDeleted(normalizedOverride)) {
             if (index >= 0) merged.splice(index, 1);
             return;
           }
-          if (index >= 0) merged[index] = mergeDefinedV798(merged[index], override);
-          else if (override.homeSeasonTeamId || override.homeTeamName) merged.push({ ...override });
+          // L'override viene applicato sopra al JSON e ne conserva l'id Firebase:
+          // e' quindi il record che resta modificabile dall'Admin.
+          if (index >= 0) merged[index] = mergeDefinedV798(merged[index], normalizedOverride);
+          else if (normalizedOverride.homeSeasonTeamId || normalizedOverride.homeTeamName) merged.push(normalizedOverride);
         });
       };
       applyOverrides(localSnapshot);
       applyOverrides(remoteSnapshot);
-      return filterDeletedMatches(merged);
+      return filterDeletedMatches(collapseDuplicateFixturesV799(merged));
     }
 
     function mergeBattleRoyaleEntriesV798(localSnapshot, remoteSnapshot, competitionId) {
