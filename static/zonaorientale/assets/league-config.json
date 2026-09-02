@@ -5,7 +5,7 @@
   "shortName": "ZonaOrientale",
   "basePath": "/zonaorientale/",
   "siteUrl": "https://silviobarra.com/zonaorientale/",
-  "currentVersion": "802",
+  "currentVersion": "803",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -1889,5 +1889,5 @@
   "ioSudoListoneAllPlayersV643": true,
   "updatedAt": "2026-07-22T00:30:00+02:00",
   "lastUpdated": "2026-08-18",
-  "lastOverlay": "V802 gestione manuale rose Admin + snapshot rose persistenti"
+  "lastOverlay": "V803 fix apertura pannello gestione manuale rose Admin"
 }

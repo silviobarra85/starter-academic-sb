@@ -1,11 +1,11 @@
-/* V802 - Footer canonico ZonaOrientale (compatibilita API V790).
+/* V803 - Footer canonico ZonaOrientale (compatibilita API V790).
  * Unica sorgente runtime per versione/data. Tutti i writer legacy del footer
  * delegano qui, evitando gare tra MutationObserver di release differenti.
  */
 const ZONAORIENTALE_RELEASE_V790 = Object.freeze({
-  version: "V802",
+  version: "V803",
   lastUpdated: "02/09/2026",
-  label: "Fantacalcio - V802 - Aggiornato al 02/09/2026"
+  label: "Fantacalcio - V803 - Aggiornato al 02/09/2026"
 });
 
 function applyZonaOrientaleCanonicalFooterV790() {
@@ -316,12 +316,12 @@ function createCalciomercatoArchiveAdminV340() {
     setExpanded: () => {}
   };
 }
-import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js?v=802";
+import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js?v=803";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "../../fanta-engine/js/shared/v491/assets/js/mobile/mobile-tables.js?v=491";
 import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=485";
 import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=485";
-import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=802";
+import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=803";
 import { createMobileRosterHelpersV169 } from "../../fanta-engine/js/shared/v491/assets/js/mobile/mobile-rosters.js?v=491";
 
 const ZonaOrientaleSharedHelperBridgeV341 = createSharedHelperBridgeV341({
@@ -16571,7 +16571,7 @@ window.ZonaOrientaleAdminMobileButtonTopV430 = Object.freeze({
   ]
 });
 
-const DEPLOY_EXPECTED_VERSION_V181 = "802";
+const DEPLOY_EXPECTED_VERSION_V181 = "803";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -42870,7 +42870,20 @@ try {
     const holder = document.createElement("div");
     holder.innerHTML = renderManualRosterPanelHtmlV802();
     const panel = holder.firstElementChild;
-    if (panel) anchor.insertAdjacentElement("afterend", panel);
+    if (panel) {
+      anchor.insertAdjacentElement("afterend", panel);
+      // V803: questo pannello viene creato dopo attachAdminHandlers(), quindi il toggle
+      // Apri/Riduci va collegato qui. Gli altri controlli V802 restano delegati sul document.
+      const toggleButton = panel.querySelector('[data-admin-toggle-panel="adminManualRosterPanelV802"]');
+      if (toggleButton && toggleButton.dataset.manualRosterToggleBoundV803 !== "true") {
+        toggleButton.dataset.manualRosterToggleBoundV803 = "true";
+        toggleButton.addEventListener("click", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          toggleAdminPanel("adminManualRosterPanelV802");
+        });
+      }
+    }
   }
 
   function setManualRosterFieldV802(id, value){
@@ -43279,6 +43292,13 @@ try {
   document.addEventListener("submit", (event) => {
     if (event.target?.id !== "adminManualRosterFormV802") return;
     saveManualRosterPlayerV802(event);
+  });
+
+  window.ZonaOrientaleManualRosterToggleFixV803 = Object.freeze({
+    version: "V803",
+    dynamicPanelToggleBoundAfterInsertion: true,
+    targetPanelId: "adminManualRosterPanelV802",
+    preservesRosterData: true
   });
 
   window.ZonaOrientaleManualRostersV802 = Object.freeze({
