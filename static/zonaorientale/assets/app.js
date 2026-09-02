@@ -1,11 +1,11 @@
-/* V799 - Footer canonico ZonaOrientale (compatibilita API V790).
+/* V800 - Footer canonico ZonaOrientale (compatibilita API V790).
  * Unica sorgente runtime per versione/data. Tutti i writer legacy del footer
  * delegano qui, evitando gare tra MutationObserver di release differenti.
  */
 const ZONAORIENTALE_RELEASE_V790 = Object.freeze({
-  version: "V799",
-  lastUpdated: "01/09/2026",
-  label: "Fantacalcio - V799 - Aggiornato al 01/09/2026"
+  version: "V800",
+  lastUpdated: "02/09/2026",
+  label: "Fantacalcio - V800 - Aggiornato al 02/09/2026"
 });
 
 function applyZonaOrientaleCanonicalFooterV790() {
@@ -316,12 +316,12 @@ function createCalciomercatoArchiveAdminV340() {
     setExpanded: () => {}
   };
 }
-import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js?v=790";
+import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js?v=800";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "../../fanta-engine/js/shared/v491/assets/js/mobile/mobile-tables.js?v=491";
 import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=485";
 import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=485";
-import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=799";
+import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=800";
 import { createMobileRosterHelpersV169 } from "../../fanta-engine/js/shared/v491/assets/js/mobile/mobile-rosters.js?v=491";
 
 const ZonaOrientaleSharedHelperBridgeV341 = createSharedHelperBridgeV341({
@@ -16571,7 +16571,7 @@ window.ZonaOrientaleAdminMobileButtonTopV430 = Object.freeze({
   ]
 });
 
-const DEPLOY_EXPECTED_VERSION_V181 = "799";
+const DEPLOY_EXPECTED_VERSION_V181 = "800";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -42505,3 +42505,117 @@ window.ZonaOrientaleCompetitionCalendarsV796 = Object.freeze({
   battleRoyaleAdminMode: 'per-team-fantapoints-by-round',
   coppaItaliaBattleRoyaleRounds: Object.freeze([8,17,24,26])
 });
+
+
+/* V800 - Listone 02/09/2026 e presentazione competizioni attive.
+ * Dashboard: il primo posto non viene chiamato "Vincitore" finche la competizione non e conclusa.
+ * Campionato attivo: mostra la classifica corrente.
+ * Competizioni a calendario: classifica prima del calendario; giornate in ordine crescente e chiuse di default.
+ */
+(function installCompetitionPresentationV800(){
+  const FINISHED_STATUSES_V800 = new Set(["CONCLUSA", "TERMINATA", "FINISHED", "COMPLETED", "ENDED", "FINAL"]);
+  const BATTLE_FORMATS_V800 = new Set(["BATTLE_ROYALE", "UNO_VS_TUTTI"]);
+
+  function competitionStatusV800(competition){
+    return String(competition?.status || "").trim().toUpperCase();
+  }
+  function isCompetitionFinishedV800(competition){
+    return FINISHED_STATUSES_V800.has(competitionStatusV800(competition));
+  }
+  function isBattleRoyaleV800(competition){
+    const calendar = typeof getStaticCompetitionCalendarForCompetitionV109 === "function"
+      ? getStaticCompetitionCalendarForCompetitionV109(competition)
+      : null;
+    const format = String(competition?.format || competition?.formula || calendar?.competition?.format || calendar?.meta?.competitionFormat || "").toUpperCase();
+    const displayMode = String(calendar?.meta?.displayMode || calendar?.displayMode || competition?.displayMode || "").toUpperCase();
+    return BATTLE_FORMATS_V800.has(format) || displayMode === "BATTLE_ROYALE";
+  }
+  function isCalendarRankingCompetitionV800(competition){
+    return Boolean(competition) && !isBattleRoyaleV800(competition) && typeof isRankingCompetition === "function" && isRankingCompetition(competition);
+  }
+  function getLeagueMatchdayNumberV800(match){
+    const candidates = [match?.leagueMatchday, match?.matchday, match?.giornata, match?.stage, match?.id];
+    for (const value of candidates) {
+      const direct = Number(value);
+      if (Number.isFinite(direct) && direct > 0) return direct;
+      const found = String(value || "").match(/\d+/);
+      if (found && Number(found[0]) > 0) return Number(found[0]);
+    }
+    return 0;
+  }
+  function groupLeagueMatchesAscendingV800(matches){
+    const groups = new Map();
+    (matches || []).forEach((match) => {
+      const day = getLeagueMatchdayNumberV800(match);
+      const key = day > 0 ? day : 9999;
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push(match);
+    });
+    return [...groups.entries()]
+      .sort((a,b) => a[0]-b[0])
+      .map(([day, rows]) => ({ day, label: day === 9999 ? "Partite" : `Giornata ${day}`, matches: sortMatchesInsideStageV103(rows) }));
+  }
+
+  const renderDashboardCompetitionSummaryBeforeV800 = renderDashboardCompetitionSummary;
+  renderDashboardCompetitionSummary = function renderDashboardCompetitionSummaryV800(competition){
+    if (isCompetitionFinishedV800(competition)) {
+      const winner = getCompetitionWinnerResultV87(competition);
+      if (winner?.seasonTeamId) {
+        return `<div class="dashboard-competition-summary dashboard-winner-line"><span class="muted">Vincitore:</span> ${renderSeasonTeamNameWithLogo(winner.seasonTeamId, { textClass: "text-success" })}</div>`;
+      }
+      return `<div class="dashboard-competition-summary"><span class="muted">Competizione conclusa. Risultato finale non disponibile.</span></div>`;
+    }
+
+    if (competitionStatusV800(competition) === "ATTIVA" && isCalendarRankingCompetitionV800(competition)) {
+      return `<div class="dashboard-competition-summary dashboard-live-standing-v800"><div class="dashboard-live-standing-title-v800"><strong>Classifica</strong><span class="muted">aggiornata alle partite giocate</span></div>${renderCompetitionResultsPublic(competition)}</div>`;
+    }
+
+    // Per qualunque competizione non conclusa impedisce che il leader provvisorio venga presentato come vincitore.
+    if (isCalendarRankingCompetitionV800(competition)) {
+      const nextMatches = getNextChampionshipMatches(competition);
+      if (nextMatches.length) {
+        const first = nextMatches[0];
+        const label = `Prossima giornata programmata${first.matchday ? `: ${first.matchday}` : ""}`;
+        return `<div class="dashboard-competition-summary"><span class="muted">${escapeHtml(label)}</span>${renderDashboardUpcomingMatchLinesV136(nextMatches)}</div>`;
+      }
+      return `<div class="dashboard-competition-summary"><span class="muted">Nessuna prossima giornata programmata.</span></div>`;
+    }
+
+    const nextMatch = getFirstUpcomingMatchV87(competition);
+    if (nextMatch) {
+      const label = `Prossima partita${formatMatchStage(nextMatch) ? ` · ${formatMatchStage(nextMatch)}` : ""}`;
+      return `<div class="dashboard-competition-summary"><span class="muted">${escapeHtml(label)}</span>${renderCompactSingleMatchLineV87(nextMatch)}</div>`;
+    }
+    return `<div class="dashboard-competition-summary"><span class="muted">Nessuna prossima partita programmata.</span></div>`;
+  };
+
+  const renderCompetitionMatchesPublicBeforeV800 = renderCompetitionMatchesPublic;
+  renderCompetitionMatchesPublic = function renderCompetitionMatchesPublicV800(competition){
+    if (!isCalendarRankingCompetitionV800(competition)) return renderCompetitionMatchesPublicBeforeV800(competition);
+    const matches = getCompetitionMatches(competition.id);
+    if (!matches.length) return `<p class="muted">Nessuna partita inserita per questa competizione.</p>`;
+    const groups = groupLeagueMatchesAscendingV800(matches);
+    return `<div class="competition-matches-public competition-match-groups competition-calendar-groups-v800">
+      ${groups.map((group) => `<details class="detail-section compact-detail-section competition-match-stage-group competition-match-stage-details competition-calendar-day-v800">
+        <summary class="competition-match-stage-summary"><h4>${escapeHtml(group.label)}</h4><span class="button button-secondary button-small competition-stage-toggle-label" aria-hidden="true">Espandi</span></summary>
+        ${renderCompetitionMatchRowsPublicV150(group.matches, "Nessuna partita inserita.")}
+      </details>`).join("")}
+    </div>`;
+  };
+
+  document.addEventListener("toggle", (event) => {
+    const details = event.target;
+    if (!(details instanceof HTMLDetailsElement) || !details.classList.contains("competition-calendar-day-v800")) return;
+    const label = details.querySelector(".competition-stage-toggle-label");
+    if (label) label.textContent = details.open ? "Riduci" : "Espandi";
+  }, true);
+
+  window.ZonaOrientaleCompetitionPresentationV800 = Object.freeze({
+    version: "V800",
+    winnerOnlyWhenFinished: true,
+    activeLeagueShowsStandings: true,
+    calendarMatchdaysAscending: true,
+    calendarMatchdaysCollapsedByDefault: true,
+    latestListone: "2026-09-02"
+  });
+})();

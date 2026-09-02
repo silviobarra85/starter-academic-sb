@@ -167,6 +167,39 @@
         "roleChanged": 0,
         "unchanged": 277
       }
+    },
+    {
+      "id": "2026-09-02",
+      "seasonId": "2026-2027",
+      "label": "Listone 2 settembre 2026",
+      "loadedAt": "2026-09-02",
+      "file": "2026-09-02.json",
+      "rows": 587,
+      "activeRows": 531,
+      "asteriskRows": 56,
+      "rosterSourceFile": "zonaorientale-salerno-rosters-1788255085854.xlsx",
+      "rosterLoadedAt": "2026-09-01",
+      "rosteredRows": 286,
+      "freeAgentRows": 301,
+      "detectedFormat": "Fantacalcio Classic a foglio singolo",
+      "sourceSheets": [
+        "Lista calciatori"
+      ],
+      "sourceFile": "lista_calciatori_lista calciatori_classic_zonaorientale-salerno-3.xlsx",
+      "comparedWith": "2026-09-01",
+      "changeSummary": {
+        "comparedWith": "2026-09-01",
+        "comparedWithLabel": "2026-09-01 · Listone 1 settembre 2026",
+        "newPlayers": 19,
+        "removedPlayers": 0,
+        "quotationUp": 0,
+        "quotationDown": 0,
+        "quotationChanged": 0,
+        "statusChanged": 15,
+        "teamChanged": 5,
+        "roleChanged": 0,
+        "unchanged": 548
+      }
     }
   ]
 }

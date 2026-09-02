@@ -1,0 +1,16 @@
+import fs from "node:fs"; import path from "node:path";
+const root=process.argv[2]||"."; const read=(p)=>fs.readFileSync(path.join(root,p),"utf8"); const j=(p)=>JSON.parse(read(p));
+const checks=[]; const ok=(c,m)=>checks.push([!!c,m]);
+const app=read("static/zonaorientale/assets/app.js"); const index=read("static/zonaorientale/index.html"); const detail=read("static/zonaorientale/competition.html");
+const rel=j("static/zonaorientale/release.json"); const cfg=j("static/zonaorientale/assets/league-config.json");
+const man=j("static/fanta-engine/data/shared-assets/current/assets/listoni/manifest.json"); const latest=man.listoni.filter(x=>x.seasonId==="2026-2027").sort((a,b)=>String(b.loadedAt).localeCompare(String(a.loadedAt)))[0];
+const list=j("static/fanta-engine/data/shared-assets/current/assets/listoni/2026-09-02.json");
+ok(rel.version==="800","Release V800"); ok(rel.entrypoint.includes("app.js?v=800"),"Entrypoint V800"); ok(cfg.currentVersion==="800","Config V800");
+ok(index.includes("app.js?v=800")&&index.includes("league-config-v443.js?v=800"),"Home usa cache-buster V800"); ok(detail.includes("league-config-v443.js?v=800"),"Dettaglio usa config V800");
+ok(latest?.id==="2026-09-02","Ultimo listone stagione 2026-2027 e 02/09"); ok(list.meta.rows===587,"Listone ha 587 giocatori"); ok(list.meta.activeRows===531,"Listone ha 531 giocatori attivi"); ok(list.meta.asteriskRows===56,"Listone ha 56 asteriscati");
+ok(new Set(list.players.map(p=>p.fantacalcioId)).size===587,"Nessun ID duplicato nel nuovo listone"); ok(new Set(list.players.map(p=>p.playerName.toLowerCase())).size===587,"Nessun nome duplicato nel nuovo listone");
+ok(app.includes("winnerOnlyWhenFinished: true"),"Dashboard: vincitore solo a competizione conclusa"); ok(app.includes("activeLeagueShowsStandings: true"),"Dashboard: campionato attivo mostra classifica");
+ok(app.includes("calendarMatchdaysAscending: true"),"Card campionato: giornate ordine crescente"); ok(app.includes("calendarMatchdaysCollapsedByDefault: true"),"Card campionato: giornate chiuse di default");
+ok(detail.includes("if (isLeagueCompetition(competition)) return a.rank - b.rank"),"Dettaglio Campionato: giornate dalla prima all'ultima"); ok(detail.includes('collapseByDefault = isLeagueCompetition(competition)'),"Dettaglio Campionato: giornate ridotte di default");
+ok(app.includes('static-files-service.js?v=800'),"App carica static-files-service V800"); ok(read("static/zonaorientale/assets/js/data/static-files-service.js").includes("league-config-v443.js?v=800"),"Static files service usa config V800");
+const fail=checks.filter(x=>!x[0]); for(const [c,m] of checks) console.log(`${c?"OK":"ERRORE"} - ${m}`); console.log(`Audit V800: ${checks.length-fail.length}/${checks.length} controlli superati.`); if(fail.length) process.exit(1);
