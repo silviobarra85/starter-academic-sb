@@ -1,47 +1,51 @@
 {
   "id": "2026-2027",
   "seasonId": "2026-2027",
-  "generatedAt": "2026-09-02T12:46:51.812Z",
+  "generatedAt": "2026-09-02T12:59:11.990Z",
   "teams": [
     {
       "id": "WMdzHRRpUP8lHvsdwM7W",
-      "isCurrent": true,
-      "createdAt": {
-        "seconds": 1778833655,
-        "nanoseconds": 22000000
-      },
+      "canonicalName": "Ac Milan",
+      "notes": "",
       "logo": "./assets/logos/acmilan.png",
       "currentPresidentIds": [
         "kjxSsudO432wf4zEnDjg"
       ],
-      "canonicalName": "Ac Milan",
       "updatedAt": {
         "seconds": 1778954300,
         "nanoseconds": 877000000
       },
-      "notes": ""
+      "createdAt": {
+        "seconds": 1778833655,
+        "nanoseconds": 22000000
+      },
+      "isCurrent": true
     },
     {
       "id": "h6saeK7uRQIQNmiZTRT7",
-      "logo": "./assets/logos/baronissi.png",
-      "updatedAt": {
-        "seconds": 1778954328,
-        "nanoseconds": 573000000
-      },
+      "canonicalName": "Afc Severgas Baronissi",
+      "isCurrent": true,
+      "notes": "",
+      "currentPresidentIds": [
+        "Mw12sFS1OoS8V5uzBLLw"
+      ],
       "createdAt": {
         "seconds": 1778833643,
         "nanoseconds": 350000000
       },
-      "canonicalName": "Afc Severgas Baronissi",
-      "currentPresidentIds": [
-        "Mw12sFS1OoS8V5uzBLLw"
-      ],
-      "isCurrent": true,
-      "notes": ""
+      "updatedAt": {
+        "seconds": 1778954328,
+        "nanoseconds": 573000000
+      },
+      "logo": "./assets/logos/baronissi.png"
     },
     {
       "id": "7Bx0ceGBXtF4FwH6T0PI",
-      "canonicalName": "As Paperopoli",
+      "updatedAt": {
+        "seconds": 1778954349,
+        "nanoseconds": 563000000
+      },
+      "logo": "./assets/logos/paperopoli.png",
       "isCurrent": true,
       "currentPresidentIds": [
         "JaSqcnTZUYHtjHXghADS"
@@ -50,123 +54,117 @@
         "seconds": 1778833666,
         "nanoseconds": 871000000
       },
-      "logo": "./assets/logos/paperopoli.png",
       "notes": "",
-      "updatedAt": {
-        "seconds": 1778954349,
-        "nanoseconds": 563000000
-      }
+      "canonicalName": "As Paperopoli"
     },
     {
       "id": "team_002",
-      "logo": "./assets/logos/beetlejuice.png",
       "notes": "",
       "updatedAt": {
         "seconds": 1778954366,
         "nanoseconds": 223000000
       },
+      "canonicalName": "Beetlejuice",
+      "logo": "./assets/logos/beetlejuice.png",
+      "isCurrent": true,
       "currentPresidentIds": [
         "Hm25jirYQUj1biv6VFpJ"
-      ],
-      "canonicalName": "Beetlejuice",
-      "isCurrent": true
+      ]
     },
     {
       "id": "Y3VMcdWVUT0U1Tlsg4qc",
-      "canonicalName": "FC DueFratelli2005",
-      "createdAt": {
-        "seconds": 1778833681,
-        "nanoseconds": 932000000
-      },
-      "currentPresidentIds": [
-        "9pAjdkP5bPc5ldLlbfPP"
-      ],
       "updatedAt": {
         "seconds": 1779377884,
         "nanoseconds": 912000000
       },
-      "notes": "",
       "logo": "./assets/logos/due_fratelli.png",
-      "isCurrent": true
+      "createdAt": {
+        "seconds": 1778833681,
+        "nanoseconds": 932000000
+      },
+      "isCurrent": true,
+      "currentPresidentIds": [
+        "9pAjdkP5bPc5ldLlbfPP"
+      ],
+      "notes": "",
+      "canonicalName": "FC DueFratelli2005"
     },
     {
       "id": "GDisIDfbuSeLVm64PSR3",
-      "currentPresidentIds": [
-        "cbA5rKY8ItVmgRqhUasz"
-      ],
       "isCurrent": true,
-      "canonicalName": "Olympic Salerno FC",
       "createdAt": {
         "seconds": 1778833581,
         "nanoseconds": 658000000
       },
       "notes": "",
+      "canonicalName": "Olympic Salerno FC",
       "updatedAt": {
         "seconds": 1779377921,
         "nanoseconds": 533000000
       },
+      "currentPresidentIds": [
+        "cbA5rKY8ItVmgRqhUasz"
+      ],
       "logo": "./assets/logos/olympic_salerno.png"
     },
     {
       "id": "uQSBHtctytBo7koOKndM",
       "notes": "",
-      "currentPresidentIds": [
-        "uvxNCO3JS0ZGPr8PCbzN"
-      ],
       "isCurrent": true,
       "logo": "./assets/logos/prestige.png",
-      "updatedAt": {
-        "seconds": 1778954439,
-        "nanoseconds": 214000000
-      },
-      "canonicalName": "Prestige Worldwide",
       "createdAt": {
         "seconds": 1778833571,
         "nanoseconds": 416000000
+      },
+      "canonicalName": "Prestige Worldwide",
+      "currentPresidentIds": [
+        "uvxNCO3JS0ZGPr8PCbzN"
+      ],
+      "updatedAt": {
+        "seconds": 1778954439,
+        "nanoseconds": 214000000
       }
     },
     {
       "id": "FT1tqdqI18iUh3l1lakQ",
-      "notes": "",
-      "isCurrent": true,
       "canonicalName": "real mappine",
+      "notes": "",
+      "logo": "./assets/logos/real_mappine.png",
+      "isCurrent": true,
+      "currentPresidentIds": [
+        "2yHHP653ChQrYxnQHMk3"
+      ],
       "createdAt": {
         "seconds": 1778833596,
         "nanoseconds": 670000000
       },
-      "logo": "./assets/logos/real_mappine.png",
       "updatedAt": {
         "seconds": 1778954461,
         "nanoseconds": 197000000
-      },
-      "currentPresidentIds": [
-        "2yHHP653ChQrYxnQHMk3"
-      ]
+      }
     },
     {
       "id": "team_001",
+      "currentPresidentIds": [
+        "ueJtI9xTYmZhDmWrZDzZ"
+      ],
+      "notes": "",
+      "canonicalName": "Real Pisistrius",
       "updatedAt": {
         "seconds": 1778954495,
         "nanoseconds": 409000000
       },
-      "notes": "",
-      "currentPresidentIds": [
-        "ueJtI9xTYmZhDmWrZDzZ"
-      ],
       "logo": "./assets/logos/real_pisistrius.png",
-      "canonicalName": "Real Pisistrius",
       "isCurrent": true
     },
     {
       "id": "ULwTIMBi3dyYrq0SoEsx",
-      "isCurrent": true,
       "logo": "./assets/logos/river_plaid.png",
-      "notes": "",
       "updatedAt": {
         "seconds": 1778954524,
         "nanoseconds": 667000000
       },
-      "canonicalName": "River Plaid",
+      "isCurrent": true,
       "createdAt": {
         "seconds": 1778833556,
         "nanoseconds": 33000000
@@ -174,68 +172,71 @@
       "currentPresidentIds": [
         "6UBSv1GUTCxSNrRb8dZr",
         "7KbTM1lnzIThNWcF0NKL"
-      ]
+      ],
+      "canonicalName": "River Plaid",
+      "notes": ""
     }
   ],
   "presidents": [
     {
       "id": "6UBSv1GUTCxSNrRb8dZr",
       "name": "Claudio D'Isanto",
-      "updatedAt": {
-        "seconds": 1778832834,
-        "nanoseconds": 979000000
-      },
       "isActive": true,
+      "notes": "",
       "createdAt": {
         "seconds": 1778832834,
         "nanoseconds": 979000000
       },
-      "notes": ""
+      "updatedAt": {
+        "seconds": 1778832834,
+        "nanoseconds": 979000000
+      }
     },
     {
       "id": "uvxNCO3JS0ZGPr8PCbzN",
-      "notes": "",
-      "isActive": true,
       "name": "Davide Perruso",
       "updatedAt": {
         "seconds": 1778832855,
         "nanoseconds": 565000000
       },
+      "notes": "",
       "createdAt": {
         "seconds": 1778832855,
         "nanoseconds": 565000000
-      }
+      },
+      "isActive": true
     },
     {
       "id": "cbA5rKY8ItVmgRqhUasz",
-      "name": "Fabio Gatto",
+      "isActive": true,
       "createdAt": {
         "seconds": 1778832819,
         "nanoseconds": 357000000
       },
-      "isActive": true,
       "updatedAt": {
         "seconds": 1778832819,
         "nanoseconds": 357000000
       },
+      "name": "Fabio Gatto",
       "notes": ""
     },
     {
       "id": "7KbTM1lnzIThNWcF0NKL",
+      "updatedAt": {
+        "seconds": 1778832829,
+        "nanoseconds": 62000000
+      },
       "createdAt": {
         "seconds": 1778832829,
         "nanoseconds": 62000000
       },
       "isActive": true,
-      "updatedAt": {
-        "seconds": 1778832829,
-        "nanoseconds": 62000000
-      },
-      "notes": "",
-      "name": "Gaetano Alfinito"
+      "name": "Gaetano Alfinito",
+      "notes": ""
     },
     {
       "id": "JaSqcnTZUYHtjHXghADS",
+      "isActive": true,
       "createdAt": {
         "seconds": 1778832849,
         "nanoseconds": 508000000
@@ -245,64 +246,63 @@
         "seconds": 1778832849,
         "nanoseconds": 508000000
       },
-      "isActive": true,
       "notes": ""
     },
     {
       "id": "Mw12sFS1OoS8V5uzBLLw",
-      "createdAt": {
-        "seconds": 1778832808,
-        "nanoseconds": 887000000
-      },
-      "name": "Gianluca Caparrotti",
-      "notes": "",
       "updatedAt": {
         "seconds": 1778832808,
         "nanoseconds": 887000000
       },
-      "isActive": true
+      "createdAt": {
+        "seconds": 1778832808,
+        "nanoseconds": 887000000
+      },
+      "notes": "",
+      "isActive": true,
+      "name": "Gianluca Caparrotti"
     },
     {
       "id": "kjxSsudO432wf4zEnDjg",
       "name": "Giosuè Vicinanza",
-      "isActive": true,
-      "notes": "",
       "updatedAt": {
         "seconds": 1778832889,
         "nanoseconds": 760000000
       },
+      "notes": "",
       "createdAt": {
         "seconds": 1778832889,
         "nanoseconds": 760000000
-      }
+      },
+      "isActive": true
     },
     {
       "id": "2yHHP653ChQrYxnQHMk3",
+      "name": "Mario Guariglia",
+      "notes": "",
       "createdAt": {
         "seconds": 1778832813,
         "nanoseconds": 937000000
       },
-      "isActive": true,
-      "notes": "",
-      "name": "Mario Guariglia",
       "updatedAt": {
         "seconds": 1778832813,
         "nanoseconds": 937000000
-      }
+      },
+      "isActive": true
     },
     {
       "id": "9pAjdkP5bPc5ldLlbfPP",
+      "notes": "",
+      "name": "Michele D'Isanto",
+      "isActive": true,
       "createdAt": {
         "seconds": 1778832840,
         "nanoseconds": 365000000
       },
-      "notes": "",
       "updatedAt": {
         "seconds": 1778832840,
         "nanoseconds": 365000000
-      },
-      "name": "Michele D'Isanto",
-      "isActive": true
+      }
     },
     {
       "id": "ueJtI9xTYmZhDmWrZDzZ",
@@ -310,410 +310,410 @@
         "seconds": 1778832793,
         "nanoseconds": 929000000
       },
-      "isActive": true,
       "createdAt": {
         "seconds": 1778832793,
         "nanoseconds": 929000000
       },
+      "isActive": true,
       "name": "Silvio Barra",
       "notes": ""
     },
     {
       "id": "Hm25jirYQUj1biv6VFpJ",
-      "createdAt": {
-        "seconds": 1778832743,
-        "nanoseconds": 604000000
-      },
-      "isActive": true,
-      "name": "Zio Dino",
       "updatedAt": {
         "seconds": 1778832743,
         "nanoseconds": 604000000
       },
-      "notes": ""
+      "createdAt": {
+        "seconds": 1778832743,
+        "nanoseconds": 604000000
+      },
+      "name": "Zio Dino",
+      "notes": "",
+      "isActive": true
     }
   ],
   "seasonTeams": [
     {
       "id": "2026_2027_wmdzhrrpup8lhvsdwm7w",
-      "previousSeasonTeamId": "2025-2026_wmdzhrrpup8lhvsdwm7w",
+      "presidentIds": [
+        "kjxSsudO432wf4zEnDjg"
+      ],
+      "isHistorical": false,
       "updatedAt": {
         "seconds": 1783158801,
         "nanoseconds": 427000000
       },
+      "previousSeasonTeamId": "2025-2026_wmdzhrrpup8lhvsdwm7w",
+      "seasonId": "2026-2027",
+      "name": "Ac Milan",
+      "logo": "",
+      "teamId": "WMdzHRRpUP8lHvsdwM7W",
       "createdAt": {
         "seconds": 1783158801,
         "nanoseconds": 427000000
-      },
-      "presidentIds": [
-        "kjxSsudO432wf4zEnDjg"
-      ],
-      "teamId": "WMdzHRRpUP8lHvsdwM7W",
-      "isHistorical": false,
-      "logo": "",
-      "name": "Ac Milan",
-      "seasonId": "2026-2027"
+      }
     },
     {
       "id": "2026_2027_h6saek7urqiqnmiztrt7",
-      "isHistorical": false,
-      "logo": "",
       "name": "Afc Severgas Baronissi",
-      "createdAt": {
-        "seconds": 1783158801,
-        "nanoseconds": 547000000
-      },
-      "presidentIds": [
-        "Mw12sFS1OoS8V5uzBLLw"
-      ],
+      "previousSeasonTeamId": "2025-2026_h6saek7urqiqnmiztrt7",
+      "seasonId": "2026-2027",
+      "logo": "",
       "teamId": "h6saeK7uRQIQNmiZTRT7",
       "updatedAt": {
         "seconds": 1783158801,
         "nanoseconds": 547000000
       },
-      "seasonId": "2026-2027",
-      "previousSeasonTeamId": "2025-2026_h6saek7urqiqnmiztrt7"
+      "isHistorical": false,
+      "presidentIds": [
+        "Mw12sFS1OoS8V5uzBLLw"
+      ],
+      "createdAt": {
+        "seconds": 1783158801,
+        "nanoseconds": 547000000
+      }
     },
     {
       "id": "2026_2027_7bx0cegbxtf4fwh6t0pi",
-      "createdAt": {
-        "seconds": 1783158801,
-        "nanoseconds": 646000000
-      },
-      "updatedAt": {
-        "seconds": 1783158801,
-        "nanoseconds": 646000000
-      },
-      "name": "As Paperopoli",
-      "logo": "",
       "teamId": "7Bx0ceGBXtF4FwH6T0PI",
+      "isHistorical": false,
       "presidentIds": [
         "JaSqcnTZUYHtjHXghADS"
       ],
-      "seasonId": "2026-2027",
+      "createdAt": {
+        "seconds": 1783158801,
+        "nanoseconds": 646000000
+      },
       "previousSeasonTeamId": "2025-2026_7bx0cegbxtf4fwh6t0pi",
-      "isHistorical": false
+      "seasonId": "2026-2027",
+      "updatedAt": {
+        "seconds": 1783158801,
+        "nanoseconds": 646000000
+      },
+      "logo": "",
+      "name": "As Paperopoli"
     },
     {
       "id": "2026_2027_team_002",
-      "presidentIds": [
-        "Hm25jirYQUj1biv6VFpJ"
-      ],
-      "seasonId": "2026-2027",
-      "isHistorical": false,
-      "teamId": "team_002",
-      "previousSeasonTeamId": "2025-2026_team-002",
+      "name": "Beetlejuice",
       "updatedAt": {
         "seconds": 1783158801,
         "nanoseconds": 789000000
       },
+      "logo": "",
+      "teamId": "team_002",
+      "seasonId": "2026-2027",
+      "isHistorical": false,
+      "presidentIds": [
+        "Hm25jirYQUj1biv6VFpJ"
+      ],
       "createdAt": {
         "seconds": 1783158801,
         "nanoseconds": 789000000
       },
-      "name": "Beetlejuice",
-      "logo": ""
+      "previousSeasonTeamId": "2025-2026_team-002"
     },
     {
       "id": "2026_2027_y3vmcdwvut0u1tlsg4qc",
-      "presidentIds": [
-        "9pAjdkP5bPc5ldLlbfPP"
-      ],
       "teamId": "Y3VMcdWVUT0U1Tlsg4qc",
-      "name": "FC DueFratelli2005",
-      "logo": "assets/logos/due_fratelli_2.jpeg",
-      "isHistorical": false,
       "updatedAt": {
         "seconds": 1783188895,
         "nanoseconds": 26000000
       },
+      "name": "FC DueFratelli2005",
+      "seasonId": "2026-2027",
+      "presidentIds": [
+        "9pAjdkP5bPc5ldLlbfPP"
+      ],
+      "isHistorical": false,
       "createdAt": {
         "seconds": 1783158801,
         "nanoseconds": 946000000
       },
       "previousSeasonTeamId": "2025-2026_y3vmcdwvut0u1tlsg4qc",
-      "seasonId": "2026-2027"
+      "logo": "assets/logos/due_fratelli_2.jpeg"
     },
     {
       "id": "2026_2027_gdisidfbuselvm64psr3",
+      "name": "Olympic Salerno FC",
+      "seasonId": "2026-2027",
+      "previousSeasonTeamId": "2025-2026_gdisidfbuselvm64psr3",
+      "logo": "",
+      "updatedAt": {
+        "seconds": 1783158802,
+        "nanoseconds": 11000000
+      },
+      "createdAt": {
+        "seconds": 1783158802,
+        "nanoseconds": 11000000
+      },
+      "isHistorical": false,
       "presidentIds": [
         "cbA5rKY8ItVmgRqhUasz"
       ],
-      "teamId": "GDisIDfbuSeLVm64PSR3",
-      "seasonId": "2026-2027",
-      "isHistorical": false,
-      "previousSeasonTeamId": "2025-2026_gdisidfbuselvm64psr3",
-      "updatedAt": {
-        "seconds": 1783158802,
-        "nanoseconds": 11000000
-      },
-      "createdAt": {
-        "seconds": 1783158802,
-        "nanoseconds": 11000000
-      },
-      "name": "Olympic Salerno FC",
-      "logo": ""
+      "teamId": "GDisIDfbuSeLVm64PSR3"
     },
     {
       "id": "2026_2027_uqsbhtctytbo7kookndm",
-      "teamId": "uQSBHtctytBo7koOKndM",
       "isHistorical": false,
-      "createdAt": {
-        "seconds": 1783158802,
-        "nanoseconds": 118000000
-      },
       "presidentIds": [
         "uvxNCO3JS0ZGPr8PCbzN"
       ],
-      "updatedAt": {
+      "previousSeasonTeamId": "2025-2026_uqsbhtctytbo7kookndm",
+      "createdAt": {
         "seconds": 1783158802,
         "nanoseconds": 118000000
       },
-      "seasonId": "2026-2027",
-      "previousSeasonTeamId": "2025-2026_uqsbhtctytbo7kookndm",
       "logo": "",
-      "name": "Prestige Worldwide"
+      "name": "Prestige Worldwide",
+      "seasonId": "2026-2027",
+      "teamId": "uQSBHtctytBo7koOKndM",
+      "updatedAt": {
+        "seconds": 1783158802,
+        "nanoseconds": 118000000
+      }
     },
     {
       "id": "2026_2027_ft1tqdqi18iuh3l1lakq",
-      "createdAt": {
-        "seconds": 1783158802,
-        "nanoseconds": 214000000
-      },
       "seasonId": "2026-2027",
-      "teamId": "FT1tqdqI18iUh3l1lakQ",
+      "previousSeasonTeamId": "2025-2026_ft1tqdqi18iuh3l1lakq",
       "updatedAt": {
         "seconds": 1783158802,
         "nanoseconds": 214000000
       },
-      "previousSeasonTeamId": "2025-2026_ft1tqdqi18iuh3l1lakq",
+      "isHistorical": false,
       "presidentIds": [
         "2yHHP653ChQrYxnQHMk3"
       ],
+      "teamId": "FT1tqdqI18iUh3l1lakQ",
       "name": "real mappine",
-      "logo": "",
-      "isHistorical": false
+      "createdAt": {
+        "seconds": 1783158802,
+        "nanoseconds": 214000000
+      },
+      "logo": ""
     },
     {
       "id": "2026_2027_team_001",
+      "logo": "assets/logos/real_pisistrius_2.png",
+      "name": "Real Pisistrius",
       "teamId": "team_001",
+      "seasonId": "2026-2027",
+      "isHistorical": false,
       "presidentIds": [
         "ueJtI9xTYmZhDmWrZDzZ"
       ],
-      "previousSeasonTeamId": "2025-2026_team-001",
-      "createdAt": {
-        "seconds": 1783158802,
-        "nanoseconds": 307000000
-      },
-      "isHistorical": false,
       "updatedAt": {
         "seconds": 1783158948,
         "nanoseconds": 338000000
       },
-      "seasonId": "2026-2027",
-      "logo": "assets/logos/real_pisistrius_2.png",
-      "name": "Real Pisistrius"
+      "previousSeasonTeamId": "2025-2026_team-001",
+      "createdAt": {
+        "seconds": 1783158802,
+        "nanoseconds": 307000000
+      }
     },
     {
       "id": "2026_2027_ulwtimbi3dyyrq0soesx",
-      "createdAt": {
-        "seconds": 1783158802,
-        "nanoseconds": 408000000
-      },
+      "presidentIds": [
+        "6UBSv1GUTCxSNrRb8dZr",
+        "7KbTM1lnzIThNWcF0NKL"
+      ],
       "isHistorical": false,
       "updatedAt": {
         "seconds": 1783158802,
         "nanoseconds": 408000000
       },
       "previousSeasonTeamId": "2025-2026_ulwtimbi3dyyrq0soesx",
-      "presidentIds": [
-        "6UBSv1GUTCxSNrRb8dZr",
-        "7KbTM1lnzIThNWcF0NKL"
-      ],
-      "teamId": "ULwTIMBi3dyYrq0SoEsx",
-      "name": "River Plaid",
+      "seasonId": "2026-2027",
+      "createdAt": {
+        "seconds": 1783158802,
+        "nanoseconds": 408000000
+      },
       "logo": "",
-      "seasonId": "2026-2027"
+      "name": "River Plaid",
+      "teamId": "ULwTIMBi3dyYrq0SoEsx"
     }
   ],
   "stadiums": [
     {
       "id": "2026_2027_2026_2027_7bx0cegbxtf4fwh6t0pi_stadium",
-      "createdAt": {
-        "seconds": 1783158802,
-        "nanoseconds": 511000000
-      },
+      "seasonId": "2026-2027",
+      "level": 1,
+      "previousStadiumId": "stadium_2025-2026-7bx0cegbxtf4fwh6t0pi",
+      "name": "Topolinia Stadium",
       "updatedAt": {
         "seconds": 1783158802,
         "nanoseconds": 511000000
       },
-      "previousStadiumId": "stadium_2025-2026-7bx0cegbxtf4fwh6t0pi",
-      "seasonId": "2026-2027",
       "seasonTeamId": "2026_2027_7bx0cegbxtf4fwh6t0pi",
-      "name": "Topolinia Stadium",
-      "level": 1
+      "createdAt": {
+        "seconds": 1783158802,
+        "nanoseconds": 511000000
+      }
     },
     {
       "id": "2026_2027_2026_2027_ft1tqdqi18iuh3l1lakq_stadium",
+      "name": "Mappine Arena",
+      "seasonId": "2026-2027",
+      "level": 2,
+      "seasonTeamId": "2026_2027_ft1tqdqi18iuh3l1lakq",
       "updatedAt": {
         "seconds": 1783158802,
         "nanoseconds": 603000000
       },
-      "level": 2,
       "createdAt": {
         "seconds": 1783158802,
         "nanoseconds": 603000000
       },
-      "name": "Mappine Arena",
-      "seasonTeamId": "2026_2027_ft1tqdqi18iuh3l1lakq",
-      "previousStadiumId": "stadium_2025-2026-ft1tqdqi18iuh3l1lakq",
-      "seasonId": "2026-2027"
+      "previousStadiumId": "stadium_2025-2026-ft1tqdqi18iuh3l1lakq"
     },
     {
       "id": "2026_2027_2026_2027_gdisidfbuselvm64psr3_stadium",
-      "seasonTeamId": "2026_2027_gdisidfbuselvm64psr3",
+      "previousStadiumId": "stadium_2025-2026-gdisidfbuselvm64psr3",
+      "name": "Olympic Stadium",
       "createdAt": {
         "seconds": 1783158802,
         "nanoseconds": 704000000
       },
-      "seasonId": "2026-2027",
-      "name": "Olympic Stadium",
       "updatedAt": {
         "seconds": 1783158802,
         "nanoseconds": 704000000
       },
+      "seasonId": "2026-2027",
       "level": 2,
-      "previousStadiumId": "stadium_2025-2026-gdisidfbuselvm64psr3"
+      "seasonTeamId": "2026_2027_gdisidfbuselvm64psr3"
     },
     {
       "id": "2026_2027_2026_2027_h6saek7urqiqnmiztrt7_stadium",
-      "previousStadiumId": "stadium_2025-2026-h6saek7urqiqnmiztrt7",
-      "seasonTeamId": "2026_2027_h6saek7urqiqnmiztrt7",
-      "updatedAt": {
-        "seconds": 1783158802,
-        "nanoseconds": 800000000
-      },
       "createdAt": {
         "seconds": 1783158802,
         "nanoseconds": 800000000
       },
-      "seasonId": "2026-2027",
       "name": "Squirting Lisbona Stadium",
-      "level": 3
+      "updatedAt": {
+        "seconds": 1783158802,
+        "nanoseconds": 800000000
+      },
+      "level": 3,
+      "seasonTeamId": "2026_2027_h6saek7urqiqnmiztrt7",
+      "seasonId": "2026-2027",
+      "previousStadiumId": "stadium_2025-2026-h6saek7urqiqnmiztrt7"
     },
     {
       "id": "2026_2027_2026_2027_team_001_stadium",
-      "seasonId": "2026-2027",
-      "seasonTeamId": "2026_2027_team_001",
-      "level": 1,
       "name": "E Renar Arena",
       "createdAt": {
         "seconds": 1783158802,
         "nanoseconds": 898000000
       },
+      "seasonTeamId": "2026_2027_team_001",
       "updatedAt": {
         "seconds": 1783158802,
         "nanoseconds": 898000000
       },
-      "previousStadiumId": "stadium_2025-2026-team-001"
+      "previousStadiumId": "stadium_2025-2026-team-001",
+      "level": 1,
+      "seasonId": "2026-2027"
     },
     {
       "id": "2026_2027_2026_2027_team_002_stadium",
-      "seasonId": "2026-2027",
       "name": "Stadio Monumental",
+      "seasonTeamId": "2026_2027_team_002",
+      "seasonId": "2026-2027",
+      "updatedAt": {
+        "seconds": 1783158802,
+        "nanoseconds": 991000000
+      },
       "previousStadiumId": "stadium_2025-2026-team-002",
       "level": 2,
       "createdAt": {
         "seconds": 1783158802,
         "nanoseconds": 991000000
-      },
-      "updatedAt": {
-        "seconds": 1783158802,
-        "nanoseconds": 991000000
-      },
-      "seasonTeamId": "2026_2027_team_002"
+      }
     },
     {
       "id": "2026_2027_2026_2027_ulwtimbi3dyyrq0soesx_stadium",
+      "name": "Giuly Stadium",
       "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_ulwtimbi3dyyrq0soesx",
       "level": 2,
-      "previousStadiumId": "stadium_2025-2026-ulwtimbi3dyyrq0soesx",
-      "createdAt": {
+      "updatedAt": {
         "seconds": 1783158803,
         "nanoseconds": 93000000
       },
-      "seasonTeamId": "2026_2027_ulwtimbi3dyyrq0soesx",
-      "name": "Giuly Stadium",
-      "updatedAt": {
+      "previousStadiumId": "stadium_2025-2026-ulwtimbi3dyyrq0soesx",
+      "createdAt": {
         "seconds": 1783158803,
         "nanoseconds": 93000000
       }
     },
     {
       "id": "2026_2027_2026_2027_uqsbhtctytbo7kookndm_stadium",
-      "createdAt": {
-        "seconds": 1783158803,
-        "nanoseconds": 199000000
-      },
+      "previousStadiumId": "stadium_2025-2026-uqsbhtctytbo7kookndm",
+      "level": 3,
       "seasonId": "2026-2027",
       "name": "Estadio Monumental \"Pastena\"",
-      "previousStadiumId": "stadium_2025-2026-uqsbhtctytbo7kookndm",
       "updatedAt": {
         "seconds": 1783158803,
         "nanoseconds": 199000000
       },
       "seasonTeamId": "2026_2027_uqsbhtctytbo7kookndm",
-      "level": 3
+      "createdAt": {
+        "seconds": 1783158803,
+        "nanoseconds": 199000000
+      }
     },
     {
       "id": "2026_2027_2026_2027_wmdzhrrpup8lhvsdwm7w_stadium",
-      "level": 0,
-      "seasonTeamId": "2026_2027_wmdzhrrpup8lhvsdwm7w",
-      "name": "- nessuno stadio -",
-      "seasonId": "2026-2027",
-      "createdAt": {
-        "seconds": 1783158803,
-        "nanoseconds": 281000000
-      },
+      "previousStadiumId": "stadium_2025-2026-wmdzhrrpup8lhvsdwm7w",
       "updatedAt": {
         "seconds": 1783158803,
         "nanoseconds": 281000000
       },
-      "previousStadiumId": "stadium_2025-2026-wmdzhrrpup8lhvsdwm7w"
+      "createdAt": {
+        "seconds": 1783158803,
+        "nanoseconds": 281000000
+      },
+      "seasonId": "2026-2027",
+      "level": 0,
+      "seasonTeamId": "2026_2027_wmdzhrrpup8lhvsdwm7w",
+      "name": "- nessuno stadio -"
     },
     {
       "id": "2026_2027_2026_2027_y3vmcdwvut0u1tlsg4qc_stadium",
+      "level": 2,
       "seasonId": "2026-2027",
+      "updatedAt": {
+        "seconds": 1783158803,
+        "nanoseconds": 391000000
+      },
       "previousStadiumId": "stadium_2025-2026-y3vmcdwvut0u1tlsg4qc",
       "seasonTeamId": "2026_2027_y3vmcdwvut0u1tlsg4qc",
       "createdAt": {
         "seconds": 1783158803,
         "nanoseconds": 391000000
       },
-      "name": "Gattistuta Stadium",
-      "level": 2,
-      "updatedAt": {
-        "seconds": 1783158803,
-        "nanoseconds": 391000000
-      }
+      "name": "Gattistuta Stadium"
     }
   ],
   "competitions": [
     {
       "id": "2026-2027_campionato",
-      "formula": "CLASSIFICA",
-      "type": "CAMPIONATO",
+      "seasonId": "2026-2027",
+      "name": "Campionato",
       "status": "ATTIVA",
       "updatedAt": {
         "seconds": 1783158829,
         "nanoseconds": 306000000
       },
-      "seasonId": "2026-2027",
-      "name": "Campionato",
+      "formula": "CLASSIFICA",
       "createdAt": {
         "seconds": 1783158829,
         "nanoseconds": 306000000
       },
+      "type": "CAMPIONATO",
       "staticCompetitionName": "Campionato",
       "format": "CLASSIFICA",
       "notes": "Calendario importato dal file Excel ufficiale della lega.",
@@ -722,19 +722,19 @@
     },
     {
       "id": "2026-2027_champions",
-      "status": "PROGRAMMATA",
-      "formula": "GIRONI_KO",
-      "type": "CHAMPIONS_LEAGUE",
       "seasonId": "2026-2027",
+      "status": "PROGRAMMATA",
+      "type": "CHAMPIONS_LEAGUE",
+      "name": "Champion's League",
       "updatedAt": {
         "seconds": 1783158829,
         "nanoseconds": 441000000
       },
+      "formula": "GIRONI_KO",
       "createdAt": {
         "seconds": 1783158829,
         "nanoseconds": 441000000
       },
-      "name": "Champion's League",
       "staticCompetitionName": "Champion's League",
       "format": "GIRONI_KO",
       "notes": "Calendario importato dal file Excel ufficiale della lega.",
@@ -743,19 +743,19 @@
     },
     {
       "id": "2026-2027_coppa_italia",
-      "createdAt": {
-        "seconds": 1783158829,
-        "nanoseconds": 375000000
-      },
+      "type": "COPPA_ITALIA",
       "updatedAt": {
         "seconds": 1783158829,
         "nanoseconds": 375000000
       },
-      "name": "Coppa Italia",
       "seasonId": "2026-2027",
+      "createdAt": {
+        "seconds": 1783158829,
+        "nanoseconds": 375000000
+      },
       "formula": "GIRONI_KO",
-      "type": "COPPA_ITALIA",
       "status": "PROGRAMMATA",
+      "name": "Coppa Italia",
       "staticCompetitionName": "Coppa Italia",
       "format": "BATTLE_ROYALE",
       "notes": "Fase Battle Royale: 4 giornate senza calendario casa/trasferta; ogni giornata coinvolge tutte le 10 squadre.",
@@ -764,43 +764,43 @@
     },
     {
       "id": "2026-2027_playoff",
-      "seasonId": "2026-2027",
       "formula": "GIRONI_KO",
+      "createdAt": {
+        "seconds": 1783158829,
+        "nanoseconds": 579000000
+      },
       "name": "Playoff",
-      "type": "PLAYOFF",
       "updatedAt": {
         "seconds": 1783158829,
         "nanoseconds": 579000000
       },
       "status": "PLANNED",
-      "createdAt": {
-        "seconds": 1783158829,
-        "nanoseconds": 579000000
-      }
+      "type": "PLAYOFF",
+      "seasonId": "2026-2027"
     }
   ],
   "competitionMatches": [
     {
       "id": "2026-2027_campionato_g2_10",
-      "awaySeasonTeamId": "2026_2027_wmdzhrrpup8lhvsdwm7w",
-      "seasonId": "2026-2027",
-      "matchDate": "2026-08-30",
+      "awayScore": 71.5,
+      "notes": "",
+      "homeSeasonTeamId": "2026_2027_gdisidfbuselvm64psr3",
+      "status": "GIOCATA",
       "updatedAt": {
         "seconds": 1788265468,
         "nanoseconds": 130000000
       },
-      "deleted": false,
-      "awayGoals": 1,
-      "matchday": "2° Giornata",
-      "competitionId": "2026-2027_campionato",
-      "notes": "",
-      "status": "GIOCATA",
       "source": "firebase-admin-v795+static-competition-calendar",
-      "awayScore": 71.5,
-      "serieAMatchday": 2,
+      "deleted": false,
       "homeGoals": 2,
-      "homeSeasonTeamId": "2026_2027_gdisidfbuselvm64psr3",
+      "serieAMatchday": 2,
+      "awayGoals": 1,
+      "seasonId": "2026-2027",
+      "competitionId": "2026-2027_campionato",
+      "awaySeasonTeamId": "2026_2027_wmdzhrrpup8lhvsdwm7w",
       "homeScore": 77.5,
+      "matchday": "2° Giornata",
+      "matchDate": "2026-08-30",
       "stage": "CAMPIONATO",
       "leagueMatchday": 2,
       "homeTeamName": "Olympic Salerno FC",
@@ -811,25 +811,25 @@
     },
     {
       "id": "2026-2027_campionato_g2_2",
-      "seasonId": "2026-2027",
-      "status": "GIOCATA",
-      "source": "firebase-admin-v795+static-competition-calendar",
-      "homeSeasonTeamId": "2026_2027_uqsbhtctytbo7kookndm",
-      "matchDate": "2026-08-30",
+      "competitionId": "2026-2027_campionato",
       "updatedAt": {
         "seconds": 1788265415,
         "nanoseconds": 97000000
       },
-      "matchday": "2° Giornata",
-      "awayGoals": 2,
-      "competitionId": "2026-2027_campionato",
-      "serieAMatchday": 2,
-      "awayScore": 72.5,
-      "notes": "",
-      "homeScore": 71,
-      "homeGoals": 1,
       "awaySeasonTeamId": "2026_2027_h6saek7urqiqnmiztrt7",
+      "awayScore": 72.5,
+      "matchDate": "2026-08-30",
+      "homeSeasonTeamId": "2026_2027_uqsbhtctytbo7kookndm",
+      "matchday": "2° Giornata",
+      "serieAMatchday": 2,
+      "status": "GIOCATA",
       "deleted": false,
+      "homeScore": 71,
+      "source": "firebase-admin-v795+static-competition-calendar",
+      "notes": "",
+      "awayGoals": 2,
+      "homeGoals": 1,
+      "seasonId": "2026-2027",
       "stage": "CAMPIONATO",
       "leagueMatchday": 2,
       "homeTeamName": "Prestige Worldwide",
@@ -840,25 +840,25 @@
     },
     {
       "id": "2026-2027_campionato_g2_4",
+      "homeScore": 67,
+      "matchDate": "2026-08-30",
       "awaySeasonTeamId": "2026_2027_team_001",
-      "matchday": "2° Giornata",
+      "homeGoals": 1,
+      "serieAMatchday": 2,
       "awayGoals": 3,
-      "deleted": false,
       "source": "firebase-admin-v795+static-competition-calendar",
+      "status": "GIOCATA",
+      "seasonId": "2026-2027",
+      "deleted": false,
       "updatedAt": {
         "seconds": 1788265432,
         "nanoseconds": 212000000
       },
-      "matchDate": "2026-08-30",
-      "seasonId": "2026-2027",
       "competitionId": "2026-2027_campionato",
-      "notes": "",
-      "status": "GIOCATA",
-      "homeScore": 67,
-      "homeGoals": 1,
       "homeSeasonTeamId": "2026_2027_7bx0cegbxtf4fwh6t0pi",
+      "matchday": "2° Giornata",
       "awayScore": 81,
-      "serieAMatchday": 2,
+      "notes": "",
       "stage": "CAMPIONATO",
       "leagueMatchday": 2,
       "homeTeamName": "As Paperopoli",
@@ -869,25 +869,25 @@
     },
     {
       "id": "2026-2027_campionato_g2_6",
-      "serieAMatchday": 2,
-      "awayGoals": 2,
-      "awaySeasonTeamId": "2026_2027_y3vmcdwvut0u1tlsg4qc",
       "deleted": false,
-      "notes": "",
+      "matchday": "2° Giornata",
+      "awayGoals": 2,
+      "homeGoals": 1,
       "matchDate": "2026-08-30",
+      "seasonId": "2026-2027",
+      "homeScore": 66.5,
+      "homeSeasonTeamId": "2026_2027_ft1tqdqi18iuh3l1lakq",
       "updatedAt": {
         "seconds": 1788265449,
         "nanoseconds": 429000000
       },
-      "homeScore": 66.5,
-      "homeGoals": 1,
-      "seasonId": "2026-2027",
-      "matchday": "2° Giornata",
       "source": "firebase-admin-v795+static-competition-calendar",
-      "awayScore": 74,
-      "homeSeasonTeamId": "2026_2027_ft1tqdqi18iuh3l1lakq",
-      "competitionId": "2026-2027_campionato",
       "status": "GIOCATA",
+      "awaySeasonTeamId": "2026_2027_y3vmcdwvut0u1tlsg4qc",
+      "awayScore": 74,
+      "serieAMatchday": 2,
+      "notes": "",
+      "competitionId": "2026-2027_campionato",
       "stage": "CAMPIONATO",
       "leagueMatchday": 2,
       "homeTeamName": "real mappine",
@@ -898,24 +898,24 @@
     },
     {
       "id": "2026-2027_campionato_g2_8",
-      "awaySeasonTeamId": "2026_2027_ulwtimbi3dyyrq0soesx",
-      "serieAMatchday": 2,
-      "status": "GIOCATA",
-      "notes": "",
-      "matchday": "2° Giornata",
-      "awayScore": 63.5,
       "source": "firebase-admin-v795+static-competition-calendar",
-      "competitionId": "2026-2027_campionato",
-      "homeGoals": 1,
-      "homeScore": 67.5,
-      "seasonId": "2026-2027",
-      "matchDate": "2026-08-30",
       "updatedAt": {
         "seconds": 1788265458,
         "nanoseconds": 580000000
       },
+      "status": "GIOCATA",
+      "awaySeasonTeamId": "2026_2027_ulwtimbi3dyyrq0soesx",
+      "awayScore": 63.5,
+      "serieAMatchday": 2,
+      "competitionId": "2026-2027_campionato",
       "deleted": false,
       "awayGoals": 0,
+      "seasonId": "2026-2027",
+      "homeGoals": 1,
+      "matchday": "2° Giornata",
+      "matchDate": "2026-08-30",
+      "homeScore": 67.5,
+      "notes": "",
       "homeSeasonTeamId": "2026_2027_team_002",
       "stage": "CAMPIONATO",
       "leagueMatchday": 2,
@@ -927,25 +927,25 @@
     },
     {
       "id": "2026-2027_campionato_g1_1",
-      "competitionId": "2026-2027_campionato",
-      "awayScore": 61.5,
       "homeScore": 70,
-      "notes": "",
       "awaySeasonTeamId": "2026_2027_team_002",
-      "homeGoals": 1,
-      "deleted": false,
-      "homeSeasonTeamId": "2026_2027_h6saek7urqiqnmiztrt7",
-      "seasonId": "2026-2027",
-      "serieAMatchday": 1,
-      "source": "firebase-admin-v795+static-competition-calendar",
-      "status": "GIOCATA",
       "matchDate": "2026-08-23",
+      "homeGoals": 1,
+      "awayGoals": 0,
+      "serieAMatchday": 1,
+      "seasonId": "2026-2027",
+      "competitionId": "2026-2027_campionato",
+      "source": "firebase-admin-v795+static-competition-calendar",
+      "awayScore": 61.5,
+      "status": "GIOCATA",
+      "deleted": false,
+      "matchday": "1° Giornata",
+      "homeSeasonTeamId": "2026_2027_h6saek7urqiqnmiztrt7",
+      "notes": "",
       "updatedAt": {
         "seconds": 1788265350,
         "nanoseconds": 795000000
       },
-      "matchday": "1° Giornata",
-      "awayGoals": 0,
       "stage": "CAMPIONATO",
       "leagueMatchday": 1,
       "homeTeamName": "Afc Severgas Baronissi",
@@ -956,25 +956,25 @@
     },
     {
       "id": "2026-2027_campionato_g1_3",
-      "notes": "",
-      "serieAMatchday": 1,
-      "status": "GIOCATA",
-      "awayGoals": 0,
+      "homeGoals": 4,
       "source": "firebase-admin-v795+static-competition-calendar",
+      "awayGoals": 0,
+      "status": "GIOCATA",
+      "matchday": "1° Giornata",
+      "deleted": false,
+      "homeScore": 87,
+      "matchDate": "2026-08-23",
       "homeSeasonTeamId": "2026_2027_wmdzhrrpup8lhvsdwm7w",
+      "notes": "",
+      "seasonId": "2026-2027",
+      "serieAMatchday": 1,
       "updatedAt": {
         "seconds": 1788265367,
         "nanoseconds": 687000000
       },
-      "matchDate": "2026-08-23",
-      "matchday": "1° Giornata",
-      "homeScore": 87,
-      "competitionId": "2026-2027_campionato",
-      "homeGoals": 4,
-      "seasonId": "2026-2027",
       "awayScore": 61.5,
       "awaySeasonTeamId": "2026_2027_uqsbhtctytbo7kookndm",
-      "deleted": false,
+      "competitionId": "2026-2027_campionato",
       "stage": "CAMPIONATO",
       "leagueMatchday": 1,
       "homeTeamName": "Ac Milan",
@@ -985,25 +985,25 @@
     },
     {
       "id": "2026-2027_campionato_g1_5",
+      "homeGoals": 1,
+      "homeSeasonTeamId": "2026_2027_ulwtimbi3dyyrq0soesx",
+      "source": "firebase-admin-v795+static-competition-calendar",
+      "awayGoals": 2,
+      "status": "GIOCATA",
+      "competitionId": "2026-2027_campionato",
+      "deleted": false,
+      "homeScore": 67.5,
       "matchDate": "2026-08-23",
+      "awayScore": 72,
+      "serieAMatchday": 1,
+      "notes": "",
+      "matchday": "1° Giornata",
       "updatedAt": {
         "seconds": 1788265381,
         "nanoseconds": 161000000
       },
-      "source": "firebase-admin-v795+static-competition-calendar",
-      "competitionId": "2026-2027_campionato",
-      "deleted": false,
-      "status": "GIOCATA",
-      "notes": "",
-      "awayGoals": 2,
-      "serieAMatchday": 1,
       "awaySeasonTeamId": "2026_2027_ft1tqdqi18iuh3l1lakq",
-      "awayScore": 72,
       "seasonId": "2026-2027",
-      "homeSeasonTeamId": "2026_2027_ulwtimbi3dyyrq0soesx",
-      "matchday": "1° Giornata",
-      "homeGoals": 1,
-      "homeScore": 67.5,
       "stage": "CAMPIONATO",
       "leagueMatchday": 1,
       "homeTeamName": "River Plaid",
@@ -1014,25 +1014,25 @@
     },
     {
       "id": "2026-2027_campionato_g1_7",
-      "matchday": "1° Giornata",
+      "homeScore": 66.5,
+      "matchDate": "2026-08-23",
+      "homeSeasonTeamId": "2026_2027_y3vmcdwvut0u1tlsg4qc",
+      "deleted": false,
+      "serieAMatchday": 1,
+      "homeGoals": 1,
       "awayGoals": 2,
-      "seasonId": "2026-2027",
+      "source": "firebase-admin-v795+static-competition-calendar",
+      "status": "GIOCATA",
+      "matchday": "1° Giornata",
       "notes": "",
+      "seasonId": "2026-2027",
       "updatedAt": {
         "seconds": 1788265391,
         "nanoseconds": 154000000
       },
-      "matchDate": "2026-08-23",
-      "homeSeasonTeamId": "2026_2027_y3vmcdwvut0u1tlsg4qc",
       "competitionId": "2026-2027_campionato",
-      "source": "firebase-admin-v795+static-competition-calendar",
-      "homeScore": 66.5,
-      "status": "GIOCATA",
       "awaySeasonTeamId": "2026_2027_7bx0cegbxtf4fwh6t0pi",
-      "homeGoals": 1,
       "awayScore": 76.5,
-      "serieAMatchday": 1,
-      "deleted": false,
       "stage": "CAMPIONATO",
       "leagueMatchday": 1,
       "homeTeamName": "FC DueFratelli2005",
@@ -1043,25 +1043,25 @@
     },
     {
       "id": "2026-2027_campionato_g1_9",
-      "status": "GIOCATA",
-      "homeSeasonTeamId": "2026_2027_team_001",
-      "source": "firebase-admin-v795+static-competition-calendar",
-      "homeGoals": 3,
-      "homeScore": 79,
-      "awayScore": 75,
-      "serieAMatchday": 1,
-      "competitionId": "2026-2027_campionato",
-      "seasonId": "2026-2027",
-      "awayGoals": 2,
       "deleted": false,
-      "notes": "",
-      "awaySeasonTeamId": "2026_2027_gdisidfbuselvm64psr3",
-      "matchDate": "2026-08-23",
       "updatedAt": {
         "seconds": 1788265328,
         "nanoseconds": 881000000
       },
+      "awaySeasonTeamId": "2026_2027_gdisidfbuselvm64psr3",
+      "awayScore": 75,
+      "matchDate": "2026-08-23",
+      "seasonId": "2026-2027",
+      "notes": "",
+      "homeScore": 79,
+      "homeSeasonTeamId": "2026_2027_team_001",
+      "competitionId": "2026-2027_campionato",
+      "awayGoals": 2,
+      "homeGoals": 3,
       "matchday": "1° Giornata",
+      "status": "GIOCATA",
+      "serieAMatchday": 1,
+      "source": "firebase-admin-v795+static-competition-calendar",
       "stage": "CAMPIONATO",
       "leagueMatchday": 1,
       "homeTeamName": "Real Pisistrius",
@@ -9283,818 +9283,1002 @@
   "fmMovements": [
     {
       "id": "2026_2027_2026_2027_7bx0cegbxtf4fwh6t0pi_initial_budget",
-      "description": "Saldo riversato dalla stagione precedente",
-      "amount": 57,
-      "updatedAt": {
-        "seconds": 1783158828,
-        "nanoseconds": 123000000
-      },
-      "seasonId": "2026-2027",
       "createdAt": {
         "seconds": 1783158828,
         "nanoseconds": 123000000
       },
+      "description": "Saldo riversato dalla stagione precedente",
       "type": "INITIAL_BUDGET",
-      "seasonTeamId": "2026_2027_7bx0cegbxtf4fwh6t0pi",
-      "date": "2026-07-04"
+      "date": "2026-07-04",
+      "amount": 57,
+      "seasonId": "2026-2027",
+      "updatedAt": {
+        "seconds": 1783158828,
+        "nanoseconds": 123000000
+      },
+      "seasonTeamId": "2026_2027_7bx0cegbxtf4fwh6t0pi"
     },
     {
       "id": "2026_2027_2026_2027_ft1tqdqi18iuh3l1lakq_initial_budget",
       "type": "INITIAL_BUDGET",
-      "description": "Saldo riversato dalla stagione precedente",
-      "seasonId": "2026-2027",
       "date": "2026-07-04",
-      "seasonTeamId": "2026_2027_ft1tqdqi18iuh3l1lakq",
-      "amount": 90,
       "createdAt": {
         "seconds": 1783158828,
         "nanoseconds": 669000000
       },
+      "seasonTeamId": "2026_2027_ft1tqdqi18iuh3l1lakq",
+      "description": "Saldo riversato dalla stagione precedente",
+      "seasonId": "2026-2027",
       "updatedAt": {
         "seconds": 1783158828,
         "nanoseconds": 669000000
-      }
+      },
+      "amount": 90
     },
     {
       "id": "2026_2027_2026_2027_gdisidfbuselvm64psr3_initial_budget",
       "description": "Saldo riversato dalla stagione precedente",
-      "seasonTeamId": "2026_2027_gdisidfbuselvm64psr3",
-      "seasonId": "2026-2027",
-      "amount": 76,
       "updatedAt": {
         "seconds": 1783158828,
         "nanoseconds": 424000000
       },
+      "seasonTeamId": "2026_2027_gdisidfbuselvm64psr3",
       "date": "2026-07-04",
+      "type": "INITIAL_BUDGET",
+      "amount": 76,
+      "seasonId": "2026-2027",
       "createdAt": {
         "seconds": 1783158828,
         "nanoseconds": 424000000
-      },
-      "type": "INITIAL_BUDGET"
+      }
     },
     {
       "id": "2026_2027_2026_2027_h6saek7urqiqnmiztrt7_initial_budget",
-      "seasonTeamId": "2026_2027_h6saek7urqiqnmiztrt7",
-      "date": "2026-07-04",
+      "description": "Saldo riversato dalla stagione precedente",
       "createdAt": {
         "seconds": 1783158827,
         "nanoseconds": 974000000
       },
-      "description": "Saldo riversato dalla stagione precedente",
       "updatedAt": {
         "seconds": 1783158827,
         "nanoseconds": 974000000
       },
+      "seasonTeamId": "2026_2027_h6saek7urqiqnmiztrt7",
       "amount": 115,
-      "seasonId": "2026-2027",
-      "type": "INITIAL_BUDGET"
+      "type": "INITIAL_BUDGET",
+      "date": "2026-07-04",
+      "seasonId": "2026-2027"
     },
     {
       "id": "2026_2027_2026_2027_team_001_initial_budget",
-      "updatedAt": {
-        "seconds": 1783158828,
-        "nanoseconds": 737000000
-      },
+      "seasonId": "2026-2027",
       "createdAt": {
         "seconds": 1783158828,
         "nanoseconds": 737000000
       },
-      "type": "INITIAL_BUDGET",
-      "description": "Saldo riversato dalla stagione precedente",
       "amount": 62,
+      "description": "Saldo riversato dalla stagione precedente",
       "seasonTeamId": "2026_2027_team_001",
-      "seasonId": "2026-2027",
-      "date": "2026-07-04"
+      "date": "2026-07-04",
+      "type": "INITIAL_BUDGET",
+      "updatedAt": {
+        "seconds": 1783158828,
+        "nanoseconds": 737000000
+      }
     },
     {
       "id": "2026_2027_2026_2027_team_002_initial_budget",
-      "date": "2026-07-04",
-      "seasonTeamId": "2026_2027_team_002",
-      "amount": 101,
       "createdAt": {
         "seconds": 1783158828,
         "nanoseconds": 207000000
       },
+      "amount": 101,
+      "description": "Saldo riversato dalla stagione precedente",
+      "type": "INITIAL_BUDGET",
+      "date": "2026-07-04",
       "updatedAt": {
         "seconds": 1783158828,
         "nanoseconds": 207000000
       },
+      "seasonTeamId": "2026_2027_team_002",
+      "seasonId": "2026-2027"
+    },
+    {
+      "id": "2026_2027_2026_2027_ulwtimbi3dyyrq0soesx_initial_budget",
+      "seasonId": "2026-2027",
+      "updatedAt": {
+        "seconds": 1783158828,
+        "nanoseconds": 880000000
+      },
+      "description": "Saldo riversato dalla stagione precedente",
+      "seasonTeamId": "2026_2027_ulwtimbi3dyyrq0soesx",
+      "date": "2026-07-04",
       "type": "INITIAL_BUDGET",
+      "createdAt": {
+        "seconds": 1783158828,
+        "nanoseconds": 880000000
+      },
+      "amount": 94
+    },
+    {
+      "id": "2026_2027_2026_2027_uqsbhtctytbo7kookndm_initial_budget",
+      "seasonId": "2026-2027",
+      "updatedAt": {
+        "seconds": 1783158828,
+        "nanoseconds": 513000000
+      },
+      "seasonTeamId": "2026_2027_uqsbhtctytbo7kookndm",
+      "description": "Saldo riversato dalla stagione precedente",
+      "amount": 163,
+      "createdAt": {
+        "seconds": 1783158828,
+        "nanoseconds": 513000000
+      },
+      "type": "INITIAL_BUDGET",
+      "date": "2026-07-04"
+    },
+    {
+      "id": "2026_2027_2026_2027_wmdzhrrpup8lhvsdwm7w_initial_budget",
+      "updatedAt": {
+        "seconds": 1783158827,
+        "nanoseconds": 808000000
+      },
+      "seasonId": "2026-2027",
+      "description": "Saldo riversato dalla stagione precedente",
+      "createdAt": {
+        "seconds": 1783158827,
+        "nanoseconds": 808000000
+      },
+      "amount": 43,
+      "seasonTeamId": "2026_2027_wmdzhrrpup8lhvsdwm7w",
+      "date": "2026-07-04",
+      "type": "INITIAL_BUDGET"
+    },
+    {
+      "id": "2026_2027_2026_2027_y3vmcdwvut0u1tlsg4qc_initial_budget",
+      "type": "INITIAL_BUDGET",
+      "date": "2026-07-04",
+      "createdAt": {
+        "seconds": 1783158828,
+        "nanoseconds": 311000000
+      },
+      "seasonTeamId": "2026_2027_y3vmcdwvut0u1tlsg4qc",
+      "amount": 59,
+      "updatedAt": {
+        "seconds": 1783158828,
+        "nanoseconds": 311000000
+      },
       "seasonId": "2026-2027",
       "description": "Saldo riversato dalla stagione precedente"
     },
     {
-      "id": "2026_2027_2026_2027_ulwtimbi3dyyrq0soesx_initial_budget",
-      "amount": 94,
-      "seasonId": "2026-2027",
-      "updatedAt": {
-        "seconds": 1783158828,
-        "nanoseconds": 880000000
-      },
-      "createdAt": {
-        "seconds": 1783158828,
-        "nanoseconds": 880000000
-      },
-      "description": "Saldo riversato dalla stagione precedente",
-      "type": "INITIAL_BUDGET",
-      "seasonTeamId": "2026_2027_ulwtimbi3dyyrq0soesx",
-      "date": "2026-07-04"
-    },
-    {
-      "id": "2026_2027_2026_2027_uqsbhtctytbo7kookndm_initial_budget",
-      "description": "Saldo riversato dalla stagione precedente",
-      "amount": 163,
-      "seasonTeamId": "2026_2027_uqsbhtctytbo7kookndm",
-      "updatedAt": {
-        "seconds": 1783158828,
-        "nanoseconds": 513000000
-      },
-      "createdAt": {
-        "seconds": 1783158828,
-        "nanoseconds": 513000000
-      },
-      "date": "2026-07-04",
-      "type": "INITIAL_BUDGET",
-      "seasonId": "2026-2027"
-    },
-    {
-      "id": "2026_2027_2026_2027_wmdzhrrpup8lhvsdwm7w_initial_budget",
-      "type": "INITIAL_BUDGET",
-      "updatedAt": {
-        "seconds": 1783158827,
-        "nanoseconds": 808000000
-      },
-      "date": "2026-07-04",
-      "amount": 43,
-      "createdAt": {
-        "seconds": 1783158827,
-        "nanoseconds": 808000000
-      },
-      "description": "Saldo riversato dalla stagione precedente",
-      "seasonId": "2026-2027",
-      "seasonTeamId": "2026_2027_wmdzhrrpup8lhvsdwm7w"
-    },
-    {
-      "id": "2026_2027_2026_2027_y3vmcdwvut0u1tlsg4qc_initial_budget",
-      "amount": 59,
-      "seasonId": "2026-2027",
-      "updatedAt": {
-        "seconds": 1783158828,
-        "nanoseconds": 311000000
-      },
-      "createdAt": {
-        "seconds": 1783158828,
-        "nanoseconds": 311000000
-      },
-      "description": "Saldo riversato dalla stagione precedente",
-      "type": "INITIAL_BUDGET",
-      "seasonTeamId": "2026_2027_y3vmcdwvut0u1tlsg4qc",
-      "date": "2026-07-04"
-    },
-    {
       "id": "6Wo5aNC9ZfSpWlopWTw3",
+      "realTeam": "",
+      "date": "2026-08-17",
       "type": "ALTRO",
-      "amount": -5,
-      "description": "Mantenimento Stadio Livello 1",
+      "playerName": "",
       "targetSeasonTeamId": "",
+      "seasonId": "2026-2027",
+      "amount": -5,
+      "rosterRole": "",
+      "description": "Mantenimento Stadio Livello 1",
       "createdAt": {
         "seconds": 1788352959,
         "nanoseconds": 312000000
       },
-      "date": "2026-08-17",
-      "playerName": "",
-      "seasonId": "2026-2027",
-      "seasonTeamId": "2026_2027_wmdzhrrpup8lhvsdwm7w",
-      "rosterRole": "",
       "mantraRoles": "",
-      "realTeam": ""
+      "seasonTeamId": "2026_2027_wmdzhrrpup8lhvsdwm7w"
     },
     {
       "id": "9Exqsdb9wwdPvWMgk21v",
-      "rosterRole": "",
-      "targetSeasonTeamId": "",
-      "date": "2026-08-17",
       "seasonId": "2026-2027",
-      "realTeam": "",
       "playerName": "",
-      "seasonTeamId": "2026_2027_7bx0cegbxtf4fwh6t0pi",
       "type": "ALTRO",
-      "description": "Mantenimento Stadio Livello 1",
+      "date": "2026-08-17",
       "amount": -5,
+      "createdAt": {
+        "seconds": 1788262600,
+        "nanoseconds": 858000000
+      },
+      "description": "Mantenimento Stadio Livello 1",
       "mantraRoles": "",
+      "seasonTeamId": "2026_2027_7bx0cegbxtf4fwh6t0pi",
       "updatedAt": {
         "seconds": 1788353008,
         "nanoseconds": 39000000
       },
-      "createdAt": {
-        "seconds": 1788262600,
-        "nanoseconds": 858000000
-      }
+      "targetSeasonTeamId": "",
+      "realTeam": "",
+      "rosterRole": ""
     },
     {
       "id": "9aVlPhX5vcDtkBRrzdfy",
-      "playerName": "",
-      "description": "Costruzione Stadio Livello 3",
-      "realTeam": "",
+      "amount": -47,
       "date": "2026-08-17",
-      "targetSeasonTeamId": "",
+      "type": "ALTRO",
       "mantraRoles": "",
       "seasonId": "2026-2027",
-      "rosterRole": "",
-      "type": "ALTRO",
-      "updatedAt": {
-        "seconds": 1788353155,
-        "nanoseconds": 794000000
-      },
+      "playerName": "",
+      "description": "Costruzione Stadio Livello 3",
+      "targetSeasonTeamId": "",
       "createdAt": {
         "seconds": 1788262838,
         "nanoseconds": 885000000
       },
       "seasonTeamId": "2026_2027_ulwtimbi3dyyrq0soesx",
-      "amount": -47
+      "realTeam": "",
+      "rosterRole": "",
+      "updatedAt": {
+        "seconds": 1788353155,
+        "nanoseconds": 794000000
+      }
+    },
+    {
+      "id": "B2EeQu1oHQsZCpjMr0DB",
+      "playerName": "",
+      "seasonId": "2026-2027",
+      "amount": -157,
+      "date": "2026-08-20",
+      "type": "ACQUISTO",
+      "mantraRoles": "",
+      "seasonTeamId": "2026_2027_ft1tqdqi18iuh3l1lakq",
+      "createdAt": {
+        "seconds": 1788353899,
+        "nanoseconds": 72000000
+      },
+      "realTeam": "",
+      "rosterRole": "",
+      "targetSeasonTeamId": "",
+      "description": "MERCATO AGOSTO 2026"
     },
     {
       "id": "FISssj8lhCOxsnq6ecpp",
-      "mantraRoles": "",
       "targetSeasonTeamId": "",
-      "playerName": "",
-      "type": "ALTRO",
-      "rosterRole": "",
-      "description": "Mantenimento Stadio Livello 3",
-      "seasonId": "2026-2027",
-      "amount": -20,
+      "realTeam": "",
       "updatedAt": {
         "seconds": 1788352991,
         "nanoseconds": 431000000
       },
-      "seasonTeamId": "2026_2027_h6saek7urqiqnmiztrt7",
+      "playerName": "",
+      "description": "Mantenimento Stadio Livello 3",
+      "type": "ALTRO",
+      "date": "2026-08-17",
+      "mantraRoles": "",
       "createdAt": {
         "seconds": 1788262567,
         "nanoseconds": 354000000
       },
-      "date": "2026-08-17",
-      "realTeam": ""
+      "amount": -20,
+      "seasonTeamId": "2026_2027_h6saek7urqiqnmiztrt7",
+      "seasonId": "2026-2027",
+      "rosterRole": ""
     },
     {
       "id": "GcI3fR0lqgTgYVpKdDme",
+      "rosterRole": "",
+      "mantraRoles": "",
       "targetSeasonTeamId": "",
       "type": "SVINCOLO",
-      "realTeam": "",
-      "amount": 20,
       "date": "2026-08-19",
-      "mantraRoles": "",
-      "rosterRole": "",
+      "amount": 20,
       "description": "SVINCOLI AGOSTO 2026: Muharemovic (8); Ekuban (12)",
+      "realTeam": "",
+      "seasonTeamId": "2026_2027_ft1tqdqi18iuh3l1lakq",
       "playerName": "",
-      "seasonId": "2026-2027",
       "createdAt": {
         "seconds": 1788351978,
         "nanoseconds": 320000000
       },
-      "seasonTeamId": "2026_2027_ft1tqdqi18iuh3l1lakq"
+      "seasonId": "2026-2027"
     },
     {
       "id": "HTMBtL8kcXRmFTgIVChk",
+      "description": "SVINCOLI LUGLIO 2026",
       "seasonId": "2026-2027",
-      "rosterRole": "",
+      "playerName": "",
+      "targetSeasonTeamId": "",
+      "mantraRoles": "",
+      "amount": 47,
       "createdAt": {
         "seconds": 1783408033,
         "nanoseconds": 847000000
       },
-      "seasonTeamId": "2026_2027_team_001",
-      "mantraRoles": "",
-      "amount": 47,
-      "targetSeasonTeamId": "",
+      "date": "2026-07-05",
       "type": "SVINCOLO",
-      "description": "SVINCOLI LUGLIO 2026",
       "realTeam": "",
-      "playerName": "",
-      "date": "2026-07-05"
+      "seasonTeamId": "2026_2027_team_001",
+      "rosterRole": ""
     },
     {
       "id": "IPRlERWrasWZTW3sW3pb",
-      "rosterRole": "",
-      "targetSeasonTeamId": "",
-      "date": "2026-07-05",
-      "seasonId": "2026-2027",
-      "realTeam": "",
       "playerName": "",
-      "seasonTeamId": "2026_2027_ft1tqdqi18iuh3l1lakq",
+      "date": "2026-07-05",
       "type": "SVINCOLO",
-      "description": "SVINCOLI LUGLIO 2026: Hermoso (13); Tsimikas (3); Terracciano F. (7); Cabal (6); Canestrelli (5); Mandragora (17); Bresciani (10); Helgason (2); Berisha M. (7); Tourè I. (5); Sanabria (4); Spulci (8)",
-      "amount": 87,
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_ft1tqdqi18iuh3l1lakq",
+      "targetSeasonTeamId": "",
       "mantraRoles": "",
       "updatedAt": {
         "seconds": 1784615863,
         "nanoseconds": 317000000
       },
+      "amount": 87,
+      "description": "SVINCOLI LUGLIO 2026: Hermoso (13); Tsimikas (3); Terracciano F. (7); Cabal (6); Canestrelli (5); Mandragora (17); Bresciani (10); Helgason (2); Berisha M. (7); Tourè I. (5); Sanabria (4); Spulci (8)",
       "createdAt": {
         "seconds": 1783408067,
         "nanoseconds": 71000000
-      }
+      },
+      "rosterRole": "",
+      "realTeam": ""
     },
     {
       "id": "IkZM4HB8gwy3tKSJpydw",
-      "description": "Mantenimento Stadio Livello 2",
+      "amount": -12,
       "date": "2026-08-17",
-      "seasonId": "2026-2027",
-      "targetSeasonTeamId": "",
-      "updatedAt": {
-        "seconds": 1788353022,
-        "nanoseconds": 418000000
-      },
+      "type": "ALTRO",
+      "playerName": "",
       "createdAt": {
         "seconds": 1788262637,
         "nanoseconds": 986000000
       },
-      "realTeam": "",
-      "mantraRoles": "",
-      "seasonTeamId": "2026_2027_team_002",
-      "amount": -12,
+      "targetSeasonTeamId": "",
+      "seasonId": "2026-2027",
+      "updatedAt": {
+        "seconds": 1788353022,
+        "nanoseconds": 418000000
+      },
       "rosterRole": "",
-      "type": "ALTRO",
-      "playerName": ""
+      "description": "Mantenimento Stadio Livello 2",
+      "seasonTeamId": "2026_2027_team_002",
+      "mantraRoles": "",
+      "realTeam": ""
+    },
+    {
+      "id": "J9oO3Rq90yxgMfFztjB6",
+      "mantraRoles": "",
+      "description": "MERCATO AGOSTO 2026",
+      "realTeam": "",
+      "rosterRole": "",
+      "targetSeasonTeamId": "",
+      "createdAt": {
+        "seconds": 1788353869,
+        "nanoseconds": 848000000
+      },
+      "type": "ACQUISTO",
+      "date": "2026-08-20",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_uqsbhtctytbo7kookndm",
+      "playerName": "",
+      "amount": -15
     },
     {
       "id": "KaESNCz4EXA6G5jPYvWf",
-      "mantraRoles": "",
-      "seasonTeamId": "2026_2027_gdisidfbuselvm64psr3",
       "updatedAt": {
         "seconds": 1788353056,
         "nanoseconds": 875000000
       },
+      "date": "2026-08-17",
       "type": "ALTRO",
+      "seasonId": "2026-2027",
       "createdAt": {
         "seconds": 1788262692,
         "nanoseconds": 867000000
       },
-      "description": "Mantenimento Stadio Livello 2",
-      "rosterRole": "",
+      "playerName": "",
       "targetSeasonTeamId": "",
+      "seasonTeamId": "2026_2027_gdisidfbuselvm64psr3",
       "realTeam": "",
       "amount": -12,
-      "date": "2026-08-17",
-      "playerName": "",
-      "seasonId": "2026-2027"
-    },
-    {
-      "id": "NJ38chRkXbvKTb9qMdsd",
-      "description": "SVINCOLI AGOSTO 2026: Strefezza (13); Gandelman (5); Dia (10); Ferguson E. (10); Salomon (8); Openda (4)",
-      "date": "2026-08-19",
-      "seasonTeamId": "2026_2027_h6saek7urqiqnmiztrt7",
-      "seasonId": "2026-2027",
-      "playerName": "",
-      "type": "SVINCOLO",
-      "amount": 50,
-      "createdAt": {
-        "seconds": 1788352244,
-        "nanoseconds": 975000000
-      },
       "rosterRole": "",
-      "realTeam": "",
-      "targetSeasonTeamId": "",
+      "description": "Mantenimento Stadio Livello 2",
       "mantraRoles": ""
     },
     {
-      "id": "PILHYK06vdaQOEcYZm51",
-      "description": "SVINCOLI AGOSTO 2026: Muric (7); Vitik (5); Noslin (6); Freuler (8)",
+      "id": "LmV9xzehTu4sLjgthSbj",
+      "seasonTeamId": "2026_2027_ulwtimbi3dyyrq0soesx",
+      "seasonId": "2026-2027",
+      "date": "2026-08-20",
+      "type": "ACQUISTO",
+      "targetSeasonTeamId": "",
+      "playerName": "",
+      "createdAt": {
+        "seconds": 1788353934,
+        "nanoseconds": 130000000
+      },
       "realTeam": "",
+      "amount": -32,
+      "mantraRoles": "",
+      "description": "MERCATO AGOSTO 2026",
+      "rosterRole": ""
+    },
+    {
+      "id": "NGpvU0pMWYd2HMDIG2C7",
+      "seasonId": "2026-2027",
+      "date": "2026-08-20",
+      "type": "ACQUISTO",
+      "playerName": "",
+      "seasonTeamId": "2026_2027_wmdzhrrpup8lhvsdwm7w",
+      "realTeam": "",
+      "mantraRoles": "",
+      "rosterRole": "",
+      "description": "MERCATO AGOSTO 2026",
+      "amount": -94,
+      "createdAt": {
+        "seconds": 1788353713,
+        "nanoseconds": 847000000
+      },
+      "targetSeasonTeamId": ""
+    },
+    {
+      "id": "NJ38chRkXbvKTb9qMdsd",
+      "realTeam": "",
+      "rosterRole": "",
+      "description": "SVINCOLI AGOSTO 2026: Strefezza (13); Gandelman (5); Dia (10); Ferguson E. (10); Salomon (8); Openda (4)",
+      "mantraRoles": "",
+      "seasonTeamId": "2026_2027_h6saek7urqiqnmiztrt7",
+      "date": "2026-08-19",
+      "type": "SVINCOLO",
+      "seasonId": "2026-2027",
+      "amount": 50,
+      "targetSeasonTeamId": "",
+      "playerName": "",
+      "createdAt": {
+        "seconds": 1788352244,
+        "nanoseconds": 975000000
+      }
+    },
+    {
+      "id": "P02yy6GRrrr2MHVcydES",
+      "seasonTeamId": "2026_2027_team_002",
+      "targetSeasonTeamId": "",
+      "rosterRole": "",
+      "createdAt": {
+        "seconds": 1788353776,
+        "nanoseconds": 702000000
+      },
+      "seasonId": "2026-2027",
+      "date": "2026-08-20",
+      "type": "ACQUISTO",
+      "amount": -112,
+      "mantraRoles": "",
+      "description": "MERCATO AGOSTO 2026",
+      "realTeam": "",
+      "playerName": ""
+    },
+    {
+      "id": "PILHYK06vdaQOEcYZm51",
       "createdAt": {
         "seconds": 1788352293,
         "nanoseconds": 717000000
       },
-      "playerName": "",
+      "targetSeasonTeamId": "",
+      "amount": 26,
+      "description": "SVINCOLI AGOSTO 2026: Muric (7); Vitik (5); Noslin (6); Freuler (8)",
+      "date": "2026-08-19",
       "type": "SVINCOLO",
       "rosterRole": "",
-      "date": "2026-08-19",
-      "seasonId": "2026-2027",
+      "realTeam": "",
       "mantraRoles": "",
+      "playerName": "",
       "seasonTeamId": "2026_2027_7bx0cegbxtf4fwh6t0pi",
-      "amount": 26,
-      "targetSeasonTeamId": ""
+      "seasonId": "2026-2027"
     },
     {
       "id": "PdiksZYdLyP4kRDxDkXC",
-      "amount": -20,
-      "type": "ALTRO",
-      "date": "2026-08-17",
-      "updatedAt": {
-        "seconds": 1788352974,
-        "nanoseconds": 580000000
-      },
       "seasonTeamId": "2026_2027_wmdzhrrpup8lhvsdwm7w",
-      "rosterRole": "",
       "createdAt": {
         "seconds": 1788262454,
         "nanoseconds": 909000000
       },
-      "description": "Costruzione Stadio Livello 1",
-      "seasonId": "2026-2027",
+      "rosterRole": "",
       "mantraRoles": "",
+      "updatedAt": {
+        "seconds": 1788352974,
+        "nanoseconds": 580000000
+      },
+      "description": "Costruzione Stadio Livello 1",
+      "date": "2026-08-17",
+      "type": "ALTRO",
+      "realTeam": "",
       "targetSeasonTeamId": "",
-      "playerName": "",
-      "realTeam": ""
+      "seasonId": "2026-2027",
+      "amount": -20,
+      "playerName": ""
     },
     {
       "id": "THgx2Hr1FjWtuJqYhGFF",
-      "description": "SVINCOLI AGOSTO 2026: Hien (8); Ondrejka (5); Vlahovic (16)",
-      "seasonTeamId": "2026_2027_gdisidfbuselvm64psr3",
-      "playerName": "",
+      "seasonId": "2026-2027",
       "type": "SVINCOLO",
+      "date": "2026-08-19",
+      "mantraRoles": "",
+      "description": "SVINCOLI AGOSTO 2026: Hien (8); Ondrejka (5); Vlahovic (16)",
+      "amount": 29,
+      "rosterRole": "",
       "realTeam": "",
+      "targetSeasonTeamId": "",
+      "playerName": "",
+      "seasonTeamId": "2026_2027_gdisidfbuselvm64psr3",
       "createdAt": {
         "seconds": 1788352033,
         "nanoseconds": 628000000
-      },
-      "date": "2026-08-19",
-      "amount": 29,
-      "targetSeasonTeamId": "",
-      "rosterRole": "",
+      }
+    },
+    {
+      "id": "V1dphkLL5vEBbqnIUQDj",
       "seasonId": "2026-2027",
-      "mantraRoles": ""
+      "amount": -93,
+      "createdAt": {
+        "seconds": 1788353918,
+        "nanoseconds": 879000000
+      },
+      "playerName": "",
+      "targetSeasonTeamId": "",
+      "realTeam": "",
+      "description": "MERCATO AGOSTO 2026",
+      "mantraRoles": "",
+      "seasonTeamId": "2026_2027_team_001",
+      "date": "2026-08-20",
+      "type": "ACQUISTO",
+      "rosterRole": ""
     },
     {
       "id": "XjZOJ1A79a7BA51VUisl",
-      "seasonTeamId": "2026_2027_ulwtimbi3dyyrq0soesx",
-      "amount": 13,
-      "playerName": "",
       "realTeam": "",
-      "targetSeasonTeamId": "",
       "mantraRoles": "",
-      "date": "2026-08-19",
-      "description": "SVINCOLI AGOSTO 2026: Ranieri (3); Lukaku (10)",
-      "type": "SVINCOLO",
-      "rosterRole": "",
-      "seasonId": "2026-2027",
       "createdAt": {
         "seconds": 1788352325,
         "nanoseconds": 509000000
-      }
+      },
+      "seasonTeamId": "2026_2027_ulwtimbi3dyyrq0soesx",
+      "playerName": "",
+      "description": "SVINCOLI AGOSTO 2026: Ranieri (3); Lukaku (10)",
+      "seasonId": "2026-2027",
+      "targetSeasonTeamId": "",
+      "type": "SVINCOLO",
+      "date": "2026-08-19",
+      "amount": 13,
+      "rosterRole": ""
     },
     {
       "id": "YRfueowaAVtTVWsBnrwT",
       "description": "SVINCOLI LUGLIO 2026: Di Gregorio (15); Luperto (8); Caracciolo A. (6); Baschirotto (9); Coco (9); Kempf (16); Thorsby (12); Konè I. (17); Pedro (16); Nzola (10); Banda (15); Ratkov (9)",
-      "amount": 142,
       "playerName": "",
+      "mantraRoles": "",
+      "type": "SVINCOLO",
+      "date": "2026-07-05",
+      "realTeam": "",
+      "seasonTeamId": "2026_2027_team_002",
+      "targetSeasonTeamId": "",
+      "amount": 142,
       "updatedAt": {
         "seconds": 1784615764,
         "nanoseconds": 529000000
       },
+      "rosterRole": "",
       "createdAt": {
         "seconds": 1783408016,
         "nanoseconds": 138000000
       },
-      "targetSeasonTeamId": "",
-      "type": "SVINCOLO",
-      "rosterRole": "",
-      "mantraRoles": "",
-      "seasonTeamId": "2026_2027_team_002",
-      "realTeam": "",
-      "date": "2026-07-05",
       "seasonId": "2026-2027"
     },
     {
       "id": "Ycm00kAtGqbvl480hPth",
       "playerName": "",
-      "seasonId": "2026-2027",
+      "date": "2026-07-13",
+      "type": "SVINCOLO",
       "updatedAt": {
         "seconds": 1784271583,
         "nanoseconds": 529000000
       },
+      "targetSeasonTeamId": "",
+      "amount": 43,
       "createdAt": {
         "seconds": 1783968101,
         "nanoseconds": 984000000
       },
       "realTeam": "",
-      "date": "2026-07-13",
-      "targetSeasonTeamId": "",
-      "rosterRole": "",
-      "description": "SVINCOLI LUGLIO 2026: Audero (12); Marcandalli (7); Palestra (16); Adopo (8)",
-      "type": "SVINCOLO",
-      "amount": 43,
       "seasonTeamId": "2026_2027_gdisidfbuselvm64psr3",
+      "seasonId": "2026-2027",
+      "description": "SVINCOLI LUGLIO 2026: Audero (12); Marcandalli (7); Palestra (16); Adopo (8)",
+      "rosterRole": "",
       "mantraRoles": ""
     },
     {
       "id": "aBrHCSrfMZoEpC7S3gJC",
-      "amount": -20,
+      "targetSeasonTeamId": "",
+      "rosterRole": "",
+      "updatedAt": {
+        "seconds": 1788353069,
+        "nanoseconds": 491000000
+      },
       "date": "2026-08-17",
+      "type": "ALTRO",
+      "amount": -20,
       "realTeam": "",
       "createdAt": {
         "seconds": 1788262724,
         "nanoseconds": 269000000
       },
-      "updatedAt": {
-        "seconds": 1788353069,
-        "nanoseconds": 491000000
-      },
-      "targetSeasonTeamId": "",
-      "seasonId": "2026-2027",
+      "mantraRoles": "",
       "description": "Mantenimento Stadio Livello 3",
-      "playerName": "",
-      "type": "ALTRO",
+      "seasonId": "2026-2027",
       "seasonTeamId": "2026_2027_uqsbhtctytbo7kookndm",
-      "rosterRole": "",
-      "mantraRoles": ""
+      "playerName": ""
     },
     {
       "id": "bbgKLw4Mdl3iQMQ2g1rE",
+      "seasonTeamId": "2026_2027_y3vmcdwvut0u1tlsg4qc",
       "createdAt": {
         "seconds": 1788350890,
         "nanoseconds": 472000000
       },
-      "seasonId": "2026-2027",
       "mantraRoles": "",
-      "targetSeasonTeamId": "",
-      "rosterRole": "",
-      "seasonTeamId": "2026_2027_y3vmcdwvut0u1tlsg4qc",
-      "playerName": "",
-      "date": "2026-08-19",
-      "realTeam": "",
       "description": "SVINCOLI AGOSTO 2026: Frigan (5); Venturino (2); Addai (5)",
+      "seasonId": "2026-2027",
       "type": "SVINCOLO",
-      "amount": 12
+      "date": "2026-08-19",
+      "rosterRole": "",
+      "targetSeasonTeamId": "",
+      "amount": 12,
+      "realTeam": "",
+      "playerName": ""
     },
     {
       "id": "d4i2VaQVRGUAwqJrRVmc",
-      "seasonTeamId": "2026_2027_ulwtimbi3dyyrq0soesx",
-      "rosterRole": "",
-      "type": "SVINCOLO",
-      "description": "SVINCOLI LUGLIO 2026: Lovric (3)",
-      "realTeam": "",
-      "targetSeasonTeamId": "",
-      "mantraRoles": "",
       "createdAt": {
         "seconds": 1784199037,
         "nanoseconds": 902000000
       },
-      "playerName": "",
       "seasonId": "2026-2027",
+      "targetSeasonTeamId": "",
+      "seasonTeamId": "2026_2027_ulwtimbi3dyyrq0soesx",
+      "rosterRole": "",
       "updatedAt": {
         "seconds": 1784206858,
         "nanoseconds": 696000000
       },
+      "type": "SVINCOLO",
       "date": "2026-07-16",
-      "amount": 3
+      "amount": 3,
+      "mantraRoles": "",
+      "realTeam": "",
+      "playerName": "",
+      "description": "SVINCOLI LUGLIO 2026: Lovric (3)"
     },
     {
       "id": "d8KyW8iLOYVNwAFXTr3c",
-      "description": "SVINCOLI AGOSTO 2026: Gutierrez (8); Angelino (3) ;Belghali (10); Belotti (5); Pongracic (4)",
-      "realTeam": "",
-      "amount": 30,
-      "playerName": "",
-      "targetSeasonTeamId": "",
-      "seasonTeamId": "2026_2027_wmdzhrrpup8lhvsdwm7w",
-      "rosterRole": "",
-      "type": "SVINCOLO",
       "seasonId": "2026-2027",
+      "rosterRole": "",
+      "mantraRoles": "",
+      "targetSeasonTeamId": "",
+      "description": "SVINCOLI AGOSTO 2026: Gutierrez (8); Angelino (3) ;Belghali (10); Belotti (5); Pongracic (4)",
+      "date": "2026-08-19",
+      "type": "SVINCOLO",
+      "seasonTeamId": "2026_2027_wmdzhrrpup8lhvsdwm7w",
       "createdAt": {
         "seconds": 1788351929,
         "nanoseconds": 598000000
       },
-      "date": "2026-08-19",
-      "mantraRoles": ""
+      "realTeam": "",
+      "amount": 30,
+      "playerName": ""
     },
     {
       "id": "fhwW8BLCqlr6pcKaA11D",
-      "amount": -5,
       "updatedAt": {
         "seconds": 1788353118,
         "nanoseconds": 662000000
       },
+      "date": "2026-08-17",
+      "type": "ALTRO",
       "createdAt": {
         "seconds": 1788262776,
         "nanoseconds": 77000000
       },
-      "type": "ALTRO",
-      "mantraRoles": "",
+      "rosterRole": "",
       "description": "Mantenimento Stadio Livello 1",
-      "targetSeasonTeamId": "",
-      "date": "2026-08-17",
-      "playerName": "",
-      "seasonId": "2026-2027",
       "seasonTeamId": "2026_2027_team_001",
+      "amount": -5,
+      "mantraRoles": "",
       "realTeam": "",
-      "rosterRole": ""
+      "playerName": "",
+      "targetSeasonTeamId": "",
+      "seasonId": "2026-2027"
     },
     {
       "id": "goWurM0LKHU8tAXrCm8R",
-      "amount": 26,
-      "type": "SVINCOLO",
-      "description": "SVINCOLI AGOSTO 2026: Ravaglia (4); De Vrij (3); Acerbi\t(5); Circati (6); Olivera (5); N'Dri (3)",
+      "targetSeasonTeamId": "",
+      "rosterRole": "",
+      "realTeam": "",
       "createdAt": {
         "seconds": 1788351837,
         "nanoseconds": 919000000
       },
-      "rosterRole": "",
-      "realTeam": "",
-      "date": "2026-08-19",
-      "playerName": "",
-      "targetSeasonTeamId": "",
-      "seasonTeamId": "2026_2027_uqsbhtctytbo7kookndm",
       "mantraRoles": "",
-      "seasonId": "2026-2027"
+      "seasonTeamId": "2026_2027_uqsbhtctytbo7kookndm",
+      "playerName": "",
+      "type": "SVINCOLO",
+      "date": "2026-08-19",
+      "seasonId": "2026-2027",
+      "description": "SVINCOLI AGOSTO 2026: Ravaglia (4); De Vrij (3); Acerbi\t(5); Circati (6); Olivera (5); N'Dri (3)",
+      "amount": 26
     },
     {
       "id": "hjigyeZr07JUXHE7VKef",
-      "playerName": "",
-      "seasonId": "2026-2027",
-      "updatedAt": {
-        "seconds": 1784206846,
-        "nanoseconds": 126000000
-      },
       "createdAt": {
         "seconds": 1783883673,
         "nanoseconds": 159000000
       },
-      "realTeam": "",
-      "date": "2026-07-05",
-      "targetSeasonTeamId": "",
-      "rosterRole": "",
-      "description": "SVINCOLI LUGLIO 2026: Aebischer (6); Borrelli (11); Vardy (16); Moreo (16); Harrison (11)",
       "type": "SVINCOLO",
+      "date": "2026-07-05",
+      "playerName": "",
+      "targetSeasonTeamId": "",
+      "updatedAt": {
+        "seconds": 1784206846,
+        "nanoseconds": 126000000
+      },
+      "realTeam": "",
+      "description": "SVINCOLI LUGLIO 2026: Aebischer (6); Borrelli (11); Vardy (16); Moreo (16); Harrison (11)",
       "amount": 60,
-      "seasonTeamId": "2026_2027_wmdzhrrpup8lhvsdwm7w",
-      "mantraRoles": ""
+      "seasonId": "2026-2027",
+      "mantraRoles": "",
+      "rosterRole": "",
+      "seasonTeamId": "2026_2027_wmdzhrrpup8lhvsdwm7w"
     },
     {
       "id": "lNVmARDhDimhXXdWPHew",
       "amount": 103,
+      "realTeam": "",
+      "rosterRole": "",
+      "mantraRoles": "",
+      "description": "SVINCOLI LUGLIO 2026: Mina (9); Lazaro (4); Celik (14); Delprato (10); Sottil (8); Gaetano (13); Fagioli (11); Elmas (7); Zaragoza (4); Kilicsoy (13); Durosinmi (10)",
+      "type": "SVINCOLO",
       "date": "2026-07-05",
+      "targetSeasonTeamId": "",
       "updatedAt": {
         "seconds": 1784615505,
         "nanoseconds": 411000000
       },
-      "realTeam": "",
+      "seasonTeamId": "2026_2027_y3vmcdwvut0u1tlsg4qc",
+      "seasonId": "2026-2027",
       "createdAt": {
         "seconds": 1783407990,
         "nanoseconds": 646000000
       },
-      "playerName": "",
-      "mantraRoles": "",
-      "targetSeasonTeamId": "",
-      "seasonId": "2026-2027",
-      "type": "SVINCOLO",
-      "description": "SVINCOLI LUGLIO 2026: Mina (9); Lazaro (4); Celik (14); Delprato (10); Sottil (8); Gaetano (13); Fagioli (11); Elmas (7); Zaragoza (4); Kilicsoy (13); Durosinmi (10)",
-      "rosterRole": "",
-      "seasonTeamId": "2026_2027_y3vmcdwvut0u1tlsg4qc"
+      "playerName": ""
     },
     {
       "id": "lQ05Qx1wFFx4sJV0chDR",
-      "type": "SVINCOLO",
-      "description": "SVINCOLI AGOSTO 2026: Israel (1); Martin (5); Ndiaye (1); Athekame (3); Tramoni (6); Fofana (5); Adams C. (9); Giovane (4)",
+      "amount": 34,
       "createdAt": {
         "seconds": 1788352111,
         "nanoseconds": 731000000
       },
-      "realTeam": "",
-      "date": "2026-08-19",
-      "amount": 34,
-      "seasonTeamId": "2026_2027_team_001",
-      "rosterRole": "",
       "playerName": "",
+      "realTeam": "",
+      "rosterRole": "",
+      "mantraRoles": "",
+      "seasonTeamId": "2026_2027_team_001",
       "targetSeasonTeamId": "",
+      "description": "SVINCOLI AGOSTO 2026: Israel (1); Martin (5); Ndiaye (1); Athekame (3); Tramoni (6); Fofana (5); Adams C. (9); Giovane (4)",
       "seasonId": "2026-2027",
-      "mantraRoles": ""
+      "date": "2026-08-19",
+      "type": "SVINCOLO"
+    },
+    {
+      "id": "ljus5TTHLFfuL3Xz10Xy",
+      "realTeam": "",
+      "targetSeasonTeamId": "",
+      "description": "MERCATO AGOSTO 2026",
+      "rosterRole": "",
+      "mantraRoles": "",
+      "seasonTeamId": "2026_2027_y3vmcdwvut0u1tlsg4qc",
+      "playerName": "",
+      "seasonId": "2026-2027",
+      "amount": -130,
+      "createdAt": {
+        "seconds": 1788353823,
+        "nanoseconds": 298000000
+      },
+      "date": "2026-08-20",
+      "type": "ACQUISTO"
     },
     {
       "id": "p7pEdN9HnhA2PuLfCxNO",
-      "createdAt": {
-        "seconds": 1788262661,
-        "nanoseconds": 714000000
-      },
-      "rosterRole": "",
+      "mantraRoles": "",
+      "type": "ALTRO",
+      "date": "2026-08-17",
+      "description": "Mantenimento Stadio Livello 2",
+      "playerName": "",
+      "seasonId": "2026-2027",
       "updatedAt": {
         "seconds": 1788353046,
         "nanoseconds": 132000000
       },
-      "playerName": "",
-      "date": "2026-08-17",
-      "mantraRoles": "",
-      "realTeam": "",
-      "targetSeasonTeamId": "",
+      "rosterRole": "",
       "amount": -12,
-      "type": "ALTRO",
-      "seasonId": "2026-2027",
+      "realTeam": "",
+      "createdAt": {
+        "seconds": 1788262661,
+        "nanoseconds": 714000000
+      },
       "seasonTeamId": "2026_2027_y3vmcdwvut0u1tlsg4qc",
-      "description": "Mantenimento Stadio Livello 2"
+      "targetSeasonTeamId": ""
     },
     {
       "id": "p8UYSvoPkNA9GNlnrciz",
-      "seasonTeamId": "2026_2027_uqsbhtctytbo7kookndm",
-      "mantraRoles": "",
-      "rosterRole": "",
-      "amount": 63,
-      "type": "SVINCOLO",
-      "playerName": "",
       "description": "SVINCOLI LUGLIO 2026: Dumfries (12); Spinazzola (16); Ederson (13); Bonazzoli (22)",
+      "mantraRoles": "",
+      "realTeam": "",
+      "rosterRole": "",
+      "seasonId": "2026-2027",
       "createdAt": {
         "seconds": 1783968069,
         "nanoseconds": 990000000
       },
-      "realTeam": "",
+      "targetSeasonTeamId": "",
+      "playerName": "",
+      "amount": 63,
       "updatedAt": {
         "seconds": 1784200673,
         "nanoseconds": 890000000
       },
-      "targetSeasonTeamId": "",
-      "seasonId": "2026-2027",
-      "date": "2026-07-13"
+      "date": "2026-07-13",
+      "type": "SVINCOLO",
+      "seasonTeamId": "2026_2027_uqsbhtctytbo7kookndm"
     },
     {
       "id": "rpe4eSeCBUi1YJ8wNfWM",
-      "realTeam": "",
-      "targetSeasonTeamId": "",
-      "rosterRole": "",
-      "mantraRoles": "",
+      "updatedAt": {
+        "seconds": 1784615611,
+        "nanoseconds": 289000000
+      },
+      "type": "SVINCOLO",
       "date": "2026-07-05",
-      "seasonId": "2026-2027",
-      "description": "SVINCOLI LUGLIO 2026: Perin (8); Djimsiti (7); De Winter (6); Maldini (10); Musah (5); Ellertsson (8); Sulemana I. (6); Anjorin (2); Orban G. (14); Dallinga (6); Kulenovic (4)",
       "playerName": "",
-      "seasonTeamId": "2026_2027_7bx0cegbxtf4fwh6t0pi",
+      "description": "SVINCOLI LUGLIO 2026: Perin (8); Djimsiti (7); De Winter (6); Maldini (10); Musah (5); Ellertsson (8); Sulemana I. (6); Anjorin (2); Orban G. (14); Dallinga (6); Kulenovic (4)",
+      "realTeam": "",
       "amount": 76,
+      "targetSeasonTeamId": "",
+      "seasonTeamId": "2026_2027_7bx0cegbxtf4fwh6t0pi",
       "createdAt": {
         "seconds": 1783407974,
         "nanoseconds": 783000000
       },
-      "type": "SVINCOLO",
-      "updatedAt": {
-        "seconds": 1784615611,
-        "nanoseconds": 289000000
-      }
+      "mantraRoles": "",
+      "seasonId": "2026-2027",
+      "rosterRole": ""
+    },
+    {
+      "id": "syQ6oloV2U2BFHGtzuUO",
+      "seasonTeamId": "2026_2027_h6saek7urqiqnmiztrt7",
+      "realTeam": "",
+      "playerName": "",
+      "amount": -163,
+      "date": "2026-09-02",
+      "type": "ACQUISTO",
+      "seasonId": "2026-2027",
+      "createdAt": {
+        "seconds": 1788353732,
+        "nanoseconds": 867000000
+      },
+      "targetSeasonTeamId": "",
+      "mantraRoles": "",
+      "description": "MERCATO AGOSTO 2026",
+      "rosterRole": ""
     },
     {
       "id": "tIjiVUuZ9YJGckeCXXmH",
-      "playerName": "",
       "realTeam": "",
-      "targetSeasonTeamId": "",
-      "seasonId": "2026-2027",
-      "rosterRole": "",
-      "amount": -12,
       "type": "ALTRO",
+      "date": "2026-08-17",
+      "rosterRole": "",
+      "mantraRoles": "",
       "seasonTeamId": "2026_2027_ulwtimbi3dyyrq0soesx",
-      "updatedAt": {
-        "seconds": 1788353171,
-        "nanoseconds": 525000000
-      },
-      "description": "Mantenimento Stadio Livello 3",
       "createdAt": {
         "seconds": 1788262806,
         "nanoseconds": 19000000
       },
+      "playerName": "",
+      "description": "Mantenimento Stadio Livello 3",
+      "seasonId": "2026-2027",
+      "updatedAt": {
+        "seconds": 1788353171,
+        "nanoseconds": 525000000
+      },
+      "targetSeasonTeamId": "",
+      "amount": -12
+    },
+    {
+      "id": "uBpsIYc5PsMoDoIzNEj5",
+      "amount": -154,
+      "seasonTeamId": "2026_2027_7bx0cegbxtf4fwh6t0pi",
+      "createdAt": {
+        "seconds": 1788353754,
+        "nanoseconds": 839000000
+      },
+      "seasonId": "2026-2027",
+      "updatedAt": {
+        "seconds": 1788353789,
+        "nanoseconds": 971000000
+      },
+      "description": "MERCATO AGOSTO 2026",
+      "playerName": "",
+      "targetSeasonTeamId": "",
       "mantraRoles": "",
-      "date": "2026-08-17"
+      "rosterRole": "",
+      "date": "2026-08-20",
+      "type": "ACQUISTO",
+      "realTeam": ""
     },
     {
       "id": "xVvG7KprWcUOSZHNjTQX",
-      "playerName": "",
-      "targetSeasonTeamId": "",
-      "type": "ALTRO",
-      "seasonTeamId": "2026_2027_ft1tqdqi18iuh3l1lakq",
-      "rosterRole": "",
-      "amount": -12,
-      "date": "2026-08-17",
-      "seasonId": "2026-2027",
-      "createdAt": {
-        "seconds": 1788262749,
-        "nanoseconds": 546000000
-      },
       "updatedAt": {
         "seconds": 1788353079,
         "nanoseconds": 713000000
       },
+      "targetSeasonTeamId": "",
+      "amount": -12,
+      "createdAt": {
+        "seconds": 1788262749,
+        "nanoseconds": 546000000
+      },
+      "seasonTeamId": "2026_2027_ft1tqdqi18iuh3l1lakq",
+      "playerName": "",
+      "seasonId": "2026-2027",
+      "rosterRole": "",
       "mantraRoles": "",
       "description": "Mantenimento Stadio Livello 2",
-      "realTeam": ""
+      "realTeam": "",
+      "type": "ALTRO",
+      "date": "2026-08-17"
     },
     {
       "id": "yZpU67KR8Mi7BcE7090V",
-      "playerName": "",
-      "seasonId": "2026-2027",
+      "mantraRoles": "",
+      "amount": 51,
       "updatedAt": {
         "seconds": 1784615400,
         "nanoseconds": 466000000
       },
       "type": "SVINCOLO",
+      "date": "2026-07-05",
+      "description": "SVINCOLI LUGLIO 2026: Sommer (13); Moreno Alb. (9); Mkhitaryan (14); Loyola (5); Fullkrug (10)",
       "createdAt": {
         "seconds": 1783407946,
         "nanoseconds": 813000000
       },
-      "rosterRole": "",
+      "playerName": "",
       "realTeam": "",
-      "description": "SVINCOLI LUGLIO 2026: Sommer (13); Moreno Alb. (9); Mkhitaryan (14); Loyola (5); Fullkrug (10)",
-      "targetSeasonTeamId": "",
-      "amount": 51,
       "seasonTeamId": "2026_2027_h6saek7urqiqnmiztrt7",
+      "rosterRole": "",
+      "targetSeasonTeamId": "",
+      "seasonId": "2026-2027"
+    },
+    {
+      "id": "yutILz9gQiCvxjMNMnm1",
+      "playerName": "",
+      "seasonId": "2026-2027",
+      "amount": -101,
+      "type": "ACQUISTO",
+      "date": "2026-08-20",
       "mantraRoles": "",
-      "date": "2026-07-05"
+      "seasonTeamId": "2026_2027_gdisidfbuselvm64psr3",
+      "createdAt": {
+        "seconds": 1788353849,
+        "nanoseconds": 381000000
+      },
+      "realTeam": "",
+      "rosterRole": "",
+      "targetSeasonTeamId": "",
+      "description": "MERCATO AGOSTO 2026"
     }
   ],
   "metrics": {
     "clubs": 10,
     "fm": {
-      "total": 1593,
-      "average": 159.3
+      "total": 542,
+      "average": 54.2
     }
   },
   "news": [
