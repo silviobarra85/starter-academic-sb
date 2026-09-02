@@ -1,0 +1,26 @@
+import fs from 'node:fs';
+import path from 'node:path';
+const root=process.argv[2]||'.';
+const read=(...p)=>fs.readFileSync(path.join(root,...p),'utf8');
+const app=read('static','zonaorientale','assets','app.js');
+const index=read('static','zonaorientale','index.html');
+const release=JSON.parse(read('static','zonaorientale','release.json'));
+const cfg=JSON.parse(read('static','zonaorientale','assets','league-config.json'));
+const loader=read('static','zonaorientale','assets','js','core','league-config-v443.js');
+let ok=0,total=0;
+function check(c,m){total++; if(c){ok++; console.log('OK - '+m)} else {console.error('ERRORE - '+m)}}
+check(release.version==='801','release V801');
+check(release.entrypoint==='assets/app.js?v=801','entrypoint V801');
+check(index.includes('assets/app.js?v=801'),'index carica app V801');
+check(index.includes('Fantacalcio - V801 - Aggiornato al 02/09/2026'),'footer iniziale V801');
+check(cfg.currentVersion==='801','league-config V801');
+check(loader.includes("currentVersion: '801'"),'fallback config V801');
+check(loader.includes('league-config.json?v=801'),'config cache-buster V801');
+check(app.includes("disabledBy: 'V801'"),'repair legacy V751 disabilitato');
+check(app.includes('legacyRepairDisabled: true'),'marker fix V801 presente');
+check(!app.includes("row.description = canonical.description;\n          row.amount = canonical.amount;"),'V751 non sovrascrive piu descrizione/importo dei nuovi svincoli');
+check(app.includes('await addDoc(collection(db, "fmMovements"), createPayload);'),'nuovi movimenti restano salvati come documenti Firebase autonomi');
+check(app.includes('await updateDoc(doc(db, "fmMovements", editingMovementId)'), 'movimenti esistenti restano modificabili');
+check(app.includes('data-admin-delete-fm-movement'), 'movimenti restano eliminabili da Admin');
+console.log(`Audit V801 Admin svincoli: ${ok}/${total} controlli superati.`);
+if(ok!==total) process.exit(1);

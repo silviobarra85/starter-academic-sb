@@ -1,11 +1,11 @@
-/* V800 - Footer canonico ZonaOrientale (compatibilita API V790).
+/* V801 - Footer canonico ZonaOrientale (compatibilita API V790).
  * Unica sorgente runtime per versione/data. Tutti i writer legacy del footer
  * delegano qui, evitando gare tra MutationObserver di release differenti.
  */
 const ZONAORIENTALE_RELEASE_V790 = Object.freeze({
-  version: "V800",
+  version: "V801",
   lastUpdated: "02/09/2026",
-  label: "Fantacalcio - V800 - Aggiornato al 02/09/2026"
+  label: "Fantacalcio - V801 - Aggiornato al 02/09/2026"
 });
 
 function applyZonaOrientaleCanonicalFooterV790() {
@@ -316,12 +316,12 @@ function createCalciomercatoArchiveAdminV340() {
     setExpanded: () => {}
   };
 }
-import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js?v=800";
+import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js?v=801";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "../../fanta-engine/js/shared/v491/assets/js/mobile/mobile-tables.js?v=491";
 import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=485";
 import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=485";
-import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=800";
+import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=801";
 import { createMobileRosterHelpersV169 } from "../../fanta-engine/js/shared/v491/assets/js/mobile/mobile-rosters.js?v=491";
 
 const ZonaOrientaleSharedHelperBridgeV341 = createSharedHelperBridgeV341({
@@ -41605,57 +41605,19 @@ window.FantaSiteMobileCardsV668 = Object.freeze({
   }
 
   function repairStaticSvincoliV751(source){
+    // V801: il repair V751 era un fix temporaneo per gli svincoli storici di luglio 2026.
+    // Non deve mai mutare i movimenti Firebase creati successivamente: in V751 ogni nuovo
+    // SVINCOLO della stessa fantasquadra veniva sovrascritto in memoria con importo e
+    // descrizione del vecchio movimento canonico. I dati storici sono ormai persistiti,
+    // quindi il repair resta come no-op compatibile per i vecchi hook senza alterare state.raw.
     const appState = ensureState();
-    if (!appState) return { changed: 0, added: 0, source: source || 'unknown' };
-    let changed = 0;
-    let added = 0;
-    const rows = appState.raw.fmMovements;
-    Object.entries(CANONICAL_SVINCOLI).forEach(function(entry){
-      const seasonTeamId = entry[0];
-      const canonical = entry[1];
-      let candidates = rows.filter(function(row){
-        return row && row.type === 'SVINCOLO' && row.seasonTeamId === seasonTeamId && String(row.seasonId || '') === '2026-2027';
-      });
-      if (!candidates.length) {
-        rows.push({
-          id: 'static_svincolo_v751_' + seasonTeamId,
-          seasonId: '2026-2027',
-          seasonTeamId: seasonTeamId,
-          targetSeasonTeamId: '',
-          playerName: '',
-          realTeam: '',
-          rosterRole: '',
-          mantraRoles: '',
-          type: 'SVINCOLO',
-          date: canonical.date,
-          amount: canonical.amount,
-          description: canonical.description,
-          source: 'static-svincoli-canonical-v751'
-        });
-        added += 1;
-        return;
-      }
-      candidates.sort(function(a, b){
-        const au = Number(a?.updatedAt?.seconds || a?.createdAt?.seconds || 0);
-        const bu = Number(b?.updatedAt?.seconds || b?.createdAt?.seconds || 0);
-        return bu - au;
-      });
-      candidates.forEach(function(row, index){
-        const shouldPatch = isGenericSvincoloDescription(row.description) || String(row.description || '') !== canonical.description;
-        if (shouldPatch) {
-          row.description = canonical.description;
-          row.amount = canonical.amount;
-          row.date = row.date || canonical.date;
-          row.playerName = row.playerName || '';
-          row.targetSeasonTeamId = row.targetSeasonTeamId || '';
-          row.source = row.source || 'static-svincoli-canonical-v751';
-          row.staticSvincoliRepairV751 = true;
-          changed += 1;
-        }
-        if (index > 0) row.hiddenDuplicateSvincoloV751 = true;
-      });
-    });
-    const result = { changed: changed, added: added, source: source || 'unknown', at: new Date().toISOString() };
+    const result = {
+      changed: 0,
+      added: 0,
+      source: source || 'unknown',
+      disabledBy: 'V801',
+      at: new Date().toISOString()
+    };
     try { window.ZonaOrientaleStaticSvincoliV751 = result; } catch (_) {}
     return result;
   }
@@ -42619,3 +42581,15 @@ window.ZonaOrientaleCompetitionCalendarsV796 = Object.freeze({
     latestListone: "2026-09-02"
   });
 })();
+
+
+/* V801 - Stop legacy V751 svincoli mutation.
+ * Historical July movements are already persisted. New Firebase movements must remain authoritative.
+ */
+try {
+  window.ZonaOrientaleSvincoliAdminFixV801 = Object.freeze({
+    version: 'V801',
+    legacyRepairDisabled: true,
+    preservesFirebaseMovements: true
+  });
+} catch (_) {}
