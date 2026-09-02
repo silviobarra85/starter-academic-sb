@@ -1,11 +1,11 @@
-/* V801 - Footer canonico ZonaOrientale (compatibilita API V790).
+/* V802 - Footer canonico ZonaOrientale (compatibilita API V790).
  * Unica sorgente runtime per versione/data. Tutti i writer legacy del footer
  * delegano qui, evitando gare tra MutationObserver di release differenti.
  */
 const ZONAORIENTALE_RELEASE_V790 = Object.freeze({
-  version: "V801",
+  version: "V802",
   lastUpdated: "02/09/2026",
-  label: "Fantacalcio - V801 - Aggiornato al 02/09/2026"
+  label: "Fantacalcio - V802 - Aggiornato al 02/09/2026"
 });
 
 function applyZonaOrientaleCanonicalFooterV790() {
@@ -316,12 +316,12 @@ function createCalciomercatoArchiveAdminV340() {
     setExpanded: () => {}
   };
 }
-import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js?v=801";
+import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js?v=802";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "../../fanta-engine/js/shared/v491/assets/js/mobile/mobile-tables.js?v=491";
 import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=485";
 import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=485";
-import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=801";
+import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=802";
 import { createMobileRosterHelpersV169 } from "../../fanta-engine/js/shared/v491/assets/js/mobile/mobile-rosters.js?v=491";
 
 const ZonaOrientaleSharedHelperBridgeV341 = createSharedHelperBridgeV341({
@@ -16571,7 +16571,7 @@ window.ZonaOrientaleAdminMobileButtonTopV430 = Object.freeze({
   ]
 });
 
-const DEPLOY_EXPECTED_VERSION_V181 = "801";
+const DEPLOY_EXPECTED_VERSION_V181 = "802";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -42593,3 +42593,704 @@ try {
     preservesFirebaseMovements: true
   });
 } catch (_) {}
+
+/* V802 - Gestione manuale rose Admin + persistenza negli snapshot statici.
+ * - La rosa statica resta la baseline pubblica.
+ * - rosterEntries Firebase funziona come overlay amministrativo: ACTIVE aggiunge/modifica/sposta,
+ *   REMOVED elimina dalla rosa senza distruggere lo storico statico.
+ * - L'Admin puo cercare un giocatore in tutti i listoni della stagione, precompilare i valori,
+ *   modificarli liberamente oppure inserire un giocatore da zero.
+ * - L'overlay snapshot stagionale include anche assets/rose, cosi le correzioni diventano
+ *   persistenti dopo l'applicazione dello zip su GitHub.
+ */
+(function installManualRosterAdminV802(){
+  const VERSION = "V802";
+  const REMOVED = "REMOVED";
+  const ACTIVE = "ACTIVE";
+  const LISTONE_STATUS_VALUES = ["IN_LISTONE", "ASTERISCATO"];
+
+  if (!ADMIN_PANEL_IDS.includes("adminManualRosterPanelV802")) ADMIN_PANEL_IDS.push("adminManualRosterPanelV802");
+  if (state.collapsedAdminPanels && typeof state.collapsedAdminPanels.add === "function") {
+    state.collapsedAdminPanels.add("adminManualRosterPanelV802");
+  }
+  state.adminManualRosterSeasonIdV802 = state.adminManualRosterSeasonIdV802 || "";
+  state.adminManualRosterSeasonTeamIdV802 = state.adminManualRosterSeasonTeamIdV802 || "";
+  state.adminManualRosterSearchMatchesV802 = state.adminManualRosterSearchMatchesV802 || [];
+
+  function normalizeManualRosterNameV802(value){
+    return typeof normalizePlayerName === "function"
+      ? normalizePlayerName(value || "")
+      : String(value || "").trim().toLocaleLowerCase("it");
+  }
+
+  function rosterEntryTimeV802(entry = {}){
+    const value = entry.updatedAt || entry.createdAt || entry.removedAt || entry.deletedAt || "";
+    if (value && typeof value.toMillis === "function") return value.toMillis();
+    if (value && Number.isFinite(Number(value.seconds))) return Number(value.seconds) * 1000 + Number(value.nanoseconds || 0) / 1e6;
+    const parsed = Date.parse(String(value || ""));
+    return Number.isFinite(parsed) ? parsed : 0;
+  }
+
+  function getRosterOverridesForSeasonV802(seasonId){
+    return (state.raw?.rosterEntries || [])
+      .filter((entry) => entry && entry.seasonId === seasonId && entry.playerName)
+      .slice()
+      .sort((a, b) => {
+        const diff = rosterEntryTimeV802(a) - rosterEntryTimeV802(b);
+        if (diff) return diff;
+        return String(a.id || "").localeCompare(String(b.id || ""), "it");
+      });
+  }
+
+  function buildEffectiveRosterMapV802(seasonId){
+    const teams = typeof getSeasonTeamsForSeason === "function" ? getSeasonTeamsForSeason(seasonId) : [];
+    const byTeam = new Map(teams.map((team) => [team.id, new Map()]));
+
+    teams.forEach((seasonTeam) => {
+      const rows = typeof getStaticRosterEntriesForSeasonTeamV588 === "function"
+        ? getStaticRosterEntriesForSeasonTeamV588(seasonTeam)
+        : [];
+      const bucket = byTeam.get(seasonTeam.id) || new Map();
+      rows.forEach((row) => {
+        const key = normalizeManualRosterNameV802(row.playerName);
+        if (key) bucket.set(key, { ...row, seasonId, seasonTeamId: seasonTeam.id, _rosterOriginV802: "STATIC" });
+      });
+      byTeam.set(seasonTeam.id, bucket);
+    });
+
+    getRosterOverridesForSeasonV802(seasonId).forEach((entry) => {
+      const key = normalizeManualRosterNameV802(entry.playerName);
+      if (!key) return;
+      // Un override riguarda l'identita del giocatore nella stagione: prima rimuove
+      // l'eventuale baseline da qualunque fantasquadra, poi applica lo stato corrente.
+      byTeam.forEach((bucket) => bucket.delete(key));
+      if (String(entry.status || ACTIVE).toUpperCase() === REMOVED) return;
+      if (!byTeam.has(entry.seasonTeamId)) byTeam.set(entry.seasonTeamId, new Map());
+      byTeam.get(entry.seasonTeamId).set(key, {
+        ...entry,
+        seasonId,
+        status: ACTIVE,
+        _rosterOriginV802: "FIREBASE",
+        _firestoreRosterEntryIdV802: entry.id || ""
+      });
+    });
+
+    return byTeam;
+  }
+
+  function getEffectiveRosterEntriesForSeasonTeamV802(seasonTeam){
+    if (!seasonTeam) return [];
+    const seasonId = seasonTeam.seasonId || getCurrentSeasonId();
+    const rows = [...(buildEffectiveRosterMapV802(seasonId).get(seasonTeam.id)?.values() || [])];
+    return rows.sort((a, b) => {
+      if (typeof compareRosterPlayersV34 === "function") return compareRosterPlayersV34(a, b);
+      return String(a.playerName || "").localeCompare(String(b.playerName || ""), "it");
+    });
+  }
+
+  function syncEffectiveRosterForUiV802(rows, seasonId){
+    if (typeof syncRosterPlayerWithLatestListoneV787 !== "function") return rows;
+    return rows.map((row) => syncRosterPlayerWithLatestListoneV787(state.listoni || [], row, seasonId));
+  }
+
+  // In Admin la vista deve mostrare subito l'overlay Firebase; il pubblico continua a usare
+  // assets/rose finche l'Admin non scarica e applica gli snapshot statici.
+  const getRosterForSeasonTeamBeforeV802 = typeof getRosterForSeasonTeam === "function" ? getRosterForSeasonTeam : null;
+  if (getRosterForSeasonTeamBeforeV802) {
+    getRosterForSeasonTeam = function getRosterForSeasonTeamV802(seasonTeam){
+      if (state?.isAdmin && state?.hasFullData && seasonTeam?.id) {
+        const seasonId = seasonTeam.seasonId || getCurrentSeasonId();
+        const rows = syncEffectiveRosterForUiV802(getEffectiveRosterEntriesForSeasonTeamV802(seasonTeam), seasonId);
+        return { id: seasonTeam.id, name: seasonTeam.name, playerCount: rows.length, players: rows, source: "static-plus-firebase-v802" };
+      }
+      return getRosterForSeasonTeamBeforeV802(seasonTeam);
+    };
+  }
+
+  // La generazione degli snapshot usa sempre la rosa effettiva (baseline statica + overlay Firebase).
+  const getSnapshotRosterEntriesForSeasonTeamBeforeV802 = typeof getSnapshotRosterEntriesForSeasonTeamV37 === "function" ? getSnapshotRosterEntriesForSeasonTeamV37 : null;
+  if (getSnapshotRosterEntriesForSeasonTeamBeforeV802) {
+    getSnapshotRosterEntriesForSeasonTeamV37 = function getSnapshotRosterEntriesForSeasonTeamV802(seasonTeam){
+      if (state?.hasFullData && seasonTeam?.id) {
+        return getEffectiveRosterEntriesForSeasonTeamV802(seasonTeam).map((row) => ({ ...row }));
+      }
+      return getSnapshotRosterEntriesForSeasonTeamBeforeV802(seasonTeam);
+    };
+  }
+
+  // Per gli asteriscati mostra anche in rosa l'ultima quotazione valida recuperabile dallo storico.
+  const getRosterPlayerQuotationCurrentBeforeV802 = typeof getRosterPlayerQuotationCurrent === "function" ? getRosterPlayerQuotationCurrent : null;
+  if (getRosterPlayerQuotationCurrentBeforeV802) {
+    getRosterPlayerQuotationCurrent = function getRosterPlayerQuotationCurrentV802(player = {}){
+      const current = getRosterPlayerQuotationCurrentBeforeV802(player);
+      if (current !== undefined && current !== null && current !== "") return current;
+      const historical = typeof getPlayerReleaseQuotationFromListoniV261 === "function"
+        ? getPlayerReleaseQuotationFromListoniV261(player)
+        : null;
+      const fallback = historical?.quotation ?? player.lastKnownQuotation ?? player.quotationCurrent ?? player.quotation_current ?? "";
+      return fallback;
+    };
+  }
+
+  function getManualRosterSeasonIdV802(){
+    return state.adminManualRosterSeasonIdV802 || state.selectedAdminRosterSeasonId || getCurrentSeasonId();
+  }
+
+  function getManualRosterSeasonTeamIdV802(seasonId = getManualRosterSeasonIdV802()){
+    const teams = getSeasonTeamsForSeason(seasonId) || [];
+    const selected = state.adminManualRosterSeasonTeamIdV802 || state.selectedAdminMovementSeasonTeamId || "";
+    if (selected && teams.some((team) => team.id === selected)) return selected;
+    return teams[0]?.id || "";
+  }
+
+  function getListoneStatusCodeV802(player, seasonId){
+    const latest = typeof getLatestListoneForSeasonV787 === "function" ? getLatestListoneForSeasonV787(state.listoni || [], seasonId) : null;
+    if (!latest) return String(player?.statusCode || player?.listoneStatusCode || "IN_LISTONE").toUpperCase();
+    const name = normalizeManualRosterNameV802(player?.playerName);
+    const match = (latest.players || []).find((row) => normalizeManualRosterNameV802(row.playerName) === name);
+    if (!match) return "ASTERISCATO";
+    const raw = String(match.statusCode || match.status || "IN_LISTONE").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase();
+    return raw.includes("ASTER") || raw.includes("*") ? "ASTERISCATO" : "IN_LISTONE";
+  }
+
+  function findHistoricalRosterCandidatesV802(query, seasonId){
+    const needle = String(query || "").trim().toLocaleLowerCase("it");
+    if (needle.length < 2) return [];
+    const listoni = (state.listoni || [])
+      .filter((listone) => String(listone.seasonId || listone.meta?.seasonId || "") === String(seasonId || ""))
+      .slice()
+      .sort(typeof compareListoniByDateDescV99 === "function" ? compareListoniByDateDescV99 : (a,b) => String(b.loadedAt || b.id || "").localeCompare(String(a.loadedAt || a.id || ""), "it"));
+    const rows = [];
+    listoni.forEach((listone) => {
+      (listone.players || []).forEach((player) => {
+        const haystack = [player.playerName, player.realTeam, player.realTeamOriginal, player.classicRole, player.mantraRoles, player.fantacalcioId, player.fantasyRoster]
+          .map((value) => String(value || "").toLocaleLowerCase("it"))
+          .join(" ");
+        if (!haystack.includes(needle)) return;
+        rows.push({
+          listoneId: listone.id || listone.meta?.id || "",
+          listoneLabel: listone.loadedAt || listone.meta?.loadedAt || listone.label || listone.id || "Listone",
+          player: { ...player }
+        });
+      });
+    });
+    return rows.slice(0, 60);
+  }
+
+  function manualRosterNumberV802(value){
+    if (value === "" || value === null || value === undefined) return "";
+    const parsed = Number(String(value).replace(",", "."));
+    return Number.isFinite(parsed) ? parsed : "";
+  }
+
+  function renderManualRosterSearchResultsV802(){
+    const target = document.getElementById("adminManualRosterSearchResultsV802");
+    if (!target) return;
+    const query = document.getElementById("adminManualRosterSearchV802")?.value || "";
+    const seasonId = document.getElementById("adminManualRosterSeasonV802")?.value || getManualRosterSeasonIdV802();
+    const matches = findHistoricalRosterCandidatesV802(query, seasonId);
+    state.adminManualRosterSearchMatchesV802 = matches;
+    if (String(query).trim().length < 2) {
+      target.innerHTML = '<p class="muted">Scrivi almeno 2 caratteri. La ricerca comprende tutti i listoni della stagione selezionata.</p>';
+      return;
+    }
+    target.innerHTML = matches.length ? `<div class="admin-list">${matches.map((item, index) => {
+      const p = item.player || {};
+      const cost = p.rosterCost ?? p.cost ?? "";
+      const q = p.quotationCurrent ?? p.quotation_current ?? "";
+      return `<div class="admin-list-item"><span><strong>${escapeHtml(p.playerName || "-")}</strong><small>${escapeHtml(item.listoneLabel)} · ${escapeHtml(p.realTeam || "-")} · ${escapeHtml(p.classicRole || p.rosterRole || "-")}${p.mantraRoles ? ` (${escapeHtml(p.mantraRoles)})` : ""} · Qt. ${escapeHtml(q)}${cost !== "" ? ` · costo rosa ${escapeHtml(cost)}` : ""}${p.fantasyRoster ? ` · ${escapeHtml(p.fantasyRoster)}` : ""}</small></span><button type="button" class="button button-secondary button-small" data-admin-manual-roster-load-history-v802="${index}">Carica</button></div>`;
+    }).join("")}</div>` : '<p class="muted">Nessun giocatore trovato nei listoni della stagione.</p>';
+  }
+
+  function currentManualRosterRowsV802(seasonId, seasonTeamId){
+    const team = getSeasonTeamById(seasonTeamId);
+    if (!team) return [];
+    return getEffectiveRosterEntriesForSeasonTeamV802(team);
+  }
+
+  function renderManualRosterPanelHtmlV802(){
+    const seasonId = getManualRosterSeasonIdV802();
+    const seasons = (state.raw?.seasons || []).length ? state.raw.seasons : [{ id: seasonId, name: seasonId }];
+    const teams = getSeasonTeamsForSeason(seasonId) || [];
+    const seasonTeamId = getManualRosterSeasonTeamIdV802(seasonId);
+    state.adminManualRosterSeasonIdV802 = seasonId;
+    state.adminManualRosterSeasonTeamIdV802 = seasonTeamId;
+    const rows = currentManualRosterRowsV802(seasonId, seasonTeamId);
+    const seasonOptions = seasons.map((season) => `<option value="${escapeHtml(season.id)}" ${season.id === seasonId ? "selected" : ""}>${escapeHtml(season.name || season.id)}</option>`).join("");
+    const teamOptions = teams.map((team) => `<option value="${escapeHtml(team.id)}" ${team.id === seasonTeamId ? "selected" : ""}>${escapeHtml(team.name || team.id)}</option>`).join("");
+    const rosterRows = rows.map((player) => {
+      const status = getListoneStatusCodeV802(player, seasonId);
+      const quote = getRosterPlayerQuotationCurrent(player);
+      return `<div class="admin-list-item"><span><strong>${escapeHtml(player.playerName || "-")}</strong><small>${escapeHtml(player.classicRole || player.rosterRole || player.role || "-")}${player.mantraRoles ? ` (${escapeHtml(player.mantraRoles)})` : ""} · ${escapeHtml(player.realTeam || "-")} · costo ${escapeHtml(player.cost ?? "-")} · Qt. ${escapeHtml(quote ?? "-")} · ${escapeHtml(status === "ASTERISCATO" ? "Asteriscato" : "In listone")}</small></span><span class="admin-list-actions-v436"><button type="button" class="button button-secondary button-small" data-admin-manual-roster-edit-v802="${escapeHtml(player._firestoreRosterEntryIdV802 || "")}" data-admin-manual-roster-edit-name-v802="${escapeHtml(player.playerName || "")}" data-admin-manual-roster-edit-team-v802="${escapeHtml(seasonTeamId)}">Modifica</button><button type="button" class="button button-danger button-small" data-admin-manual-roster-delete-v802="${escapeHtml(player._firestoreRosterEntryIdV802 || "")}" data-admin-manual-roster-delete-name-v802="${escapeHtml(player.playerName || "")}" data-admin-manual-roster-delete-team-v802="${escapeHtml(seasonTeamId)}">Elimina</button></span></div>`;
+    }).join("") || '<p class="muted">Nessun giocatore nella rosa selezionata.</p>';
+
+    return renderAdminPanel("adminManualRosterPanelV802", "Firebase + snapshot", "Modifica manualmente le rose", "Aggiungi, modifica, sposta o elimina un giocatore. Le modifiche sono subito salvate in Firebase e diventano statiche/persistenti quando scarichi e applichi l’overlay snapshot stagionale.", `
+      <div class="form-grid">
+        <label>Stagione<select id="adminManualRosterSeasonV802" class="input">${seasonOptions}</select></label>
+        <label>Rosa da gestire<select id="adminManualRosterTeamV802" class="input">${teamOptions}</select></label>
+      </div>
+      <hr class="soft-separator" />
+      <label class="span-2">Cerca nei vecchi listoni
+        <input id="adminManualRosterSearchV802" class="input" type="search" placeholder="Nome, squadra reale, ID Fantacalcio..." autocomplete="off" />
+        <small class="field-hint">Premi Carica su un risultato per precompilare il form. Puoi poi modificare qualunque valore.</small>
+      </label>
+      <div id="adminManualRosterSearchResultsV802" class="import-report"><p class="muted">Scrivi almeno 2 caratteri. La ricerca comprende tutti i listoni della stagione selezionata.</p></div>
+      <hr class="soft-separator" />
+      <form id="adminManualRosterFormV802" class="form-grid" data-editing-id="" data-original-name="" data-original-team="">
+        <label>Rosa destinazione<select id="adminManualRosterTargetTeamV802" class="input" required>${teamOptions}</select></label>
+        <label>Stato listone<select id="adminManualRosterListoneStatusV802" class="input"><option value="IN_LISTONE">In listone</option><option value="ASTERISCATO">Asteriscato</option></select></label>
+        <label>Nome giocatore<input id="adminManualRosterPlayerNameV802" class="input" type="text" required /></label>
+        <label>ID Fantacalcio<input id="adminManualRosterFantacalcioIdV802" class="input" type="text" /></label>
+        <label>Squadra reale<input id="adminManualRosterRealTeamV802" class="input" type="text" placeholder="Es. INT" /></label>
+        <label>Nome squadra reale<input id="adminManualRosterRealTeamOriginalV802" class="input" type="text" placeholder="Es. Inter" /></label>
+        <label>Ruolo Classic<input id="adminManualRosterClassicRoleV802" class="input" type="text" placeholder="P / D / C / A" /></label>
+        <label>Ruoli Mantra<input id="adminManualRosterMantraRolesV802" class="input" type="text" placeholder="Es. Ds/E" /></label>
+        <label>Costo nella rosa<input id="adminManualRosterCostV802" class="input" type="number" step="0.5" /></label>
+        <label>Quotazione attuale / ultima valida<input id="adminManualRosterQuotationCurrentV802" class="input" type="number" step="0.5" /></label>
+        <label>Quotazione iniziale<input id="adminManualRosterQuotationInitialV802" class="input" type="number" step="0.5" /></label>
+        <label>Qt. Mantra attuale<input id="adminManualRosterQuotationCurrentMantraV802" class="input" type="number" step="0.5" /></label>
+        <label>Qt. Mantra iniziale<input id="adminManualRosterQuotationInitialMantraV802" class="input" type="number" step="0.5" /></label>
+        <label>FVM<input id="adminManualRosterFvmV802" class="input" type="number" step="0.5" /></label>
+        <label>FVM Mantra<input id="adminManualRosterFvmMantraV802" class="input" type="number" step="0.5" /></label>
+        <label class="span-2">Note Admin<input id="adminManualRosterNotesV802" class="input" type="text" placeholder="Correzione manuale, provenienza, motivo..." /></label>
+        <input id="adminManualRosterSourceListoneIdV802" type="hidden" />
+        <input id="adminManualRosterSourceListoneLabelV802" type="hidden" />
+        <div class="form-actions span-2"><button class="button button-primary" type="submit">Salva giocatore nella rosa</button><button id="adminManualRosterResetV802" class="button button-secondary" type="button">Nuovo da zero</button><span id="adminManualRosterStatusV802" class="form-status"></span></div>
+      </form>
+      <details class="admin-edit-section" open><summary><strong>Giocatori della rosa selezionata</strong><span>${rows.length} giocatori</span></summary><div class="admin-list">${rosterRows}</div></details>
+      <small class="field-hint">Le operazioni manuali sulla rosa non generano movimenti FM. Usale per correzioni amministrative. Per rendere permanente il dato pubblico: Snapshot pubblici → Scarica overlay snapshot stagioni → applica lo zip alla repo.</small>
+    `);
+  }
+
+  function ensureManualRosterAdminPanelV802(){
+    if (!state?.isAdmin) return;
+    document.getElementById("adminManualRosterPanelV802")?.remove();
+    const anchor = document.getElementById("adminRosterMovementsPanel");
+    if (!anchor) return;
+    const holder = document.createElement("div");
+    holder.innerHTML = renderManualRosterPanelHtmlV802();
+    const panel = holder.firstElementChild;
+    if (panel) anchor.insertAdjacentElement("afterend", panel);
+  }
+
+  function setManualRosterFieldV802(id, value){
+    const node = document.getElementById(id);
+    if (node) node.value = value ?? "";
+  }
+
+  function resetManualRosterFormV802(){
+    const form = document.getElementById("adminManualRosterFormV802");
+    if (!form) return;
+    form.dataset.editingId = "";
+    form.dataset.originalName = "";
+    form.dataset.originalTeam = "";
+    [
+      "adminManualRosterPlayerNameV802", "adminManualRosterFantacalcioIdV802", "adminManualRosterRealTeamV802",
+      "adminManualRosterRealTeamOriginalV802", "adminManualRosterClassicRoleV802", "adminManualRosterMantraRolesV802",
+      "adminManualRosterCostV802", "adminManualRosterQuotationCurrentV802", "adminManualRosterQuotationInitialV802",
+      "adminManualRosterQuotationCurrentMantraV802", "adminManualRosterQuotationInitialMantraV802", "adminManualRosterFvmV802",
+      "adminManualRosterFvmMantraV802", "adminManualRosterNotesV802", "adminManualRosterSourceListoneIdV802",
+      "adminManualRosterSourceListoneLabelV802"
+    ].forEach((id) => setManualRosterFieldV802(id, ""));
+    setManualRosterFieldV802("adminManualRosterListoneStatusV802", "IN_LISTONE");
+    setManualRosterFieldV802("adminManualRosterTargetTeamV802", getManualRosterSeasonTeamIdV802());
+    showMessage("adminManualRosterStatusV802", "Nuovo inserimento manuale.");
+  }
+
+  function loadManualRosterValuesV802(player = {}, options = {}){
+    const form = document.getElementById("adminManualRosterFormV802");
+    if (!form) return;
+    const seasonId = document.getElementById("adminManualRosterSeasonV802")?.value || getManualRosterSeasonIdV802();
+    const teamId = options.seasonTeamId || document.getElementById("adminManualRosterTeamV802")?.value || getManualRosterSeasonTeamIdV802(seasonId);
+    form.dataset.editingId = options.editingId || "";
+    form.dataset.originalName = options.originalName || player.playerName || "";
+    form.dataset.originalTeam = options.originalTeam || teamId || "";
+    setManualRosterFieldV802("adminManualRosterTargetTeamV802", teamId);
+    setManualRosterFieldV802("adminManualRosterPlayerNameV802", player.playerName || player.name || "");
+    setManualRosterFieldV802("adminManualRosterFantacalcioIdV802", player.fantacalcioId || "");
+    setManualRosterFieldV802("adminManualRosterRealTeamV802", player.realTeam || "");
+    setManualRosterFieldV802("adminManualRosterRealTeamOriginalV802", player.realTeamOriginal || "");
+    setManualRosterFieldV802("adminManualRosterClassicRoleV802", player.classicRole || player.rosterRole || player.role || "");
+    setManualRosterFieldV802("adminManualRosterMantraRolesV802", player.mantraRoles || player.mantra_roles || "");
+    setManualRosterFieldV802("adminManualRosterCostV802", player.cost ?? player.rosterCost ?? "");
+    setManualRosterFieldV802("adminManualRosterQuotationCurrentV802", player.quotationCurrent ?? player.quotation_current ?? player.lastKnownQuotation ?? "");
+    setManualRosterFieldV802("adminManualRosterQuotationInitialV802", player.quotationInitial ?? player.quotation_initial ?? "");
+    setManualRosterFieldV802("adminManualRosterQuotationCurrentMantraV802", player.quotationCurrentMantra ?? "");
+    setManualRosterFieldV802("adminManualRosterQuotationInitialMantraV802", player.quotationInitialMantra ?? "");
+    setManualRosterFieldV802("adminManualRosterFvmV802", player.fvm ?? "");
+    setManualRosterFieldV802("adminManualRosterFvmMantraV802", player.fvmMantra ?? "");
+    setManualRosterFieldV802("adminManualRosterListoneStatusV802", options.listoneStatusCode || player.listoneStatusCode || player.statusCode || getListoneStatusCodeV802(player, seasonId));
+    setManualRosterFieldV802("adminManualRosterNotesV802", player.adminNotesV802 || "");
+    setManualRosterFieldV802("adminManualRosterSourceListoneIdV802", options.sourceListoneId || player.sourceListoneIdV802 || "");
+    setManualRosterFieldV802("adminManualRosterSourceListoneLabelV802", options.sourceListoneLabel || player.sourceListoneLabelV802 || "");
+    form.scrollIntoView?.({ behavior: "smooth", block: "start" });
+  }
+
+  function loadHistoricalCandidateIntoFormV802(index){
+    const item = state.adminManualRosterSearchMatchesV802?.[Number(index)];
+    if (!item?.player) return;
+    const seasonId = document.getElementById("adminManualRosterSeasonV802")?.value || getManualRosterSeasonIdV802();
+    let teamId = document.getElementById("adminManualRosterTeamV802")?.value || getManualRosterSeasonTeamIdV802(seasonId);
+    if (item.player.fantasyRoster) {
+      const targetKey = normalizeKey(item.player.fantasyRoster);
+      const matchedTeam = (getSeasonTeamsForSeason(seasonId) || []).find((team) => normalizeKey(team.name) === targetKey);
+      if (matchedTeam) teamId = matchedTeam.id;
+    }
+    loadManualRosterValuesV802(item.player, {
+      seasonTeamId: teamId,
+      originalName: "",
+      originalTeam: "",
+      sourceListoneId: item.listoneId,
+      sourceListoneLabel: item.listoneLabel,
+      listoneStatusCode: getListoneStatusCodeV802(item.player, seasonId)
+    });
+    const form = document.getElementById("adminManualRosterFormV802");
+    if (form) { form.dataset.editingId = ""; form.dataset.originalName = ""; form.dataset.originalTeam = ""; }
+    showMessage("adminManualRosterStatusV802", `Valori caricati dal listone ${item.listoneLabel}. Modificali se necessario e salva.`);
+  }
+
+  function findEffectiveRosterPlayerV802(seasonId, seasonTeamId, playerName){
+    const team = getSeasonTeamById(seasonTeamId);
+    if (!team) return null;
+    const key = normalizeManualRosterNameV802(playerName);
+    return getEffectiveRosterEntriesForSeasonTeamV802(team).find((row) => normalizeManualRosterNameV802(row.playerName) === key) || null;
+  }
+
+  function startEditManualRosterPlayerV802(button){
+    const seasonId = document.getElementById("adminManualRosterSeasonV802")?.value || getManualRosterSeasonIdV802();
+    const seasonTeamId = button.dataset.adminManualRosterEditTeamV802 || getManualRosterSeasonTeamIdV802(seasonId);
+    const playerName = button.dataset.adminManualRosterEditNameV802 || "";
+    const player = findEffectiveRosterPlayerV802(seasonId, seasonTeamId, playerName);
+    if (!player) return;
+    loadManualRosterValuesV802(player, {
+      seasonTeamId,
+      editingId: button.dataset.adminManualRosterEditV802 || player._firestoreRosterEntryIdV802 || "",
+      originalName: player.playerName || "",
+      originalTeam: seasonTeamId,
+      listoneStatusCode: getListoneStatusCodeV802(player, seasonId)
+    });
+    showMessage("adminManualRosterStatusV802", `Modifica attiva: ${player.playerName}. Tutti i campi sono editabili.`);
+  }
+
+  function manualRosterPayloadFromFormV802(){
+    const seasonId = document.getElementById("adminManualRosterSeasonV802")?.value || getManualRosterSeasonIdV802();
+    const seasonTeamId = document.getElementById("adminManualRosterTargetTeamV802")?.value || "";
+    const classicRole = String(document.getElementById("adminManualRosterClassicRoleV802")?.value || "").trim().toUpperCase();
+    const listoneStatusCodeRaw = String(document.getElementById("adminManualRosterListoneStatusV802")?.value || "IN_LISTONE").toUpperCase();
+    const listoneStatusCode = LISTONE_STATUS_VALUES.includes(listoneStatusCodeRaw) ? listoneStatusCodeRaw : "IN_LISTONE";
+    return {
+      seasonId,
+      seasonTeamId,
+      playerName: String(document.getElementById("adminManualRosterPlayerNameV802")?.value || "").trim(),
+      fantacalcioId: String(document.getElementById("adminManualRosterFantacalcioIdV802")?.value || "").trim(),
+      realTeam: abbreviateRealTeam(String(document.getElementById("adminManualRosterRealTeamV802")?.value || "").trim()).toUpperCase(),
+      realTeamOriginal: String(document.getElementById("adminManualRosterRealTeamOriginalV802")?.value || "").trim(),
+      rosterRole: classicRole,
+      classicRole,
+      mantraRoles: String(document.getElementById("adminManualRosterMantraRolesV802")?.value || "").trim(),
+      cost: manualRosterNumberV802(document.getElementById("adminManualRosterCostV802")?.value),
+      quotationCurrent: manualRosterNumberV802(document.getElementById("adminManualRosterQuotationCurrentV802")?.value),
+      quotationInitial: manualRosterNumberV802(document.getElementById("adminManualRosterQuotationInitialV802")?.value),
+      quotationCurrentMantra: manualRosterNumberV802(document.getElementById("adminManualRosterQuotationCurrentMantraV802")?.value),
+      quotationInitialMantra: manualRosterNumberV802(document.getElementById("adminManualRosterQuotationInitialMantraV802")?.value),
+      fvm: manualRosterNumberV802(document.getElementById("adminManualRosterFvmV802")?.value),
+      fvmMantra: manualRosterNumberV802(document.getElementById("adminManualRosterFvmMantraV802")?.value),
+      listoneStatusCode,
+      statusCode: listoneStatusCode,
+      lastKnownQuotation: manualRosterNumberV802(document.getElementById("adminManualRosterQuotationCurrentV802")?.value),
+      adminNotesV802: String(document.getElementById("adminManualRosterNotesV802")?.value || "").trim(),
+      sourceListoneIdV802: String(document.getElementById("adminManualRosterSourceListoneIdV802")?.value || "").trim(),
+      sourceListoneLabelV802: String(document.getElementById("adminManualRosterSourceListoneLabelV802")?.value || "").trim(),
+      status: ACTIVE,
+      source: "admin-manual-roster-v802"
+    };
+  }
+
+  async function writeManualRosterTombstoneV802(seasonId, seasonTeamId, playerName, existingId = ""){
+    const id = existingId || `${makeIdPart(seasonId)}_${makeIdPart(seasonTeamId)}_${makeIdPart(playerName)}_removed_v802`;
+    await setDoc(doc(db, "rosterEntries", id), {
+      seasonId, seasonTeamId, playerName, status: REMOVED, source: "admin-manual-roster-v802",
+      removedAt: serverTimestamp(), updatedAt: serverTimestamp()
+    }, { merge: true });
+    return id;
+  }
+
+  function findDuplicateEffectivePlayerV802(seasonId, playerName, originalName = "", originalTeam = ""){
+    const target = normalizeManualRosterNameV802(playerName);
+    if (!target) return null;
+    const originalKey = normalizeManualRosterNameV802(originalName);
+    const byTeam = buildEffectiveRosterMapV802(seasonId);
+    for (const [teamId, bucket] of byTeam.entries()) {
+      const player = bucket.get(target);
+      if (!player) continue;
+      if (originalKey && target === originalKey && teamId === originalTeam) continue;
+      return { teamId, player };
+    }
+    return null;
+  }
+
+  async function saveManualRosterPlayerV802(event){
+    event.preventDefault();
+    const form = event.target;
+    const payload = manualRosterPayloadFromFormV802();
+    if (!payload.playerName || !payload.seasonTeamId) {
+      showMessage("adminManualRosterStatusV802", "Nome giocatore e rosa destinazione sono obbligatori.", true);
+      return;
+    }
+    try {
+      showMessage("adminManualRosterStatusV802", "Salvataggio in Firebase...");
+      const editingId = form.dataset.editingId || "";
+      const originalName = form.dataset.originalName || "";
+      const originalTeam = form.dataset.originalTeam || "";
+      const duplicate = findDuplicateEffectivePlayerV802(payload.seasonId, payload.playerName, originalName, originalTeam);
+      if (duplicate) {
+        throw new Error(`${payload.playerName} risulta gia in ${getSeasonTeamDisplayName(duplicate.teamId)}. Modifica quel record invece di crearne un duplicato.`);
+      }
+
+      // Se durante una modifica cambia il nome, neutralizza anche l'identita precedente della baseline statica.
+      if (originalName && normalizeManualRosterNameV802(originalName) !== normalizeManualRosterNameV802(payload.playerName)) {
+        await writeManualRosterTombstoneV802(payload.seasonId, originalTeam || payload.seasonTeamId, originalName, "");
+      }
+
+      const documentId = editingId || `${makeIdPart(payload.seasonId)}_${makeIdPart(payload.seasonTeamId)}_${makeIdPart(payload.playerName)}`;
+      const body = { ...payload, updatedAt: serverTimestamp() };
+      if (!editingId) body.createdAt = serverTimestamp();
+      await setDoc(doc(db, "rosterEntries", documentId), body, { merge: true });
+
+      state.adminManualRosterSeasonIdV802 = payload.seasonId;
+      state.adminManualRosterSeasonTeamIdV802 = payload.seasonTeamId;
+      await loadData();
+      ensureManualRosterAdminPanelV802();
+      expandAdminPanel?.("adminManualRosterPanelV802");
+      window.showToast?.(`${payload.playerName} salvato nella rosa.`);
+    } catch (error) {
+      console.error(error);
+      showMessage("adminManualRosterStatusV802", error?.message || "Errore durante il salvataggio del giocatore.", true);
+    }
+  }
+
+  async function deleteManualRosterPlayerV802(button){
+    const seasonId = document.getElementById("adminManualRosterSeasonV802")?.value || getManualRosterSeasonIdV802();
+    const seasonTeamId = button.dataset.adminManualRosterDeleteTeamV802 || getManualRosterSeasonTeamIdV802(seasonId);
+    const playerName = button.dataset.adminManualRosterDeleteNameV802 || "";
+    if (!playerName) return;
+    const confirmed = window.confirm?.(`Eliminare ${playerName} dalla rosa ${getSeasonTeamDisplayName(seasonTeamId)}? Non viene creato alcun movimento FM.`);
+    if (confirmed === false) return;
+    try {
+      await writeManualRosterTombstoneV802(seasonId, seasonTeamId, playerName, button.dataset.adminManualRosterDeleteV802 || "");
+      state.adminManualRosterSeasonIdV802 = seasonId;
+      state.adminManualRosterSeasonTeamIdV802 = seasonTeamId;
+      await loadData();
+      ensureManualRosterAdminPanelV802();
+      expandAdminPanel?.("adminManualRosterPanelV802");
+      window.showToast?.(`${playerName} eliminato dalla rosa.`);
+    } catch (error) {
+      console.error(error);
+      window.alert?.(error?.message || "Errore durante l'eliminazione dalla rosa.");
+    }
+  }
+
+  // Rende robusti anche i movimenti ordinari: se uno svincolo riguarda un giocatore ancora solo
+  // nella baseline statica, crea un tombstone Firebase invece di ignorare l'effetto sulla rosa.
+  const applyRosterSideEffectForMovementBeforeV802 = typeof applyRosterSideEffectForMovement === "function" ? applyRosterSideEffectForMovement : null;
+  if (applyRosterSideEffectForMovementBeforeV802) {
+    applyRosterSideEffectForMovement = async function applyRosterSideEffectForMovementV802(payload){
+      if (!payload?.playerName) return applyRosterSideEffectForMovementBeforeV802(payload);
+      const type = String(payload.type || "").toUpperCase();
+      if (type === "VENDITA" || type === "SVINCOLO") {
+        const existing = findRosterEntryForPlayer(payload.seasonId, payload.seasonTeamId, payload.playerName);
+        if (existing) {
+          await setDoc(doc(db, "rosterEntries", existing.id), { ...existing, status: REMOVED, removedAt: serverTimestamp(), removedByMovementType: type, updatedAt: serverTimestamp() }, { merge: true });
+        } else {
+          await writeManualRosterTombstoneV802(payload.seasonId, payload.seasonTeamId, payload.playerName, "");
+        }
+        return;
+      }
+      if (type === "SCAMBIO" && payload.targetSeasonTeamId) {
+        const existing = findRosterEntryForPlayer(payload.seasonId, payload.seasonTeamId, payload.playerName);
+        if (existing) return applyRosterSideEffectForMovementBeforeV802(payload);
+        const effective = findEffectiveRosterPlayerV802(payload.seasonId, payload.seasonTeamId, payload.playerName) || {};
+        const id = `${makeIdPart(payload.seasonId)}_${makeIdPart(payload.targetSeasonTeamId)}_${makeIdPart(payload.playerName)}`;
+        await setDoc(doc(db, "rosterEntries", id), {
+          ...effective,
+          seasonId: payload.seasonId,
+          seasonTeamId: payload.targetSeasonTeamId,
+          playerName: payload.playerName,
+          realTeam: payload.realTeam || effective.realTeam || "",
+          rosterRole: payload.rosterRole || effective.rosterRole || effective.classicRole || "",
+          classicRole: payload.rosterRole || effective.classicRole || effective.rosterRole || "",
+          status: ACTIVE,
+          source: "movement-scambio-v802",
+          updatedAt: serverTimestamp(),
+          createdAt: serverTimestamp()
+        }, { merge: true });
+        return;
+      }
+      return applyRosterSideEffectForMovementBeforeV802(payload);
+    };
+  }
+
+  function staticRosterPlayerFromEffectiveV802(player, seasonId){
+    const listoneStatusCode = getListoneStatusCodeV802(player, seasonId);
+    const quotationCurrent = player.quotationCurrent ?? player.quotation_current ?? player.lastKnownQuotation ?? getPlayerReleaseQuotationFromListoniV261?.(player)?.quotation ?? "";
+    return {
+      role: player.classicRole || player.rosterRole || player.role || "",
+      playerName: player.playerName || "",
+      realTeam: player.realTeam || "",
+      realTeamOriginal: player.realTeamOriginal || "",
+      cost: player.cost ?? player.rosterCost ?? "",
+      mantraRoles: player.mantraRoles || player.mantra_roles || "",
+      fantacalcioId: player.fantacalcioId || "",
+      listoneStatusCode,
+      statusCode: listoneStatusCode,
+      quotationCurrent,
+      lastKnownQuotation: quotationCurrent,
+      quotationInitial: player.quotationInitial ?? "",
+      quotationCurrentMantra: player.quotationCurrentMantra ?? "",
+      quotationInitialMantra: player.quotationInitialMantra ?? "",
+      fvm: player.fvm ?? "",
+      fvmMantra: player.fvmMantra ?? "",
+      adminNotesV802: player.adminNotesV802 || "",
+      sourceListoneIdV802: player.sourceListoneIdV802 || "",
+      sourceListoneLabelV802: player.sourceListoneLabelV802 || ""
+    };
+  }
+
+  function buildStaticRosterPayloadFromEffectiveV802(seasonId, loadedAt = getTodayIsoDate()){
+    const teams = getSeasonTeamsForSeason(seasonId) || [];
+    const effective = buildEffectiveRosterMapV802(seasonId);
+    const rosters = teams.map((team) => {
+      const players = [...(effective.get(team.id)?.values() || [])]
+        .map((player) => staticRosterPlayerFromEffectiveV802(player, seasonId))
+        .sort((a,b) => {
+          const roleDiff = getRosterRoleSortValue({ rosterRole: a.role, classicRole: a.role }, "role") - getRosterRoleSortValue({ rosterRole: b.role, classicRole: b.role }, "role");
+          if (roleDiff) return roleDiff;
+          return String(a.playerName || "").localeCompare(String(b.playerName || ""), "it");
+        });
+      return { name: team.name || team.id, playerCount: players.length, players };
+    });
+    const playerCount = rosters.reduce((sum, roster) => sum + roster.players.length, 0);
+    const id = `${seasonId}-${loadedAt}-admin`;
+    const file = `${safeFileName(id)}.json`;
+    const label = `Rose ZonaOrientale ${formatSeasonShortLabel({ id: seasonId })} - snapshot Admin ${loadedAt}`;
+    const payload = {
+      meta: {
+        id, seasonId, label, loadedAt, file, teams: rosters.length, players: playerCount,
+        sourceFile: "Admin rosterEntries Firebase + baseline assets/rose",
+        sourcePriority: "assets/rose primary generated by V802",
+        overlayVersion: VERSION
+      },
+      rosters
+    };
+    return { id, seasonId, label, loadedAt, file, teams: rosters.length, players: playerCount, payload };
+  }
+
+  function buildStaticRostersManifestForGeneratedV802(generatedEntries){
+    const existing = (state.rosters || []).map((snapshot) => ({
+      id: snapshot.id || snapshot.meta?.id,
+      seasonId: snapshot.seasonId || snapshot.meta?.seasonId,
+      label: snapshot.label || snapshot.meta?.label,
+      loadedAt: snapshot.loadedAt || snapshot.meta?.loadedAt,
+      file: snapshot.file || snapshot.meta?.file || `${safeFileName(snapshot.id || snapshot.meta?.id || "rose")}.json`,
+      teams: snapshot.teams ?? snapshot.meta?.teams ?? (snapshot.rosters || []).length,
+      players: snapshot.players ?? snapshot.meta?.players ?? (snapshot.rosters || []).reduce((sum, roster) => sum + (roster.players || []).length, 0)
+    })).filter((entry) => entry.id && entry.file);
+    const generated = generatedEntries.map(({ payload, ...entry }) => entry);
+    const generatedIds = new Set(generated.map((entry) => entry.id));
+    const merged = [...generated, ...existing.filter((entry) => !generatedIds.has(entry.id))];
+    merged.sort((a,b) => {
+      const dateDiff = String(b.loadedAt || b.id || "").localeCompare(String(a.loadedAt || a.id || ""), "it");
+      if (dateDiff) return dateDiff;
+      return String(b.id || "").localeCompare(String(a.id || ""), "it");
+    });
+    return { rosters: merged };
+  }
+
+  // Sostituisce l'export snapshot V172: stesso contenuto di prima + rose primarie generate
+  // dalla situazione effettiva. Applicando lo zip, la modifica manuale sopravvive al reload pubblico.
+  if (typeof downloadStaticSeasonSnapshotsOverlayV172 === "function") {
+    downloadStaticSeasonSnapshotsOverlayV172 = async function downloadStaticSeasonSnapshotsOverlayV802(options = {}){
+      const { selectedOnly = false } = options || {};
+      try {
+        showMessage("adminPublicSnapshotsStatus", selectedOnly ? "Genero snapshot stagione + rose..." : "Genero snapshot stagioni + rose...");
+        if (!state.hasFullData) await loadFullDataV32({ render: false });
+        const seasonIds = selectedOnly
+          ? [getCurrentSeasonId()].filter(Boolean)
+          : (state.raw.seasons || []).map((season) => season.id).filter(Boolean);
+        if (!seasonIds.length) throw new Error("Nessuna stagione disponibile per generare lo snapshot statico.");
+
+        const entries = buildStaticSeasonSnapshotEntriesV172(seasonIds);
+        const seasonManifest = buildStaticSeasonSnapshotsManifestV172(entries);
+        const rosterEntries = seasonIds.map((seasonId) => buildStaticRosterPayloadFromEffectiveV802(seasonId, getTodayIsoDate()));
+        const rosterManifest = buildStaticRostersManifestForGeneratedV802(rosterEntries);
+        const JSZip = await loadZipLibraryV105();
+        const zip = new JSZip();
+        zip.file("static/zonaorientale/assets/snapshots/seasons/manifest.json", `${JSON.stringify(seasonManifest, null, 2)}\n`);
+        entries.forEach((entry) => zip.file(`static/zonaorientale/assets/snapshots/seasons/${entry.file}`, `${JSON.stringify(entry.snapshot, null, 2)}\n`));
+        zip.file("static/zonaorientale/assets/rose/manifest.json", `${JSON.stringify(rosterManifest, null, 2)}\n`);
+        rosterEntries.forEach((entry) => zip.file(`static/zonaorientale/assets/rose/${entry.file}`, `${JSON.stringify(entry.payload, null, 2)}\n`));
+        rememberGeneratedStaticSeasonSnapshotsV388?.(seasonManifest, entries);
+        const blob = await zip.generateAsync({ type: "blob" });
+        const suffix = selectedOnly ? safeFileName(seasonIds[0]) : "tutte_le_stagioni";
+        downloadBlobV105(blob, `zonaorientale_snapshot_stagioni_rose_${suffix}_overlay.zip`);
+        refreshAdminPublicSnapshotDatesV388?.();
+        showMessage("adminPublicSnapshotsStatus", "Overlay snapshot + rose scaricato. Applicalo alla repo: include sia assets/snapshots/seasons sia assets/rose.");
+      } catch (error) {
+        console.error(error);
+        showMessage("adminPublicSnapshotsStatus", error?.message || "Errore durante la generazione snapshot + rose.", true);
+      }
+    };
+  }
+
+  const renderAdminAreaBeforeV802 = typeof renderAdminArea === "function" ? renderAdminArea : null;
+  if (renderAdminAreaBeforeV802) {
+    renderAdminArea = function renderAdminAreaV802(){
+      const result = renderAdminAreaBeforeV802();
+      ensureManualRosterAdminPanelV802();
+      return result;
+    };
+  }
+
+  document.addEventListener("input", (event) => {
+    if (event.target?.id === "adminManualRosterSearchV802") renderManualRosterSearchResultsV802();
+  });
+  document.addEventListener("change", (event) => {
+    if (event.target?.id === "adminManualRosterSeasonV802") {
+      state.adminManualRosterSeasonIdV802 = event.target.value;
+      state.adminManualRosterSeasonTeamIdV802 = "";
+      ensureManualRosterAdminPanelV802();
+      expandAdminPanel?.("adminManualRosterPanelV802");
+    }
+    if (event.target?.id === "adminManualRosterTeamV802") {
+      state.adminManualRosterSeasonTeamIdV802 = event.target.value;
+      ensureManualRosterAdminPanelV802();
+      expandAdminPanel?.("adminManualRosterPanelV802");
+    }
+  });
+  document.addEventListener("click", (event) => {
+    const historyButton = event.target.closest("[data-admin-manual-roster-load-history-v802]");
+    if (historyButton) { loadHistoricalCandidateIntoFormV802(historyButton.dataset.adminManualRosterLoadHistoryV802); return; }
+    const editButton = event.target.closest("[data-admin-manual-roster-edit-v802]");
+    if (editButton) { startEditManualRosterPlayerV802(editButton); return; }
+    const deleteButton = event.target.closest("[data-admin-manual-roster-delete-v802]");
+    if (deleteButton) { deleteManualRosterPlayerV802(deleteButton); return; }
+    if (event.target.closest("#adminManualRosterResetV802")) { resetManualRosterFormV802(); return; }
+  });
+  document.addEventListener("submit", (event) => {
+    if (event.target?.id !== "adminManualRosterFormV802") return;
+    saveManualRosterPlayerV802(event);
+  });
+
+  window.ZonaOrientaleManualRostersV802 = Object.freeze({
+    version: VERSION,
+    firebaseOverlay: true,
+    historicalListoneSearch: true,
+    manualCreate: true,
+    manualEditAllFields: true,
+    manualDelete: "soft-delete-tombstone",
+    snapshotOverlayIncludesPrimaryRosters: true,
+    preservesFmMovements: true,
+    buildEffectiveRosterMap: buildEffectiveRosterMapV802,
+    buildStaticRosterPayload: buildStaticRosterPayloadFromEffectiveV802
+  });
+})();

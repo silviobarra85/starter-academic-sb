@@ -1,6 +1,16 @@
 {
   "rosters": [
     {
+      "id": "2026-2027-2026-09-02",
+      "seasonId": "2026-2027",
+      "label": "Rose ZonaOrientale Salerno 2026/27 - 2 settembre 2026 (carryover contratti)",
+      "loadedAt": "2026-09-02",
+      "file": "2026-2027-2026-09-02.json",
+      "teams": 10,
+      "players": 288,
+      "sourceFile": "zonaorientale-salerno-rosters-1788255085854.xlsx + correzione contratti attivi Gosens/Maripan"
+    },
+    {
       "id": "2026-2027-2026-09-01",
       "seasonId": "2026-2027",
       "label": "Rose ZonaOrientale Salerno 2026/27 - 1 settembre 2026",

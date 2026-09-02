@@ -109,3 +109,11 @@ Completato: aggiornamento reale della sorgente `assets/rose` al file del 18/08/2
 - Snapshot locale e Firebase sono override/fallback, non sostituiscono il calendario completo.
 - Campionato e Champions mostrano le partite configurate; Coppa Italia Battle Royale mostra le giornate BR.
 - Gli aggiornamenti Admin dei risultati continuano a prevalere tramite `competitionMatches`.
+
+## V802 - Gestione manuale rose Admin + snapshot persistenti (02/09/2026)
+- Nuovo pannello Admin per aggiungere, modificare, spostare ed eliminare giocatori dalle rose.
+- Ricerca diretta in tutti i listoni storici della stagione con precompilazione dei valori.
+- `rosterEntries` Firebase diventa overlay amministrativo non distruttivo su `assets/rose`.
+- Le eliminazioni manuali sono tombstone `REMOVED`; non generano movimenti FM.
+- L'export overlay snapshot stagioni include ora anche `assets/rose`, quindi le correzioni diventano persistenti dopo il commit dello zip generato dall'Admin.
+- Incluso carryover Gosens (Beetlejuice) e Maripan (River Plaid), entrambi asteriscati e svincolabili all'ultima quotazione storica.
