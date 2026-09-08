@@ -8,9 +8,9 @@
     "competitionType": "CAMPIONATO",
     "competitionFormat": "CLASSIFICA",
     "label": "Campionato 2026/2027",
-    "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027(1).xlsx",
-    "loadedAt": "2026-09-01",
-    "version": 3,
+    "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx",
+    "loadedAt": "2026-09-08",
+    "version": 5,
     "schema": "zonaorientale-static-competition-calendar-v3"
   },
   "competition": {
@@ -22,7 +22,7 @@
     "formula": "CLASSIFICA",
     "status": "ATTIVA",
     "notes": "Calendario importato dal file Excel ufficiale della lega.",
-    "source": "static-competition-calendar-v795"
+    "source": "static-competition-calendar-v805"
   },
   "matches": [
     {
@@ -34,7 +34,7 @@
       "matchday": "1° Giornata",
       "leagueMatchday": 1,
       "serieAMatchday": 1,
-      "matchDate": "",
+      "matchDate": "2026-08-23",
       "homeTeamName": "Afc Severgas Baronissi",
       "awayTeamName": "Beetlejuice",
       "homeSeasonTeamId": "2026_2027_h6saek7urqiqnmiztrt7",
@@ -44,8 +44,9 @@
       "homeScore": 70.0,
       "awayScore": 61.5,
       "status": "GIOCATA",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 5
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 5,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g2_2",
@@ -56,7 +57,7 @@
       "matchday": "2° Giornata",
       "leagueMatchday": 2,
       "serieAMatchday": 2,
-      "matchDate": "",
+      "matchDate": "2026-08-30",
       "homeTeamName": "Prestige Worldwide",
       "awayTeamName": "Afc Severgas Baronissi",
       "homeSeasonTeamId": "2026_2027_uqsbhtctytbo7kookndm",
@@ -66,8 +67,9 @@
       "homeScore": 71.0,
       "awayScore": 72.5,
       "status": "GIOCATA",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 5
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 5,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g1_3",
@@ -78,7 +80,7 @@
       "matchday": "1° Giornata",
       "leagueMatchday": 1,
       "serieAMatchday": 1,
-      "matchDate": "",
+      "matchDate": "2026-08-23",
       "homeTeamName": "Ac Milan",
       "awayTeamName": "Prestige Worldwide",
       "homeSeasonTeamId": "2026_2027_wmdzhrrpup8lhvsdwm7w",
@@ -88,8 +90,9 @@
       "homeScore": 87.0,
       "awayScore": 61.5,
       "status": "GIOCATA",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 6
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 6,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g2_4",
@@ -100,7 +103,7 @@
       "matchday": "2° Giornata",
       "leagueMatchday": 2,
       "serieAMatchday": 2,
-      "matchDate": "",
+      "matchDate": "2026-08-30",
       "homeTeamName": "As Paperopoli",
       "awayTeamName": "Real Pisistrius",
       "homeSeasonTeamId": "2026_2027_7bx0cegbxtf4fwh6t0pi",
@@ -110,8 +113,9 @@
       "homeScore": 67.0,
       "awayScore": 81.0,
       "status": "GIOCATA",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 6
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 6,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g1_5",
@@ -122,7 +126,7 @@
       "matchday": "1° Giornata",
       "leagueMatchday": 1,
       "serieAMatchday": 1,
-      "matchDate": "",
+      "matchDate": "2026-08-23",
       "homeTeamName": "River Plaid",
       "awayTeamName": "real mappine",
       "homeSeasonTeamId": "2026_2027_ulwtimbi3dyyrq0soesx",
@@ -132,8 +136,9 @@
       "homeScore": 67.5,
       "awayScore": 72.0,
       "status": "GIOCATA",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 7
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 7,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g2_6",
@@ -144,7 +149,7 @@
       "matchday": "2° Giornata",
       "leagueMatchday": 2,
       "serieAMatchday": 2,
-      "matchDate": "",
+      "matchDate": "2026-08-30",
       "homeTeamName": "real mappine",
       "awayTeamName": "FC DueFratelli2005",
       "homeSeasonTeamId": "2026_2027_ft1tqdqi18iuh3l1lakq",
@@ -154,8 +159,9 @@
       "homeScore": 66.5,
       "awayScore": 74.0,
       "status": "GIOCATA",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 7
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 7,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g1_7",
@@ -166,7 +172,7 @@
       "matchday": "1° Giornata",
       "leagueMatchday": 1,
       "serieAMatchday": 1,
-      "matchDate": "",
+      "matchDate": "2026-08-23",
       "homeTeamName": "FC DueFratelli2005",
       "awayTeamName": "As Paperopoli",
       "homeSeasonTeamId": "2026_2027_y3vmcdwvut0u1tlsg4qc",
@@ -176,8 +182,9 @@
       "homeScore": 66.5,
       "awayScore": 76.5,
       "status": "GIOCATA",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 8
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 8,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g2_8",
@@ -188,7 +195,7 @@
       "matchday": "2° Giornata",
       "leagueMatchday": 2,
       "serieAMatchday": 2,
-      "matchDate": "",
+      "matchDate": "2026-08-30",
       "homeTeamName": "Beetlejuice",
       "awayTeamName": "River Plaid",
       "homeSeasonTeamId": "2026_2027_team_002",
@@ -198,8 +205,9 @@
       "homeScore": 67.5,
       "awayScore": 63.5,
       "status": "GIOCATA",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 8
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 8,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g1_9",
@@ -210,7 +218,7 @@
       "matchday": "1° Giornata",
       "leagueMatchday": 1,
       "serieAMatchday": 1,
-      "matchDate": "",
+      "matchDate": "2026-08-23",
       "homeTeamName": "Real Pisistrius",
       "awayTeamName": "Olympic Salerno FC",
       "homeSeasonTeamId": "2026_2027_team_001",
@@ -220,8 +228,9 @@
       "homeScore": 79.0,
       "awayScore": 75.0,
       "status": "GIOCATA",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 9
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 9,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g2_10",
@@ -232,7 +241,7 @@
       "matchday": "2° Giornata",
       "leagueMatchday": 2,
       "serieAMatchday": 2,
-      "matchDate": "",
+      "matchDate": "2026-08-30",
       "homeTeamName": "Olympic Salerno FC",
       "awayTeamName": "Ac Milan",
       "homeSeasonTeamId": "2026_2027_gdisidfbuselvm64psr3",
@@ -242,8 +251,9 @@
       "homeScore": 77.5,
       "awayScore": 71.5,
       "status": "GIOCATA",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 9
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 9,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g3_11",
@@ -254,18 +264,19 @@
       "matchday": "3° Giornata",
       "leagueMatchday": 3,
       "serieAMatchday": 3,
-      "matchDate": "",
+      "matchDate": "2026-09-06",
       "homeTeamName": "Afc Severgas Baronissi",
       "awayTeamName": "Olympic Salerno FC",
       "homeSeasonTeamId": "2026_2027_h6saek7urqiqnmiztrt7",
       "awaySeasonTeamId": "2026_2027_gdisidfbuselvm64psr3",
-      "homeGoals": null,
-      "awayGoals": null,
-      "homeScore": null,
-      "awayScore": null,
-      "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 11
+      "homeGoals": 2,
+      "awayGoals": 3,
+      "homeScore": 74.5,
+      "awayScore": 80.0,
+      "status": "GIOCATA",
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 11,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g4_12",
@@ -286,8 +297,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 11
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 11,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g3_13",
@@ -298,18 +310,19 @@
       "matchday": "3° Giornata",
       "leagueMatchday": 3,
       "serieAMatchday": 3,
-      "matchDate": "",
+      "matchDate": "2026-09-06",
       "homeTeamName": "Ac Milan",
       "awayTeamName": "As Paperopoli",
       "homeSeasonTeamId": "2026_2027_wmdzhrrpup8lhvsdwm7w",
       "awaySeasonTeamId": "2026_2027_7bx0cegbxtf4fwh6t0pi",
-      "homeGoals": null,
-      "awayGoals": null,
-      "homeScore": null,
-      "awayScore": null,
-      "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 12
+      "homeGoals": 1,
+      "awayGoals": 2,
+      "homeScore": 68.5,
+      "awayScore": 75.5,
+      "status": "GIOCATA",
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 12,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g4_14",
@@ -330,8 +343,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 12
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 12,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g3_15",
@@ -342,18 +356,19 @@
       "matchday": "3° Giornata",
       "leagueMatchday": 3,
       "serieAMatchday": 3,
-      "matchDate": "",
+      "matchDate": "2026-09-06",
       "homeTeamName": "River Plaid",
       "awayTeamName": "Prestige Worldwide",
       "homeSeasonTeamId": "2026_2027_ulwtimbi3dyyrq0soesx",
       "awaySeasonTeamId": "2026_2027_uqsbhtctytbo7kookndm",
-      "homeGoals": null,
-      "awayGoals": null,
-      "homeScore": null,
-      "awayScore": null,
-      "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 13
+      "homeGoals": 3,
+      "awayGoals": 3,
+      "homeScore": 78.5,
+      "awayScore": 81.5,
+      "status": "GIOCATA",
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 13,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g4_16",
@@ -374,8 +389,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 13
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 13,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g3_17",
@@ -386,18 +402,19 @@
       "matchday": "3° Giornata",
       "leagueMatchday": 3,
       "serieAMatchday": 3,
-      "matchDate": "",
+      "matchDate": "2026-09-06",
       "homeTeamName": "Beetlejuice",
       "awayTeamName": "real mappine",
       "homeSeasonTeamId": "2026_2027_team_002",
       "awaySeasonTeamId": "2026_2027_ft1tqdqi18iuh3l1lakq",
-      "homeGoals": null,
-      "awayGoals": null,
-      "homeScore": null,
-      "awayScore": null,
-      "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 14
+      "homeGoals": 1,
+      "awayGoals": 1,
+      "homeScore": 70.5,
+      "awayScore": 67.5,
+      "status": "GIOCATA",
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 14,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g4_18",
@@ -418,8 +435,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 14
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 14,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g3_19",
@@ -430,18 +448,19 @@
       "matchday": "3° Giornata",
       "leagueMatchday": 3,
       "serieAMatchday": 3,
-      "matchDate": "",
+      "matchDate": "2026-09-06",
       "homeTeamName": "Real Pisistrius",
       "awayTeamName": "FC DueFratelli2005",
       "homeSeasonTeamId": "2026_2027_team_001",
       "awaySeasonTeamId": "2026_2027_y3vmcdwvut0u1tlsg4qc",
-      "homeGoals": null,
-      "awayGoals": null,
-      "homeScore": null,
-      "awayScore": null,
-      "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 15
+      "homeGoals": 1,
+      "awayGoals": 2,
+      "homeScore": 67.5,
+      "awayScore": 76.5,
+      "status": "GIOCATA",
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 15,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g4_20",
@@ -462,8 +481,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 15
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 15,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g5_21",
@@ -484,8 +504,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 17
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 17,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g6_22",
@@ -506,8 +527,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 17
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 17,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g5_23",
@@ -528,8 +550,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 18
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 18,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g6_24",
@@ -550,8 +573,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 18
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 18,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g5_25",
@@ -572,8 +596,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 19
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 19,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g6_26",
@@ -594,8 +619,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 19
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 19,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g5_27",
@@ -616,8 +642,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 20
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 20,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g6_28",
@@ -638,8 +665,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 20
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 20,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g5_29",
@@ -660,8 +688,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 21
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 21,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g6_30",
@@ -682,8 +711,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 21
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 21,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g7_31",
@@ -704,8 +734,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 23
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 23,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g8_32",
@@ -726,8 +757,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 23
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 23,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g7_33",
@@ -748,8 +780,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 24
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 24,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g8_34",
@@ -770,8 +803,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 24
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 24,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g7_35",
@@ -792,8 +826,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 25
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 25,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g8_36",
@@ -814,8 +849,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 25
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 25,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g7_37",
@@ -836,8 +872,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 26
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 26,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g8_38",
@@ -858,8 +895,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 26
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 26,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g7_39",
@@ -880,8 +918,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 27
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 27,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g8_40",
@@ -902,8 +941,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 27
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 27,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g9_41",
@@ -924,8 +964,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 29
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 29,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g10_42",
@@ -946,8 +987,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 29
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 29,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g9_43",
@@ -968,8 +1010,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 30
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 30,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g10_44",
@@ -990,8 +1033,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 30
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 30,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g9_45",
@@ -1012,8 +1056,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 31
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 31,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g10_46",
@@ -1034,8 +1079,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 31
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 31,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g9_47",
@@ -1056,8 +1102,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 32
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 32,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g10_48",
@@ -1078,8 +1125,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 32
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 32,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g9_49",
@@ -1100,8 +1148,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 33
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 33,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g10_50",
@@ -1122,8 +1171,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 33
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 33,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g11_51",
@@ -1144,8 +1194,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 35
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 35,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g12_52",
@@ -1166,8 +1217,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 35
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 35,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g11_53",
@@ -1188,8 +1240,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 36
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 36,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g12_54",
@@ -1210,8 +1263,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 36
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 36,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g11_55",
@@ -1232,8 +1286,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 37
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 37,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g12_56",
@@ -1254,8 +1309,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 37
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 37,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g11_57",
@@ -1276,8 +1332,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 38
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 38,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g12_58",
@@ -1298,8 +1355,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 38
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 38,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g11_59",
@@ -1320,8 +1378,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 39
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 39,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g12_60",
@@ -1342,8 +1401,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 39
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 39,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g13_61",
@@ -1364,8 +1424,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 41
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 41,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g14_62",
@@ -1386,8 +1447,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 41
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 41,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g13_63",
@@ -1408,8 +1470,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 42
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 42,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g14_64",
@@ -1430,8 +1493,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 42
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 42,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g13_65",
@@ -1452,8 +1516,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 43
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 43,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g14_66",
@@ -1474,8 +1539,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 43
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 43,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g13_67",
@@ -1496,8 +1562,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 44
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 44,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g14_68",
@@ -1518,8 +1585,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 44
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 44,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g13_69",
@@ -1540,8 +1608,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 45
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 45,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g14_70",
@@ -1562,8 +1631,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 45
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 45,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g15_71",
@@ -1584,8 +1654,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 47
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 47,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g16_72",
@@ -1606,8 +1677,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 47
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 47,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g15_73",
@@ -1628,8 +1700,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 48
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 48,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g16_74",
@@ -1650,8 +1723,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 48
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 48,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g15_75",
@@ -1672,8 +1746,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 49
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 49,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g16_76",
@@ -1694,8 +1769,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 49
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 49,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g15_77",
@@ -1716,8 +1792,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 50
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 50,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g16_78",
@@ -1738,8 +1815,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 50
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 50,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g15_79",
@@ -1760,8 +1838,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 51
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 51,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g16_80",
@@ -1782,8 +1861,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 51
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 51,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g17_81",
@@ -1804,8 +1884,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 53
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 53,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g18_82",
@@ -1826,8 +1907,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 53
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 53,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g17_83",
@@ -1848,8 +1930,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 54
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 54,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g18_84",
@@ -1870,8 +1953,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 54
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 54,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g17_85",
@@ -1892,8 +1976,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 55
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 55,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g18_86",
@@ -1914,8 +1999,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 55
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 55,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g17_87",
@@ -1936,8 +2022,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 56
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 56,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g18_88",
@@ -1958,8 +2045,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 56
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 56,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g17_89",
@@ -1980,8 +2068,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 57
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 57,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g18_90",
@@ -2002,8 +2091,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 57
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 57,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g19_91",
@@ -2024,8 +2114,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 59
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 59,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g20_92",
@@ -2046,8 +2137,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 59
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 59,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g19_93",
@@ -2068,8 +2160,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 60
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 60,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g20_94",
@@ -2090,8 +2183,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 60
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 60,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g19_95",
@@ -2112,8 +2206,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 61
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 61,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g20_96",
@@ -2134,8 +2229,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 61
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 61,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g19_97",
@@ -2156,8 +2252,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 62
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 62,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g20_98",
@@ -2178,8 +2275,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 62
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 62,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g19_99",
@@ -2200,8 +2298,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 63
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 63,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g20_100",
@@ -2222,8 +2321,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 63
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 63,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g21_101",
@@ -2244,8 +2344,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 65
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 65,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g22_102",
@@ -2266,8 +2367,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 65
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 65,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g21_103",
@@ -2288,8 +2390,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 66
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 66,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g22_104",
@@ -2310,8 +2413,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 66
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 66,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g21_105",
@@ -2332,8 +2436,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 67
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 67,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g22_106",
@@ -2354,8 +2459,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 67
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 67,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g21_107",
@@ -2376,8 +2482,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 68
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 68,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g22_108",
@@ -2398,8 +2505,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 68
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 68,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g21_109",
@@ -2420,8 +2528,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 69
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 69,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g22_110",
@@ -2442,8 +2551,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 69
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 69,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g23_111",
@@ -2464,8 +2574,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 71
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 71,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g24_112",
@@ -2486,8 +2597,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 71
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 71,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g23_113",
@@ -2508,8 +2620,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 72
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 72,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g24_114",
@@ -2530,8 +2643,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 72
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 72,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g23_115",
@@ -2552,8 +2666,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 73
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 73,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g24_116",
@@ -2574,8 +2689,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 73
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 73,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g23_117",
@@ -2596,8 +2712,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 74
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 74,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g24_118",
@@ -2618,8 +2735,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 74
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 74,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g23_119",
@@ -2640,8 +2758,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 75
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 75,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g24_120",
@@ -2662,8 +2781,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 75
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 75,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g25_121",
@@ -2684,8 +2804,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 77
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 77,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g26_122",
@@ -2706,8 +2827,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 77
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 77,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g25_123",
@@ -2728,8 +2850,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 78
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 78,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g26_124",
@@ -2750,8 +2873,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 78
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 78,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g25_125",
@@ -2772,8 +2896,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 79
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 79,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g26_126",
@@ -2794,8 +2919,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 79
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 79,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g25_127",
@@ -2816,8 +2942,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 80
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 80,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g26_128",
@@ -2838,8 +2965,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 80
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 80,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g25_129",
@@ -2860,8 +2988,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 81
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 81,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g26_130",
@@ -2882,8 +3011,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 81
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 81,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g27_131",
@@ -2904,8 +3034,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 83
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 83,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g28_132",
@@ -2926,8 +3057,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 83
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 83,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g27_133",
@@ -2948,8 +3080,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 84
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 84,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g28_134",
@@ -2970,8 +3103,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 84
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 84,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g27_135",
@@ -2992,8 +3126,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 85
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 85,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g28_136",
@@ -3014,8 +3149,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 85
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 85,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g27_137",
@@ -3036,8 +3172,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 86
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 86,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g28_138",
@@ -3058,8 +3195,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 86
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 86,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g27_139",
@@ -3080,8 +3218,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 87
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 87,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g28_140",
@@ -3102,8 +3241,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 87
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 87,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g29_141",
@@ -3124,8 +3264,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 89
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 89,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g30_142",
@@ -3146,8 +3287,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 89
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 89,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g29_143",
@@ -3168,8 +3310,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 90
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 90,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g30_144",
@@ -3190,8 +3333,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 90
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 90,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g29_145",
@@ -3212,8 +3356,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 91
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 91,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g30_146",
@@ -3234,8 +3379,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 91
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 91,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g29_147",
@@ -3256,8 +3402,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 92
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 92,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g30_148",
@@ -3278,8 +3425,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 92
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 92,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g29_149",
@@ -3300,8 +3448,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 93
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 93,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g30_150",
@@ -3322,8 +3471,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 93
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 93,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g31_151",
@@ -3344,8 +3494,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 95
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 95,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g32_152",
@@ -3366,8 +3517,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 95
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 95,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g31_153",
@@ -3388,8 +3540,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 96
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 96,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g32_154",
@@ -3410,8 +3563,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 96
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 96,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g31_155",
@@ -3432,8 +3586,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 97
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 97,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g32_156",
@@ -3454,8 +3609,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 97
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 97,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g31_157",
@@ -3476,8 +3632,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 98
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 98,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g32_158",
@@ -3498,8 +3655,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 98
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 98,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g31_159",
@@ -3520,8 +3678,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 99
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 99,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g32_160",
@@ -3542,8 +3701,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 99
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 99,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g33_161",
@@ -3564,8 +3724,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 101
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 101,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g34_162",
@@ -3586,8 +3747,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 101
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 101,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g33_163",
@@ -3608,8 +3770,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 102
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 102,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g34_164",
@@ -3630,8 +3793,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 102
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 102,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g33_165",
@@ -3652,8 +3816,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 103
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 103,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g34_166",
@@ -3674,8 +3839,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 103
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 103,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g33_167",
@@ -3696,8 +3862,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 104
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 104,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g34_168",
@@ -3718,8 +3885,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 104
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 104,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g33_169",
@@ -3740,8 +3908,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 105
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 105,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g34_170",
@@ -3762,8 +3931,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 105
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 105,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g35_171",
@@ -3784,8 +3954,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 107
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 107,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g36_172",
@@ -3806,8 +3977,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 107
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 107,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g35_173",
@@ -3828,8 +4000,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 108
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 108,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g36_174",
@@ -3850,8 +4023,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 108
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 108,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g35_175",
@@ -3872,8 +4046,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 109
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 109,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g36_176",
@@ -3894,8 +4069,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 109
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 109,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g35_177",
@@ -3916,8 +4092,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 110
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 110,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g36_178",
@@ -3938,8 +4115,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 110
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 110,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g35_179",
@@ -3960,8 +4138,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 111
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 111,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
     },
     {
       "id": "2026-2027_campionato_g36_180",
@@ -3982,8 +4161,191 @@
       "homeScore": null,
       "awayScore": null,
       "status": "DA_GIOCARE",
-      "source": "static-competition-calendar-v795",
-      "sourceRow": 111
+      "source": "static-competition-calendar-v805",
+      "sourceRow": 111,
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx"
+    }
+  ],
+  "results": [
+    {
+      "competitionId": "2026-2027_campionato",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_gdisidfbuselvm64psr3",
+      "played": 3,
+      "wins": 2,
+      "draws": 0,
+      "losses": 1,
+      "goalsFor": 7,
+      "goalsAgainst": 6,
+      "fantapoints": 232.5,
+      "points": 6,
+      "goalDifference": 1,
+      "id": "2026-2027_campionato_live_1",
+      "position": 1,
+      "source": "computed-from-matches-v805",
+      "teamName": "Olympic Salerno FC"
+    },
+    {
+      "competitionId": "2026-2027_campionato",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_team_001",
+      "played": 3,
+      "wins": 2,
+      "draws": 0,
+      "losses": 1,
+      "goalsFor": 7,
+      "goalsAgainst": 5,
+      "fantapoints": 227.5,
+      "points": 6,
+      "goalDifference": 2,
+      "id": "2026-2027_campionato_live_2",
+      "position": 2,
+      "source": "computed-from-matches-v805",
+      "teamName": "Real Pisistrius"
+    },
+    {
+      "competitionId": "2026-2027_campionato",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_7bx0cegbxtf4fwh6t0pi",
+      "played": 3,
+      "wins": 2,
+      "draws": 0,
+      "losses": 1,
+      "goalsFor": 5,
+      "goalsAgainst": 5,
+      "fantapoints": 219.0,
+      "points": 6,
+      "goalDifference": 0,
+      "id": "2026-2027_campionato_live_3",
+      "position": 3,
+      "source": "computed-from-matches-v805",
+      "teamName": "As Paperopoli"
+    },
+    {
+      "competitionId": "2026-2027_campionato",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_h6saek7urqiqnmiztrt7",
+      "played": 3,
+      "wins": 2,
+      "draws": 0,
+      "losses": 1,
+      "goalsFor": 5,
+      "goalsAgainst": 4,
+      "fantapoints": 217.0,
+      "points": 6,
+      "goalDifference": 1,
+      "id": "2026-2027_campionato_live_4",
+      "position": 4,
+      "source": "computed-from-matches-v805",
+      "teamName": "Afc Severgas Baronissi"
+    },
+    {
+      "competitionId": "2026-2027_campionato",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_y3vmcdwvut0u1tlsg4qc",
+      "played": 3,
+      "wins": 2,
+      "draws": 0,
+      "losses": 1,
+      "goalsFor": 5,
+      "goalsAgainst": 4,
+      "fantapoints": 217.0,
+      "points": 6,
+      "goalDifference": 1,
+      "id": "2026-2027_campionato_live_5",
+      "position": 5,
+      "source": "computed-from-matches-v805",
+      "teamName": "FC DueFratelli2005"
+    },
+    {
+      "competitionId": "2026-2027_campionato",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_ft1tqdqi18iuh3l1lakq",
+      "played": 3,
+      "wins": 1,
+      "draws": 1,
+      "losses": 1,
+      "goalsFor": 4,
+      "goalsAgainst": 4,
+      "fantapoints": 206.0,
+      "points": 4,
+      "goalDifference": 0,
+      "id": "2026-2027_campionato_live_6",
+      "position": 6,
+      "source": "computed-from-matches-v805",
+      "teamName": "real mappine"
+    },
+    {
+      "competitionId": "2026-2027_campionato",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_team_002",
+      "played": 3,
+      "wins": 1,
+      "draws": 1,
+      "losses": 1,
+      "goalsFor": 2,
+      "goalsAgainst": 2,
+      "fantapoints": 199.5,
+      "points": 4,
+      "goalDifference": 0,
+      "id": "2026-2027_campionato_live_7",
+      "position": 7,
+      "source": "computed-from-matches-v805",
+      "teamName": "Beetlejuice"
+    },
+    {
+      "competitionId": "2026-2027_campionato",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_wmdzhrrpup8lhvsdwm7w",
+      "played": 3,
+      "wins": 1,
+      "draws": 0,
+      "losses": 2,
+      "goalsFor": 6,
+      "goalsAgainst": 4,
+      "fantapoints": 227.0,
+      "points": 3,
+      "goalDifference": 2,
+      "id": "2026-2027_campionato_live_8",
+      "position": 8,
+      "source": "computed-from-matches-v805",
+      "teamName": "Ac Milan"
+    },
+    {
+      "competitionId": "2026-2027_campionato",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_uqsbhtctytbo7kookndm",
+      "played": 3,
+      "wins": 0,
+      "draws": 1,
+      "losses": 2,
+      "goalsFor": 4,
+      "goalsAgainst": 9,
+      "fantapoints": 214.0,
+      "points": 1,
+      "goalDifference": -5,
+      "id": "2026-2027_campionato_live_9",
+      "position": 9,
+      "source": "computed-from-matches-v805",
+      "teamName": "Prestige Worldwide"
+    },
+    {
+      "competitionId": "2026-2027_campionato",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_ulwtimbi3dyyrq0soesx",
+      "played": 3,
+      "wins": 0,
+      "draws": 1,
+      "losses": 2,
+      "goalsFor": 4,
+      "goalsAgainst": 6,
+      "fantapoints": 209.5,
+      "points": 1,
+      "goalDifference": -2,
+      "id": "2026-2027_campionato_live_10",
+      "position": 10,
+      "source": "computed-from-matches-v805",
+      "teamName": "River Plaid"
     }
   ]
 }

@@ -117,3 +117,22 @@ Completato: aggiornamento reale della sorgente `assets/rose` al file del 18/08/2
 - Le eliminazioni manuali sono tombstone `REMOVED`; non generano movimenti FM.
 - L'export overlay snapshot stagioni include ora anche `assets/rose`, quindi le correzioni diventano persistenti dopo il commit dello zip generato dall'Admin.
 - Incluso carryover Gosens (Beetlejuice) e Maripan (River Plaid), entrambi asteriscati e svincolabili all'ultima quotazione storica.
+
+## V803 - Toggle gestione manuale rose Admin (02/09/2026)
+- Corretto il pulsante `Apri/Riduci` del pannello creato dinamicamente `Modifica manualmente le rose`.
+- Nessuna modifica ai dati rose/listone/competizioni.
+
+## V804 - Listone + 3a giornata Campionato (08/09/2026)
+- Nuovo listone shared asset del 08/09/2026: 593 giocatori, 531 in listone e 62 asteriscati.
+- Aggiornato il calendario Campionato dal file Excel ufficiale: 15 partite giocate, prime 3 giornate concluse.
+- La 3a giornata e datata `2026-09-06` su tutte e cinque le gare.
+- Il JSON Campionato contiene la classifica calcolata dopo la 3a giornata con gli stessi tie-break del runtime.
+- Lo snapshot stagionale non viene sovrascritto da questo pacchetto, per preservare eventuali modifiche Admin/Firebase e correzioni manuali alle rose successive alla V803.
+
+
+## V805 - 2026-09-08
+- Parita desktop/mobile nella sezione Competizioni: classifica e giornate anche su smartphone.
+- competition.html deduplica la classifica per squadra e per Campionato attivo la ricalcola dalle partite giocate.
+- Link dettaglio competizione e fetch JSON con cache-buster V805.
+- Date Campionato: G1 2026-08-23, G2 2026-08-30, G3 2026-09-06.
+- Nessuna modifica a rose, movimenti, Firebase o funzioni Admin.
