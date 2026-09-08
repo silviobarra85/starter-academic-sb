@@ -70,7 +70,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
   shortName: 'ZonaOrientale',
   basePath: '/zonaorientale/',
   siteUrl: 'https://silviobarra.com/zonaorientale/',
-  currentVersion: '803',
+  currentVersion: '804',
   currentSeasonId: '2026-2027',
   assetsBasePath: './assets/',
   snapshotBasePath: './assets/snapshots/',
@@ -90,7 +90,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
     homeEyebrow: 'Lega Fantacalcio',
     homeTitle: 'ZonaOrientale Salerno',
     homeSubtitle: 'Dashboard operativa per club, rose, listoni, competizioni e regolamento.',
-    footerLastUpdated: '01/09/2026',
+    footerLastUpdated: '08/09/2026',
     footerTemplate: 'Fantacalcio - V{version} - Aggiornato al {lastUpdated}',
     imageUrl: 'https://silviobarra.com/zonaorientale/assets/icons/android-chrome-512x512.png',
     pages: DEFAULT_LEAGUE_PAGES_V445,
@@ -151,7 +151,7 @@ const DEFAULT_LEAGUE_CONFIG_V443 = Object.freeze({
   })
 });
 
-const CONFIG_URL_V443 = './assets/league-config.json?v=803';
+const CONFIG_URL_V443 = './assets/league-config.json?v=804';
 
 const PRESENTATION_ENGINE_CANDIDATES_V481 = [
   '../../../../fanta-engine/js/core/league-presentation-v481.js',

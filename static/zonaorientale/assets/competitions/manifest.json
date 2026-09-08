@@ -1,6 +1,6 @@
 {
-  "version": 2,
-  "generatedAt": "2026-09-01T12:30:00+02:00",
+  "version": 3,
+  "generatedAt": "2026-09-08T11:20:00+02:00",
   "competitions": [
     {
       "id": "2025-2026-champions-league",
@@ -41,11 +41,11 @@
       "competitionType": "CAMPIONATO",
       "competitionFormat": "CLASSIFICA",
       "label": "Campionato 2026/2027",
-      "loadedAt": "2026-09-01",
-      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027(1).xlsx",
+      "loadedAt": "2026-09-08",
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx",
       "file": "2026-2027/campionato-2026-2027.json",
       "matches": 180,
-      "playedMatches": 10,
+      "playedMatches": 15,
       "status": "ATTIVA"
     },
     {
