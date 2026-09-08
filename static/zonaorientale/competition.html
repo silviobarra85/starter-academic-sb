@@ -77,7 +77,7 @@
   </nav>
 
   <footer class="container app-footer">
-    <p data-league-footer-v445>Fantacalcio - V805 - Aggiornato al 08/09/2026</p>
+    <p data-league-footer-v445>Fantacalcio - V800 - Aggiornato al 02/09/2026</p>
   </footer>
 
   <script>
@@ -111,7 +111,7 @@
   </script>
 
   <script type="module">
-    import { getLeagueDataPathV446, getLeagueLogoPathV446, joinLeagueDataPathV446, loadLeagueConfigV443 } from "./assets/js/core/league-config-v443.js?v=805";
+    import { getLeagueDataPathV446, getLeagueLogoPathV446, joinLeagueDataPathV446, loadLeagueConfigV443 } from "./assets/js/core/league-config-v443.js?v=803";
 
     const params = new URLSearchParams(window.location.search);
     const requestedSeasonId = params.get("seasonId") || "";
@@ -405,86 +405,21 @@
       return [...map.values()];
     }
 
-    function getCompetitionResultTeamKeyV805(result) {
-      if (!result) return "";
-      const seasonTeamId = String(result.seasonTeamId || result.teamSeasonId || result.season_team_id || "").trim();
-      if (seasonTeamId) return `season:${seasonTeamId}`;
-      const teamId = String(result.teamId || result.clubId || "").trim();
-      if (teamId) return `team:${teamId}`;
-      const name = normalizeKey(result.teamName || result.name || result.team || result.clubName || "");
-      return name ? `name:${name}` : "";
-    }
-
     function mergeCompetitionResultsV798(baseResults, localSnapshot, remoteSnapshot, competitionId) {
       const map = new Map();
-      const applyResult = (result, index, origin) => {
-        if (!result || result.competitionId && result.competitionId !== competitionId) return;
-        const teamKey = getCompetitionResultTeamKeyV805(result);
-        const fallbackKey = result.id || `${origin}-${index}-${result.position || ""}`;
-        const key = teamKey || fallbackKey;
-        if (isMatchDeleted(result)) { map.delete(key); return; }
-        map.set(key, mergeDefinedV798(map.get(key), result));
-      };
-      (baseResults || []).forEach((result, index) => applyResult({ ...result, competitionId: result.competitionId || competitionId }, index, "base"));
-      const apply = (snapshotData, origin) => {
+      (baseResults || []).forEach((result, index) => map.set(result.id || `base-${index}-${result.position || ""}-${result.seasonTeamId || result.teamName || ""}`, { ...result }));
+      const apply = (snapshotData) => {
         (Array.isArray(snapshotData?.competitionResults) ? snapshotData.competitionResults : [])
           .filter((result) => result.competitionId === competitionId)
-          .forEach((result, index) => applyResult(result, index, origin));
+          .forEach((result, index) => {
+            const key = result.id || `snapshot-${index}-${result.position || ""}-${result.seasonTeamId || result.teamName || ""}`;
+            if (isMatchDeleted(result)) map.delete(key);
+            else map.set(key, mergeDefinedV798(map.get(key), result));
+          });
       };
-      apply(localSnapshot, "local");
-      apply(remoteSnapshot, "remote");
+      apply(localSnapshot);
+      apply(remoteSnapshot);
       return [...map.values()];
-    }
-
-    function computeLeagueStandingsV805(matches, competitionId, seasonId, seasonTeams = []) {
-      const played = (matches || []).filter((match) => {
-        const status = String(match?.status || "").toUpperCase();
-        return status === "GIOCATA" && Number.isFinite(Number(match.homeGoals)) && Number.isFinite(Number(match.awayGoals));
-      });
-      if (!played.length) return [];
-
-      const teamByName = new Map((seasonTeams || []).map((team) => [normalizeKey(team.name || team.displayName || ""), team]));
-      const rows = new Map();
-      const ensure = (id, name) => {
-        let teamId = String(id || "").trim();
-        if (!teamId && name) teamId = String(teamByName.get(normalizeKey(name))?.id || "").trim();
-        if (!teamId) teamId = `name:${normalizeKey(name || "squadra")}`;
-        if (!rows.has(teamId)) rows.set(teamId, {
-          competitionId, seasonId, seasonTeamId: teamId.startsWith("name:") ? "" : teamId, teamName: name || "",
-          played: 0, wins: 0, draws: 0, losses: 0, goalsFor: 0, goalsAgainst: 0, fantapoints: 0, points: 0
-        });
-        const row = rows.get(teamId);
-        if (!row.teamName && name) row.teamName = name;
-        return row;
-      };
-
-      played.forEach((match) => {
-        const home = ensure(match.homeSeasonTeamId, match.homeTeamName);
-        const away = ensure(match.awaySeasonTeamId, match.awayTeamName);
-        const hg = Number(match.homeGoals);
-        const ag = Number(match.awayGoals);
-        home.played += 1; away.played += 1;
-        home.goalsFor += hg; home.goalsAgainst += ag;
-        away.goalsFor += ag; away.goalsAgainst += hg;
-        if (Number.isFinite(Number(match.homeScore))) home.fantapoints += Number(match.homeScore);
-        if (Number.isFinite(Number(match.awayScore))) away.fantapoints += Number(match.awayScore);
-        if (hg > ag) { home.wins += 1; away.losses += 1; home.points += 3; }
-        else if (hg < ag) { away.wins += 1; home.losses += 1; away.points += 3; }
-        else { home.draws += 1; away.draws += 1; home.points += 1; away.points += 1; }
-      });
-
-      const resolveName = (row) => row.teamName || (seasonTeams || []).find((team) => team.id === row.seasonTeamId)?.name || row.seasonTeamId || "";
-      return [...rows.values()]
-        .map((row) => ({ ...row, goalDifference: row.goalsFor - row.goalsAgainst }))
-        .sort((a, b) => (b.points - a.points) || (b.fantapoints - a.fantapoints) || (b.goalDifference - a.goalDifference) || (b.goalsFor - a.goalsFor) || resolveName(a).localeCompare(resolveName(b), "it", { sensitivity: "base" }))
-        .map((row, index) => ({ ...row, id: `${competitionId}_mobile_live_${index + 1}`, position: index + 1, source: "computed-from-matches-v805" }));
-    }
-
-    function isActiveLeagueCompetitionV805(competition) {
-      const type = String(competition?.type || "").toUpperCase();
-      const format = String(competition?.format || competition?.formula || "").toUpperCase();
-      const status = String(competition?.status || "").toUpperCase();
-      return status !== "CONCLUSA" && (type === "CAMPIONATO" || format === "CLASSIFICA");
     }
 
     function getDeletedMatchKeys(snapshotData, competitionId) {
@@ -506,21 +441,9 @@
       });
     }
 
-    function withCompetitionReleaseV805(url) {
-      try {
-        const value = new URL(url, document.baseURI);
-        value.searchParams.set("release", "805");
-        return value.href;
-      } catch (_) {
-        const separator = String(url || "").includes("?") ? "&" : "?";
-        return `${url}${separator}release=805`;
-      }
-    }
-
     async function fetchJson(url, options = {}) {
-      const effectiveUrl = withCompetitionReleaseV805(url);
-      const response = await fetch(effectiveUrl, { ...options, cache: "no-store" });
-      if (!response.ok) throw new Error(`Impossibile caricare ${effectiveUrl}`);
+      const response = await fetch(url, options);
+      if (!response.ok) throw new Error(`Impossibile caricare ${url}`);
       return response.json();
     }
 
@@ -590,26 +513,21 @@
       const matches = mergeCalendarMatchesV798(baseMatches, local, remote, competitionId);
       const rounds = Array.isArray(payload.rounds) ? payload.rounds : [];
       const battleRoyaleEntries = mergeBattleRoyaleEntriesV798(local, remote, competitionId);
-      const mergedResults = mergeCompetitionResultsV798(Array.isArray(payload.results) ? payload.results : [], local, remote, competitionId);
-      const competitionViewV805 = {
-        id: competitionId,
-        seasonId: competition.seasonId || meta.seasonId || entry.seasonId || requestedSeasonId,
-        name: competition.name || meta.competitionName || entry.competitionName || entry.label || "Competizione",
-        type: competition.type || meta.competitionType || entry.competitionType || "ALTRO",
-        format: competition.format || competition.formula || meta.competitionFormat || entry.competitionFormat || "",
-        formula: competition.formula || competition.format || meta.competitionFormat || entry.competitionFormat || "",
-        phase: competition.phase || meta.phase || "",
-        status: competition.status || entry.status || "",
-        notes: competition.notes || ""
-      };
-      const liveResultsV805 = isActiveLeagueCompetitionV805(competitionViewV805)
-        ? computeLeagueStandingsV805(matches, competitionId, competitionViewV805.seasonId, seasonTeams)
-        : [];
-      const results = liveResultsV805.length ? liveResultsV805 : mergedResults;
+      const results = mergeCompetitionResultsV798(Array.isArray(payload.results) ? payload.results : [], local, remote, competitionId);
       return {
         source: "static",
         manifestEntry: entry,
-        competition: competitionViewV805,
+        competition: {
+          id: competitionId,
+          seasonId: competition.seasonId || meta.seasonId || entry.seasonId || requestedSeasonId,
+          name: competition.name || meta.competitionName || entry.competitionName || entry.label || "Competizione",
+          type: competition.type || meta.competitionType || entry.competitionType || "ALTRO",
+          format: competition.format || competition.formula || meta.competitionFormat || entry.competitionFormat || "",
+          formula: competition.formula || competition.format || meta.competitionFormat || entry.competitionFormat || "",
+          phase: competition.phase || meta.phase || "",
+          status: competition.status || entry.status || "",
+          notes: competition.notes || ""
+        },
         matches,
         rounds,
         battleRoyaleEntries,
@@ -635,19 +553,13 @@
       const competition = findCompetitionInSnapshotV798(remote) || findCompetitionInSnapshotV798(local);
       if (!competition) return null;
       const competitionId = competition.id;
-      const fallbackMatchesV805 = mergeCalendarMatchesV798([], local, remote, competitionId);
-      const fallbackMergedResultsV805 = mergeCompetitionResultsV798([], local, remote, competitionId);
-      const fallbackSeasonTeamsV805 = Array.isArray(remote?.seasonTeams) && remote.seasonTeams.length ? remote.seasonTeams : (Array.isArray(local?.seasonTeams) ? local.seasonTeams : []);
-      const fallbackLiveResultsV805 = isActiveLeagueCompetitionV805(competition)
-        ? computeLeagueStandingsV805(fallbackMatchesV805, competitionId, competition.seasonId || requestedSeasonId, fallbackSeasonTeamsV805)
-        : [];
       return {
         source: remote && findCompetitionInSnapshotV798(remote) ? "firebase" : "snapshot",
         competition,
-        matches: fallbackMatchesV805,
+        matches: mergeCalendarMatchesV798([], local, remote, competitionId),
         rounds: [],
         battleRoyaleEntries: mergeBattleRoyaleEntriesV798(local, remote, competitionId),
-        results: fallbackLiveResultsV805.length ? fallbackLiveResultsV805 : fallbackMergedResultsV805,
+        results: mergeCompetitionResultsV798([], local, remote, competitionId),
         seasonTeams: Array.isArray(remote?.seasonTeams) && remote.seasonTeams.length ? remote.seasonTeams : (Array.isArray(local?.seasonTeams) ? local.seasonTeams : []),
         teams: Array.isArray(remote?.teams) && remote.teams.length ? remote.teams : (Array.isArray(local?.teams) ? local.teams : []),
         sourceFile: remote && findCompetitionInSnapshotV798(remote) ? "Firebase" : "snapshot stagionale"
@@ -1157,8 +1069,8 @@
       renderPayload(snapshotPayload);
     }
 
-    window.ZonaOrientaleCompetitionDetailV805 = Object.freeze({
-      version: "V805",
+    window.ZonaOrientaleCompetitionDetailV800 = Object.freeze({
+      version: "V800",
       leagueStandingsFirst: true,
       leagueMatchdaysAscending: true,
       leagueMatchdaysCollapsedByDefault: true

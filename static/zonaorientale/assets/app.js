@@ -1,11 +1,11 @@
-/* V805 - Footer canonico ZonaOrientale (compatibilita API V790).
+/* V803 - Footer canonico ZonaOrientale (compatibilita API V790).
  * Unica sorgente runtime per versione/data. Tutti i writer legacy del footer
  * delegano qui, evitando gare tra MutationObserver di release differenti.
  */
 const ZONAORIENTALE_RELEASE_V790 = Object.freeze({
-  version: "V805",
-  lastUpdated: "08/09/2026",
-  label: "Fantacalcio - V805 - Aggiornato al 08/09/2026"
+  version: "V803",
+  lastUpdated: "02/09/2026",
+  label: "Fantacalcio - V803 - Aggiornato al 02/09/2026"
 });
 
 function applyZonaOrientaleCanonicalFooterV790() {
@@ -316,12 +316,12 @@ function createCalciomercatoArchiveAdminV340() {
     setExpanded: () => {}
   };
 }
-import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js?v=805";
+import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js?v=803";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "../../fanta-engine/js/shared/v491/assets/js/mobile/mobile-tables.js?v=491";
 import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=485";
 import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=485";
-import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=805";
+import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=803";
 import { createMobileRosterHelpersV169 } from "../../fanta-engine/js/shared/v491/assets/js/mobile/mobile-rosters.js?v=491";
 
 const ZonaOrientaleSharedHelperBridgeV341 = createSharedHelperBridgeV341({
@@ -10827,7 +10827,7 @@ function getCompetitionDisplayNameV111(competition) {
 
 function getCompetitionOpenUrlV111(competition) {
   const params = new URLSearchParams();
-  params.set("v", "805");
+  params.set("v", "219");
   const seasonId = competition?.seasonId || getCurrentSeasonId();
   if (seasonId) params.set("seasonId", seasonId);
   if (competition?.id) params.set("competitionId", competition.id);
@@ -16571,7 +16571,7 @@ window.ZonaOrientaleAdminMobileButtonTopV430 = Object.freeze({
   ]
 });
 
-const DEPLOY_EXPECTED_VERSION_V181 = "805";
+const DEPLOY_EXPECTED_VERSION_V181 = "803";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -43312,38 +43312,5 @@ try {
     preservesFmMovements: true,
     buildEffectiveRosterMap: buildEffectiveRosterMapV802,
     buildStaticRosterPayload: buildStaticRosterPayloadFromEffectiveV802
-  });
-})();
-
-
-/* V805 - Parita desktop/mobile per le competizioni + cache bust pagina dettaglio.
- * Su mobile la sezione Competizioni usa la stessa card completa del desktop:
- * classifica corrente e giornate calendario, ordinate e collassate.
- * Evita una seconda rappresentazione mobile con dati parziali/stale. */
-(function installCompetitionMobileParityV805(){
-  const VERSION = "V805";
-  const renderCompetitionsPublicBeforeV805 = typeof renderCompetitionsPublic === "function" ? renderCompetitionsPublic : null;
-  if (renderCompetitionsPublicBeforeV805) {
-    renderCompetitionsPublic = function renderCompetitionsPublicV805(...args) {
-      const result = renderCompetitionsPublicBeforeV805.apply(this, args);
-      const list = document.getElementById("competitionsList");
-      const mobile = list?.querySelector(".mobile-competition-blocks-v155");
-      if (mobile) {
-        const seasonId = getCurrentSeasonId();
-        const competitions = getSeasonCompetitionsForPublicDisplayV52(seasonId);
-        mobile.classList.add("mobile-competition-detailed-list-v805");
-        mobile.innerHTML = competitions.map((competition) => renderDesktopCompetitionCardV155(competition)).join("");
-      }
-      return result;
-    };
-  }
-
-  window.ZonaOrientaleCompetitionMobileParityV805 = Object.freeze({
-    version: VERSION,
-    sameCompetitionDataDesktopMobile: true,
-    activeLeagueStandingsFromMatches: true,
-    matchdaysVisibleOnMobile: true,
-    matchdaysCollapsedByDefault: true,
-    competitionDetailCacheBuster: "805"
   });
 })();
