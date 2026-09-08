@@ -128,3 +128,11 @@ Completato: aggiornamento reale della sorgente `assets/rose` al file del 18/08/2
 - La 3a giornata e datata `2026-09-06` su tutte e cinque le gare.
 - Il JSON Campionato contiene la classifica calcolata dopo la 3a giornata con gli stessi tie-break del runtime.
 - Lo snapshot stagionale non viene sovrascritto da questo pacchetto, per preservare eventuali modifiche Admin/Firebase e correzioni manuali alle rose successive alla V803.
+
+
+## V805 - 2026-09-08
+- Parita desktop/mobile nella sezione Competizioni: classifica e giornate anche su smartphone.
+- competition.html deduplica la classifica per squadra e per Campionato attivo la ricalcola dalle partite giocate.
+- Link dettaglio competizione e fetch JSON con cache-buster V805.
+- Date Campionato: G1 2026-08-23, G2 2026-08-30, G3 2026-09-06.
+- Nessuna modifica a rose, movimenti, Firebase o funzioni Admin.

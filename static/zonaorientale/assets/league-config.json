@@ -5,7 +5,7 @@
   "shortName": "ZonaOrientale",
   "basePath": "/zonaorientale/",
   "siteUrl": "https://silviobarra.com/zonaorientale/",
-  "currentVersion": "804",
+  "currentVersion": "805",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -1889,5 +1889,5 @@
   "ioSudoListoneAllPlayersV643": true,
   "updatedAt": "2026-07-22T00:30:00+02:00",
   "lastUpdated": "2026-08-18",
-  "lastOverlay": "V804 listone 8 settembre e terza giornata campionato del 06/09/2026"
+  "lastOverlay": "V805 parità competizioni mobile, classifica deduplicata e date giornate 1-3"
 }
