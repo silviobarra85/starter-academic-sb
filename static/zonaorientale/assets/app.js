@@ -1,11 +1,11 @@
-/* V805 - Footer canonico ZonaOrientale (compatibilita API V790).
+/* V806 - Footer canonico ZonaOrientale (compatibilita API V790).
  * Unica sorgente runtime per versione/data. Tutti i writer legacy del footer
  * delegano qui, evitando gare tra MutationObserver di release differenti.
  */
 const ZONAORIENTALE_RELEASE_V790 = Object.freeze({
-  version: "V805",
-  lastUpdated: "08/09/2026",
-  label: "Fantacalcio - V805 - Aggiornato al 08/09/2026"
+  version: "V806",
+  lastUpdated: "09/09/2026",
+  label: "Fantacalcio - V806 - Aggiornato al 09/09/2026"
 });
 
 function applyZonaOrientaleCanonicalFooterV790() {
@@ -60,6 +60,7 @@ let where = null;
 let serverTimestamp = null;
 let createUserWithEmailAndPassword = null;
 let sendEmailVerification = null;
+let sendPasswordResetEmail = null;
 let updateProfile = null;
 let GoogleAuthProvider = null;
 let signInWithPopup = null;
@@ -87,6 +88,7 @@ async function ensureFirebaseRuntimeV760() {
       serverTimestamp = api.serverTimestamp;
       createUserWithEmailAndPassword = api.createUserWithEmailAndPassword;
       sendEmailVerification = api.sendEmailVerification;
+      sendPasswordResetEmail = api.sendPasswordResetEmail;
       updateProfile = api.updateProfile;
       GoogleAuthProvider = api.GoogleAuthProvider;
       signInWithPopup = api.signInWithPopup;
@@ -5581,6 +5583,7 @@ function enhanceLoginDialogV34() {
   ensureLoginUiV264();
   const submitButton = loginForm.querySelector('button[type="submit"]');
   submitButton?.insertAdjacentHTML("afterend", `
+    <button id="forgotPasswordBtn" class="button button-secondary full-width" type="button">Password dimenticata?</button>
     <button id="registerEmailBtn" class="button button-secondary full-width" type="button">Registrati con email</button>
     <button id="sendVerificationAgainBtn" class="button button-secondary full-width" type="button">Invia di nuovo verifica email</button>
     <button id="loginGoogleBtn" class="button button-secondary full-width google-login-v264" type="button">${getGoogleLoginButtonMarkupV264()}</button>
@@ -5639,6 +5642,31 @@ setupAuth = function setupAuthV34() {
     } catch (error) {
       console.error(error);
       showMessage("loginStatus", "Login non riuscito. Controlla email e password.", true);
+    }
+  });
+
+  document.getElementById("forgotPasswordBtn")?.addEventListener("click", async () => {
+    const emailInput = document.getElementById("loginEmail");
+    const email = emailInput?.value.trim();
+    if (!email) {
+      showMessage("loginStatus", "Inserisci l'indirizzo email del tuo account per reimpostare la password.", true);
+      emailInput?.focus();
+      return;
+    }
+    try {
+      showMessage("loginStatus", "Invio del link per reimpostare la password...");
+      await sendPasswordResetEmail(auth, email);
+      showMessage("loginStatus", "Se l'indirizzo è associato a un account, riceverai una email con il link per impostare una nuova password. Controlla anche lo spam.");
+    } catch (error) {
+      console.error(error);
+      const code = String(error?.code || "");
+      if (code === "auth/invalid-email") {
+        showMessage("loginStatus", "L'indirizzo email inserito non è valido.", true);
+      } else if (code === "auth/too-many-requests") {
+        showMessage("loginStatus", "Sono state effettuate troppe richieste. Riprova tra qualche minuto.", true);
+      } else {
+        showMessage("loginStatus", "Non riesco a inviare ora l'email di reimpostazione. Riprova tra qualche minuto.", true);
+      }
     }
   });
 
@@ -16571,7 +16599,7 @@ window.ZonaOrientaleAdminMobileButtonTopV430 = Object.freeze({
   ]
 });
 
-const DEPLOY_EXPECTED_VERSION_V181 = "805";
+const DEPLOY_EXPECTED_VERSION_V181 = "806";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
