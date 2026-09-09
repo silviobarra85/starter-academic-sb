@@ -9074,6 +9074,32 @@ setupAuth = function setupAuthV760() {
       }
     });
 
+    document.getElementById("forgotPasswordBtn")?.addEventListener("click", async () => {
+      const emailInput = document.getElementById("loginEmail");
+      const email = emailInput?.value.trim();
+      if (!email) {
+        showMessage("loginStatus", "Inserisci l'indirizzo email del tuo account per reimpostare la password.", true);
+        emailInput?.focus();
+        return;
+      }
+      try {
+        showMessage("loginStatus", "Invio del link per reimpostare la password...");
+        await ensureFirebaseRuntimeV760();
+        await sendPasswordResetEmail(auth, email);
+        showMessage("loginStatus", "Se l'indirizzo è associato a un account, riceverai una email con il link per impostare una nuova password. Controlla anche lo spam.");
+      } catch (error) {
+        console.error(error);
+        const code = String(error?.code || "");
+        if (code === "auth/invalid-email") {
+          showMessage("loginStatus", "L'indirizzo email inserito non è valido.", true);
+        } else if (code === "auth/too-many-requests") {
+          showMessage("loginStatus", "Sono state effettuate troppe richieste. Riprova tra qualche minuto.", true);
+        } else {
+          showMessage("loginStatus", "Non riesco a inviare ora l'email di reimpostazione. Riprova tra qualche minuto.", true);
+        }
+      }
+    });
+
     document.getElementById("registerEmailBtn")?.addEventListener("click", async () => {
       const email = document.getElementById("loginEmail")?.value.trim();
       const password = document.getElementById("loginPassword")?.value;
