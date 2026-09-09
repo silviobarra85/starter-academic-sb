@@ -1,7 +1,7 @@
 {
   "id": "2026-2027",
   "seasonId": "2026-2027",
-  "generatedAt": "2026-09-02T13:06:39.423Z",
+  "generatedAt": "2026-09-09T14:41:00+02:00",
   "teams": [
     {
       "id": "WMdzHRRpUP8lHvsdwM7W",
@@ -6312,17 +6312,29 @@
     {
       "id": "static_2026_2027_team_002_3",
       "seasonId": "2026-2027",
-      "seasonTeamId": "2026_2027_team_002",
+      "seasonTeamId": "2026_2027_7bx0cegbxtf4fwh6t0pi",
       "playerName": "Tornqvist",
       "realTeam": "MON",
       "rosterRole": "P",
       "classicRole": "P",
       "mantraRoles": "Por",
-      "cost": 1,
+      "cost": 0,
       "status": "ACTIVE",
-      "source": "static-roster-github-primary-v588",
-      "staticRosterNameV588": "Beetlejuice",
-      "staticRosterPrimaryV588": true
+      "source": "loan-free-2026-09-09",
+      "staticRosterNameV588": "As Paperopoli",
+      "staticRosterPrimaryV588": true,
+      "loanStatus": "LOAN_ACTIVE",
+      "loanType": "FREE_LOAN",
+      "loanStartDate": "2026-09-09",
+      "loanFee": 0,
+      "contractOwnerSeasonTeamId": "2026_2027_team_002",
+      "contractOwnerTeamName": "Beetlejuice",
+      "loanFromSeasonTeamId": "2026_2027_team_002",
+      "loanFromTeamName": "Beetlejuice",
+      "loanToSeasonTeamId": "2026_2027_7bx0cegbxtf4fwh6t0pi",
+      "loanToTeamName": "As Paperopoli",
+      "loanOriginalCost": 1,
+      "loanNote": "Prestito gratuito stagionale; cartellino di proprieta Beetlejuice."
     },
     {
       "id": "static_2026_2027_team_002_4",
@@ -9278,6 +9290,44 @@
       "source": "static-roster-github-primary-v588",
       "staticRosterNameV588": "River Plaid",
       "staticRosterPrimaryV588": true
+    },
+    {
+      "id": "static_2026_2027_team_002_gosens",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_team_002",
+      "playerName": "Gosens",
+      "realTeam": "FIO",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "E",
+      "cost": 31,
+      "status": "ACTIVE",
+      "source": "static-roster-github-primary-v588",
+      "staticRosterNameV588": "Beetlejuice",
+      "staticRosterPrimaryV588": true,
+      "listoneStatusCode": "ASTERISCATO",
+      "quotationCurrent": 11,
+      "lastKnownQuotation": 11,
+      "historicalQuotationListone": "2026-07-04"
+    },
+    {
+      "id": "static_2026_2027_ulwtimbi3dyyrq0soesx_maripan",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_ulwtimbi3dyyrq0soesx",
+      "playerName": "Maripan",
+      "realTeam": "TOR",
+      "rosterRole": "D",
+      "classicRole": "D",
+      "mantraRoles": "Dc",
+      "cost": 1,
+      "status": "ACTIVE",
+      "source": "static-roster-github-primary-v588",
+      "staticRosterNameV588": "River Plaid",
+      "staticRosterPrimaryV588": true,
+      "listoneStatusCode": "ASTERISCATO",
+      "quotationCurrent": 8,
+      "lastKnownQuotation": 8,
+      "historicalQuotationListone": "2026-07-04"
     }
   ],
   "fmMovements": [
@@ -10276,6 +10326,22 @@
       "playerName": "",
       "seasonId": "2026-2027",
       "rosterRole": ""
+    },
+    {
+      "id": "prestito_tornqvist_2026_09_09_beetlejuice_paperopoli",
+      "date": "2026-09-09",
+      "type": "SCAMBIO",
+      "description": "Prestito gratuito Tornqvist da Beetlejuice ad As Paperopoli; cartellino di proprieta Beetlejuice.",
+      "rosterRole": "P",
+      "mantraRoles": "Por",
+      "targetSeasonTeamId": "2026_2027_7bx0cegbxtf4fwh6t0pi",
+      "playerName": "Tornqvist",
+      "realTeam": "MON",
+      "seasonTeamId": "2026_2027_team_002",
+      "seasonId": "2026-2027",
+      "amount": 0,
+      "operationSubtype": "PRESTITO_GRATUITO",
+      "contractOwnerSeasonTeamId": "2026_2027_team_002"
     }
   ],
   "metrics": {
@@ -10286,6 +10352,16 @@
     }
   },
   "news": [
+    {
+      "id": "prestito_tornqvist_beetlejuice_paperopoli_2026_09_09",
+      "title": "Comunicato avvenuto scambio - prestito Tornqvist",
+      "body": "La società Beetlejuice cede a titolo di prestito gratuito il calciatore TORNQUIST alla società Paperopoli.",
+      "topic": "COMUNICATO_AVVENUTO_SCAMBIO",
+      "seasonId": "2026-2027",
+      "teamId": "team_002",
+      "seasonTeamId": "2026_2027_team_002",
+      "publishedAt": "2026-09-09T14:41"
+    },
     {
       "id": "4EtFsFJI11nkPgUwNDFU",
       "title": "La Lega ZonaOrientale Salerno riparte: al via il nuovo campionato",
