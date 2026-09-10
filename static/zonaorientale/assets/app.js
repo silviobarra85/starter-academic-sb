@@ -1,11 +1,11 @@
-/* V806 - Footer canonico ZonaOrientale (compatibilita API V790).
+/* V808 - Footer canonico ZonaOrientale (compatibilita API V790).
  * Unica sorgente runtime per versione/data. Tutti i writer legacy del footer
  * delegano qui, evitando gare tra MutationObserver di release differenti.
  */
 const ZONAORIENTALE_RELEASE_V790 = Object.freeze({
-  version: "V806",
-  lastUpdated: "09/09/2026",
-  label: "Fantacalcio - V806 - Aggiornato al 09/09/2026"
+  version: "V808",
+  lastUpdated: "10/09/2026",
+  label: "Fantacalcio - V808 - Aggiornato al 10/09/2026"
 });
 
 function applyZonaOrientaleCanonicalFooterV790() {
@@ -16625,7 +16625,7 @@ window.ZonaOrientaleAdminMobileButtonTopV430 = Object.freeze({
   ]
 });
 
-const DEPLOY_EXPECTED_VERSION_V181 = "806";
+const DEPLOY_EXPECTED_VERSION_V181 = "808";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -43399,5 +43399,260 @@ try {
     matchdaysVisibleOnMobile: true,
     matchdaysCollapsedByDefault: true,
     competitionDetailCacheBuster: "805"
+  });
+})();
+
+/* V808 - Admin movimenti static-first: snapshot come baseline, Firebase come delta.
+ * I movimenti presenti nello snapshot statico restano visibili/modificabili in Admin.
+ * Modifica: setDoc con lo stesso id crea un override Firebase solo per quel movimento.
+ * Elimina: un movimento statico genera un tombstone REMOVED; il prossimo snapshot lo esclude.
+ * Nessuna lettura Firestore aggiuntiva nel percorso pubblico: il merge avviene solo dopo
+ * il caricamento esplicito dei dati amministrativi.
+ */
+(function installStaticFmMovementsAdminV808(){
+  const VERSION = "V808";
+  const REMOVED = "REMOVED";
+
+  state.staticFmMovementsBySeasonV808 = state.staticFmMovementsBySeasonV808 || new Map();
+  state.firebaseFmMovementsRawV808 = Array.isArray(state.firebaseFmMovementsRawV808) ? state.firebaseFmMovementsRawV808 : [];
+
+  function movementIdV808(movement = {}, seasonId = "") {
+    const direct = String(movement.id || "").trim();
+    if (direct) return direct;
+    const parts = [
+      "static",
+      seasonId || movement.seasonId || "season",
+      movement.seasonTeamId || "team",
+      movement.type || "movement",
+      movement.date || "date",
+      movement.playerName || movement.description || "row"
+    ].map((value) => typeof makeIdPart === "function" ? makeIdPart(String(value || "")) : String(value || "").replace(/[^a-z0-9_-]+/gi, "_").toLowerCase());
+    return parts.filter(Boolean).join("_");
+  }
+
+  function isRemovedFmMovementV808(movement = {}) {
+    const status = String(movement.status || movement.state || "").trim().toUpperCase();
+    return status === REMOVED || movement.deleted === true || movement.removed === true || movement.isDeleted === true;
+  }
+
+  function normalizeStaticFmMovementV808(movement = {}, seasonId = "") {
+    const normalizedSeasonId = String(movement.seasonId || seasonId || "").trim();
+    return {
+      ...movement,
+      id: movementIdV808(movement, normalizedSeasonId),
+      seasonId: normalizedSeasonId
+    };
+  }
+
+  async function ensureStaticFmMovementsForSeasonV808(seasonId) {
+    const target = String(seasonId || "").trim();
+    if (!target) return [];
+    if (state.staticFmMovementsBySeasonV808.has(target)) {
+      return state.staticFmMovementsBySeasonV808.get(target) || [];
+    }
+    let snapshot = null;
+    try {
+      snapshot = typeof loadStaticPublicSeasonSnapshotV172 === "function"
+        ? await loadStaticPublicSeasonSnapshotV172(target)
+        : null;
+    } catch (error) {
+      console.warn(`[${VERSION}] Snapshot statico non disponibile per ${target}`, error);
+    }
+    const rows = Array.isArray(snapshot?.fmMovements)
+      ? snapshot.fmMovements.map((movement) => normalizeStaticFmMovementV808(movement, target))
+      : [];
+    state.staticFmMovementsBySeasonV808.set(target, rows);
+    return rows;
+  }
+
+  function getAllLoadedStaticFmMovementsV808() {
+    const rows = [];
+    state.staticFmMovementsBySeasonV808.forEach((items) => {
+      (items || []).forEach((item) => rows.push(item));
+    });
+    return rows;
+  }
+
+  function getStaticFmMovementByIdV808(id) {
+    const target = String(id || "").trim();
+    if (!target) return null;
+    return getAllLoadedStaticFmMovementsV808().find((item) => String(item.id || "") === target) || null;
+  }
+
+  function rebuildEffectiveFmMovementsV808() {
+    const firebaseRows = (state.firebaseFmMovementsRawV808 || []).map((item) => ({ ...item }));
+    const firebaseById = new Map(firebaseRows.map((item) => [String(item.id || ""), item]).filter(([id]) => id));
+    const consumed = new Set();
+    const effective = [];
+
+    getAllLoadedStaticFmMovementsV808().forEach((staticMovement) => {
+      const id = String(staticMovement.id || "");
+      const override = id ? firebaseById.get(id) : null;
+      if (override) consumed.add(id);
+      if (override && isRemovedFmMovementV808(override)) return;
+      effective.push(override ? { ...staticMovement, ...override, id } : { ...staticMovement });
+    });
+
+    firebaseRows.forEach((movement) => {
+      const id = String(movement.id || "");
+      if (id && consumed.has(id)) return;
+      if (isRemovedFmMovementV808(movement)) return;
+      effective.push(movement);
+    });
+
+    state.raw.fmMovements = effective;
+    return effective;
+  }
+
+  async function mergeStaticFmMovementsForSeasonsV808(seasonIds = []) {
+    const ids = [...new Set((seasonIds || []).map((id) => String(id || "").trim()).filter(Boolean))];
+    await Promise.all(ids.map((id) => ensureStaticFmMovementsForSeasonV808(id)));
+    return rebuildEffectiveFmMovementsV808();
+  }
+
+  const loadAdminFullDataBeforeV808 = typeof loadAdminFullDataForEditingV178 === "function" ? loadAdminFullDataForEditingV178 : null;
+  if (loadAdminFullDataBeforeV808) {
+    loadAdminFullDataForEditingV178 = async function loadAdminFullDataForEditingV808(options = {}) {
+      const render = options.render !== false;
+      const result = await loadAdminFullDataBeforeV808({ ...options, render: false });
+      if (result === false) return false;
+      state.firebaseFmMovementsRawV808 = (state.raw.fmMovements || []).map((item) => ({ ...item }));
+      const selectedSeasonId = state.selectedAdminRosterSeasonId || state.selectedSeasonId || getCurrentSeasonId();
+      await mergeStaticFmMovementsForSeasonsV808([selectedSeasonId]);
+      sortData();
+      if (render) renderAll();
+      return result;
+    };
+  }
+
+  const saveFmMovementBeforeV808 = typeof saveFmMovement === "function" ? saveFmMovement : null;
+  if (saveFmMovementBeforeV808) {
+    saveFmMovement = async function saveFmMovementV808(event) {
+      const editingMovementId = String(document.getElementById("adminFmMovementForm")?.dataset?.editingFmMovementId || "").trim();
+      if (!editingMovementId) return saveFmMovementBeforeV808(event);
+      event.preventDefault();
+      try {
+        const seasonId = document.getElementById("adminFmMovementSeasonId")?.value || getCurrentSeasonId();
+        const seasonTeamId = document.getElementById("adminFmMovementSeasonTeamId")?.value || "";
+        const type = document.getElementById("adminFmMovementType")?.value || "ALTRO";
+        let amount = parseDecimalValue(document.getElementById("adminFmMovementAmount")?.value || "0") || 0;
+        if (["ACQUISTO", "PENALITA"].includes(type) && amount > 0) amount = -amount;
+        if (["VENDITA", "SVINCOLO", "BONUS", "INITIAL_BUDGET"].includes(type) && amount < 0) amount = Math.abs(amount);
+
+        const staticBase = getStaticFmMovementByIdV808(editingMovementId);
+        const payload = {
+          seasonId,
+          seasonTeamId,
+          targetSeasonTeamId: document.getElementById("adminFmMovementTargetSeasonTeamId")?.value || "",
+          type,
+          date: document.getElementById("adminFmMovementDate")?.value || getTodayIsoDate(),
+          amount,
+          playerName: document.getElementById("adminFmMovementPlayerName")?.value.trim() || "",
+          realTeam: abbreviateRealTeam(document.getElementById("adminFmMovementRealTeam")?.value || ""),
+          rosterRole: document.getElementById("adminFmMovementRole")?.value.trim() || "",
+          mantraRoles: document.getElementById("adminFmMovementRole")?.value.trim() || "",
+          description: document.getElementById("adminFmMovementDescription")?.value.trim() || "",
+          status: "ACTIVE",
+          deleted: false,
+          source: staticBase ? "admin-static-movement-override-v808" : "admin-movement-edit-v808",
+          staticMovementIdV808: staticBase?.id || "",
+          updatedAt: serverTimestamp()
+        };
+        await setDoc(doc(db, "fmMovements", editingMovementId), payload, { merge: true });
+        state.editingAdminFmMovementIdV436 = "";
+        showMessage(
+          "adminFmMovementStatus",
+          staticBase
+            ? "Movimento statico modificato: creato un override Firebase. Scarica/applica lo snapshot per consolidarlo."
+            : "Movimento aggiornato."
+        );
+        await loadData();
+        expandAdminPanel("adminRosterMovementsPanel");
+      } catch (error) {
+        console.error(error);
+        showMessage("adminFmMovementStatus", "Errore durante l'aggiornamento del movimento.", true);
+      }
+    };
+  }
+
+  const deleteDocumentBeforeV808 = typeof deleteDocument === "function" ? deleteDocument : null;
+  if (deleteDocumentBeforeV808) {
+    deleteDocument = async function deleteDocumentV808(collectionName, id, label) {
+      if (collectionName !== "fmMovements") return deleteDocumentBeforeV808(collectionName, id, label);
+      const staticBase = getStaticFmMovementByIdV808(id);
+      if (!staticBase) return deleteDocumentBeforeV808(collectionName, id, label);
+      const confirmed = window.confirm(`Confermi eliminazione ${label}? Il movimento statico verra escluso dal prossimo snapshot.`);
+      if (!confirmed) return;
+      try {
+        await setDoc(doc(db, "fmMovements", String(id)), {
+          seasonId: staticBase.seasonId || getCurrentSeasonId(),
+          seasonTeamId: staticBase.seasonTeamId || "",
+          targetSeasonTeamId: staticBase.targetSeasonTeamId || "",
+          type: staticBase.type || "ALTRO",
+          date: staticBase.date || "",
+          status: REMOVED,
+          deleted: true,
+          source: "admin-static-movement-tombstone-v808",
+          staticMovementIdV808: staticBase.id || String(id),
+          deletedAt: serverTimestamp(),
+          updatedAt: serverTimestamp()
+        }, { merge: true });
+        state.editingAdminFmMovementIdV436 = "";
+        await loadData();
+        expandAdminPanel("adminRosterMovementsPanel");
+      } catch (error) {
+        console.error(error);
+        setError(`Errore durante l'eliminazione di ${label}.`);
+      }
+    };
+  }
+
+  const renderRosterMovementsAdminPanelBeforeV808 = typeof renderRosterMovementsAdminPanel === "function" ? renderRosterMovementsAdminPanel : null;
+  if (renderRosterMovementsAdminPanelBeforeV808) {
+    renderRosterMovementsAdminPanel = function renderRosterMovementsAdminPanelV808() {
+      let html = renderRosterMovementsAdminPanelBeforeV808();
+      const note = `<small class="field-hint span-2 admin-static-movement-hint-v808"><strong>Static-first:</strong> l'elenco include anche i movimenti dello snapshot. Modifica/Elimina crea solo un override Firebase del singolo record; applicando il prossimo overlay snapshot la modifica diventa statica.</small>`;
+      if (html && !html.includes("admin-static-movement-hint-v808")) {
+        html = html.replace('<details class="admin-edit-section" open>', `${note}<details class="admin-edit-section" open>`);
+      }
+      return html;
+    };
+  }
+
+  const downloadStaticSeasonSnapshotsOverlayBeforeV808 = typeof downloadStaticSeasonSnapshotsOverlayV172 === "function" ? downloadStaticSeasonSnapshotsOverlayV172 : null;
+  if (downloadStaticSeasonSnapshotsOverlayBeforeV808) {
+    downloadStaticSeasonSnapshotsOverlayV172 = async function downloadStaticSeasonSnapshotsOverlayV808(options = {}) {
+      if (state.isAdmin && !state.hasFullData && typeof loadAdminFullDataForEditingV178 === "function") {
+        await loadAdminFullDataForEditingV178({ render: false, forceFullAdminV178: true });
+      }
+      if (state.isAdmin && state.hasFullData) {
+        const seasonIds = options?.selectedOnly
+          ? [getCurrentSeasonId()].filter(Boolean)
+          : (state.raw.seasons || []).map((season) => season.id).filter(Boolean);
+        await mergeStaticFmMovementsForSeasonsV808(seasonIds);
+        sortData();
+      }
+      return downloadStaticSeasonSnapshotsOverlayBeforeV808(options);
+    };
+  }
+
+  document.addEventListener("change", async (event) => {
+    if (!state.isAdmin || !state.hasFullData) return;
+    if (!event.target || !["adminFmMovementSeasonId", "adminRosterMovementSeasonId"].includes(event.target.id)) return;
+    const seasonId = event.target.value || getCurrentSeasonId();
+    await mergeStaticFmMovementsForSeasonsV808([seasonId]);
+    sortData();
+    renderAdminArea();
+    expandAdminPanel("adminRosterMovementsPanel");
+  });
+
+  window.ZonaOrientaleStaticFmMovementsAdminV808 = Object.freeze({
+    version: VERSION,
+    staticSnapshotBaseline: true,
+    firebaseDeltaOnly: true,
+    editStaticWithSetDocOverride: true,
+    deleteStaticWithTombstone: true,
+    snapshotConsolidatesOverrides: true,
+    publicFirestoreReadsAdded: 0
   });
 })();
