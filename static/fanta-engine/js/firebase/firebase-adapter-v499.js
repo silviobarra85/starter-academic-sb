@@ -21,6 +21,11 @@ import {
 
 import {
   getAuth,
+  initializeAuth,
+  browserLocalPersistence,
+  browserSessionPersistence,
+  inMemoryPersistence,
+  browserPopupRedirectResolver,
   createUserWithEmailAndPassword,
   sendEmailVerification,
   sendPasswordResetEmail,
@@ -61,6 +66,7 @@ export function normalizeFirebaseLeagueConfigV499(config = {}) {
     collectionPrefix: cleanStringV499(config.collectionPrefix || ''),
     collectionAliases: freezePlainV499(config.collectionAliases || {}),
     roleCollections: freezePlainV499(config.roleCollections || {}),
+    authPersistenceMode: cleanStringV499(config.authPersistenceMode || ''),
     notes: cleanStringV499(config.notes || 'Adapter comune senza migrazione dati.')
   });
 }
@@ -77,11 +83,35 @@ export function resolveFirebaseCollectionNameV499(runtimeOrConfig, collectionNam
   return normalized.collectionPrefix ? `${normalized.collectionPrefix}${resolved}` : resolved;
 }
 
+function isMacSafariV814() {
+  if (typeof navigator === 'undefined') return false;
+  const ua = String(navigator.userAgent || '');
+  return /Macintosh/i.test(ua)
+    && /Safari\//i.test(ua)
+    && !/(Chrome|Chromium|CriOS|Edg|OPR|Firefox|FxiOS)/i.test(ua);
+}
+
+function createAuthForLeagueV814(app, normalized) {
+  const mode = cleanStringV499(normalized.authPersistenceMode);
+  if (mode === 'mac-safari-web-storage' && isMacSafariV814()) {
+    try {
+      return initializeAuth(app, {
+        persistence: [browserLocalPersistence, browserSessionPersistence, inMemoryPersistence],
+        popupRedirectResolver: browserPopupRedirectResolver
+      });
+    } catch (error) {
+      if (String(error?.code || '') === 'auth/already-initialized') return getAuth(app);
+      throw error;
+    }
+  }
+  return getAuth(app);
+}
+
 export function createFirebaseLeagueRuntimeV499(config = {}) {
   const normalized = normalizeFirebaseLeagueConfigV499(config);
   const app = initializeApp(normalized.firebaseConfig);
   const db = getFirestore(app);
-  const auth = getAuth(app);
+  const auth = createAuthForLeagueV814(app, normalized);
   function collectionRef(collectionName) {
     return collection(db, resolveFirebaseCollectionNameV499(normalized, collectionName));
   }
@@ -109,6 +139,10 @@ export function createFirebaseLeagueRuntimeV499(config = {}) {
       displayName: normalized.displayName,
       projectId: normalized.firebaseConfig.projectId || '',
       authDomain: normalized.firebaseConfig.authDomain || '',
+      authPersistenceMode: normalized.authPersistenceMode || '',
+      authPersistenceStrategy: normalized.authPersistenceMode === 'mac-safari-web-storage' && isMacSafariV814()
+        ? 'browser-local-session-memory-no-indexeddb'
+        : 'firebase-default',
       dataModelMode: normalized.dataModelMode,
       migrateToLeagueScopedPaths: false,
       useFlatCollections: true

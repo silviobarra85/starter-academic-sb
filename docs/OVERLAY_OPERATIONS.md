@@ -1,5 +1,15 @@
 # Operazioni overlay
 
+## V814 - Safari Mac Auth + date movimenti
+
+- Presuppone V813 gia presente nel repository.
+- Caricare lo zip integro in `incoming/overlays/` e fare commit/push.
+- L'overlay contiene solo i file modificati sotto `static/` e `docs/`.
+- Dopo il deploy verificare `/zonaorientale/release.json` = V814.
+- Safari Mac: chiudere vecchie schede ZonaOrientale, fare un hard reload una sola volta, quindi provare email/password e Google.
+- Controllare in Movimenti e Bilanci che i 10 svincoli settembre siano al 09/09 e che l'acquisto agosto di Afc Severgas Baronissi sia al 20/08.
+- Audit principale: `node static/fanta-engine/tools/audit-zona-auth-dates-v814.mjs`.
+
 Overlay V788 pronto per la GitHub Action.
 
 - Presuppone che V787 sia stata applicata correttamente.

@@ -1,7 +1,7 @@
 {
   "id": "2026-2027",
   "seasonId": "2026-2027",
-  "generatedAt": "2026-09-11T12:30:00+02:00",
+  "generatedAt": "2026-09-11T13:50:00+02:00",
   "teams": [
     {
       "id": "WMdzHRRpUP8lHvsdwM7W",
@@ -10323,7 +10323,7 @@
       "realTeam": "",
       "description": "MERCATO AGOSTO 2026",
       "type": "ACQUISTO",
-      "date": "2026-09-02",
+      "date": "2026-08-20",
       "seasonTeamId": "2026_2027_h6saek7urqiqnmiztrt7",
       "playerName": "",
       "createdAt": {
@@ -10470,7 +10470,7 @@
       "seasonId": "2026-2027",
       "seasonTeamId": "2026_2027_team_002",
       "type": "SVINCOLO",
-      "date": "2026-09-10"
+      "date": "2026-09-09"
     },
     {
       "id": "svincoli_settembre_2026_2026_2027_y3vmcdwvut0u1tlsg4qc_20260910",
@@ -10487,7 +10487,7 @@
       "seasonId": "2026-2027",
       "seasonTeamId": "2026_2027_y3vmcdwvut0u1tlsg4qc",
       "type": "SVINCOLO",
-      "date": "2026-09-10"
+      "date": "2026-09-09"
     },
     {
       "id": "svincoli_settembre_2026_2026_2027_uqsbhtctytbo7kookndm_20260910",
@@ -10504,7 +10504,7 @@
       "seasonId": "2026-2027",
       "seasonTeamId": "2026_2027_uqsbhtctytbo7kookndm",
       "type": "SVINCOLO",
-      "date": "2026-09-10"
+      "date": "2026-09-09"
     },
     {
       "id": "svincoli_settembre_2026_2026_2027_wmdzhrrpup8lhvsdwm7w_20260910",
@@ -10521,7 +10521,7 @@
       "seasonId": "2026-2027",
       "seasonTeamId": "2026_2027_wmdzhrrpup8lhvsdwm7w",
       "type": "SVINCOLO",
-      "date": "2026-09-10"
+      "date": "2026-09-09"
     },
     {
       "id": "svincoli_settembre_2026_2026_2027_ft1tqdqi18iuh3l1lakq_20260910",
@@ -10538,7 +10538,7 @@
       "seasonId": "2026-2027",
       "seasonTeamId": "2026_2027_ft1tqdqi18iuh3l1lakq",
       "type": "SVINCOLO",
-      "date": "2026-09-10"
+      "date": "2026-09-09"
     },
     {
       "id": "svincoli_settembre_2026_2026_2027_gdisidfbuselvm64psr3_20260910",
@@ -10555,7 +10555,7 @@
       "seasonId": "2026-2027",
       "seasonTeamId": "2026_2027_gdisidfbuselvm64psr3",
       "type": "SVINCOLO",
-      "date": "2026-09-10"
+      "date": "2026-09-09"
     },
     {
       "id": "svincoli_settembre_2026_2026_2027_team_001_20260910",
@@ -10572,7 +10572,7 @@
       "seasonId": "2026-2027",
       "seasonTeamId": "2026_2027_team_001",
       "type": "SVINCOLO",
-      "date": "2026-09-10"
+      "date": "2026-09-09"
     },
     {
       "id": "svincoli_settembre_2026_2026_2027_h6saek7urqiqnmiztrt7_20260910",
@@ -10589,7 +10589,7 @@
       "seasonId": "2026-2027",
       "seasonTeamId": "2026_2027_h6saek7urqiqnmiztrt7",
       "type": "SVINCOLO",
-      "date": "2026-09-10"
+      "date": "2026-09-09"
     },
     {
       "id": "svincoli_settembre_2026_2026_2027_7bx0cegbxtf4fwh6t0pi_20260910",
@@ -10606,7 +10606,7 @@
       "seasonId": "2026-2027",
       "seasonTeamId": "2026_2027_7bx0cegbxtf4fwh6t0pi",
       "type": "SVINCOLO",
-      "date": "2026-09-10"
+      "date": "2026-09-09"
     },
     {
       "id": "svincoli_settembre_2026_2026_2027_ulwtimbi3dyyrq0soesx_20260910",
@@ -10623,7 +10623,7 @@
       "seasonId": "2026-2027",
       "seasonTeamId": "2026_2027_ulwtimbi3dyyrq0soesx",
       "type": "SVINCOLO",
-      "date": "2026-09-10"
+      "date": "2026-09-09"
     },
     {
       "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_uqsbhtctytbo7kookndm_de_winter_20260910",
@@ -11891,5 +11891,5 @@
       "publishedAt": "2026-07-04T11:55"
     }
   ],
-  "snapshotVersion": 38
+  "snapshotVersion": 39
 }

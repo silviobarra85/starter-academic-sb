@@ -1,5 +1,15 @@
 # Roadmap overlay
 
+## V814 - Safari Mac Auth e correzioni date movimenti (11/09/2026)
+
+- Safari Mac: Firebase Auth inizializzato senza IndexedDB, con persistenza web local/session/memory e popup resolver esplicito; smartphone e altri browser restano sul comportamento esistente.
+- Google popup avviato direttamente dal gesto utente; nessuna navigazione Dashboard prima dell'esito di email/password o OAuth.
+- 10 svincoli settembre spostati dal 10/09 al 09/09; totale +223 FM invariato.
+- Acquisto `MERCATO AGOSTO 2026` di Afc Severgas Baronissi (`syQ6oloV2U2BFHGtzuUO`) spostato dal 02/09 al 20/08.
+- Bilanci coerenti automaticamente perche leggono `fmMovements.date`; saldi invariati.
+- Normalizzazione runtime delle sole vecchie date note anche in presenza di override Firebase Admin; nessuna scrittura automatica su Firestore.
+- Snapshot stagione V39; cache-buster/release V814.
+
 ## V813 - Auth senza timer artificiale e comunicato acquisti (11/09/2026)
 
 - Eliminato il timeout V812 dalle operazioni reali email/password e Google popup: non interrompe piu il login mentre Firebase o l'utente stanno completando la procedura.

@@ -1,11 +1,11 @@
-/* V813 - Footer canonico ZonaOrientale (compatibilita API V790).
+/* V814 - Footer canonico ZonaOrientale (compatibilita API V790).
  * Unica sorgente runtime per versione/data. Tutti i writer legacy del footer
  * delegano qui, evitando gare tra MutationObserver di release differenti.
  */
 const ZONAORIENTALE_RELEASE_V790 = Object.freeze({
-  version: "V813",
+  version: "V814",
   lastUpdated: "11/09/2026",
-  label: "Fantacalcio - V813 - Aggiornato al 11/09/2026"
+  label: "Fantacalcio - V814 - Aggiornato al 11/09/2026"
 });
 
 function applyZonaOrientaleCanonicalFooterV790() {
@@ -69,12 +69,12 @@ let signOut = null;
 let onAuthStateChanged = null;
 let firebaseRuntimePromiseV760 = null;
 
-function withAuthBootstrapTimeoutV813(promise, operation = "il caricamento del modulo Auth", timeoutMs = 30000) {
+function withAuthBootstrapTimeoutV814(promise, operation = "il caricamento del modulo Auth", timeoutMs = 30000) {
   let timeoutId = null;
   const timeout = new Promise((_, reject) => {
     timeoutId = window.setTimeout(() => {
       const error = new Error(`Firebase non ha risposto entro ${Math.round(timeoutMs / 1000)} secondi durante ${operation}. Ricarica la pagina e riprova.`);
-      error.code = "auth/bootstrap-timeout-v813";
+      error.code = "auth/bootstrap-timeout-v814";
       reject(error);
     }, timeoutMs);
   });
@@ -83,7 +83,7 @@ function withAuthBootstrapTimeoutV813(promise, operation = "il caricamento del m
 
 async function ensureFirebaseRuntimeV760() {
   if (firebaseRuntimePromiseV760) return firebaseRuntimePromiseV760;
-  firebaseRuntimePromiseV760 = import("./firebase.js?v=813")
+  firebaseRuntimePromiseV760 = import("./firebase.js?v=814")
     .then((api) => {
       db = api.db;
       auth = api.auth;
@@ -111,7 +111,9 @@ async function ensureFirebaseRuntimeV760() {
         version: "V760",
         status: "ready",
         loadedAt: new Date().toISOString(),
-        projectId: api.firebaseRuntimeInfoV499?.projectId || ""
+        projectId: api.firebaseRuntimeInfoV499?.projectId || "",
+        authPersistenceMode: api.firebaseRuntimeInfoV499?.authPersistenceMode || "",
+        authPersistenceStrategy: api.firebaseRuntimeInfoV499?.authPersistenceStrategy || "firebase-default"
       });
       return api;
     })
@@ -9122,13 +9124,14 @@ setupAuth = function setupAuthV760() {
       const password = document.getElementById("loginPassword")?.value;
       showMessage("loginStatus", "Accesso in corso...");
       try {
-        await withAuthBootstrapTimeoutV813(ensureFirebaseRuntimeV760());
+        await withAuthBootstrapTimeoutV814(ensureFirebaseRuntimeV760());
         await signInWithEmailAndPassword(auth, email, password);
         loginDialog?.close();
+        scheduleAuthDashboardLandingV182("login-email-success");
       } catch (error) {
         console.error(error);
         const code = String(error?.code || "");
-        const detail = code === "auth/client-timeout-v811"
+        const detail = code === "auth/bootstrap-timeout-v814"
           ? error.message
           : `Login non riuscito${code ? ` (${code})` : ""}. Controlla email e password.`;
         showMessage("loginStatus", detail, true);
@@ -9145,7 +9148,7 @@ setupAuth = function setupAuthV760() {
       }
       try {
         showMessage("loginStatus", "Invio del link per reimpostare la password...");
-        await withAuthBootstrapTimeoutV813(ensureFirebaseRuntimeV760());
+        await withAuthBootstrapTimeoutV814(ensureFirebaseRuntimeV760());
         await sendPasswordResetEmail(auth, email);
         showMessage("loginStatus", "Se l'indirizzo è associato a un account, riceverai una email con il link per impostare una nuova password. Controlla anche lo spam.");
       } catch (error) {
@@ -9171,7 +9174,7 @@ setupAuth = function setupAuthV760() {
       }
       try {
         showMessage("loginStatus", "Registrazione in corso...");
-        await withAuthBootstrapTimeoutV813(ensureFirebaseRuntimeV760());
+        await withAuthBootstrapTimeoutV814(ensureFirebaseRuntimeV760());
         const credential = await createUserWithEmailAndPassword(auth, email, password);
         if (displayName) await updateProfile(credential.user, { displayName });
         await sendEmailVerification(credential.user);
@@ -9200,20 +9203,29 @@ setupAuth = function setupAuthV760() {
 
     document.getElementById("loginGoogleBtn")?.addEventListener("click", async () => {
       try {
+        // V814: su Safari il popup deve partire nello stesso gesto utente.
+        // Non attendiamo import/rete prima di signInWithPopup: se Auth non e ancora pronto,
+        // completiamo il preload e chiediamo un secondo click invece di perdere la user activation.
+        if (!auth || !GoogleAuthProvider || !signInWithPopup) {
+          showMessage("loginStatus", "Il modulo di accesso si sta inizializzando. Attendi un istante e premi di nuovo Accedi con Google.");
+          ensureFirebaseRuntimeV760()
+            .then(() => showMessage("loginStatus", "Accesso Google pronto. Premi di nuovo Accedi con Google."))
+            .catch((error) => showMessage("loginStatus", error?.message || "Modulo Google non disponibile.", true));
+          return;
+        }
         showMessage("loginStatus", "Accesso Google in corso...");
-        await withAuthBootstrapTimeoutV813(ensureFirebaseRuntimeV760());
         const provider = new GoogleAuthProvider();
         provider.setCustomParameters({ prompt: "select_account" });
-        showMessage("loginStatus", "Si apre la finestra Google. Se non compare, abilita i popup per questo sito.");
         const result = await signInWithPopup(auth, provider);
         await upsertPendingUserV34(result.user, "PENDING");
         loginDialog?.close();
+        scheduleAuthDashboardLandingV182("login-google-success");
       } catch (error) {
         console.error(error);
         const popupMessage = error?.code === "auth/popup-blocked"
           ? "Safari ha bloccato la finestra Google. Consenti i popup per questo sito e riprova."
           : error?.code === "auth/popup-closed-by-user"
-            ? "La finestra Google è stata chiusa prima di completare l'accesso. Riprova e attendi la conferma di Google."
+            ? "Google ha chiuso la finestra prima che Firebase completasse l'accesso. Su Safari Mac V814 usa una persistenza senza IndexedDB; riprova una volta dopo il deploy."
             : error?.message || "Accesso Google non riuscito.";
         showMessage("loginStatus", popupMessage, true);
       }
@@ -16693,7 +16705,7 @@ window.ZonaOrientaleAdminMobileButtonTopV430 = Object.freeze({
   ]
 });
 
-const DEPLOY_EXPECTED_VERSION_V181 = "813";
+const DEPLOY_EXPECTED_VERSION_V181 = "814";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -16986,16 +16998,7 @@ function scheduleAuthDashboardLandingV182(reason = "auth") {
   window.setTimeout(() => navigateAuthDashboardV182({ clearPending: true }), 900);
 }
 
-document.addEventListener("submit", (event) => {
-  if (event.target?.id !== "loginForm") return;
-  scheduleAuthDashboardLandingV182("login-email");
-}, true);
-
 document.addEventListener("click", (event) => {
-  if (event.target.closest?.("#loginGoogleBtn")) {
-    scheduleAuthDashboardLandingV182("login-google");
-    return;
-  }
   if (event.target.closest?.("#logoutBtn")) {
     scheduleAuthDashboardLandingV182("logout");
   }
@@ -43745,6 +43748,20 @@ window.ZonaOrientaleStaticFmMovementsAdminV808 = Object.freeze({
       && String(item.description || "").includes("ACQUISTI ASTA DI RIPARAZIONE SETTEMBRE 2026:");
   }
 
+  function normalizeHistoricalMovementDateV814(row = {}) {
+    const next = { ...row };
+    const date = String(next.date || "");
+    const type = String(next.type || "").toUpperCase();
+    const description = String(next.description || "");
+    if (date === "2026-09-10" && type === "SVINCOLO" && description.startsWith("SVINCOLI SETTEMBRE 2026:")) {
+      next.date = "2026-09-09";
+    }
+    if (String(next.id || "") === "syQ6oloV2U2BFHGtzuUO" && date === "2026-09-02") {
+      next.date = "2026-08-20";
+    }
+    return next;
+  }
+
   function mergeByIdV810(staticRows = [], firebaseRows = []) {
     const firebaseById = new Map(firebaseRows.map((row) => [String(row.id || ""), row]).filter(([id]) => id));
     const used = new Set();
@@ -43776,7 +43793,8 @@ window.ZonaOrientaleStaticFmMovementsAdminV808 = Object.freeze({
       ? state.firebaseFmMovementsRawV808.filter((row) => !isLegacyAggregateBuyV810(row))
       : (state.raw.fmMovements || []).filter((row) => !isLegacyAggregateBuyV810(row));
     state.firebaseFmMovementsRawV808 = firebaseMovements.map((row) => ({ ...row }));
-    state.raw.fmMovements = mergeByIdV810(snapshot.fmMovements || [], firebaseMovements);
+    state.raw.fmMovements = mergeByIdV810(snapshot.fmMovements || [], firebaseMovements)
+      .map(normalizeHistoricalMovementDateV814);
 
     const firebaseNews = (state.raw.news || []).filter((row) => !row.staticBaselineV810);
     state.raw.news = mergeByIdV810(snapshot.news || [], firebaseNews);
@@ -43803,6 +43821,7 @@ window.ZonaOrientaleStaticFmMovementsAdminV808 = Object.freeze({
     authenticatedPublicViewMatchesAnonymous: true,
     firebaseAdminOverlayById: true,
     legacyAggregatePurchasesIgnored: true,
-    analyticSeptemberPurchases: 49
+    analyticSeptemberPurchases: 49,
+    historicalDateCorrectionsV814: true
   });
 })();

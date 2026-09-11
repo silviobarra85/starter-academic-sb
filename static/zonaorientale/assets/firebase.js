@@ -20,7 +20,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged
-} from "../../fanta-engine/js/firebase/firebase-adapter-v499.js?v=813";
+} from "../../fanta-engine/js/firebase/firebase-adapter-v499.js?v=814";
 
 const firebaseConfig = {
   "apiKey": "AIzaSyB7YQM3bNHwAqhJAUP3hOeYudwyTzioLFM",
@@ -40,7 +40,8 @@ export const firebaseLeagueRuntimeV499 = createFirebaseLeagueRuntimeV499({
   dataModelMode: 'flat-collections-preserved',
   migrateToLeagueScopedPaths: false,
   useFlatCollections: true,
-  notes: 'V499 centralizza init/helper Firebase senza cambiare path Firestore o rules.'
+  authPersistenceMode: 'mac-safari-web-storage',
+  notes: 'V814: su Safari Mac Auth evita IndexedDB e usa storage web; path Firestore e rules invariati.'
 });
 
 export const db = firebaseLeagueRuntimeV499.db;
