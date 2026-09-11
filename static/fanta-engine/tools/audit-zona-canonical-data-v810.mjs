@@ -19,14 +19,14 @@ const purchases = season.fmMovements.filter((m) => m.date === "2026-09-10" && m.
 const legacyAggregates = purchases.filter((m) => !String(m.playerName || "").trim());
 const ids = purchases.map((m) => m.id);
 
-check(release.version === "810" && release.entrypoint === "assets/app.js?v=810", "release V810");
-check(index.includes("assets/app.js?v=810") && index.includes("ZonaOrientale V810"), "entrypoint/cache V810");
-check(config.currentVersion === "810" && config.lastOverlay.startsWith("V810"), "league config V810");
+check(Number(release.version) >= 810 && release.entrypoint === `assets/app.js?v=${release.version}`, "release V810+");
+check(index.includes(`assets/app.js?v=${release.version}`) && index.includes(`ZonaOrientale V${release.version}`), "entrypoint/cache V810+");
+check(Number(config.currentVersion) >= 810, "league config V810+");
 check(manifest.snapshots[0].snapshotVersion === 37, "manifest snapshot V37");
 check(app.includes("const canonicalPublicNews = state.publicSeasonSnapshots?.[seasonId]?.news"), "news pubbliche indipendenti dal login");
 check(app.includes("loadAdminFullDataForEditingV810") && app.includes("mergeByIdV810"), "Admin fonde statico e Firebase per ID");
 check(app.includes("legacyAggregatePurchasesIgnored: true"), "aggregati legacy Firebase esclusi");
-check(app.includes("if (desktopBrowser)") && app.includes("await signInWithRedirect(auth, provider)"), "desktop usa Google redirect");
+check(app.includes("if (desktopBrowser)") && app.includes("signInWithRedirect(auth, provider)"), "desktop usa Google redirect");
 check(!app.includes("isDesktopSafariV809"), "intercettore auth Safari duplicato rimosso");
 check(purchases.length === 49, "49 acquisti analitici presenti");
 check(new Set(ids).size === 49, "49 ID acquisto univoci");

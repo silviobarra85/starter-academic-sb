@@ -21,7 +21,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged
-} from "../../fanta-engine/js/firebase/firebase-adapter-v499.js";
+} from "../../fanta-engine/js/firebase/firebase-adapter-v499.js?v=811";
 
 const firebaseConfig = {
   "apiKey": "AIzaSyB7YQM3bNHwAqhJAUP3hOeYudwyTzioLFM",

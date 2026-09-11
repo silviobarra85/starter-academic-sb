@@ -1,11 +1,11 @@
-/* V810 - Footer canonico ZonaOrientale (compatibilita API V790).
+/* V811 - Footer canonico ZonaOrientale (compatibilita API V790).
  * Unica sorgente runtime per versione/data. Tutti i writer legacy del footer
  * delegano qui, evitando gare tra MutationObserver di release differenti.
  */
 const ZONAORIENTALE_RELEASE_V790 = Object.freeze({
-  version: "V810",
+  version: "V811",
   lastUpdated: "11/09/2026",
-  label: "Fantacalcio - V810 - Aggiornato al 11/09/2026"
+  label: "Fantacalcio - V811 - Aggiornato al 11/09/2026"
 });
 
 function applyZonaOrientaleCanonicalFooterV790() {
@@ -70,9 +70,21 @@ let signOut = null;
 let onAuthStateChanged = null;
 let firebaseRuntimePromiseV760 = null;
 
+function withAuthTimeoutV811(promise, operation = "autenticazione", timeoutMs = 15000) {
+  let timeoutId = null;
+  const timeout = new Promise((_, reject) => {
+    timeoutId = window.setTimeout(() => {
+      const error = new Error(`Firebase non ha risposto entro ${Math.round(timeoutMs / 1000)} secondi durante ${operation}. Ricarica la pagina e riprova.`);
+      error.code = "auth/client-timeout-v811";
+      reject(error);
+    }, timeoutMs);
+  });
+  return Promise.race([Promise.resolve(promise), timeout]).finally(() => window.clearTimeout(timeoutId));
+}
+
 async function ensureFirebaseRuntimeV760() {
   if (firebaseRuntimePromiseV760) return firebaseRuntimePromiseV760;
-  firebaseRuntimePromiseV760 = import("./firebase.js")
+  firebaseRuntimePromiseV760 = import("./firebase.js?v=811")
     .then((api) => {
       db = api.db;
       auth = api.auth;
@@ -9112,12 +9124,16 @@ setupAuth = function setupAuthV760() {
       const password = document.getElementById("loginPassword")?.value;
       showMessage("loginStatus", "Accesso in corso...");
       try {
-        await ensureFirebaseRuntimeV760();
-        await signInWithEmailAndPassword(auth, email, password);
+        await withAuthTimeoutV811(ensureFirebaseRuntimeV760(), "il caricamento del modulo Auth");
+        await withAuthTimeoutV811(signInWithEmailAndPassword(auth, email, password), "il login con email e password");
         loginDialog?.close();
       } catch (error) {
         console.error(error);
-        showMessage("loginStatus", "Login non riuscito. Controlla email e password.", true);
+        const code = String(error?.code || "");
+        const detail = code === "auth/client-timeout-v811"
+          ? error.message
+          : `Login non riuscito${code ? ` (${code})` : ""}. Controlla email e password.`;
+        showMessage("loginStatus", detail, true);
       }
     });
 
@@ -9131,7 +9147,7 @@ setupAuth = function setupAuthV760() {
       }
       try {
         showMessage("loginStatus", "Invio del link per reimpostare la password...");
-        await ensureFirebaseRuntimeV760();
+        await withAuthTimeoutV811(ensureFirebaseRuntimeV760(), "il caricamento del modulo Auth");
         await sendPasswordResetEmail(auth, email);
         showMessage("loginStatus", "Se l'indirizzo è associato a un account, riceverai una email con il link per impostare una nuova password. Controlla anche lo spam.");
       } catch (error) {
@@ -9157,7 +9173,7 @@ setupAuth = function setupAuthV760() {
       }
       try {
         showMessage("loginStatus", "Registrazione in corso...");
-        await ensureFirebaseRuntimeV760();
+        await withAuthTimeoutV811(ensureFirebaseRuntimeV760(), "il caricamento del modulo Auth");
         const credential = await createUserWithEmailAndPassword(auth, email, password);
         if (displayName) await updateProfile(credential.user, { displayName });
         await sendEmailVerification(credential.user);
@@ -9187,16 +9203,16 @@ setupAuth = function setupAuthV760() {
     document.getElementById("loginGoogleBtn")?.addEventListener("click", async () => {
       try {
         showMessage("loginStatus", "Accesso Google in corso...");
-        await ensureFirebaseRuntimeV760();
+        await withAuthTimeoutV811(ensureFirebaseRuntimeV760(), "il caricamento del modulo Auth");
         const provider = new GoogleAuthProvider();
         provider.setCustomParameters({ prompt: "select_account" });
         const desktopBrowser = window.matchMedia?.("(hover: hover) and (pointer: fine)")?.matches || window.innerWidth > 900;
         if (desktopBrowser) {
           showMessage("loginStatus", "Accesso Google in corso: verrai reindirizzato a Google...");
-          await signInWithRedirect(auth, provider);
+          await withAuthTimeoutV811(signInWithRedirect(auth, provider), "il reindirizzamento Google");
           return;
         }
-        const result = await signInWithPopup(auth, provider);
+        const result = await withAuthTimeoutV811(signInWithPopup(auth, provider), "il popup Google");
         await upsertPendingUserV34(result.user, "PENDING");
         loginDialog?.close();
       } catch (error) {
@@ -16679,7 +16695,7 @@ window.ZonaOrientaleAdminMobileButtonTopV430 = Object.freeze({
   ]
 });
 
-const DEPLOY_EXPECTED_VERSION_V181 = "810";
+const DEPLOY_EXPECTED_VERSION_V181 = "811";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");

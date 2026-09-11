@@ -1,5 +1,12 @@
 # Roadmap overlay
 
+## V811 - cache coerente Firebase Auth (11/09/2026)
+
+- Cache-buster V811 aggiunto all'intero grafo Auth: app -> firebase wrapper -> adapter Firebase.
+- Evitato il caricamento contemporaneo di moduli V808/V809/V810 conservati nella cache desktop.
+- Timeout diagnostico di 15 secondi per email/password, redirect Google desktop e popup Google mobile.
+- Tutte le correzioni dati V810 restano invariate.
+
 ## V810 - sorgente pubblica unica e acquisti analitici (11/09/2026)
 
 - Comunicati pubblici identici da anonimo, Presidente e Admin: fonte canonica snapshot statico.
