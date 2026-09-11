@@ -1,11 +1,11 @@
-/* V811 - Footer canonico ZonaOrientale (compatibilita API V790).
+/* V812 - Footer canonico ZonaOrientale (compatibilita API V790).
  * Unica sorgente runtime per versione/data. Tutti i writer legacy del footer
  * delegano qui, evitando gare tra MutationObserver di release differenti.
  */
 const ZONAORIENTALE_RELEASE_V790 = Object.freeze({
-  version: "V811",
+  version: "V812",
   lastUpdated: "11/09/2026",
-  label: "Fantacalcio - V811 - Aggiornato al 11/09/2026"
+  label: "Fantacalcio - V812 - Aggiornato al 11/09/2026"
 });
 
 function applyZonaOrientaleCanonicalFooterV790() {
@@ -64,18 +64,17 @@ let sendPasswordResetEmail = null;
 let updateProfile = null;
 let GoogleAuthProvider = null;
 let signInWithPopup = null;
-let signInWithRedirect = null;
 let signInWithEmailAndPassword = null;
 let signOut = null;
 let onAuthStateChanged = null;
 let firebaseRuntimePromiseV760 = null;
 
-function withAuthTimeoutV811(promise, operation = "autenticazione", timeoutMs = 15000) {
+function withAuthTimeoutV812(promise, operation = "autenticazione", timeoutMs = 15000) {
   let timeoutId = null;
   const timeout = new Promise((_, reject) => {
     timeoutId = window.setTimeout(() => {
       const error = new Error(`Firebase non ha risposto entro ${Math.round(timeoutMs / 1000)} secondi durante ${operation}. Ricarica la pagina e riprova.`);
-      error.code = "auth/client-timeout-v811";
+      error.code = "auth/client-timeout-v812";
       reject(error);
     }, timeoutMs);
   });
@@ -84,7 +83,7 @@ function withAuthTimeoutV811(promise, operation = "autenticazione", timeoutMs = 
 
 async function ensureFirebaseRuntimeV760() {
   if (firebaseRuntimePromiseV760) return firebaseRuntimePromiseV760;
-  firebaseRuntimePromiseV760 = import("./firebase.js?v=811")
+  firebaseRuntimePromiseV760 = import("./firebase.js?v=812")
     .then((api) => {
       db = api.db;
       auth = api.auth;
@@ -105,7 +104,6 @@ async function ensureFirebaseRuntimeV760() {
       updateProfile = api.updateProfile;
       GoogleAuthProvider = api.GoogleAuthProvider;
       signInWithPopup = api.signInWithPopup;
-      signInWithRedirect = api.signInWithRedirect;
       signInWithEmailAndPassword = api.signInWithEmailAndPassword;
       signOut = api.signOut;
       onAuthStateChanged = api.onAuthStateChanged;
@@ -9124,8 +9122,8 @@ setupAuth = function setupAuthV760() {
       const password = document.getElementById("loginPassword")?.value;
       showMessage("loginStatus", "Accesso in corso...");
       try {
-        await withAuthTimeoutV811(ensureFirebaseRuntimeV760(), "il caricamento del modulo Auth");
-        await withAuthTimeoutV811(signInWithEmailAndPassword(auth, email, password), "il login con email e password");
+        await withAuthTimeoutV812(ensureFirebaseRuntimeV760(), "il caricamento del modulo Auth");
+        await withAuthTimeoutV812(signInWithEmailAndPassword(auth, email, password), "il login con email e password");
         loginDialog?.close();
       } catch (error) {
         console.error(error);
@@ -9147,7 +9145,7 @@ setupAuth = function setupAuthV760() {
       }
       try {
         showMessage("loginStatus", "Invio del link per reimpostare la password...");
-        await withAuthTimeoutV811(ensureFirebaseRuntimeV760(), "il caricamento del modulo Auth");
+        await withAuthTimeoutV812(ensureFirebaseRuntimeV760(), "il caricamento del modulo Auth");
         await sendPasswordResetEmail(auth, email);
         showMessage("loginStatus", "Se l'indirizzo è associato a un account, riceverai una email con il link per impostare una nuova password. Controlla anche lo spam.");
       } catch (error) {
@@ -9173,7 +9171,7 @@ setupAuth = function setupAuthV760() {
       }
       try {
         showMessage("loginStatus", "Registrazione in corso...");
-        await withAuthTimeoutV811(ensureFirebaseRuntimeV760(), "il caricamento del modulo Auth");
+        await withAuthTimeoutV812(ensureFirebaseRuntimeV760(), "il caricamento del modulo Auth");
         const credential = await createUserWithEmailAndPassword(auth, email, password);
         if (displayName) await updateProfile(credential.user, { displayName });
         await sendEmailVerification(credential.user);
@@ -9203,21 +9201,21 @@ setupAuth = function setupAuthV760() {
     document.getElementById("loginGoogleBtn")?.addEventListener("click", async () => {
       try {
         showMessage("loginStatus", "Accesso Google in corso...");
-        await withAuthTimeoutV811(ensureFirebaseRuntimeV760(), "il caricamento del modulo Auth");
+        await withAuthTimeoutV812(ensureFirebaseRuntimeV760(), "il caricamento del modulo Auth");
         const provider = new GoogleAuthProvider();
         provider.setCustomParameters({ prompt: "select_account" });
-        const desktopBrowser = window.matchMedia?.("(hover: hover) and (pointer: fine)")?.matches || window.innerWidth > 900;
-        if (desktopBrowser) {
-          showMessage("loginStatus", "Accesso Google in corso: verrai reindirizzato a Google...");
-          await withAuthTimeoutV811(signInWithRedirect(auth, provider), "il reindirizzamento Google");
-          return;
-        }
-        const result = await withAuthTimeoutV811(signInWithPopup(auth, provider), "il popup Google");
+        showMessage("loginStatus", "Si apre la finestra Google. Se non compare, abilita i popup per questo sito.");
+        const result = await withAuthTimeoutV812(signInWithPopup(auth, provider), "il popup Google");
         await upsertPendingUserV34(result.user, "PENDING");
         loginDialog?.close();
       } catch (error) {
         console.error(error);
-        showMessage("loginStatus", error?.message || "Accesso Google non riuscito.", true);
+        const popupMessage = error?.code === "auth/popup-blocked"
+          ? "Safari ha bloccato la finestra Google. Consenti i popup per questo sito e riprova."
+          : error?.code === "auth/popup-closed-by-user"
+            ? "La finestra Google è stata chiusa prima di completare l'accesso. Riprova e attendi la conferma di Google."
+            : error?.message || "Accesso Google non riuscito.";
+        showMessage("loginStatus", popupMessage, true);
       }
     });
   }
@@ -16695,7 +16693,7 @@ window.ZonaOrientaleAdminMobileButtonTopV430 = Object.freeze({
   ]
 });
 
-const DEPLOY_EXPECTED_VERSION_V181 = "811";
+const DEPLOY_EXPECTED_VERSION_V181 = "812";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");

@@ -1,5 +1,12 @@
 # Roadmap overlay
 
+## V812 - login Google Safari via popup (11/09/2026)
+
+- Eliminato `signInWithRedirect`, incompatibile con questo hosting cross-origin sui browser che limitano lo storage di terze parti senza proxy/helper Firebase dedicato.
+- Google Auth usa un solo flusso popup su desktop e mobile, con messaggi specifici per popup bloccato o chiuso.
+- Cache-buster V812 esteso a tutto il grafo Auth; login email/password e timeout diagnostico restano attivi.
+- Regole Firestore, snapshot, comunicati e 49 movimenti persistenti V810 restano invariati.
+
 ## V811 - cache coerente Firebase Auth (11/09/2026)
 
 - Cache-buster V811 aggiunto all'intero grafo Auth: app -> firebase wrapper -> adapter Firebase.

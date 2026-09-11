@@ -17,11 +17,10 @@ import {
   updateProfile,
   GoogleAuthProvider,
   signInWithPopup,
-  signInWithRedirect,
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged
-} from "../../fanta-engine/js/firebase/firebase-adapter-v499.js?v=811";
+} from "../../fanta-engine/js/firebase/firebase-adapter-v499.js?v=812";
 
 const firebaseConfig = {
   "apiKey": "AIzaSyB7YQM3bNHwAqhJAUP3hOeYudwyTzioLFM",
@@ -70,7 +69,6 @@ export {
   updateProfile,
   GoogleAuthProvider,
   signInWithPopup,
-  signInWithRedirect,
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged

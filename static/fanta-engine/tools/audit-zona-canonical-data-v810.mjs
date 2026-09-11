@@ -26,7 +26,7 @@ check(manifest.snapshots[0].snapshotVersion === 37, "manifest snapshot V37");
 check(app.includes("const canonicalPublicNews = state.publicSeasonSnapshots?.[seasonId]?.news"), "news pubbliche indipendenti dal login");
 check(app.includes("loadAdminFullDataForEditingV810") && app.includes("mergeByIdV810"), "Admin fonde statico e Firebase per ID");
 check(app.includes("legacyAggregatePurchasesIgnored: true"), "aggregati legacy Firebase esclusi");
-check(app.includes("if (desktopBrowser)") && app.includes("signInWithRedirect(auth, provider)"), "desktop usa Google redirect");
+check(app.includes("signInWithPopup(auth, provider)") && !app.includes("signInWithRedirect(auth, provider)"), "Google Auth usa il popup compatibile V812");
 check(!app.includes("isDesktopSafariV809"), "intercettore auth Safari duplicato rimosso");
 check(purchases.length === 49, "49 acquisti analitici presenti");
 check(new Set(ids).size === 49, "49 ID acquisto univoci");
