@@ -1,11 +1,11 @@
-/* V809 - Footer canonico ZonaOrientale (compatibilita API V790).
+/* V810 - Footer canonico ZonaOrientale (compatibilita API V790).
  * Unica sorgente runtime per versione/data. Tutti i writer legacy del footer
  * delegano qui, evitando gare tra MutationObserver di release differenti.
  */
 const ZONAORIENTALE_RELEASE_V790 = Object.freeze({
-  version: "V809",
+  version: "V810",
   lastUpdated: "11/09/2026",
-  label: "Fantacalcio - V809 - Aggiornato al 11/09/2026"
+  label: "Fantacalcio - V810 - Aggiornato al 11/09/2026"
 });
 
 function applyZonaOrientaleCanonicalFooterV790() {
@@ -6229,7 +6229,9 @@ function getNewsTopicTextV79(news) {
 
 function getVisibleNewsForSeasonV79(limit = 30) {
   const seasonId = getCurrentSeasonId();
-  return (state.raw.news || [])
+  const canonicalPublicNews = state.publicSeasonSnapshots?.[seasonId]?.news;
+  const source = Array.isArray(canonicalPublicNews) ? canonicalPublicNews : (state.raw.news || []);
+  return source
     .filter((item) => !item.seasonId || item.seasonId === seasonId)
     .sort((a, b) => getNewsSortTimeV79(b) - getNewsSortTimeV79(a))
     .slice(0, limit);
@@ -7979,33 +7981,7 @@ setupAdaptiveMobileViewport({
 (function installSafariAuthAndStaticTeamProfilesV809(){
   const VERSION = "V809";
 
-  function isDesktopSafariV809(){
-    const ua = String(navigator.userAgent || "");
-    const vendor = String(navigator.vendor || "");
-    const safari = /Safari/i.test(ua) && /Apple/i.test(vendor) && !/(CriOS|Chrome|Chromium|Edg|OPR|FxiOS)/i.test(ua);
-    const desktop = /Macintosh/i.test(ua) && Number(navigator.maxTouchPoints || 0) === 0;
-    return safari && desktop;
-  }
-
-  document.addEventListener("click", async (event) => {
-    const button = event.target?.closest?.("#loginGoogleBtn");
-    if (!button || !isDesktopSafariV809()) return;
-    event.preventDefault();
-    event.stopPropagation();
-    event.stopImmediatePropagation();
-    try {
-      button.disabled = true;
-      showMessage("loginStatus", "Accesso Google in corso: Safari verra reindirizzato a Google...");
-      await ensureFirebaseRuntimeV760();
-      const provider = new GoogleAuthProvider();
-      provider.setCustomParameters({ prompt: "select_account" });
-      await signInWithRedirect(auth, provider);
-    } catch (error) {
-      console.error(`[${VERSION}] redirect Google non riuscito`, error);
-      button.disabled = false;
-      showMessage("loginStatus", error?.message || "Accesso Google non riuscito.", true);
-    }
-  }, true);
+  // V810 consolida popup/redirect nell'unico handler canonico setupAuthV760.
 
   const loadTeamSnapshotBeforeV809 = typeof loadTeamSnapshotV34 === "function" ? loadTeamSnapshotV34 : null;
   if (loadTeamSnapshotBeforeV809) {
@@ -9213,6 +9189,13 @@ setupAuth = function setupAuthV760() {
         showMessage("loginStatus", "Accesso Google in corso...");
         await ensureFirebaseRuntimeV760();
         const provider = new GoogleAuthProvider();
+        provider.setCustomParameters({ prompt: "select_account" });
+        const desktopBrowser = window.matchMedia?.("(hover: hover) and (pointer: fine)")?.matches || window.innerWidth > 900;
+        if (desktopBrowser) {
+          showMessage("loginStatus", "Accesso Google in corso: verrai reindirizzato a Google...");
+          await signInWithRedirect(auth, provider);
+          return;
+        }
         const result = await signInWithPopup(auth, provider);
         await upsertPendingUserV34(result.user, "PENDING");
         loginDialog?.close();
@@ -16696,7 +16679,7 @@ window.ZonaOrientaleAdminMobileButtonTopV430 = Object.freeze({
   ]
 });
 
-const DEPLOY_EXPECTED_VERSION_V181 = "809";
+const DEPLOY_EXPECTED_VERSION_V181 = "810";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -43717,7 +43700,7 @@ try {
     expandAdminPanel("adminRosterMovementsPanel");
   });
 
-  window.ZonaOrientaleStaticFmMovementsAdminV808 = Object.freeze({
+window.ZonaOrientaleStaticFmMovementsAdminV808 = Object.freeze({
     version: VERSION,
     staticSnapshotBaseline: true,
     firebaseDeltaOnly: true,
@@ -43725,5 +43708,87 @@ try {
     deleteStaticWithTombstone: true,
     snapshotConsolidatesOverrides: true,
     publicFirestoreReadsAdded: 0
+  });
+})();
+
+/* V810 - Sorgente pubblica unica e movimenti persistenti.
+ * La Dashboard usa sempre le news dello snapshot statico, indipendentemente dal login.
+ * In Admin, Firebase resta un overlay sui movimenti statici e gli aggregati V808 ormai
+ * sostituiti dalle 49 righe analitiche vengono ignorati per evitare doppi addebiti.
+ */
+(function installCanonicalPublicDataV810(){
+  const VERSION = "V810";
+  const LEGACY_BUY_PREFIX = "acquisti_asta_riparazione_settembre_2026_";
+
+  function isRemovedV810(item = {}) {
+    const status = String(item.status || item.state || "").toUpperCase();
+    return status === "REMOVED" || item.deleted === true || item.removed === true || item.isDeleted === true;
+  }
+
+  function isLegacyAggregateBuyV810(item = {}) {
+    return String(item.id || "").startsWith(LEGACY_BUY_PREFIX)
+      && !String(item.playerName || "").trim()
+      && String(item.description || "").includes("ACQUISTI ASTA DI RIPARAZIONE SETTEMBRE 2026:");
+  }
+
+  function mergeByIdV810(staticRows = [], firebaseRows = []) {
+    const firebaseById = new Map(firebaseRows.map((row) => [String(row.id || ""), row]).filter(([id]) => id));
+    const used = new Set();
+    const merged = [];
+    staticRows.forEach((base) => {
+      const id = String(base.id || "");
+      const override = id ? firebaseById.get(id) : null;
+      if (override) used.add(id);
+      if (override && isRemovedV810(override)) return;
+      merged.push(override ? { ...base, ...override, id } : { ...base });
+    });
+    firebaseRows.forEach((row) => {
+      const id = String(row.id || "");
+      if ((id && used.has(id)) || isRemovedV810(row)) return;
+      merged.push({ ...row });
+    });
+    return merged;
+  }
+
+  async function reconcileAdminStaticDataV810() {
+    const seasonId = String(getCurrentSeasonId?.() || "");
+    if (!seasonId) return;
+    const snapshot = await loadStaticPublicSeasonSnapshotV172(seasonId).catch(() => null);
+    if (!snapshot) return;
+    state.publicSeasonSnapshots = state.publicSeasonSnapshots || {};
+    state.publicSeasonSnapshots[seasonId] = snapshot;
+
+    const firebaseMovements = Array.isArray(state.firebaseFmMovementsRawV808)
+      ? state.firebaseFmMovementsRawV808.filter((row) => !isLegacyAggregateBuyV810(row))
+      : (state.raw.fmMovements || []).filter((row) => !isLegacyAggregateBuyV810(row));
+    state.firebaseFmMovementsRawV808 = firebaseMovements.map((row) => ({ ...row }));
+    state.raw.fmMovements = mergeByIdV810(snapshot.fmMovements || [], firebaseMovements);
+
+    const firebaseNews = (state.raw.news || []).filter((row) => !row.staticBaselineV810);
+    state.raw.news = mergeByIdV810(snapshot.news || [], firebaseNews);
+    sortData();
+  }
+
+  const loadAdminFullDataBeforeV810 = typeof loadAdminFullDataForEditingV178 === "function"
+    ? loadAdminFullDataForEditingV178
+    : null;
+  if (loadAdminFullDataBeforeV810) {
+    loadAdminFullDataForEditingV178 = async function loadAdminFullDataForEditingV810(options = {}) {
+      const render = options.render !== false;
+      const result = await loadAdminFullDataBeforeV810({ ...options, render: false });
+      if (result === false) return false;
+      await reconcileAdminStaticDataV810();
+      if (render) renderAll();
+      return result;
+    };
+  }
+
+  window.ZonaOrientaleCanonicalPublicDataV810 = Object.freeze({
+    version: VERSION,
+    publicNewsSource: "static-season-snapshot",
+    authenticatedPublicViewMatchesAnonymous: true,
+    firebaseAdminOverlayById: true,
+    legacyAggregatePurchasesIgnored: true,
+    analyticSeptemberPurchases: 49
   });
 })();

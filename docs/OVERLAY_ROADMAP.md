@@ -1,5 +1,13 @@
 # Roadmap overlay
 
+## V810 - sorgente pubblica unica e acquisti analitici (11/09/2026)
+
+- Comunicati pubblici identici da anonimo, Presidente e Admin: fonte canonica snapshot statico.
+- Firebase resta overlay amministrativo per ID e non sostituisce piu la baseline nel rendering pubblico.
+- Login Google consolidato nell'handler `setupAuthV760`: redirect desktop, popup mobile; rimosso il listener capture Safari duplicato V809.
+- Sostituiti 10 acquisti aggregati con 49 movimenti individuali persistenti/modificabili, totale invariato -436 FM.
+- Gli eventuali aggregati V808 ancora presenti in Firebase vengono esclusi per prevenire duplicazioni contabili.
+
 ## V809 - Safari login + profili squadra static-first (11/09/2026)
 
 - Login Google su Safari desktop spostato da popup a redirect Firebase; popup invariato sugli altri browser.

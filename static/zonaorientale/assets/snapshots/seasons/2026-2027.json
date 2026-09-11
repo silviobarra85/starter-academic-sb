@@ -1,7 +1,7 @@
 {
   "id": "2026-2027",
   "seasonId": "2026-2027",
-  "generatedAt": "2026-09-11T08:35:00+02:00",
+  "generatedAt": "2026-09-11T12:30:00+02:00",
   "teams": [
     {
       "id": "WMdzHRRpUP8lHvsdwM7W",
@@ -4717,7 +4717,7 @@
       "homeGoals": 2,
       "awayGoals": 3,
       "homeScore": 74.5,
-      "awayScore": 80.0,
+      "awayScore": 80,
       "status": "GIOCATA",
       "source": "static-competition-calendar-v795",
       "sourceRow": 11
@@ -10626,7 +10626,7 @@
       "date": "2026-09-10"
     },
     {
-      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_uqsbhtctytbo7kookndm_20260910",
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_uqsbhtctytbo7kookndm_de_winter_20260910",
       "createdAt": {
         "seconds": 1789108500,
         "nanoseconds": 0
@@ -10635,15 +10635,22 @@
         "seconds": 1789108500,
         "nanoseconds": 0
       },
-      "amount": -225,
-      "description": "ACQUISTI ASTA DI RIPARAZIONE SETTEMBRE 2026: De Winter (9); Woltemade (110); Beto (75); Monterisi (1); Jones C. (26); Diego Carlos (2); Pessina Mas. (1); Ngonge (1)",
+      "amount": -9,
+      "description": "Asta di riparazione settembre 2026",
       "seasonId": "2026-2027",
       "seasonTeamId": "2026_2027_uqsbhtctytbo7kookndm",
+      "targetSeasonTeamId": "",
       "type": "ACQUISTO",
-      "date": "2026-09-10"
+      "date": "2026-09-10",
+      "playerName": "De Winter",
+      "realTeam": "MIL",
+      "rosterRole": "D",
+      "mantraRoles": "Dd/Dc",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
     },
     {
-      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_y3vmcdwvut0u1tlsg4qc_20260910",
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_uqsbhtctytbo7kookndm_woltemade_20260910",
       "createdAt": {
         "seconds": 1789108500,
         "nanoseconds": 0
@@ -10652,15 +10659,22 @@
         "seconds": 1789108500,
         "nanoseconds": 0
       },
-      "amount": -28,
-      "description": "ACQUISTI ASTA DI RIPARAZIONE SETTEMBRE 2026: Gnonto (2); Mbangula (11); Robinson J. (3); Zeballos (6); Hutchinson (3); Cinquegrano (1); Fernandez T. (1); Monteiro J. (1)",
+      "amount": -110,
+      "description": "Asta di riparazione settembre 2026",
       "seasonId": "2026-2027",
-      "seasonTeamId": "2026_2027_y3vmcdwvut0u1tlsg4qc",
+      "seasonTeamId": "2026_2027_uqsbhtctytbo7kookndm",
+      "targetSeasonTeamId": "",
       "type": "ACQUISTO",
-      "date": "2026-09-10"
+      "date": "2026-09-10",
+      "playerName": "Woltemade",
+      "realTeam": "JUV",
+      "rosterRole": "A",
+      "mantraRoles": "A",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
     },
     {
-      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_gdisidfbuselvm64psr3_20260910",
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_uqsbhtctytbo7kookndm_beto_20260910",
       "createdAt": {
         "seconds": 1789108500,
         "nanoseconds": 0
@@ -10669,15 +10683,22 @@
         "seconds": 1789108500,
         "nanoseconds": 0
       },
-      "amount": -37,
-      "description": "ACQUISTI ASTA DI RIPARAZIONE SETTEMBRE 2026: Goncalves P. (27); Leysen F. (4); Balerdi (6)",
+      "amount": -75,
+      "description": "Asta di riparazione settembre 2026",
       "seasonId": "2026-2027",
-      "seasonTeamId": "2026_2027_gdisidfbuselvm64psr3",
+      "seasonTeamId": "2026_2027_uqsbhtctytbo7kookndm",
+      "targetSeasonTeamId": "",
       "type": "ACQUISTO",
-      "date": "2026-09-10"
+      "date": "2026-09-10",
+      "playerName": "Beto",
+      "realTeam": "FIO",
+      "rosterRole": "A",
+      "mantraRoles": "Pc",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
     },
     {
-      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_team_001_20260910",
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_uqsbhtctytbo7kookndm_monterisi_20260910",
       "createdAt": {
         "seconds": 1789108500,
         "nanoseconds": 0
@@ -10686,15 +10707,22 @@
         "seconds": 1789108500,
         "nanoseconds": 0
       },
-      "amount": -63,
-      "description": "ACQUISTI ASTA DI RIPARAZIONE SETTEMBRE 2026: Lontani (6); Osmajic (18); Lulli (18); Brescianini (4); Perri (6); Theate (5); Milla (5); Grabara (1)",
+      "amount": -1,
+      "description": "Asta di riparazione settembre 2026",
       "seasonId": "2026-2027",
-      "seasonTeamId": "2026_2027_team_001",
+      "seasonTeamId": "2026_2027_uqsbhtctytbo7kookndm",
+      "targetSeasonTeamId": "",
       "type": "ACQUISTO",
-      "date": "2026-09-10"
+      "date": "2026-09-10",
+      "playerName": "Monterisi",
+      "realTeam": "FRO",
+      "rosterRole": "D",
+      "mantraRoles": "Dc",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
     },
     {
-      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_team_002_20260910",
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_uqsbhtctytbo7kookndm_jones_c_20260910",
       "createdAt": {
         "seconds": 1789108500,
         "nanoseconds": 0
@@ -10703,66 +10731,22 @@
         "seconds": 1789108500,
         "nanoseconds": 0
       },
-      "amount": -44,
-      "description": "ACQUISTI ASTA DI RIPARAZIONE SETTEMBRE 2026: Gonzalez N. (18); Kessiè (12); Sanchez Ro. (5); Ismajli (1); Nzola (4); Stulic (3); Oyono A. (1)",
+      "amount": -26,
+      "description": "Asta di riparazione settembre 2026",
       "seasonId": "2026-2027",
-      "seasonTeamId": "2026_2027_team_002",
+      "seasonTeamId": "2026_2027_uqsbhtctytbo7kookndm",
+      "targetSeasonTeamId": "",
       "type": "ACQUISTO",
-      "date": "2026-09-10"
+      "date": "2026-09-10",
+      "playerName": "Jones C.",
+      "realTeam": "INT",
+      "rosterRole": "C",
+      "mantraRoles": "C",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
     },
     {
-      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_h6saek7urqiqnmiztrt7_20260910",
-      "createdAt": {
-        "seconds": 1789108500,
-        "nanoseconds": 0
-      },
-      "updatedAt": {
-        "seconds": 1789108500,
-        "nanoseconds": 0
-      },
-      "amount": -12,
-      "description": "ACQUISTI ASTA DI RIPARAZIONE SETTEMBRE 2026: Bracaglia (7); Belghali (4); Coulibaly L. (1)",
-      "seasonId": "2026-2027",
-      "seasonTeamId": "2026_2027_h6saek7urqiqnmiztrt7",
-      "type": "ACQUISTO",
-      "date": "2026-09-10"
-    },
-    {
-      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_ulwtimbi3dyyrq0soesx_20260910",
-      "createdAt": {
-        "seconds": 1789108500,
-        "nanoseconds": 0
-      },
-      "updatedAt": {
-        "seconds": 1789108500,
-        "nanoseconds": 0
-      },
-      "amount": -4,
-      "description": "ACQUISTI ASTA DI RIPARAZIONE SETTEMBRE 2026: Gabbia (3); Calvani (1)",
-      "seasonId": "2026-2027",
-      "seasonTeamId": "2026_2027_ulwtimbi3dyyrq0soesx",
-      "type": "ACQUISTO",
-      "date": "2026-09-10"
-    },
-    {
-      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_7bx0cegbxtf4fwh6t0pi_20260910",
-      "createdAt": {
-        "seconds": 1789108500,
-        "nanoseconds": 0
-      },
-      "updatedAt": {
-        "seconds": 1789108500,
-        "nanoseconds": 0
-      },
-      "amount": -13,
-      "description": "ACQUISTI ASTA DI RIPARAZIONE SETTEMBRE 2026: Romano (7); Leite (1); Cutrone (1); El Shaarawy (1); Vitinha O. (3)",
-      "seasonId": "2026-2027",
-      "seasonTeamId": "2026_2027_7bx0cegbxtf4fwh6t0pi",
-      "type": "ACQUISTO",
-      "date": "2026-09-10"
-    },
-    {
-      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_wmdzhrrpup8lhvsdwm7w_20260910",
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_uqsbhtctytbo7kookndm_diego_carlos_20260910",
       "createdAt": {
         "seconds": 1789108500,
         "nanoseconds": 0
@@ -10772,14 +10756,21 @@
         "nanoseconds": 0
       },
       "amount": -2,
-      "description": "ACQUISTI ASTA DI RIPARAZIONE SETTEMBRE 2026: Cristante (1); Birindelli (1)",
+      "description": "Asta di riparazione settembre 2026",
       "seasonId": "2026-2027",
-      "seasonTeamId": "2026_2027_wmdzhrrpup8lhvsdwm7w",
+      "seasonTeamId": "2026_2027_uqsbhtctytbo7kookndm",
+      "targetSeasonTeamId": "",
       "type": "ACQUISTO",
-      "date": "2026-09-10"
+      "date": "2026-09-10",
+      "playerName": "Diego Carlos",
+      "realTeam": "PAR",
+      "rosterRole": "D",
+      "mantraRoles": "Dc",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
     },
     {
-      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_ft1tqdqi18iuh3l1lakq_20260910",
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_uqsbhtctytbo7kookndm_pessina_mas_20260910",
       "createdAt": {
         "seconds": 1789108500,
         "nanoseconds": 0
@@ -10788,12 +10779,1027 @@
         "seconds": 1789108500,
         "nanoseconds": 0
       },
-      "amount": -8,
-      "description": "ACQUISTI ASTA DI RIPARAZIONE SETTEMBRE 2026: Njie (6); N'Dri (1); Idzes (1)",
+      "amount": -1,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_uqsbhtctytbo7kookndm",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Pessina Mas.",
+      "realTeam": "BOL",
+      "rosterRole": "P",
+      "mantraRoles": "Por",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_uqsbhtctytbo7kookndm_ngonge_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -1,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_uqsbhtctytbo7kookndm",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Ngonge",
+      "realTeam": "MON",
+      "rosterRole": "A",
+      "mantraRoles": "A",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_y3vmcdwvut0u1tlsg4qc_gnonto_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -2,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_y3vmcdwvut0u1tlsg4qc",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Gnonto",
+      "realTeam": "FIO",
+      "rosterRole": "A",
+      "mantraRoles": "W/A",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_y3vmcdwvut0u1tlsg4qc_mbangula_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -11,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_y3vmcdwvut0u1tlsg4qc",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Mbangula",
+      "realTeam": "BOL",
+      "rosterRole": "C",
+      "mantraRoles": "W/A",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_y3vmcdwvut0u1tlsg4qc_robinson_j_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -3,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_y3vmcdwvut0u1tlsg4qc",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Robinson J.",
+      "realTeam": "MON",
+      "rosterRole": "A",
+      "mantraRoles": "A",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_y3vmcdwvut0u1tlsg4qc_zeballos_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -6,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_y3vmcdwvut0u1tlsg4qc",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Zeballos",
+      "realTeam": "MON",
+      "rosterRole": "A",
+      "mantraRoles": "A",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_y3vmcdwvut0u1tlsg4qc_hutchinson_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -3,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_y3vmcdwvut0u1tlsg4qc",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Hutchinson",
+      "realTeam": "MIL",
+      "rosterRole": "C",
+      "mantraRoles": "W/A",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_y3vmcdwvut0u1tlsg4qc_cinquegrano_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -1,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_y3vmcdwvut0u1tlsg4qc",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Cinquegrano",
+      "realTeam": "SAS",
+      "rosterRole": "D",
+      "mantraRoles": "Dd/E",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_y3vmcdwvut0u1tlsg4qc_fernandez_t_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -1,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_y3vmcdwvut0u1tlsg4qc",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Fernandez T.",
+      "realTeam": "VEN",
+      "rosterRole": "C",
+      "mantraRoles": "T/A",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_y3vmcdwvut0u1tlsg4qc_monteiro_j_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -1,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_y3vmcdwvut0u1tlsg4qc",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Monteiro J.",
+      "realTeam": "LEC",
+      "rosterRole": "C",
+      "mantraRoles": "W/A",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_gdisidfbuselvm64psr3_goncalves_p_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -27,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_gdisidfbuselvm64psr3",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Goncalves P.",
+      "realTeam": "FIO",
+      "rosterRole": "C",
+      "mantraRoles": "W/T",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_gdisidfbuselvm64psr3_leysen_f_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -4,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_gdisidfbuselvm64psr3",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Leysen F.",
+      "realTeam": "SAS",
+      "rosterRole": "D",
+      "mantraRoles": "Ds/Dc",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_gdisidfbuselvm64psr3_balerdi_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -6,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_gdisidfbuselvm64psr3",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Balerdi",
+      "realTeam": "ROM",
+      "rosterRole": "D",
+      "mantraRoles": "Dc",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_team_001_lontani_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -6,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_team_001",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Lontani",
+      "realTeam": "PAR",
+      "rosterRole": "A",
+      "mantraRoles": "A",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_team_001_osmajic_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -18,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_team_001",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Osmajic",
+      "realTeam": "GEN",
+      "rosterRole": "A",
+      "mantraRoles": "Pc",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_team_001_lulli_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -18,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_team_001",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Lulli",
+      "realTeam": "ROM",
+      "rosterRole": "D",
+      "mantraRoles": "E",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_team_001_brescianini_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -4,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_team_001",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Brescianini",
+      "realTeam": "FIO",
+      "rosterRole": "C",
+      "mantraRoles": "C/T",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_team_001_perri_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -6,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_team_001",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Perri",
+      "realTeam": "TOR",
+      "rosterRole": "P",
+      "mantraRoles": "Por",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_team_001_theate_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -5,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_team_001",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Theate",
+      "realTeam": "BOL",
+      "rosterRole": "D",
+      "mantraRoles": "Ds/Dc",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_team_001_milla_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -5,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_team_001",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Milla",
+      "realTeam": "COM",
+      "rosterRole": "C",
+      "mantraRoles": "M/C",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_team_001_grabara_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -1,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_team_001",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Grabara",
+      "realTeam": "JUV",
+      "rosterRole": "P",
+      "mantraRoles": "Por",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_team_002_gonzalez_n_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -18,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_team_002",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Gonzalez N.",
+      "realTeam": "JUV",
+      "rosterRole": "C",
+      "mantraRoles": "W/A",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_team_002_kessie_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -12,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_team_002",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Kessiè",
+      "realTeam": "ATA",
+      "rosterRole": "C",
+      "mantraRoles": "C",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_team_002_sanchez_ro_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -5,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_team_002",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Sanchez Ro.",
+      "realTeam": "COM",
+      "rosterRole": "P",
+      "mantraRoles": "Por",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_team_002_ismajli_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -1,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_team_002",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Ismajli",
+      "realTeam": "TOR",
+      "rosterRole": "D",
+      "mantraRoles": "Dc",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_team_002_nzola_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -4,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_team_002",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Nzola",
+      "realTeam": "CAG",
+      "rosterRole": "A",
+      "mantraRoles": "Pc",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_team_002_stulic_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -3,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_team_002",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Stulic",
+      "realTeam": "LEC",
+      "rosterRole": "A",
+      "mantraRoles": "Pc",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_team_002_oyono_a_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -1,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_team_002",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Oyono A.",
+      "realTeam": "FRO",
+      "rosterRole": "D",
+      "mantraRoles": "Dd/E",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_h6saek7urqiqnmiztrt7_bracaglia_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -7,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_h6saek7urqiqnmiztrt7",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Bracaglia",
+      "realTeam": "FRO",
+      "rosterRole": "D",
+      "mantraRoles": "Ds/Dc",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_h6saek7urqiqnmiztrt7_belghali_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -4,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_h6saek7urqiqnmiztrt7",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Belghali",
+      "realTeam": "TOR",
+      "rosterRole": "D",
+      "mantraRoles": "Dd/E",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_h6saek7urqiqnmiztrt7_coulibaly_l_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -1,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_h6saek7urqiqnmiztrt7",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Coulibaly L.",
+      "realTeam": "LEC",
+      "rosterRole": "C",
+      "mantraRoles": "M/C",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_ulwtimbi3dyyrq0soesx_gabbia_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -3,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_ulwtimbi3dyyrq0soesx",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Gabbia",
+      "realTeam": "MIL",
+      "rosterRole": "D",
+      "mantraRoles": "Dc",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_ulwtimbi3dyyrq0soesx_calvani_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -1,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_ulwtimbi3dyyrq0soesx",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Calvani",
+      "realTeam": "FRO",
+      "rosterRole": "D",
+      "mantraRoles": "Dc",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_7bx0cegbxtf4fwh6t0pi_romano_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -7,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_7bx0cegbxtf4fwh6t0pi",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Romano",
+      "realTeam": "CAG",
+      "rosterRole": "C",
+      "mantraRoles": "M/C",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_7bx0cegbxtf4fwh6t0pi_leite_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -1,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_7bx0cegbxtf4fwh6t0pi",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Leite",
+      "realTeam": "LAZ",
+      "rosterRole": "D",
+      "mantraRoles": "Dc",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_7bx0cegbxtf4fwh6t0pi_cutrone_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -1,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_7bx0cegbxtf4fwh6t0pi",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Cutrone",
+      "realTeam": "MON",
+      "rosterRole": "A",
+      "mantraRoles": "Pc",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_7bx0cegbxtf4fwh6t0pi_el_shaarawy_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -1,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_7bx0cegbxtf4fwh6t0pi",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "El Shaarawy",
+      "realTeam": "GEN",
+      "rosterRole": "C",
+      "mantraRoles": "W",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_7bx0cegbxtf4fwh6t0pi_vitinha_o_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -3,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_7bx0cegbxtf4fwh6t0pi",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Vitinha O.",
+      "realTeam": "GEN",
+      "rosterRole": "A",
+      "mantraRoles": "A",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_wmdzhrrpup8lhvsdwm7w_cristante_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -1,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_wmdzhrrpup8lhvsdwm7w",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Cristante",
+      "realTeam": "ROM",
+      "rosterRole": "C",
+      "mantraRoles": "M/C",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_wmdzhrrpup8lhvsdwm7w_birindelli_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -1,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_wmdzhrrpup8lhvsdwm7w",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Birindelli",
+      "realTeam": "MON",
+      "rosterRole": "D",
+      "mantraRoles": "Dd/Ds/E",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_ft1tqdqi18iuh3l1lakq_njie_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -6,
+      "description": "Asta di riparazione settembre 2026",
       "seasonId": "2026-2027",
       "seasonTeamId": "2026_2027_ft1tqdqi18iuh3l1lakq",
+      "targetSeasonTeamId": "",
       "type": "ACQUISTO",
-      "date": "2026-09-10"
+      "date": "2026-09-10",
+      "playerName": "Njie",
+      "realTeam": "FIO",
+      "rosterRole": "C",
+      "mantraRoles": "W/A",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_ft1tqdqi18iuh3l1lakq_n_dri_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -1,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_ft1tqdqi18iuh3l1lakq",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "N'Dri",
+      "realTeam": "LEC",
+      "rosterRole": "A",
+      "mantraRoles": "W/A",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
+    },
+    {
+      "id": "acquisti_asta_riparazione_settembre_2026_2026_2027_ft1tqdqi18iuh3l1lakq_idzes_20260910",
+      "createdAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "updatedAt": {
+        "seconds": 1789108500,
+        "nanoseconds": 0
+      },
+      "amount": -1,
+      "description": "Asta di riparazione settembre 2026",
+      "seasonId": "2026-2027",
+      "seasonTeamId": "2026_2027_ft1tqdqi18iuh3l1lakq",
+      "targetSeasonTeamId": "",
+      "type": "ACQUISTO",
+      "date": "2026-09-10",
+      "playerName": "Idzes",
+      "realTeam": "SAS",
+      "rosterRole": "D",
+      "mantraRoles": "Dc",
+      "status": "ACTIVE",
+      "source": "static-auction-september-v810"
     }
   ],
   "metrics": {
@@ -10875,5 +11881,5 @@
       "publishedAt": "2026-07-04T11:55"
     }
   ],
-  "snapshotVersion": 36
+  "snapshotVersion": 37
 }
