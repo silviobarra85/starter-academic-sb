@@ -1,5 +1,12 @@
 # Roadmap overlay
 
+## V813 - Auth senza timer artificiale e comunicato acquisti (11/09/2026)
+
+- Eliminato il timeout V812 dalle operazioni reali email/password e Google popup: non interrompe piu il login mentre Firebase o l'utente stanno completando la procedura.
+- Timeout portato a 30 secondi e limitato al solo caricamento iniziale del modulo Firebase.
+- Aggiunto comunicato ufficiale dell'asta di riparazione: 49 acquisti e 436 FM, derivati dai movimenti analitici V810.
+- Snapshot pubblico portato a V38; movimenti, bilanci e modificabilita Admin restano invariati.
+
 ## V812 - login Google Safari via popup (11/09/2026)
 
 - Eliminato `signInWithRedirect`, incompatibile con questo hosting cross-origin sui browser che limitano lo storage di terze parti senza proxy/helper Firebase dedicato.

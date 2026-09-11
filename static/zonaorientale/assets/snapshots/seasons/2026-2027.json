@@ -11811,6 +11811,16 @@
   },
   "news": [
     {
+      "id": "acquisti_ufficiali_asta_riparazione_settembre_2026_2026_09_10",
+      "title": "Acquisti ufficiali - asta di riparazione settembre 2026",
+      "body": "**COMUNICATO UFFICIALE DEL PRESIDENTE DI LEGA**\n\nLa Presidenza di Lega comunica gli acquisti ufficiali effettuati durante l'asta di riparazione di settembre 2026.\n\n**Beetlejuice** — Gonzalez N. (18), Kessiè (12), Sanchez Ro. (5), Ismajli (1), Nzola (4), Stulic (3), Oyono A. (1). Totale speso: **44 FM**.\n\n**FC DueFratelli2005** — Gnonto (2), Mbangula (11), Robinson J. (3), Zeballos (6), Hutchinson (3), Cinquegrano (1), Fernandez T. (1), Monteiro J. (1). Totale speso: **28 FM**.\n\n**Prestige Worldwide** — De Winter (9), Woltemade (110), Beto (75), Monterisi (1), Jones C. (26), Diego Carlos (2), Pessina Mas. (1), Ngonge (1). Totale speso: **225 FM**.\n\n**Ac Milan** — Cristante (1), Birindelli (1). Totale speso: **2 FM**.\n\n**real mappine** — Njie (6), N'Dri (1), Idzes (1). Totale speso: **8 FM**.\n\n**Olympic Salerno FC** — Goncalves P. (27), Leysen F. (4), Balerdi (6). Totale speso: **37 FM**.\n\n**Real Pisistrius** — Lontani (6), Osmajic (18), Lulli (18), Brescianini (4), Perri (6), Theate (5), Milla (5), Grabara (1). Totale speso: **63 FM**.\n\n**Afc Severgas Baronissi** — Bracaglia (7), Belghali (4), Coulibaly L. (1). Totale speso: **12 FM**.\n\n**As Paperopoli** — Romano (7), Leite (1), Cutrone (1), El Shaarawy (1), Vitinha O. (3). Totale speso: **13 FM**.\n\n**River Plaid** — Gabbia (3), Calvani (1). Totale speso: **4 FM**.\n\nComplessivamente sono stati acquistati **49 calciatori**, per **436 FM** complessivamente spesi dalle società.\n\nGli acquisti sono registrati singolarmente nei movimenti delle rose e restano modificabili dall'Area Admin.\n\n**Il Presidente di Lega**",
+      "topic": "GENERALE",
+      "seasonId": "2026-2027",
+      "teamId": "",
+      "seasonTeamId": "",
+      "publishedAt": "2026-09-10T22:00"
+    },
+    {
       "id": "svincoli_ufficiali_settembre_2026_2026_09_10",
       "title": "Svincoli ufficiali - settembre 2026",
       "body": "**COMUNICATO UFFICIALE DEL PRESIDENTE DI LEGA**\n\nLa Presidenza di Lega comunica gli svincoli ufficiali effettuati in data 10 settembre 2026.\n\n**Beetlejuice** — Gosens (11), Kouadio (0), Veiga D. (0), Gineitis (0), Leao (18), Locatelli (9). Totale recuperato: **38 FM**.\n\n**FC DueFratelli2005** — Gollini (1), Kempf (0), Norton-Cuffy (8), Oristanio (6), Pellegrini Lo. (9), Cutrone (0), Giovane (0), Ratkov (9). Totale recuperato: **33 FM**.\n\n**Prestige Worldwide** — Miretti (3), Dia (10). Totale recuperato: **13 FM**.\n\n**Ac Milan** — Montipò (1), Romagnoli (6). Totale recuperato: **7 FM**.\n\n**real mappine** — Kelly L. (5), David (8), Nkunku (13), Vitinha O. (7). Totale recuperato: **33 FM**.\n\n**Olympic Salerno FC** — Gabbia (7), Kristensen T. (6), Frendrup (7). Totale recuperato: **20 FM**.\n\n**Real Pisistrius** — De Roon (3), Di Gregorio (9), Paleari (1), Perin (6), Buongiorno (6), Pedersen (5), Loftus-Cheek (4), Sohm (5). Totale recuperato: **39 FM**.\n\n**Afc Severgas Baronissi** — Idzes (7), Cristante (9), Vaz (1). Totale recuperato: **17 FM**.\n\n**As Paperopoli** — Ahanor (6), Fabbian (4), Kuhn (3). Totale recuperato: **13 FM**.\n\n**River Plaid** — Maripan (8), Gilmour (2). Totale recuperato: **10 FM**.\n\nComplessivamente sono stati svincolati **41 calciatori**, per **223 FM** complessivamente recuperati dalle società.\n\nI calciatori svincolati restano presenti nel listone secondo lo stato previsto dal listone stesso, ma non fanno più parte delle rose delle rispettive fantasquadre.\n\n**Il Presidente di Lega**",
@@ -11881,5 +11891,5 @@
       "publishedAt": "2026-07-04T11:55"
     }
   ],
-  "snapshotVersion": 37
+  "snapshotVersion": 38
 }

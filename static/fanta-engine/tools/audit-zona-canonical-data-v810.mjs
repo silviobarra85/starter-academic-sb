@@ -22,7 +22,7 @@ const ids = purchases.map((m) => m.id);
 check(Number(release.version) >= 810 && release.entrypoint === `assets/app.js?v=${release.version}`, "release V810+");
 check(index.includes(`assets/app.js?v=${release.version}`) && index.includes(`ZonaOrientale V${release.version}`), "entrypoint/cache V810+");
 check(Number(config.currentVersion) >= 810, "league config V810+");
-check(manifest.snapshots[0].snapshotVersion === 37, "manifest snapshot V37");
+check(manifest.snapshots[0].snapshotVersion >= 37, "manifest snapshot V37+");
 check(app.includes("const canonicalPublicNews = state.publicSeasonSnapshots?.[seasonId]?.news"), "news pubbliche indipendenti dal login");
 check(app.includes("loadAdminFullDataForEditingV810") && app.includes("mergeByIdV810"), "Admin fonde statico e Firebase per ID");
 check(app.includes("legacyAggregatePurchasesIgnored: true"), "aggregati legacy Firebase esclusi");
