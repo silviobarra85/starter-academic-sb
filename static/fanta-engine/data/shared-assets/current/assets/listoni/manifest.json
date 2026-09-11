@@ -207,13 +207,13 @@
       "label": "Listone 8 settembre 2026",
       "loadedAt": "2026-09-08",
       "file": "2026-09-08.json",
-      "rows": 593,
-      "activeRows": 531,
-      "asteriskRows": 62,
-      "rosterSourceFile": "zonaorientale-salerno-rosters-1788255085854.xlsx",
-      "rosterLoadedAt": "2026-09-01",
-      "rosteredRows": 286,
-      "freeAgentRows": 307,
+      "rows": 596,
+      "activeRows": 532,
+      "asteriskRows": 64,
+      "rosterSourceFile": "Acquisti asta di riparazione Settembre.pdf",
+      "rosterLoadedAt": "2026-09-11",
+      "rosteredRows": 296,
+      "freeAgentRows": 300,
       "detectedFormat": "Fantacalcio Classic a foglio singolo",
       "sourceSheets": [
         "Lista calciatori"
@@ -232,7 +232,9 @@
         "teamChanged": 0,
         "roleChanged": 0,
         "unchanged": 404
-      }
+      },
+      "ownershipUpdatedAt": "2026-09-11",
+      "ownershipUpdate": "asta-riparazione-settembre-2026-09-10 + svincoli-settembre-2026-09-10"
     }
   ]
 }

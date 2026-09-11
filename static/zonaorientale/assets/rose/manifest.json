@@ -1,6 +1,16 @@
 {
   "rosters": [
     {
+      "id": "2026-2027-2026-09-11",
+      "seasonId": "2026-2027",
+      "label": "Rose ZonaOrientale Salerno 2026/27 - 11 settembre 2026 (post asta di riparazione)",
+      "loadedAt": "2026-09-11",
+      "file": "2026-2027-2026-09-11.json",
+      "teams": 10,
+      "players": 296,
+      "sourceFile": "Acquisti asta di riparazione Settembre.pdf"
+    },
+    {
       "id": "2026-2027-2026-09-10",
       "seasonId": "2026-2027",
       "label": "Rose ZonaOrientale Salerno 2026/27 - 10 settembre 2026 (post svincoli)",

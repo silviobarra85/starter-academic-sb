@@ -5,9 +5,9 @@
     "label": "Listone 8 settembre 2026",
     "loadedAt": "2026-09-08",
     "sourceFile": "lista_calciatori_lista calciatori_classic_zonaorientale-salerno-4.xlsx",
-    "rows": 593,
-    "activeRows": 531,
-    "asteriskRows": 62,
+    "rows": 596,
+    "activeRows": 532,
+    "asteriskRows": 64,
     "fields": [
       "playerName",
       "classicRole",
@@ -52,7 +52,13 @@
       "Le rose restano gestite dalla sorgente primaria assets/rose; il listone aggiorna stato, squadra reale, ruoli e quotazioni.",
       "I valori Mantra non presenti nel file Classic vengono preservati dall ultimo listone quando il giocatore era gia noto; per i nuovi giocatori usano il valore Classic come fallback."
     ],
-    "overlayVersion": "V804"
+    "overlayVersion": "data-update-2026-09-11-ownership",
+    "rosterSourceFile": "Acquisti asta di riparazione Settembre.pdf",
+    "rosterLoadedAt": "2026-09-11",
+    "rosteredRows": 296,
+    "freeAgentRows": 300,
+    "ownershipUpdatedAt": "2026-09-11",
+    "ownershipUpdate": "asta-riparazione-settembre-2026-09-10 + svincoli-settembre-2026-09-10"
   },
   "players": [
     {
@@ -340,7 +346,7 @@
       "quotationDiffMantra": 0,
       "fvm": 185,
       "fvmMantra": 212,
-      "fantasyRoster": "Olympic Salerno  FC",
+      "fantasyRoster": "Olympic Salerno FC",
       "rosterRole": "A",
       "rosterCost": 6,
       "status": "In listone",
@@ -400,7 +406,7 @@
       "quotationDiffMantra": 0,
       "fvm": 155,
       "fvmMantra": 100,
-      "fantasyRoster": "Olympic Salerno  FC",
+      "fantasyRoster": "Olympic Salerno FC",
       "rosterRole": "C",
       "rosterCost": 46,
       "status": "In listone",
@@ -520,9 +526,9 @@
       "quotationDiffMantra": 0,
       "fvm": 140,
       "fvmMantra": 160,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "Prestige Worldwide",
+      "rosterRole": "A",
+      "rosterCost": 110,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -533,7 +539,8 @@
         "average": 6,
         "fantasyAverage": 6,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "2423",
@@ -700,7 +707,7 @@
       "quotationDiffMantra": 0,
       "fvm": 105,
       "fvmMantra": 90,
-      "fantasyRoster": "Olympic Salerno  FC",
+      "fantasyRoster": "Olympic Salerno FC",
       "rosterRole": "A",
       "rosterCost": 41,
       "status": "In listone",
@@ -1030,7 +1037,7 @@
       "quotationDiffMantra": 0,
       "fvm": 80,
       "fvmMantra": 205,
-      "fantasyRoster": "Olympic Salerno  FC",
+      "fantasyRoster": "Olympic Salerno FC",
       "rosterRole": "A",
       "rosterCost": 1,
       "status": "In listone",
@@ -1090,9 +1097,9 @@
       "quotationDiffMantra": 0,
       "fvm": 75,
       "fvmMantra": 123,
-      "fantasyRoster": "Beetlejuice",
-      "rosterRole": "A",
-      "rosterCost": 3,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "Asteriscato",
       "statusCode": "ASTERISCATO",
       "sourceSheet": "Lista calciatori",
@@ -1103,7 +1110,8 @@
         "average": 0,
         "fantasyAverage": 0,
         "outOfList": "*"
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "2766",
@@ -1120,7 +1128,7 @@
       "quotationDiffMantra": 0,
       "fvm": 75,
       "fvmMantra": 88,
-      "fantasyRoster": "Olympic Salerno  FC",
+      "fantasyRoster": "Olympic Salerno FC",
       "rosterRole": "C",
       "rosterCost": 0,
       "status": "In listone",
@@ -1210,7 +1218,7 @@
       "quotationDiffMantra": 0,
       "fvm": 71,
       "fvmMantra": 78,
-      "fantasyRoster": "Olympic Salerno  FC",
+      "fantasyRoster": "Olympic Salerno FC",
       "rosterRole": "D",
       "rosterCost": 42,
       "status": "In listone",
@@ -1240,7 +1248,7 @@
       "quotationDiffMantra": 0,
       "fvm": 70,
       "fvmMantra": 52,
-      "fantasyRoster": "Olympic Salerno  FC",
+      "fantasyRoster": "Olympic Salerno FC",
       "rosterRole": "A",
       "rosterCost": 40,
       "status": "In listone",
@@ -1480,7 +1488,7 @@
       "quotationDiffMantra": 0,
       "fvm": 60,
       "fvmMantra": 50,
-      "fantasyRoster": "Olympic Salerno  FC",
+      "fantasyRoster": "Olympic Salerno FC",
       "rosterRole": "D",
       "rosterCost": 7,
       "status": "In listone",
@@ -1570,7 +1578,7 @@
       "quotationDiffMantra": 0,
       "fvm": 57,
       "fvmMantra": 52,
-      "fantasyRoster": "Olympic Salerno  FC",
+      "fantasyRoster": "Olympic Salerno FC",
       "rosterRole": "P",
       "rosterCost": 1,
       "status": "In listone",
@@ -1750,7 +1758,7 @@
       "quotationDiffMantra": 0,
       "fvm": 50,
       "fvmMantra": 79,
-      "fantasyRoster": "Olympic Salerno  FC",
+      "fantasyRoster": "Olympic Salerno FC",
       "rosterRole": "A",
       "rosterCost": 38,
       "status": "In listone",
@@ -1870,7 +1878,7 @@
       "quotationDiffMantra": 0,
       "fvm": 50,
       "fvmMantra": 47,
-      "fantasyRoster": "Olympic Salerno  FC",
+      "fantasyRoster": "Olympic Salerno FC",
       "rosterRole": "D",
       "rosterCost": 8,
       "status": "In listone",
@@ -1960,7 +1968,7 @@
       "quotationDiffMantra": 0,
       "fvm": 49,
       "fvmMantra": 45,
-      "fantasyRoster": "Olympic Salerno  FC",
+      "fantasyRoster": "Olympic Salerno FC",
       "rosterRole": "P",
       "rosterCost": 3,
       "status": "In listone",
@@ -1990,9 +1998,9 @@
       "quotationDiffMantra": 0,
       "fvm": 48,
       "fvmMantra": 45,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "Beetlejuice",
+      "rosterRole": "C",
+      "rosterCost": 18,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -2003,7 +2011,8 @@
         "average": 7,
         "fantasyAverage": 8.5,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "5694",
@@ -2020,9 +2029,9 @@
       "quotationDiffMantra": 0,
       "fvm": 47,
       "fvmMantra": 50,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "Prestige Worldwide",
+      "rosterRole": "A",
+      "rosterCost": 75,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -2033,7 +2042,8 @@
         "average": 5.5,
         "fantasyAverage": 5.5,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "7625",
@@ -2050,9 +2060,9 @@
       "quotationDiffMantra": 0,
       "fvm": 47,
       "fvmMantra": 50,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "Olympic Salerno FC",
+      "rosterRole": "C",
+      "rosterCost": 27,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -2063,7 +2073,8 @@
         "average": 0,
         "fantasyAverage": 0,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "5022",
@@ -2080,7 +2091,7 @@
       "quotationDiffMantra": 0,
       "fvm": 47,
       "fvmMantra": 48,
-      "fantasyRoster": "Olympic Salerno  FC",
+      "fantasyRoster": "Olympic Salerno FC",
       "rosterRole": "D",
       "rosterCost": 19,
       "status": "In listone",
@@ -2170,7 +2181,7 @@
       "quotationDiffMantra": 0,
       "fvm": 45,
       "fvmMantra": 64,
-      "fantasyRoster": "Olympic Salerno  FC",
+      "fantasyRoster": "Olympic Salerno FC",
       "rosterRole": "C",
       "rosterCost": 12,
       "status": "In listone",
@@ -2290,9 +2301,9 @@
       "quotationDiffMantra": 0,
       "fvm": 44,
       "fvmMantra": 47,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "Beetlejuice",
+      "rosterRole": "C",
+      "rosterCost": 12,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -2303,7 +2314,8 @@
         "average": 0,
         "fantasyAverage": 0,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "6274",
@@ -2350,7 +2362,7 @@
       "quotationDiffMantra": 0,
       "fvm": 43,
       "fvmMantra": 42,
-      "fantasyRoster": "Olympic Salerno  FC",
+      "fantasyRoster": "Olympic Salerno FC",
       "rosterRole": "C",
       "rosterCost": 1,
       "status": "In listone",
@@ -2380,7 +2392,7 @@
       "quotationDiffMantra": 0,
       "fvm": 42,
       "fvmMantra": 57,
-      "fantasyRoster": "Olympic Salerno  FC",
+      "fantasyRoster": "Olympic Salerno FC",
       "rosterRole": "C",
       "rosterCost": 51,
       "status": "In listone",
@@ -2410,9 +2422,9 @@
       "quotationDiffMantra": 0,
       "fvm": 42,
       "fvmMantra": 47,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "Prestige Worldwide",
+      "rosterRole": "C",
+      "rosterCost": 26,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -2423,7 +2435,8 @@
         "average": 6,
         "fantasyAverage": 6,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "152",
@@ -2680,7 +2693,7 @@
       "quotationDiffMantra": 0,
       "fvm": 38,
       "fvmMantra": 45,
-      "fantasyRoster": "Olympic Salerno  FC",
+      "fantasyRoster": "Olympic Salerno FC",
       "rosterRole": "C",
       "rosterCost": 14,
       "status": "In listone",
@@ -2980,9 +2993,9 @@
       "quotationDiffMantra": 0,
       "fvm": 34,
       "fvmMantra": 28,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "Real Pisistrius",
+      "rosterRole": "A",
+      "rosterCost": 18,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -2993,7 +3006,8 @@
         "average": 6,
         "fantasyAverage": 7.5,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "6229",
@@ -3430,7 +3444,7 @@
       "quotationDiffMantra": 0,
       "fvm": 31,
       "fvmMantra": 36,
-      "fantasyRoster": "Olympic Salerno  FC",
+      "fantasyRoster": "Olympic Salerno FC",
       "rosterRole": "C",
       "rosterCost": 47,
       "status": "In listone",
@@ -3670,9 +3684,9 @@
       "quotationDiffMantra": 0,
       "fvm": 29,
       "fvmMantra": 32,
-      "fantasyRoster": "Afc Severgas Baronissi",
+      "fantasyRoster": "Ac Milan",
       "rosterRole": "C",
-      "rosterCost": 7,
+      "rosterCost": 1,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -3683,7 +3697,8 @@
         "average": 6.33,
         "fantasyAverage": 6.33,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "7412",
@@ -3700,9 +3715,9 @@
       "quotationDiffMantra": 0,
       "fvm": 28,
       "fvmMantra": 16,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "Real Pisistrius",
+      "rosterRole": "C",
+      "rosterCost": 5,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -3713,7 +3728,8 @@
         "average": 6.75,
         "fantasyAverage": 6.75,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "7060",
@@ -4000,7 +4016,7 @@
       "quotationDiffMantra": 0,
       "fvm": 26,
       "fvmMantra": 28,
-      "fantasyRoster": "Olympic Salerno  FC",
+      "fantasyRoster": "Olympic Salerno FC",
       "rosterRole": "D",
       "rosterCost": 20,
       "status": "In listone",
@@ -4120,9 +4136,9 @@
       "quotationDiffMantra": 0,
       "fvm": 25,
       "fvmMantra": 37,
-      "fantasyRoster": "real mappine",
-      "rosterRole": "A",
-      "rosterCost": 95,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "Asteriscato",
       "statusCode": "ASTERISCATO",
       "sourceSheet": "Lista calciatori",
@@ -4133,7 +4149,8 @@
         "average": 5,
         "fantasyAverage": 5,
         "outOfList": "*"
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "4896",
@@ -4180,9 +4197,9 @@
       "quotationDiffMantra": 0,
       "fvm": 25,
       "fvmMantra": 19,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "real mappine",
+      "rosterRole": "C",
+      "rosterCost": 6,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -4193,7 +4210,8 @@
         "average": 6.25,
         "fantasyAverage": 6.25,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "5735",
@@ -4300,9 +4318,9 @@
       "quotationDiffMantra": 0,
       "fvm": 25,
       "fvmMantra": 35,
-      "fantasyRoster": "Beetlejuice",
-      "rosterRole": "C",
-      "rosterCost": 7,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -4313,7 +4331,8 @@
         "average": 6.17,
         "fantasyAverage": 6.33,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "5739",
@@ -4330,9 +4349,9 @@
       "quotationDiffMantra": 0,
       "fvm": 25,
       "fvmMantra": 14,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "Prestige Worldwide",
+      "rosterRole": "D",
+      "rosterCost": 9,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -4343,7 +4362,8 @@
         "average": 6.67,
         "fantasyAverage": 6.5,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "4734",
@@ -4510,9 +4530,9 @@
       "quotationDiffMantra": 0,
       "fvm": 23,
       "fvmMantra": 25,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "FC DueFratelli2005",
+      "rosterRole": "A",
+      "rosterCost": 2,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -4523,7 +4543,8 @@
         "average": 5.5,
         "fantasyAverage": 5.5,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "7551",
@@ -4600,7 +4621,7 @@
       "quotationDiffMantra": 0,
       "fvm": 23,
       "fvmMantra": 21,
-      "fantasyRoster": "Olympic Salerno  FC",
+      "fantasyRoster": "Olympic Salerno FC",
       "rosterRole": "C",
       "rosterCost": 1,
       "status": "In listone",
@@ -4660,9 +4681,9 @@
       "quotationDiffMantra": 0,
       "fvm": 23,
       "fvmMantra": 26,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "Prestige Worldwide",
+      "rosterRole": "D",
+      "rosterCost": 2,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -4673,7 +4694,8 @@
         "average": 5.5,
         "fantasyAverage": 5.5,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "6534",
@@ -4690,9 +4712,9 @@
       "quotationDiffMantra": 0,
       "fvm": 23,
       "fvmMantra": 26,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "Real Pisistrius",
+      "rosterRole": "P",
+      "rosterCost": 6,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -4703,7 +4725,8 @@
         "average": 5.5,
         "fantasyAverage": 4.5,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "7313",
@@ -4720,9 +4743,9 @@
       "quotationDiffMantra": 0,
       "fvm": 22,
       "fvmMantra": 29,
-      "fantasyRoster": "FC DueFratelli2005",
-      "rosterRole": "A",
-      "rosterCost": 2,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "Asteriscato",
       "statusCode": "ASTERISCATO",
       "sourceSheet": "Lista calciatori",
@@ -4733,7 +4756,8 @@
         "average": 0,
         "fantasyAverage": 0,
         "outOfList": "*"
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "6833",
@@ -4750,9 +4774,9 @@
       "quotationDiffMantra": 0,
       "fvm": 22,
       "fvmMantra": 28,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "FC DueFratelli2005",
+      "rosterRole": "C",
+      "rosterCost": 11,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -4763,7 +4787,8 @@
         "average": 0,
         "fantasyAverage": 0,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "6398",
@@ -4930,9 +4955,9 @@
       "quotationDiffMantra": 0,
       "fvm": 21,
       "fvmMantra": 23,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "FC DueFratelli2005",
+      "rosterRole": "C",
+      "rosterCost": 1,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -4943,7 +4968,8 @@
         "average": 5.5,
         "fantasyAverage": 5.5,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "7618",
@@ -4960,9 +4986,9 @@
       "quotationDiffMantra": 0,
       "fvm": 21,
       "fvmMantra": 25,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "FC DueFratelli2005",
+      "rosterRole": "C",
+      "rosterCost": 3,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -4973,7 +4999,8 @@
         "average": 0,
         "fantasyAverage": 0,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "7311",
@@ -4990,9 +5017,9 @@
       "quotationDiffMantra": 0,
       "fvm": 21,
       "fvmMantra": 15,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "As Paperopoli",
+      "rosterRole": "C",
+      "rosterCost": 7,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -5003,7 +5030,8 @@
         "average": 6.5,
         "fantasyAverage": 7.5,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "5500",
@@ -5140,7 +5168,7 @@
       "quotationDiffMantra": 0,
       "fvm": 20,
       "fvmMantra": 17,
-      "fantasyRoster": "Olympic Salerno  FC",
+      "fantasyRoster": "Olympic Salerno FC",
       "rosterRole": "A",
       "rosterCost": 10,
       "status": "In listone",
@@ -5170,9 +5198,9 @@
       "quotationDiffMantra": 0,
       "fvm": 20,
       "fvmMantra": 33,
-      "fantasyRoster": "Prestige Worldwide",
-      "rosterRole": "A",
-      "rosterCost": 8,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "Asteriscato",
       "statusCode": "ASTERISCATO",
       "sourceSheet": "Lista calciatori",
@@ -5183,7 +5211,8 @@
         "average": 6,
         "fantasyAverage": 6.25,
         "outOfList": "*"
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "4728",
@@ -5200,9 +5229,9 @@
       "quotationDiffMantra": 0,
       "fvm": 20,
       "fvmMantra": 54,
-      "fantasyRoster": "real mappine",
-      "rosterRole": "A",
-      "rosterCost": 83,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "Asteriscato",
       "statusCode": "ASTERISCATO",
       "sourceSheet": "Lista calciatori",
@@ -5213,7 +5242,8 @@
         "average": 0,
         "fantasyAverage": 0,
         "outOfList": "*"
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "2155",
@@ -5230,9 +5260,9 @@
       "quotationDiffMantra": 0,
       "fvm": 20,
       "fvmMantra": 30,
-      "fantasyRoster": "FC DueFratelli2005",
+      "fantasyRoster": "As Paperopoli",
       "rosterRole": "A",
-      "rosterCost": 5,
+      "rosterCost": 1,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -5243,7 +5273,8 @@
         "average": 6,
         "fantasyAverage": 6,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "7070",
@@ -5350,7 +5381,7 @@
       "quotationDiffMantra": 0,
       "fvm": 20,
       "fvmMantra": 14,
-      "fantasyRoster": "Olympic Salerno  FC",
+      "fantasyRoster": "Olympic Salerno FC",
       "rosterRole": "C",
       "rosterCost": 22,
       "status": "In listone",
@@ -5440,9 +5471,9 @@
       "quotationDiffMantra": 0,
       "fvm": 20,
       "fvmMantra": 20,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "As Paperopoli",
+      "rosterRole": "C",
+      "rosterCost": 1,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -5453,7 +5484,8 @@
         "average": 0,
         "fantasyAverage": 0,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "530",
@@ -5470,9 +5502,9 @@
       "quotationDiffMantra": 0,
       "fvm": 20,
       "fvmMantra": 20,
-      "fantasyRoster": "FC DueFratelli2005",
-      "rosterRole": "C",
-      "rosterCost": 23,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -5483,7 +5515,8 @@
         "average": 0,
         "fantasyAverage": 0,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "6989",
@@ -5530,9 +5563,9 @@
       "quotationDiffMantra": 0,
       "fvm": 20,
       "fvmMantra": 17,
-      "fantasyRoster": "Olympic Salerno  FC",
-      "rosterRole": "D",
-      "rosterCost": 8,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -5543,7 +5576,8 @@
         "average": 0,
         "fantasyAverage": 0,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "5885",
@@ -5620,9 +5654,9 @@
       "quotationDiffMantra": 0,
       "fvm": 20,
       "fvmMantra": 20,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "Real Pisistrius",
+      "rosterRole": "D",
+      "rosterCost": 5,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -5633,7 +5667,8 @@
         "average": 5.5,
         "fantasyAverage": 5.5,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "5365",
@@ -5740,9 +5775,9 @@
       "quotationDiffMantra": 0,
       "fvm": 20,
       "fvmMantra": 24,
-      "fantasyRoster": "Ac Milan",
-      "rosterRole": "D",
-      "rosterCost": 3,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "Asteriscato",
       "statusCode": "ASTERISCATO",
       "sourceSheet": "Lista calciatori",
@@ -5753,7 +5788,8 @@
         "average": 0,
         "fantasyAverage": 0,
         "outOfList": "*"
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "6641",
@@ -5890,9 +5926,9 @@
       "quotationDiffMantra": 0,
       "fvm": 19,
       "fvmMantra": 21,
-      "fantasyRoster": "Olympic Salerno  FC",
-      "rosterRole": "C",
-      "rosterCost": 3,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -5903,7 +5939,8 @@
         "average": 5.67,
         "fantasyAverage": 5.67,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "5674",
@@ -5980,9 +6017,9 @@
       "quotationDiffMantra": 0,
       "fvm": 19,
       "fvmMantra": 1,
-      "fantasyRoster": "Afc Severgas Baronissi",
+      "fantasyRoster": "real mappine",
       "rosterRole": "D",
-      "rosterCost": 2,
+      "rosterCost": 1,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -5993,7 +6030,8 @@
         "average": 6,
         "fantasyAverage": 5.75,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "4994",
@@ -6250,9 +6288,9 @@
       "quotationDiffMantra": 0,
       "fvm": 18,
       "fvmMantra": 20,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "Afc Severgas Baronissi",
+      "rosterRole": "D",
+      "rosterCost": 4,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -6263,7 +6301,8 @@
         "average": 6.5,
         "fantasyAverage": 7.5,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "7219",
@@ -6370,9 +6409,9 @@
       "quotationDiffMantra": 0,
       "fvm": 17,
       "fvmMantra": 18,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "FC DueFratelli2005",
+      "rosterRole": "A",
+      "rosterCost": 6,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -6383,7 +6422,8 @@
         "average": 0,
         "fantasyAverage": 0,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "7561",
@@ -6400,9 +6440,9 @@
       "quotationDiffMantra": 0,
       "fvm": 17,
       "fvmMantra": 11,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "Real Pisistrius",
+      "rosterRole": "A",
+      "rosterCost": 6,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -6413,7 +6453,8 @@
         "average": 6.5,
         "fantasyAverage": 7.5,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "6678",
@@ -6490,9 +6531,9 @@
       "quotationDiffMantra": 0,
       "fvm": 17,
       "fvmMantra": 16,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "Afc Severgas Baronissi",
+      "rosterRole": "C",
+      "rosterCost": 1,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -6503,7 +6544,8 @@
         "average": 6,
         "fantasyAverage": 6.33,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "6531",
@@ -6730,9 +6772,9 @@
       "quotationDiffMantra": 0,
       "fvm": 16,
       "fvmMantra": 13,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "Afc Severgas Baronissi",
+      "rosterRole": "D",
+      "rosterCost": 7,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -6743,7 +6785,8 @@
         "average": 6.5,
         "fantasyAverage": 7.67,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "6320",
@@ -7090,9 +7133,9 @@
       "quotationDiffMantra": 0,
       "fvm": 15,
       "fvmMantra": 11,
-      "fantasyRoster": "Real Pisistrius",
-      "rosterRole": "C",
-      "rosterCost": 20,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -7103,7 +7146,8 @@
         "average": 5.83,
         "fantasyAverage": 5.67,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "2765",
@@ -7330,9 +7374,9 @@
       "quotationDiffMantra": 0,
       "fvm": 15,
       "fvmMantra": 22,
-      "fantasyRoster": "FC DueFratelli2005",
-      "rosterRole": "D",
-      "rosterCost": 2,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "Asteriscato",
       "statusCode": "ASTERISCATO",
       "sourceSheet": "Lista calciatori",
@@ -7343,7 +7387,8 @@
         "average": 5.75,
         "fantasyAverage": 5.75,
         "outOfList": "*"
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "6496",
@@ -7450,9 +7495,9 @@
       "quotationDiffMantra": 0,
       "fvm": 15,
       "fvmMantra": 18,
-      "fantasyRoster": "Real Pisistrius",
-      "rosterRole": "D",
-      "rosterCost": 21,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -7463,7 +7508,8 @@
         "average": 0,
         "fantasyAverage": 0,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "6344",
@@ -7480,9 +7526,9 @@
       "quotationDiffMantra": 0,
       "fvm": 15,
       "fvmMantra": 25,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "Beetlejuice",
+      "rosterRole": "P",
+      "rosterCost": 5,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -7493,7 +7539,8 @@
         "average": 0,
         "fantasyAverage": 0,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "4236",
@@ -7930,9 +7977,9 @@
       "quotationDiffMantra": 0,
       "fvm": 14,
       "fvmMantra": 10,
-      "fantasyRoster": "Beetlejuice",
-      "rosterRole": "D",
-      "rosterCost": 1,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -7943,7 +7990,8 @@
         "average": 5.83,
         "fantasyAverage": 5.67,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "7235",
@@ -8110,7 +8158,7 @@
       "quotationDiffMantra": 0,
       "fvm": 14,
       "fvmMantra": 23,
-      "fantasyRoster": "Olympic Salerno  FC",
+      "fantasyRoster": "River Plaid",
       "rosterRole": "D",
       "rosterCost": 3,
       "status": "In listone",
@@ -8123,7 +8171,8 @@
         "average": 6,
         "fantasyAverage": 6,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "4177",
@@ -8170,9 +8219,9 @@
       "quotationDiffMantra": 0,
       "fvm": 13,
       "fvmMantra": 13,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "Prestige Worldwide",
+      "rosterRole": "A",
+      "rosterCost": 1,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -8183,7 +8232,8 @@
         "average": 0,
         "fantasyAverage": 0,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "7203",
@@ -8350,9 +8400,9 @@
       "quotationDiffMantra": 0,
       "fvm": 13,
       "fvmMantra": 10,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "River Plaid",
+      "rosterRole": "D",
+      "rosterCost": 1,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -8363,7 +8413,8 @@
         "average": 6.5,
         "fantasyAverage": 6.17,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "7414",
@@ -8380,7 +8431,7 @@
       "quotationDiffMantra": 0,
       "fvm": 13,
       "fvmMantra": 23,
-      "fantasyRoster": "Olympic Salerno  FC",
+      "fantasyRoster": "Olympic Salerno FC",
       "rosterRole": "D",
       "rosterCost": 10,
       "status": "In listone",
@@ -8560,9 +8611,9 @@
       "quotationDiffMantra": 0,
       "fvm": 13,
       "fvmMantra": 18,
-      "fantasyRoster": "As Paperopoli",
-      "rosterRole": "D",
-      "rosterCost": 2,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "Asteriscato",
       "statusCode": "ASTERISCATO",
       "sourceSheet": "Lista calciatori",
@@ -8573,7 +8624,8 @@
         "average": 0,
         "fantasyAverage": 0,
         "outOfList": "*"
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "6893",
@@ -8590,9 +8642,9 @@
       "quotationDiffMantra": 0,
       "fvm": 13,
       "fvmMantra": 13,
-      "fantasyRoster": "FC DueFratelli2005",
-      "rosterRole": "D",
-      "rosterCost": 1,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -8603,7 +8655,8 @@
         "average": 6.5,
         "fantasyAverage": 6.5,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "6495",
@@ -8740,9 +8793,9 @@
       "quotationDiffMantra": 0,
       "fvm": 13,
       "fvmMantra": 18,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "Beetlejuice",
+      "rosterRole": "D",
+      "rosterCost": 1,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -8753,7 +8806,8 @@
         "average": 6,
         "fantasyAverage": 6,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "4952",
@@ -8770,9 +8824,9 @@
       "quotationDiffMantra": 0,
       "fvm": 13,
       "fvmMantra": 14,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "Prestige Worldwide",
+      "rosterRole": "D",
+      "rosterCost": 1,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -8783,7 +8837,8 @@
         "average": 6,
         "fantasyAverage": 6,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "7546",
@@ -8800,9 +8855,9 @@
       "quotationDiffMantra": 0,
       "fvm": 12,
       "fvmMantra": 5,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "FC DueFratelli2005",
+      "rosterRole": "A",
+      "rosterCost": 3,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -8813,7 +8868,8 @@
         "average": 7,
         "fantasyAverage": 10,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "7449",
@@ -8830,7 +8886,7 @@
       "quotationDiffMantra": 0,
       "fvm": 12,
       "fvmMantra": 17,
-      "fantasyRoster": "Olympic Salerno  FC",
+      "fantasyRoster": "Olympic Salerno FC",
       "rosterRole": "A",
       "rosterCost": 5,
       "status": "In listone",
@@ -8860,9 +8916,9 @@
       "quotationDiffMantra": 0,
       "fvm": 12,
       "fvmMantra": 11,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "real mappine",
+      "rosterRole": "A",
+      "rosterCost": 1,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -8873,7 +8929,8 @@
         "average": 5.83,
         "fantasyAverage": 5.83,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "6215",
@@ -8920,9 +8977,9 @@
       "quotationDiffMantra": 0,
       "fvm": 12,
       "fvmMantra": 21,
-      "fantasyRoster": "real mappine",
+      "fantasyRoster": "As Paperopoli",
       "rosterRole": "A",
-      "rosterCost": 13,
+      "rosterCost": 3,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -8933,7 +8990,8 @@
         "average": 5.5,
         "fantasyAverage": 5.5,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "608",
@@ -9280,9 +9338,9 @@
       "quotationDiffMantra": 0,
       "fvm": 12,
       "fvmMantra": 27,
-      "fantasyRoster": "FC DueFratelli2005",
-      "rosterRole": "C",
-      "rosterCost": 9,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -9293,7 +9351,8 @@
         "average": 0,
         "fantasyAverage": 0,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "6170",
@@ -9310,9 +9369,9 @@
       "quotationDiffMantra": 0,
       "fvm": 12,
       "fvmMantra": 15,
-      "fantasyRoster": "Beetlejuice",
-      "rosterRole": "C",
-      "rosterCost": 1,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -9323,7 +9382,8 @@
         "average": 5.5,
         "fantasyAverage": 5.67,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "6015",
@@ -9550,9 +9610,9 @@
       "quotationDiffMantra": 0,
       "fvm": 12,
       "fvmMantra": 12,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "Olympic Salerno FC",
+      "rosterRole": "D",
+      "rosterCost": 4,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -9563,7 +9623,8 @@
         "average": 6.17,
         "fantasyAverage": 6.5,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "7410",
@@ -9670,7 +9731,7 @@
       "quotationDiffMantra": 0,
       "fvm": 12,
       "fvmMantra": 7,
-      "fantasyRoster": "Olympic Salerno  FC",
+      "fantasyRoster": "Olympic Salerno FC",
       "rosterRole": "D",
       "rosterCost": 19,
       "status": "In listone",
@@ -9730,9 +9791,9 @@
       "quotationDiffMantra": 0,
       "fvm": 12,
       "fvmMantra": 11,
-      "fantasyRoster": "Beetlejuice",
-      "rosterRole": "D",
-      "rosterCost": 1,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -9743,7 +9804,8 @@
         "average": 5.67,
         "fantasyAverage": 5.83,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "6821",
@@ -9760,7 +9822,7 @@
       "quotationDiffMantra": 0,
       "fvm": 12,
       "fvmMantra": 7,
-      "fantasyRoster": "Olympic Salerno  FC",
+      "fantasyRoster": "Olympic Salerno FC",
       "rosterRole": "D",
       "rosterCost": 3,
       "status": "In listone",
@@ -9790,9 +9852,9 @@
       "quotationDiffMantra": 0,
       "fvm": 12,
       "fvmMantra": 15,
-      "fantasyRoster": "real mappine",
-      "rosterRole": "D",
-      "rosterCost": 1,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -9803,7 +9865,8 @@
         "average": 5.75,
         "fantasyAverage": 5.75,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "6632",
@@ -9850,9 +9913,9 @@
       "quotationDiffMantra": 0,
       "fvm": 12,
       "fvmMantra": 13,
-      "fantasyRoster": "Real Pisistrius",
-      "rosterRole": "D",
-      "rosterCost": 2,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "Asteriscato",
       "statusCode": "ASTERISCATO",
       "sourceSheet": "Lista calciatori",
@@ -9863,7 +9926,8 @@
         "average": 6,
         "fantasyAverage": 6,
         "outOfList": "*"
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "6202",
@@ -9910,9 +9974,9 @@
       "quotationDiffMantra": 0,
       "fvm": 12,
       "fvmMantra": 14,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "Ac Milan",
+      "rosterRole": "D",
+      "rosterCost": 1,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -9923,7 +9987,8 @@
         "average": 5.83,
         "fantasyAverage": 5.83,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "5751",
@@ -10240,9 +10305,9 @@
       "quotationDiffMantra": 0,
       "fvm": 11,
       "fvmMantra": 16,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "Beetlejuice",
+      "rosterRole": "A",
+      "rosterCost": 3,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -10253,7 +10318,8 @@
         "average": 5.33,
         "fantasyAverage": 5.33,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "7474",
@@ -10420,9 +10486,9 @@
       "quotationDiffMantra": 0,
       "fvm": 11,
       "fvmMantra": 14,
-      "fantasyRoster": "Real Pisistrius",
-      "rosterRole": "C",
-      "rosterCost": 7,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -10433,7 +10499,8 @@
         "average": 5.75,
         "fantasyAverage": 5.5,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "4947",
@@ -10450,9 +10517,9 @@
       "quotationDiffMantra": 0,
       "fvm": 11,
       "fvmMantra": 7,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "Real Pisistrius",
+      "rosterRole": "C",
+      "rosterCost": 4,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -10463,7 +10530,8 @@
         "average": 5.67,
         "fantasyAverage": 5.67,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "2857",
@@ -10660,9 +10728,9 @@
       "quotationDiffMantra": 0,
       "fvm": 11,
       "fvmMantra": 11,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "Olympic Salerno FC",
+      "rosterRole": "D",
+      "rosterCost": 6,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -10673,7 +10741,8 @@
         "average": 6.5,
         "fantasyAverage": 6.5,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "4147",
@@ -10870,9 +10939,9 @@
       "quotationDiffMantra": 0,
       "fvm": 10,
       "fvmMantra": 10,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "Beetlejuice",
+      "rosterRole": "A",
+      "rosterCost": 4,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -10883,7 +10952,8 @@
         "average": 0,
         "fantasyAverage": 0,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "7550",
@@ -11080,9 +11150,9 @@
       "quotationDiffMantra": 0,
       "fvm": 10,
       "fvmMantra": 9,
-      "fantasyRoster": "River Plaid",
-      "rosterRole": "C",
-      "rosterCost": 1,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -11093,7 +11163,8 @@
         "average": 0,
         "fantasyAverage": 0,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "5007",
@@ -11170,9 +11241,9 @@
       "quotationDiffMantra": 0,
       "fvm": 10,
       "fvmMantra": 14,
-      "fantasyRoster": "Real Pisistrius",
-      "rosterRole": "C",
-      "rosterCost": 4,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -11183,7 +11254,8 @@
         "average": 0,
         "fantasyAverage": 0,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "7599",
@@ -11200,9 +11272,9 @@
       "quotationDiffMantra": 0,
       "fvm": 10,
       "fvmMantra": 10,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "Real Pisistrius",
+      "rosterRole": "D",
+      "rosterCost": 18,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -11213,7 +11285,8 @@
         "average": 6.33,
         "fantasyAverage": 6.33,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "7538",
@@ -11470,9 +11543,9 @@
       "quotationDiffMantra": 0,
       "fvm": 10,
       "fvmMantra": 12,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "Beetlejuice",
+      "rosterRole": "D",
+      "rosterCost": 1,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -11483,7 +11556,8 @@
         "average": 6.5,
         "fantasyAverage": 6.67,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "6047",
@@ -11920,9 +11994,9 @@
       "quotationDiffMantra": 0,
       "fvm": 10,
       "fvmMantra": 1,
-      "fantasyRoster": "Beetlejuice",
+      "fantasyRoster": "As Paperopoli",
       "rosterRole": "P",
-      "rosterCost": 1,
+      "rosterCost": 0,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -11980,9 +12054,9 @@
       "quotationDiffMantra": 0,
       "fvm": 10,
       "fvmMantra": 40,
-      "fantasyRoster": "Real Pisistrius",
-      "rosterRole": "P",
-      "rosterCost": 1,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "Asteriscato",
       "statusCode": "ASTERISCATO",
       "sourceSheet": "Lista calciatori",
@@ -11993,7 +12067,8 @@
         "average": 0,
         "fantasyAverage": 0,
         "outOfList": "*"
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "6243",
@@ -12190,9 +12265,9 @@
       "quotationDiffMantra": 0,
       "fvm": 8,
       "fvmMantra": 8,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "FC DueFratelli2005",
+      "rosterRole": "C",
+      "rosterCost": 1,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -12203,7 +12278,8 @@
         "average": 6,
         "fantasyAverage": 6,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "6917",
@@ -12250,9 +12326,9 @@
       "quotationDiffMantra": 0,
       "fvm": 8,
       "fvmMantra": 8,
-      "fantasyRoster": "As Paperopoli",
-      "rosterRole": "C",
-      "rosterCost": 5,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -12263,7 +12339,8 @@
         "average": 5.5,
         "fantasyAverage": 5.5,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "6005",
@@ -13180,9 +13257,9 @@
       "quotationDiffMantra": 0,
       "fvm": 7,
       "fvmMantra": 11,
-      "fantasyRoster": "Prestige Worldwide",
-      "rosterRole": "C",
-      "rosterCost": 5,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "Asteriscato",
       "statusCode": "ASTERISCATO",
       "sourceSheet": "Lista calciatori",
@@ -13193,7 +13270,8 @@
         "average": 0,
         "fantasyAverage": 0,
         "outOfList": "*"
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "5457",
@@ -13660,9 +13738,9 @@
       "quotationDiffMantra": 0,
       "fvm": 5,
       "fvmMantra": 7,
-      "fantasyRoster": "As Paperopoli",
-      "rosterRole": "A",
-      "rosterCost": 35,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "Asteriscato",
       "statusCode": "ASTERISCATO",
       "sourceSheet": "Lista calciatori",
@@ -13673,7 +13751,8 @@
         "average": 0,
         "fantasyAverage": 0,
         "outOfList": "*"
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "5918",
@@ -14350,9 +14429,9 @@
       "quotationDiffMantra": 0,
       "fvm": 5,
       "fvmMantra": 10,
-      "fantasyRoster": "Real Pisistrius",
-      "rosterRole": "P",
-      "rosterCost": 1,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "Asteriscato",
       "statusCode": "ASTERISCATO",
       "sourceSheet": "Lista calciatori",
@@ -14363,7 +14442,8 @@
         "average": 0,
         "fantasyAverage": 0,
         "outOfList": "*"
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "7627",
@@ -14440,9 +14520,9 @@
       "quotationDiffMantra": 0,
       "fvm": 4,
       "fvmMantra": 3,
-      "fantasyRoster": "Afc Severgas Baronissi",
-      "rosterRole": "A",
-      "rosterCost": 10,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "Asteriscato",
       "statusCode": "ASTERISCATO",
       "sourceSheet": "Lista calciatori",
@@ -14453,7 +14533,8 @@
         "average": 0,
         "fantasyAverage": 0,
         "outOfList": "*"
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "7477",
@@ -14620,9 +14701,9 @@
       "quotationDiffMantra": 0,
       "fvm": 4,
       "fvmMantra": 4,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "FC DueFratelli2005",
+      "rosterRole": "D",
+      "rosterCost": 1,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -14633,7 +14714,8 @@
         "average": 6,
         "fantasyAverage": 6.33,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "7525",
@@ -14860,9 +14942,9 @@
       "quotationDiffMantra": 0,
       "fvm": 3,
       "fvmMantra": 10,
-      "fantasyRoster": "FC DueFratelli2005",
-      "rosterRole": "A",
-      "rosterCost": 1,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -14873,7 +14955,8 @@
         "average": 0,
         "fantasyAverage": 0,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "7161",
@@ -16570,9 +16653,9 @@
       "quotationDiffMantra": 0,
       "fvm": 1,
       "fvmMantra": 1,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "Real Pisistrius",
+      "rosterRole": "P",
+      "rosterCost": 1,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -16583,7 +16666,8 @@
         "average": 0,
         "fantasyAverage": 0,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "7560",
@@ -16930,9 +17014,9 @@
       "quotationDiffMantra": 0,
       "fvm": 1,
       "fvmMantra": 1,
-      "fantasyRoster": "",
-      "rosterRole": "",
-      "rosterCost": "",
+      "fantasyRoster": "Prestige Worldwide",
+      "rosterRole": "P",
+      "rosterCost": 1,
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -16943,7 +17027,8 @@
         "average": 0,
         "fantasyAverage": 0,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     },
     {
       "fantacalcioId": "7048",
@@ -17230,9 +17315,9 @@
       "quotationDiffMantra": 0,
       "fvm": 1,
       "fvmMantra": 1,
-      "fantasyRoster": "Real Pisistrius",
-      "rosterRole": "P",
-      "rosterCost": 1,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "Asteriscato",
       "statusCode": "ASTERISCATO",
       "sourceSheet": "Lista calciatori",
@@ -17243,7 +17328,8 @@
         "average": 0,
         "fantasyAverage": 0,
         "outOfList": "*"
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "4957",
@@ -17260,9 +17346,9 @@
       "quotationDiffMantra": 0,
       "fvm": 1,
       "fvmMantra": 1,
-      "fantasyRoster": "Ac Milan",
-      "rosterRole": "P",
-      "rosterCost": 1,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -17273,7 +17359,8 @@
         "average": 0,
         "fantasyAverage": 0,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "4929",
@@ -17680,9 +17767,9 @@
       "quotationDiffMantra": 0,
       "fvm": 1,
       "fvmMantra": 1,
-      "fantasyRoster": "FC DueFratelli2005",
-      "rosterRole": "P",
-      "rosterCost": 1,
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
       "status": "In listone",
       "statusCode": "IN_LISTONE",
       "sourceSheet": "Lista calciatori",
@@ -17693,7 +17780,8 @@
         "average": 0,
         "fantasyAverage": 0,
         "outOfList": ""
-      }
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
     },
     {
       "fantacalcioId": "543",
@@ -17800,7 +17888,7 @@
       "quotationDiffMantra": 0,
       "fvm": 1,
       "fvmMantra": 1,
-      "fantasyRoster": "Olympic Salerno  FC",
+      "fantasyRoster": "Olympic Salerno FC",
       "rosterRole": "P",
       "rosterCost": 1,
       "status": "In listone",
@@ -17844,6 +17932,97 @@
         "fantasyAverage": 0,
         "outOfList": ""
       }
+    },
+    {
+      "fantacalcioId": "2160",
+      "classicRole": "D",
+      "mantraRoles": "E",
+      "playerName": "Gosens",
+      "realTeam": "FIO",
+      "realTeamOriginal": "Fiorentina",
+      "quotationCurrent": 11,
+      "quotationInitial": "",
+      "quotationDiff": "",
+      "quotationCurrentMantra": "",
+      "quotationInitialMantra": "",
+      "quotationDiffMantra": "",
+      "fvm": 19,
+      "fvmMantra": "",
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
+      "status": "Asteriscato",
+      "statusCode": "ASTERISCATO",
+      "sourceSheet": "Lista calciatori",
+      "sourceFormat": "CLASSIC_SINGLE_SHEET",
+      "sourceExtra": {
+        "under": "31",
+        "played": 25,
+        "average": 5.92,
+        "fantasyAverage": 6.28,
+        "outOfList": ""
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
+    },
+    {
+      "fantacalcioId": "4665",
+      "classicRole": "D",
+      "mantraRoles": "Dc",
+      "playerName": "Maripan",
+      "realTeam": "TOR",
+      "realTeamOriginal": "Torino",
+      "quotationCurrent": 8,
+      "quotationInitial": "",
+      "quotationDiff": "",
+      "quotationCurrentMantra": "",
+      "quotationInitialMantra": "",
+      "quotationDiffMantra": "",
+      "fvm": 8,
+      "fvmMantra": "",
+      "fantasyRoster": "Svincolati",
+      "rosterRole": "",
+      "rosterCost": "",
+      "status": "Asteriscato",
+      "statusCode": "ASTERISCATO",
+      "sourceSheet": "Lista calciatori",
+      "sourceFormat": "CLASSIC_SINGLE_SHEET",
+      "sourceExtra": {
+        "under": "31",
+        "played": 26,
+        "average": 5.94,
+        "fantasyAverage": 6.1,
+        "outOfList": ""
+      },
+      "ownershipUpdate": "SVINCOLATO_2026-09-10"
+    },
+    {
+      "fantacalcioId": "",
+      "classicRole": "D",
+      "mantraRoles": "Dc",
+      "playerName": "Leite",
+      "realTeam": "LAZ",
+      "realTeamOriginal": "Lazio",
+      "quotationCurrent": 6,
+      "quotationInitial": 6,
+      "quotationDiff": 0,
+      "quotationCurrentMantra": 6,
+      "quotationInitialMantra": 6,
+      "quotationDiffMantra": 0,
+      "fvm": 14,
+      "fvmMantra": 14,
+      "fantasyRoster": "As Paperopoli",
+      "rosterRole": "D",
+      "rosterCost": 1,
+      "status": "In listone",
+      "statusCode": "IN_LISTONE",
+      "sourceSheet": "Aggiornamento 08/09/2026",
+      "sourceFormat": "MANUAL_POST_LISTONE_UPDATE",
+      "sourceExtra": {
+        "note": "Diogo Leite aggiunto da Fantacalcio.it il 08/09/2026; dati base: D Classic, Dc Mantra, quotazione 6, FVM 14."
+      },
+      "isNewInListone": true,
+      "previousListoneId": "2026-09-08",
+      "ownershipUpdate": "ACQUISTO_ASTA_RIPARAZIONE_2026-09-10"
     }
   ]
 }
