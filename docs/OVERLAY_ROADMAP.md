@@ -1,5 +1,12 @@
 # Roadmap overlay
 
+## V809 - Safari login + profili squadra static-first (11/09/2026)
+
+- Login Google su Safari desktop spostato da popup a redirect Firebase; popup invariato sugli altri browser.
+- Profilo squadra costruito prioritariamente dallo snapshot stagionale statico, con Firebase `publicTeamSnapshots` come solo fallback.
+- I movimenti aggregati dell'asta di riparazione del 10/09 sono ora letti dalla stessa baseline dei bilanci: 10 squadre, 49 acquisti descritti, -436 FM; saldi e movimenti non vengono modificati.
+- Verifica post deploy: hard reload Safari, login Admin e Presidente, apertura profili dalla pagina Rose e controllo descrizioni acquisti.
+
 ## Stato V788
 
 - Risolto alla radice il flicker del footer ZonaOrientale: esiste una release canonica V788 e tutti i writer/MutationObserver legacy convergono su quella invece di contendersi il DOM.

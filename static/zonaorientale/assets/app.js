@@ -1,11 +1,11 @@
-/* V808 - Footer canonico ZonaOrientale (compatibilita API V790).
+/* V809 - Footer canonico ZonaOrientale (compatibilita API V790).
  * Unica sorgente runtime per versione/data. Tutti i writer legacy del footer
  * delegano qui, evitando gare tra MutationObserver di release differenti.
  */
 const ZONAORIENTALE_RELEASE_V790 = Object.freeze({
-  version: "V808",
-  lastUpdated: "10/09/2026",
-  label: "Fantacalcio - V808 - Aggiornato al 10/09/2026"
+  version: "V809",
+  lastUpdated: "11/09/2026",
+  label: "Fantacalcio - V809 - Aggiornato al 11/09/2026"
 });
 
 function applyZonaOrientaleCanonicalFooterV790() {
@@ -64,6 +64,7 @@ let sendPasswordResetEmail = null;
 let updateProfile = null;
 let GoogleAuthProvider = null;
 let signInWithPopup = null;
+let signInWithRedirect = null;
 let signInWithEmailAndPassword = null;
 let signOut = null;
 let onAuthStateChanged = null;
@@ -92,6 +93,7 @@ async function ensureFirebaseRuntimeV760() {
       updateProfile = api.updateProfile;
       GoogleAuthProvider = api.GoogleAuthProvider;
       signInWithPopup = api.signInWithPopup;
+      signInWithRedirect = api.signInWithRedirect;
       signInWithEmailAndPassword = api.signInWithEmailAndPassword;
       signOut = api.signOut;
       onAuthStateChanged = api.onAuthStateChanged;
@@ -7967,6 +7969,75 @@ setupAdaptiveMobileViewport({
       document.getElementById("seasonRolloverFormV50")?.addEventListener("submit", handleSeasonRolloverV50);
     };
   }
+})();
+
+/* V809 - Safari desktop auth + profili squadra static-first.
+ * Safari desktop usa il redirect Firebase per evitare popup OAuth chiusi dal browser.
+ * I profili pubblici vengono costruiti prima dallo snapshot stagionale statico: in questo
+ * modo rose e movimenti pubblicati non dipendono da publicTeamSnapshots Firebase obsoleti.
+ */
+(function installSafariAuthAndStaticTeamProfilesV809(){
+  const VERSION = "V809";
+
+  function isDesktopSafariV809(){
+    const ua = String(navigator.userAgent || "");
+    const vendor = String(navigator.vendor || "");
+    const safari = /Safari/i.test(ua) && /Apple/i.test(vendor) && !/(CriOS|Chrome|Chromium|Edg|OPR|FxiOS)/i.test(ua);
+    const desktop = /Macintosh/i.test(ua) && Number(navigator.maxTouchPoints || 0) === 0;
+    return safari && desktop;
+  }
+
+  document.addEventListener("click", async (event) => {
+    const button = event.target?.closest?.("#loginGoogleBtn");
+    if (!button || !isDesktopSafariV809()) return;
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+    try {
+      button.disabled = true;
+      showMessage("loginStatus", "Accesso Google in corso: Safari verra reindirizzato a Google...");
+      await ensureFirebaseRuntimeV760();
+      const provider = new GoogleAuthProvider();
+      provider.setCustomParameters({ prompt: "select_account" });
+      await signInWithRedirect(auth, provider);
+    } catch (error) {
+      console.error(`[${VERSION}] redirect Google non riuscito`, error);
+      button.disabled = false;
+      showMessage("loginStatus", error?.message || "Accesso Google non riuscito.", true);
+    }
+  }, true);
+
+  const loadTeamSnapshotBeforeV809 = typeof loadTeamSnapshotV34 === "function" ? loadTeamSnapshotV34 : null;
+  if (loadTeamSnapshotBeforeV809) {
+    loadTeamSnapshotV34 = async function loadTeamSnapshotV809(seasonTeamId) {
+      const seasonTeam = getSeasonTeamById?.(seasonTeamId);
+      const seasonId = String(seasonTeam?.seasonId || getCurrentSeasonId?.() || "");
+      if (seasonTeam && seasonId) {
+        try {
+          const seasonSnapshot = await loadStaticPublicSeasonSnapshotV172(seasonId);
+          const built = buildTeamSnapshotFromSeasonSnapshotV202?.(seasonTeam, seasonSnapshot);
+          if (built) {
+            built.profileSourceV809 = "static-season-snapshot";
+            state.teamSnapshotCache = state.teamSnapshotCache || {};
+            state.teamSnapshotCache[`${seasonTeam.seasonId}_${seasonTeam.teamId}`] = built;
+            return built;
+          }
+        } catch (error) {
+          console.warn(`[${VERSION}] profilo statico non disponibile`, error);
+        }
+      }
+      return loadTeamSnapshotBeforeV809(seasonTeamId);
+    };
+  }
+
+  window.ZonaOrientaleSafariAuthStaticProfilesV809 = Object.freeze({
+    version: VERSION,
+    desktopSafariGoogleRedirect: true,
+    staticSeasonSnapshotFirstForProfiles: true,
+    firebaseTeamSnapshotFallback: true,
+    balancesChanged: false,
+    fmMovementsChanged: false
+  });
 })();
 
 
@@ -16625,7 +16696,7 @@ window.ZonaOrientaleAdminMobileButtonTopV430 = Object.freeze({
   ]
 });
 
-const DEPLOY_EXPECTED_VERSION_V181 = "808";
+const DEPLOY_EXPECTED_VERSION_V181 = "809";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");

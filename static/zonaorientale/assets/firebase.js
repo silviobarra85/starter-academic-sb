@@ -17,6 +17,7 @@ import {
   updateProfile,
   GoogleAuthProvider,
   signInWithPopup,
+  signInWithRedirect,
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged
@@ -69,6 +70,7 @@ export {
   updateProfile,
   GoogleAuthProvider,
   signInWithPopup,
+  signInWithRedirect,
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged
