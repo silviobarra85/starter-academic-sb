@@ -1,5 +1,14 @@
 # Roadmap overlay
 
+## V816 - Calendari, classifica e verifica rose (26/10/2026)
+
+- Campionato aggiornato a 8 giornate giocate (40 partite); classifica ufficiale verificata contro il ricalcolo automatico.
+- Champions League: importate le 4 gare di andata dei quarti; ritorni ancora da giocare; stato ATTIVA.
+- Rose verificate sull export Fantacalcio del 26/10: 8/10 gia corrette; Heggem passa a Olympic Salerno FC e Joao Mario ad As Paperopoli.
+- Tornqvist preserva la semantica di prestito gratuito V805 (costo operativo 0, costo originario 1).
+- Nessun movimento FM creato senza una fonte economica esplicita.
+- Nuova rosa primaria 26/10/2026; snapshot V40; shell/cache V816.
+
 ## V814 - Safari Mac Auth e correzioni date movimenti (11/09/2026)
 
 - Safari Mac: Firebase Auth inizializzato senza IndexedDB, con persistenza web local/session/memory e popup resolver esplicito; smartphone e altri browser restano sul comportamento esistente.
@@ -182,3 +191,10 @@ Completato: aggiornamento reale della sorgente `assets/rose` al file del 18/08/2
 - Link dettaglio competizione e fetch JSON con cache-buster V805.
 - Date Campionato: G1 2026-08-23, G2 2026-08-30, G3 2026-09-06.
 - Nessuna modifica a rose, movimenti, Firebase o funzioni Admin.
+
+
+## V816 - scambio Heggem / Joao Mario
+- Rose post mercato confermate: Heggem a Olympic Salerno FC, Joao Mario ad As Paperopoli.
+- Registrato conguaglio di 8 FM: -8 Olympic Salerno FC, +8 As Paperopoli.
+- Data contabile usata: 12/10/2026 (inferita da "un paio di settimane fa" rispetto al 26/10/2026).
+- Snapshot 2026-2027 portato a V41.

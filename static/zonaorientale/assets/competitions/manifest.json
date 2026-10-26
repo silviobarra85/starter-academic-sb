@@ -1,6 +1,6 @@
 {
-  "version": 4,
-  "generatedAt": "2026-09-08T14:07:00+02:00",
+  "version": 5,
+  "generatedAt": "2026-10-26T10:47:00+01:00",
   "competitions": [
     {
       "id": "2025-2026-champions-league",
@@ -41,11 +41,11 @@
       "competitionType": "CAMPIONATO",
       "competitionFormat": "CLASSIFICA",
       "label": "Campionato 2026/2027",
-      "loadedAt": "2026-09-08",
-      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027 (1).xlsx",
+      "loadedAt": "2026-10-26",
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027(2).xlsx",
       "file": "2026-2027/campionato-2026-2027.json",
       "matches": 180,
-      "playedMatches": 15,
+      "playedMatches": 40,
       "status": "ATTIVA"
     },
     {
@@ -76,12 +76,12 @@
       "competitionType": "CHAMPIONS_LEAGUE",
       "competitionFormat": "GIRONI_KO",
       "label": "Champion's League 2026/2027",
-      "loadedAt": "2026-09-01",
-      "sourceFile": "Calendario_Champion's-League-2026-2027.xlsx",
+      "loadedAt": "2026-10-26",
+      "sourceFile": "Calendario_Champion's-League-2026-2027(1).xlsx",
       "file": "2026-2027/champions-league-2026-2027.json",
       "matches": 8,
-      "playedMatches": 0,
-      "status": "PROGRAMMATA"
+      "playedMatches": 4,
+      "status": "ATTIVA"
     }
   ]
 }

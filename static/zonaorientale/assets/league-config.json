@@ -5,7 +5,7 @@
   "shortName": "ZonaOrientale",
   "basePath": "/zonaorientale/",
   "siteUrl": "https://silviobarra.com/zonaorientale/",
-  "currentVersion": "814",
+  "currentVersion": "816",
   "currentSeasonId": "2026-2027",
   "assetsBasePath": "./assets/",
   "snapshotBasePath": "./assets/snapshots/",
@@ -559,7 +559,7 @@
         "ioSudoListoneAllPlayersV643": true
       }
     ],
-    "footerLastUpdated": "11/09/2026",
+    "footerLastUpdated": "26/10/2026",
     "footerTemplate": "Fantacalcio - V{version} - Aggiornato al {lastUpdated}",
     "footerVersion": 802,
     "ioSudoPlayerSourceLabelsV639": true,
@@ -1888,6 +1888,6 @@
   "ioSudoPlayerSourceLabelsV643": true,
   "ioSudoListoneAllPlayersV643": true,
   "updatedAt": "2026-07-22T00:30:00+02:00",
-  "lastUpdated": "2026-08-18",
-  "lastOverlay": "V814 login Safari Mac senza IndexedDB e correzioni date movimenti storici"
+  "lastUpdated": "2026-10-26",
+  "lastOverlay": "V816 cumulativa: calendari/classifica/rose al 26 ottobre + scambio Heggem/Joao Mario con conguaglio 8 FM"
 }
