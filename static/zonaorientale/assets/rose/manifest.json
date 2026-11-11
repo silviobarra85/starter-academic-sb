@@ -1,6 +1,16 @@
 {
   "rosters": [
     {
+      "id": "2026-2027-2026-11-11",
+      "seasonId": "2026-2027",
+      "label": "Rose ZonaOrientale Salerno 2026/27 - 11 novembre 2026 (verifica aggiornamento)",
+      "loadedAt": "2026-11-11",
+      "file": "2026-2027-2026-11-11.json",
+      "teams": 10,
+      "players": 296,
+      "sourceFile": "zonaorientale-salerno-rosters-1794419997463.xlsx + correzioni lega: unico nuovo scambio Molina/Koopmeiners ↔ Hermoso/Mandragora; Falcone/Muric invariati"
+    },
+    {
       "id": "2026-2027-2026-10-26",
       "seasonId": "2026-2027",
       "label": "Rose ZonaOrientale Salerno 2026/27 - 26 ottobre 2026 (verifica post mercato)",

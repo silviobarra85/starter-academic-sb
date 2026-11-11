@@ -1,6 +1,6 @@
 {
-  "version": 5,
-  "generatedAt": "2026-10-26T10:47:00+01:00",
+  "version": 6,
+  "generatedAt": "2026-11-11T19:02:00+01:00",
   "competitions": [
     {
       "id": "2025-2026-champions-league",
@@ -41,11 +41,11 @@
       "competitionType": "CAMPIONATO",
       "competitionFormat": "CLASSIFICA",
       "label": "Campionato 2026/2027",
-      "loadedAt": "2026-10-26",
-      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027(2).xlsx",
+      "loadedAt": "2026-11-11",
+      "sourceFile": "Calendario_Serie-A-Zonaorientale-2026-2027(3).xlsx",
       "file": "2026-2027/campionato-2026-2027.json",
       "matches": 180,
-      "playedMatches": 40,
+      "playedMatches": 55,
       "status": "ATTIVA"
     },
     {
@@ -57,15 +57,16 @@
       "competitionType": "COPPA_ITALIA",
       "competitionFormat": "BATTLE_ROYALE",
       "label": "Coppa Italia 2026/2027",
-      "loadedAt": "2026-09-01",
-      "sourceFile": "Calendario_Coppa-Italia-2026-2027.xlsx",
+      "loadedAt": "2026-11-11",
+      "sourceFile": "Calendario_Coppa-Italia-2026-2027(1).xlsx",
       "file": "2026-2027/coppa-italia-2026-2027.json",
-      "matches": 0,
-      "playedMatches": 0,
-      "status": "PROGRAMMATA",
+      "matches": 10,
+      "playedMatches": 10,
+      "status": "ATTIVA",
       "displayMode": "BATTLE_ROYALE",
       "rounds": 4,
-      "participantsPerRound": 10
+      "participantsPerRound": 10,
+      "playedRounds": 1
     },
     {
       "id": "2026-2027-champions-league",
@@ -76,11 +77,11 @@
       "competitionType": "CHAMPIONS_LEAGUE",
       "competitionFormat": "GIRONI_KO",
       "label": "Champion's League 2026/2027",
-      "loadedAt": "2026-10-26",
-      "sourceFile": "Calendario_Champion's-League-2026-2027(1).xlsx",
+      "loadedAt": "2026-11-11",
+      "sourceFile": "Calendario_Champion's-League-2026-2027(2).xlsx",
       "file": "2026-2027/champions-league-2026-2027.json",
-      "matches": 8,
-      "playedMatches": 4,
+      "matches": 12,
+      "playedMatches": 8,
       "status": "ATTIVA"
     }
   ]

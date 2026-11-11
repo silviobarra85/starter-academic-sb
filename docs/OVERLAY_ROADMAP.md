@@ -1,3 +1,10 @@
+## V817 - risultati al 11/11/2026 + Coppa Italia + scambio DueFratelli/Olympic
+- Campionato aggiornato fino alla G11; classifica ufficiale a 11 giornate.
+- Quarti Champions completati; semifinali inserite.
+- Prima giornata Battle Royale di Coppa Italia inserita con classifica.
+- Verifica rose: preservati Falcone/River e Muric/DueFratelli; nuovo scambio canonico Molina+Koopmeiners -> Olympic, Hermoso+Mandragora -> DueFratelli, senza conguaglio FM.
+- Snapshot V42; shell/cache V817; Auth Safari V814 preservato.
+
 # Roadmap overlay
 
 ## V816 - Calendari, classifica e verifica rose (26/10/2026)
