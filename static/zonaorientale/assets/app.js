@@ -1,11 +1,11 @@
-/* V817 - Footer canonico ZonaOrientale (compatibilita API V790).
+/* V818 - Footer canonico ZonaOrientale (compatibilita API V790).
  * Unica sorgente runtime per versione/data. Tutti i writer legacy del footer
  * delegano qui, evitando gare tra MutationObserver di release differenti.
  */
 const ZONAORIENTALE_RELEASE_V790 = Object.freeze({
-  version: "V817",
+  version: "V818",
   lastUpdated: "11/11/2026",
-  label: "Fantacalcio - V817 - Aggiornato al 11/11/2026"
+  label: "Fantacalcio - V818 - Aggiornato al 11/11/2026"
 });
 
 function applyZonaOrientaleCanonicalFooterV790() {
@@ -332,12 +332,12 @@ function createCalciomercatoArchiveAdminV340() {
     setExpanded: () => {}
   };
 }
-import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js?v=805";
+import { loadListoniData, loadRostersData, loadCompetitionCalendarData } from "./js/data/static-files-service.js?v=818";
 import { ensureMobilePageScrollHandle } from "./js/mobile/mobile-scrollbar.js";
 import { setupMobileTables } from "../../fanta-engine/js/shared/v491/assets/js/mobile/mobile-tables.js?v=491";
 import { setupAdaptiveMobileViewport } from "./js/mobile/mobile-viewport.js?v=485";
 import { createMobileChromeControllerV220 } from "./js/mobile/mobile-chrome-v220.js?v=485";
-import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=817";
+import { getLeagueConfigValueV443, getLeagueSiteUrlV443, getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, withLeagueCacheBusterV446 } from "./js/core/league-config-v443.js?v=818";
 import { createMobileRosterHelpersV169 } from "../../fanta-engine/js/shared/v491/assets/js/mobile/mobile-rosters.js?v=491";
 
 const ZonaOrientaleSharedHelperBridgeV341 = createSharedHelperBridgeV341({
@@ -16705,7 +16705,7 @@ window.ZonaOrientaleAdminMobileButtonTopV430 = Object.freeze({
   ]
 });
 
-const DEPLOY_EXPECTED_VERSION_V181 = "817";
+const DEPLOY_EXPECTED_VERSION_V181 = "818";
 
 function getRuntimeAssetsVersionInfoV180() {
   const links = [...document.querySelectorAll('link[href*=".css?v="]')].map((node) => node.getAttribute("href") || "");
@@ -43825,3 +43825,147 @@ window.ZonaOrientaleStaticFmMovementsAdminV808 = Object.freeze({
     historicalDateCorrectionsV814: true
   });
 })();
+
+/* V818 - Coppa Italia Battle Royale completa + Dashboard competizioni aggiornata.
+ * - Il loader statico conserva rounds/displayMode dei JSON competizione.
+ * - La Dashboard mostra la classifica Battle Royale della Coppa Italia.
+ * - Gli ultimi risultati mostrano l'ultima giornata/turno effettivamente giocato
+ *   per Campionato, Champions League e Coppa Italia.
+ */
+(function installZonaOrientaleDashboardCompetitionsV818(){
+  const VERSION = "V818";
+  const BATTLE_FORMATS = new Set(["BATTLE_ROYALE", "UNO_VS_TUTTI"]);
+
+  function getStaticCalendarV818(competition){
+    if (!competition) return null;
+    if (typeof getStaticCompetitionCalendarForCompetitionV109 === "function") {
+      return getStaticCompetitionCalendarForCompetitionV109(competition);
+    }
+    if (typeof getStaticCompetitionCalendarForCompetitionV102 === "function") {
+      return getStaticCompetitionCalendarForCompetitionV102(competition);
+    }
+    return null;
+  }
+
+  function isBattleRoyaleV818(competition){
+    const calendar = getStaticCalendarV818(competition);
+    const format = String(competition?.format || competition?.formula || calendar?.competition?.format || calendar?.meta?.competitionFormat || "").toUpperCase();
+    const displayMode = String(calendar?.displayMode || calendar?.meta?.displayMode || competition?.displayMode || "").toUpperCase();
+    return BATTLE_FORMATS.has(format) || displayMode === "BATTLE_ROYALE";
+  }
+
+  function getBattleRoundsV818(competition){
+    const calendar = getStaticCalendarV818(competition);
+    return Array.isArray(calendar?.rounds)
+      ? [...calendar.rounds].sort((a,b) => Number(a.leagueMatchday || 0) - Number(b.leagueMatchday || 0))
+      : [];
+  }
+
+  function getBattleRoundEntriesV818(competition, round){
+    const day = Number(round?.leagueMatchday || 0);
+    return (getCompetitionMatches?.(competition.id) || [])
+      .filter((entry) => String(entry.entryMode || "").toUpperCase() === "BATTLE_ROYALE" && Number(entry.leagueMatchday || 0) === day)
+      .filter((entry) => Number.isFinite(Number(entry.homeScore ?? entry.fantapoints)))
+      .map((entry) => ({...entry, _fp: Number(entry.homeScore ?? entry.fantapoints)}))
+      .sort((a,b) => b._fp - a._fp || String(getSeasonTeamDisplayName(a.homeSeasonTeamId)).localeCompare(String(getSeasonTeamDisplayName(b.homeSeasonTeamId)), "it"));
+  }
+
+  function getLatestPlayedBattleRoundV818(competition){
+    const rounds = getBattleRoundsV818(competition);
+    for (let i = rounds.length - 1; i >= 0; i -= 1) {
+      const entries = getBattleRoundEntriesV818(competition, rounds[i]);
+      if (entries.length) return { round: rounds[i], entries };
+    }
+    return null;
+  }
+
+  function renderBattleStandingCompactV818(competition){
+    const results = getCompetitionResults?.(competition.id) || [];
+    if (!results.length) return `<p class="muted">Classifica non ancora disponibile.</p>`;
+    return `<div class="table-wrap compact-table result-table-wrap dashboard-battle-standing-v818">
+      <table><thead><tr><th class="number">POS</th><th>SQUADRA</th><th class="number">PT</th><th class="number">PG</th><th class="number">V</th><th class="number">N</th><th class="number">P</th><th class="number">FPT</th></tr></thead>
+      <tbody>${results.map((result) => `<tr>
+        <td class="number" data-label="POS">${escapeHtml(result.position ?? "-")}</td>
+        <td data-label="SQUADRA">${renderSeasonTeamNameWithLogo(result.seasonTeamId)}</td>
+        <td class="number" data-label="PT">${escapeHtml(result.points ?? "-")}</td>
+        <td class="number" data-label="PG">${escapeHtml(result.played ?? "-")}</td>
+        <td class="number" data-label="V">${escapeHtml(result.wins ?? "-")}</td>
+        <td class="number" data-label="N">${escapeHtml(result.draws ?? "-")}</td>
+        <td class="number" data-label="P">${escapeHtml(result.losses ?? "-")}</td>
+        <td class="number" data-label="FPT">${escapeHtml(formatNumberCompactV114?.(result.fantapoints ?? "-") ?? result.fantapoints ?? "-")}</td>
+      </tr>`).join("")}</tbody></table></div>`;
+  }
+
+  function renderBattleLatestRoundV818(competition){
+    const latest = getLatestPlayedBattleRoundV818(competition);
+    if (!latest) return `<p class="muted">Nessun risultato Battle Royale registrato.</p>`;
+    const serieA = Number(latest.round?.serieAMatchday || 0);
+    const label = latest.round?.label || `${latest.round?.leagueMatchday || "-"}ª Giornata Battle Royale`;
+    return `<details class="dashboard-calendar-group dashboard-subsection" open>
+      <summary><span><strong>${escapeHtml(typeof getCompetitionDisplayNameV108 === "function" ? getCompetitionDisplayNameV108(competition) : competition.name || competition.id)}</strong><small>${escapeHtml(label)}${serieA ? ` · Serie A ${serieA}` : ""}</small></span><span class="button button-secondary button-small details-toggle-label" aria-hidden="true">Riduci</span></summary>
+      <div class="table-wrap compact-table dashboard-battle-results-v818"><table><thead><tr><th class="number">POS</th><th>SQUADRA</th><th class="number">FPT</th></tr></thead><tbody>
+        ${latest.entries.map((entry,index) => `<tr><td class="number" data-label="POS">${index + 1}</td><td data-label="SQUADRA">${renderSeasonTeamNameWithLogo(entry.homeSeasonTeamId)}</td><td class="number" data-label="FPT">${escapeHtml(formatNumberCompactV114?.(entry._fp) ?? entry._fp)}</td></tr>`).join("")}
+      </tbody></table></div></details>`;
+  }
+
+  function getLatestPlayedGroupV818(competition){
+    const played = (getCompetitionMatches?.(competition.id) || []).filter((match) => String(match.status || "").toUpperCase() === "GIOCATA");
+    if (!played.length) return [];
+    const maxLeagueDay = Math.max(...played.map((match) => Number(match.leagueMatchday || 0)).filter(Number.isFinite));
+    if (maxLeagueDay > 0) {
+      const group = played.filter((match) => Number(match.leagueMatchday || 0) === maxLeagueDay);
+      if (group.length) return sortMatchesForDisplay(group);
+    }
+    const maxSerieADay = Math.max(...played.map((match) => Number(getMatchSerieAMatchday?.(match) || 0)).filter(Number.isFinite));
+    if (maxSerieADay > 0) {
+      const group = played.filter((match) => Number(getMatchSerieAMatchday?.(match) || 0) === maxSerieADay);
+      if (group.length) return sortMatchesForDisplay(group);
+    }
+    return sortMatchesForDisplay(played).slice(0, 5);
+  }
+
+  const renderDashboardCompetitionSummaryBeforeV818 = renderDashboardCompetitionSummary;
+  renderDashboardCompetitionSummary = function renderDashboardCompetitionSummaryV818(competition){
+    if (!isBattleRoyaleV818(competition)) return renderDashboardCompetitionSummaryBeforeV818(competition);
+    const rounds = getBattleRoundsV818(competition);
+    const nextRound = rounds.find((round) => !getBattleRoundEntriesV818(competition, round).length);
+    const nextLabel = nextRound
+      ? `<p class="muted dashboard-battle-next-v818">Prossima giornata: ${escapeHtml(nextRound.label || `${nextRound.leagueMatchday}ª Giornata Battle Royale`)}${nextRound.serieAMatchday ? ` · Serie A ${escapeHtml(nextRound.serieAMatchday)}` : ""}</p>`
+      : "";
+    return `<div class="dashboard-competition-summary dashboard-live-standing-v800 dashboard-battle-standing-summary-v818"><div class="dashboard-live-standing-title-v800"><strong>Classifica</strong><span class="muted">aggiornata all'ultima giornata disputata</span></div>${renderBattleStandingCompactV818(competition)}${nextLabel}</div>`;
+  };
+
+  renderDashboardCalendar = function renderDashboardCalendarV818(seasonId){
+    const target = document.getElementById("dashboardCalendar");
+    if (!target) return;
+    const competitions = getSeasonCompetitionsForPublicDisplayV52(seasonId);
+    const blocks = [];
+    competitions.forEach((competition) => {
+      if (isBattleRoyaleV818(competition)) {
+        const latest = getLatestPlayedBattleRoundV818(competition);
+        if (latest) blocks.push(renderBattleLatestRoundV818(competition));
+        return;
+      }
+      const matches = isRankingCompetition(competition)
+        ? getLatestChampionshipMatches(competition)
+        : getLatestPlayedGroupV818(competition);
+      if (!matches.length) return;
+      const label = isRankingCompetition(competition) ? "Ultima giornata giocata" : "Ultimo turno giocato";
+      blocks.push(`<details class="dashboard-calendar-group dashboard-subsection" open>
+        <summary><span><strong>${escapeHtml(typeof getCompetitionDisplayNameV108 === "function" ? getCompetitionDisplayNameV108(competition) : competition.name || competition.id)}</strong><small>${escapeHtml(label)}</small></span><span class="button button-secondary button-small details-toggle-label" aria-hidden="true">Riduci</span></summary>
+        <div class="table-wrap match-table-wrap dashboard-calendar-table-wrap"><table class="dashboard-calendar-table"><thead><tr><th>Fase</th><th>Partita</th><th>Data</th><th class="number">Ris.</th></tr></thead><tbody>
+          ${matches.map((match) => `<tr><td data-label="Fase">${escapeHtml(formatMatchStage(match))}</td><td data-label="Partita"><span class="match-teams-line">${renderStaticMatchTeamNameV101(match, "home")} <span class="match-separator">-</span> ${renderStaticMatchTeamNameV101(match, "away")}</span></td><td data-label="Data">${escapeHtml(match.matchDate || "-")}</td><td data-label="Ris." class="number">${renderMatchResultHtmlV114(match)}</td></tr>`).join("")}
+        </tbody></table></div></details>`);
+    });
+    target.innerHTML = blocks.length ? blocks.join("") : `<p class="muted">Nessun risultato registrato per questa stagione.</p>`;
+  };
+
+  window.ZonaOrientaleDashboardCompetitionsV818 = Object.freeze({
+    version: VERSION,
+    battleRoyaleRoundsLoaded: true,
+    battleRoyaleDashboardStandings: true,
+    dashboardLatestResultsByCompetition: true,
+    competitions: ["Campionato", "Champion's League", "Coppa Italia"]
+  });
+})();
+

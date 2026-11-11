@@ -10,7 +10,7 @@
     "label": "Coppa Italia 2026/2027",
     "sourceFile": "Calendario_Coppa-Italia-2026-2027(1).xlsx",
     "loadedAt": "2026-11-11",
-    "version": 4,
+    "version": 5,
     "schema": "zonaorientale-static-competition-v5",
     "displayMode": "BATTLE_ROYALE",
     "standingsSourceFile": "Classifica_Coppa-Italia-2026-2027.xlsx"
@@ -24,7 +24,7 @@
     "formula": "BATTLE_ROYALE",
     "status": "ATTIVA",
     "notes": "Fase Battle Royale: 4 giornate senza calendario casa/trasferta; ogni giornata coinvolge tutte le 10 squadre.",
-    "source": "static-competition-calendar-v817",
+    "source": "static-competition-calendar-v818",
     "phase": "BATTLE_ROYALE"
   },
   "matches": [
@@ -46,7 +46,7 @@
       "awayGoals": null,
       "awayScore": null,
       "status": "GIOCATA",
-      "source": "static-battle-royale-v817",
+      "source": "static-battle-royale-v818",
       "staticCalendarId": "2026-2027-coppa-italia",
       "staticSourceFile": "Calendario_Coppa-Italia-2026-2027(1).xlsx",
       "hasStaticCalendarData": true
@@ -69,7 +69,7 @@
       "awayGoals": null,
       "awayScore": null,
       "status": "GIOCATA",
-      "source": "static-battle-royale-v817",
+      "source": "static-battle-royale-v818",
       "staticCalendarId": "2026-2027-coppa-italia",
       "staticSourceFile": "Calendario_Coppa-Italia-2026-2027(1).xlsx",
       "hasStaticCalendarData": true
@@ -92,7 +92,7 @@
       "awayGoals": null,
       "awayScore": null,
       "status": "GIOCATA",
-      "source": "static-battle-royale-v817",
+      "source": "static-battle-royale-v818",
       "staticCalendarId": "2026-2027-coppa-italia",
       "staticSourceFile": "Calendario_Coppa-Italia-2026-2027(1).xlsx",
       "hasStaticCalendarData": true
@@ -115,7 +115,7 @@
       "awayGoals": null,
       "awayScore": null,
       "status": "GIOCATA",
-      "source": "static-battle-royale-v817",
+      "source": "static-battle-royale-v818",
       "staticCalendarId": "2026-2027-coppa-italia",
       "staticSourceFile": "Calendario_Coppa-Italia-2026-2027(1).xlsx",
       "hasStaticCalendarData": true
@@ -138,7 +138,7 @@
       "awayGoals": null,
       "awayScore": null,
       "status": "GIOCATA",
-      "source": "static-battle-royale-v817",
+      "source": "static-battle-royale-v818",
       "staticCalendarId": "2026-2027-coppa-italia",
       "staticSourceFile": "Calendario_Coppa-Italia-2026-2027(1).xlsx",
       "hasStaticCalendarData": true
@@ -161,7 +161,7 @@
       "awayGoals": null,
       "awayScore": null,
       "status": "GIOCATA",
-      "source": "static-battle-royale-v817",
+      "source": "static-battle-royale-v818",
       "staticCalendarId": "2026-2027-coppa-italia",
       "staticSourceFile": "Calendario_Coppa-Italia-2026-2027(1).xlsx",
       "hasStaticCalendarData": true
@@ -184,7 +184,7 @@
       "awayGoals": null,
       "awayScore": null,
       "status": "GIOCATA",
-      "source": "static-battle-royale-v817",
+      "source": "static-battle-royale-v818",
       "staticCalendarId": "2026-2027-coppa-italia",
       "staticSourceFile": "Calendario_Coppa-Italia-2026-2027(1).xlsx",
       "hasStaticCalendarData": true
@@ -207,7 +207,7 @@
       "awayGoals": null,
       "awayScore": null,
       "status": "GIOCATA",
-      "source": "static-battle-royale-v817",
+      "source": "static-battle-royale-v818",
       "staticCalendarId": "2026-2027-coppa-italia",
       "staticSourceFile": "Calendario_Coppa-Italia-2026-2027(1).xlsx",
       "hasStaticCalendarData": true
@@ -230,7 +230,7 @@
       "awayGoals": null,
       "awayScore": null,
       "status": "GIOCATA",
-      "source": "static-battle-royale-v817",
+      "source": "static-battle-royale-v818",
       "staticCalendarId": "2026-2027-coppa-italia",
       "staticSourceFile": "Calendario_Coppa-Italia-2026-2027(1).xlsx",
       "hasStaticCalendarData": true
@@ -253,7 +253,7 @@
       "awayGoals": null,
       "awayScore": null,
       "status": "GIOCATA",
-      "source": "static-battle-royale-v817",
+      "source": "static-battle-royale-v818",
       "staticCalendarId": "2026-2027-coppa-italia",
       "staticSourceFile": "Calendario_Coppa-Italia-2026-2027(1).xlsx",
       "hasStaticCalendarData": true
@@ -272,7 +272,7 @@
       "fantapoints": 78.5,
       "id": "2026-2027_coppa_italia_live_1",
       "position": 1,
-      "source": "official-standings-v817",
+      "source": "official-standings-v818",
       "teamName": "Real Pisistrius"
     },
     {
@@ -287,7 +287,7 @@
       "fantapoints": 77.5,
       "id": "2026-2027_coppa_italia_live_2",
       "position": 2,
-      "source": "official-standings-v817",
+      "source": "official-standings-v818",
       "teamName": "Ac Milan"
     },
     {
@@ -302,7 +302,7 @@
       "fantapoints": 76.5,
       "id": "2026-2027_coppa_italia_live_3",
       "position": 3,
-      "source": "official-standings-v817",
+      "source": "official-standings-v818",
       "teamName": "real mappine"
     },
     {
@@ -317,7 +317,7 @@
       "fantapoints": 76.5,
       "id": "2026-2027_coppa_italia_live_4",
       "position": 4,
-      "source": "official-standings-v817",
+      "source": "official-standings-v818",
       "teamName": "River Plaid"
     },
     {
@@ -332,7 +332,7 @@
       "fantapoints": 75.5,
       "id": "2026-2027_coppa_italia_live_5",
       "position": 5,
-      "source": "official-standings-v817",
+      "source": "official-standings-v818",
       "teamName": "As Paperopoli"
     },
     {
@@ -347,7 +347,7 @@
       "fantapoints": 75.5,
       "id": "2026-2027_coppa_italia_live_6",
       "position": 6,
-      "source": "official-standings-v817",
+      "source": "official-standings-v818",
       "teamName": "Beetlejuice"
     },
     {
@@ -362,7 +362,7 @@
       "fantapoints": 70.5,
       "id": "2026-2027_coppa_italia_live_7",
       "position": 7,
-      "source": "official-standings-v817",
+      "source": "official-standings-v818",
       "teamName": "Afc Severgas Baronissi"
     },
     {
@@ -377,7 +377,7 @@
       "fantapoints": 68.5,
       "id": "2026-2027_coppa_italia_live_8",
       "position": 8,
-      "source": "official-standings-v817",
+      "source": "official-standings-v818",
       "teamName": "Olympic Salerno FC"
     },
     {
@@ -392,7 +392,7 @@
       "fantapoints": 62.5,
       "id": "2026-2027_coppa_italia_live_9",
       "position": 9,
-      "source": "official-standings-v817",
+      "source": "official-standings-v818",
       "teamName": "FC DueFratelli2005"
     },
     {
@@ -407,7 +407,7 @@
       "fantapoints": 0.0,
       "id": "2026-2027_coppa_italia_live_10",
       "position": 10,
-      "source": "official-standings-v817",
+      "source": "official-standings-v818",
       "teamName": "Prestige Worldwide"
     }
   ],

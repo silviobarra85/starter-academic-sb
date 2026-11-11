@@ -205,3 +205,16 @@ Completato: aggiornamento reale della sorgente `assets/rose` al file del 18/08/2
 - Registrato conguaglio di 8 FM: -8 Olympic Salerno FC, +8 As Paperopoli.
 - Data contabile usata: 12/10/2026 (inferita da "un paio di settimane fa" rispetto al 26/10/2026).
 - Snapshot 2026-2027 portato a V41.
+
+## V817 - aggiornamento 11/11/2026
+- Campionato aggiornato alla G11 e classifica ufficiale riallineata.
+- Quarti di Champion's League completati; semifinali definite.
+- Coppa Italia Battle Royale caricata con G1 e classifica ufficiale.
+- Rose aggiornate con unico nuovo scambio DueFratelli/Olympic: Molina + Koopmeiners per Hermoso + Mandragora, senza conguaglio FM.
+
+## V818 - Coppa Italia + Dashboard (11/11/2026)
+- Corretto il loader `static-files-service.js`: ora conserva `rounds` e `displayMode` dei JSON competizione.
+- Le quattro giornate Battle Royale della Coppa Italia sono finalmente disponibili al renderer pubblico.
+- Dashboard riallineata: classifica Coppa Italia e ultimi risultati per ultimo turno realmente giocato di Campionato, Champions e Coppa Italia.
+- Release/cache-buster allineati a V818.
+- Audit: static-first 42/42, canonical data 14/14, Admin compatibility 71/71, V818 50/50.

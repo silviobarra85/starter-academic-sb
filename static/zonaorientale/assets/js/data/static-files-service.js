@@ -1,5 +1,5 @@
 import { state } from "../core/state.js";
-import { getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, getLeagueConfigValueV443 } from "../core/league-config-v443.js?v=817";
+import { getLeagueDataPathV446, joinLeagueDataPathV446, loadLeagueConfigV443, getLeagueConfigValueV443 } from "../core/league-config-v443.js?v=818";
 
 const DATA_PATH_ENGINE_CANDIDATES_V490 = [
   '../../../../fanta-engine/js/core/data-paths-v490.js',
@@ -225,7 +225,9 @@ export async function loadCompetitionCalendarData() {
           meta: payload.meta || {},
           competition: payload.competition || null,
           matches: Array.isArray(payload.matches) ? payload.matches : [],
-          results: Array.isArray(payload.results) ? payload.results : []
+          results: Array.isArray(payload.results) ? payload.results : [],
+          rounds: Array.isArray(payload.rounds) ? payload.rounds : [],
+          displayMode: payload.displayMode || payload.meta?.displayMode || payload.competition?.displayMode || ''
         };
       } catch (error) {
         console.warn(error);
